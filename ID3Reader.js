@@ -16,7 +16,7 @@ document.querySelector('input[type="file"]').onchange=function(e){
             var year=dv.getString(4, dv.tell());
         }
         else{
-
+            console.log("No ID3V1 Data");
         }
         };
 
