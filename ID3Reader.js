@@ -1,3 +1,8 @@
+class musicPlayer{
+    constructor (file)
+}
+
+
 document.querySelector('input[type="file"]').onchange=function(e){
 
      
