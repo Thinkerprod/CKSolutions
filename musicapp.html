@@ -5,10 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Player</title>
+    <script src="jsmediatags.min.js"></script>
 </head>
+
 <body>
+    
     <img src="" alt="">
     <h2>Artist: </h2>
-    <audio src=""></audio>
+    <audio src="Music/Pink_Floyd/WishYouWereHere/Shine On You Crazy Diamond (Parts VI-IX).mp3"></audio>
+    <script>
+      const jsmediatags=require("jsmediatags");
+        // var jsmediatags = window.jsmediatags;
+        alert(jsmediatags);
+        var tags = {};
+        jsmediatags.Reader.config.
+         jsmediatags.Reader("Music/Pink_Floyd/WishYouWereHere/Shine On You Crazy Diamond (Parts VI-IX).mp3", {
+   onSuccess: function(tag) {
+      tags = tag;
+      alert(tags);
+   }, 
+   onError: function(error) {
+      // handle error
+      console.log(error);
+   }
+});
+
+  // .setTagsToRead(["title", "track"])
+  // .read({
+  //   onSuccess: function(tag) {
+  //     var tags = tag.tags;
+  //     alert(tags.title + " - " + tags.track);
+  //   },
+  //   onError: function(error) {
+  //     if (error.type === "xhr") {
+  //       console.log("There was a network error: ", error.xhr);
+  //     }
+  //   }
+  // });
+    </script>
 </body>
 </html>
