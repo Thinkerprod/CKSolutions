@@ -5,28 +5,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Player</title>
-    <script src="jsmediatags.min.js"></script>
+    <script src="js/jsmediatags.min.js"></script>
+    <script src="js/jsmediatags.js"></script>
+    <script src="js/jdataview.js"></script>
 </head>
 
 <body>
     
     <img src="" alt="">
     <h2>Artist: </h2>
-    <audio src="Music/Pink_Floyd/WishYouWereHere/Shine On You Crazy Diamond (Parts VI-IX).mp3"></audio>
+    <audio controls src="Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3"></audio>
     <script>
-      const jsmediatags=require("jsmediatags");
-        // var jsmediatags = window.jsmediatags;
-        alert(jsmediatags);
+//       var reader=new FileReader();
+
+//       reader.onload=function(e){
+        
+//       var jview= new jdataview("Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3");
+//       // "TAG" starts at byte -128 from EOF.
+//   // See <a href="http://en.wikipedia.org/wiki/ID3" target="_blank">http://en.wikipedia.org/wiki/ID3</a>
+//   if (dv.getString(3, dv.byteLength - 128) == 'TAG') {
+//     var title = dv.getString(30, dv.tell());
+//     var artist = dv.getString(30, dv.tell());
+//     var album = dv.getString(30, dv.tell());
+//     var year = dv.getString(4, dv.tell());
+//   } else {
+//     // no ID3v1 data found.
+//   }
+// };
+
+// reader.readAsArrayBuffer(this.files[0]);
+    
+
+      // const jsmediatags=require("jsmediatags");
+        var jsmediatags = window.jsmediatags;
+        // alert(jsmediatags);
         var tags = {};
-        jsmediatags.Reader.config.
-         jsmediatags.Reader("Music/Pink_Floyd/WishYouWereHere/Shine On You Crazy Diamond (Parts VI-IX).mp3", {
+        // jsmediatags.Reader.config.
+         jsmediatags.read("https://github.com/Thinkerprod/CKSolutions/blob/main/Music/Pink_Floyd/WishYouWereHere/Have%20A%20Cigar.mp3", {
    onSuccess: function(tag) {
-      tags = tag;
-      alert(tags);
+      // tags = tag;
+      alert("woof");
+      alert(tag);
    }, 
    onError: function(error) {
       // handle error
-      console.log(error);
+      console.log("Meow");
+      alert("meow");
    }
 });
 
