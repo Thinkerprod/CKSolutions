@@ -1,4 +1,18 @@
-<?php echo "Hello"; ?>
+<?php $arrFiles = array();
+$handle = opendir("\Music\Pink_Floyd\WishYouWereHere");
+ 
+if ($handle) {
+    while (($entry = readdir($handle)) !== FALSE) {
+        $arrFiles[] = $entry;
+    }
+$tags=array();
+
+
+
+
+}
+ 
+closedir($handle); ?>
 
 <!-- $myfile = fopen("Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3", "r") or die("Unable to open file!");
 echo fread($myfile,filesize("Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3"));
