@@ -16,6 +16,7 @@ fclose($myfile); -->
     <script src="js/jsmediatags.min.js"></script>
     <script src="js/jsmediatags.js"></script>
     <script src="js/jdataview.js"></script>
+    <script src="js/ID3Reader.js"></script>
 </head>
 
 <body>
@@ -24,8 +25,8 @@ fclose($myfile); -->
     <h2>Artist: </h2>
     <audio controls src="Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3"></audio>
     <script>
-
-
+var filepath="Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3";
+readId3(filepath);
 
     </script>
 </body>
