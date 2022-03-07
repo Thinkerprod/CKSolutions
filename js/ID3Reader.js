@@ -1,6 +1,5 @@
 var jsmediatags = require("jsmediatags");
-
-function readId3(filepath){jsmediatags.read(filepath, {
+jsmediatags.read("../Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3", {
   onSuccess: function(tag) {
     console.log(tag);
   },
@@ -8,4 +7,4 @@ function readId3(filepath){jsmediatags.read(filepath, {
     console.log(':(', error.type, error.info);
   }
 });
-}
+
