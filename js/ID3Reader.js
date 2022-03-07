@@ -1,29 +1,10 @@
-class musicPlayer{
-    constructor (file)
-}
+var jsmediatags = require("jsmediatags");
 
-
-document.querySelector('input[type="file"]').onchange=function(e){
-
-     
-    var audReader= new FileReader();
-
-
-
-        audReader.onload=function (e){
-        var dv=new jDataView(this.result);
-        
-
-        if(dv.getString(3, dv.byteLength-128)){
-            var title=dv.getString(30, dv.tell());
-            var artist=dv.getString(30, dv.tell());
-            var album=dv.getString(30, dv.tell());
-            var year=dv.getString(4, dv.tell());
-        }
-        else{
-            console.log("No ID3V1 Data");
-        }
-        };
-
-        audReader.readAsArrayBuffer(this.files[0]);
-    };
+jsmediatags.read("Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3", {
+  onSuccess: function(tag) {
+    console.log(tag);
+  },
+  onError: function(error) {
+    console.log(':(', error.type, error.info);
+  }
+});

@@ -1,0 +1,23 @@
+{
+  "name": "cksolutions",
+  "version": "1.0.0",
+  "description": "Web Development Projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thinkerprod/CKSolutions.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Thinkerprod/CKSolutions/issues"
+  },
+  "homepage": "https://github.com/Thinkerprod/CKSolutions#readme",
+  "dependencies": {
+    "jsmediatags": "^3.9.7"
+  }
+}
