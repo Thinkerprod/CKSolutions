@@ -1,5 +1,5 @@
 var jsmediatags = require("jsmediatags");
-exports.songReader=function(){
+module.exports=function songReader(){
 jsmediatags.read("../Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3", {
   onSuccess: function(tag) {
     // console.log(tag);
@@ -13,7 +13,7 @@ jsmediatags.read("../Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(Par
 });
 }
 
-function albumDisplay(id, picture){
+module.exports=function albumDisplay(id, picture){
     const { data, format } = picture;
 let base64String = "";
 for (const i = 0; i < data.length; i++) {
