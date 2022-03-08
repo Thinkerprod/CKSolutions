@@ -13,12 +13,20 @@
 
 <body>
     
-    <img src="" alt="">
+    <img src="" id="albumArt" alt="">
     <h2>Artist: </h2>
-    <audio controls src="./Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3"></audio>
+    <audio controls src="/Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3"></audio>
     <script>
+var sr=require('ID3Reader.js');
+var tags=sr.songReader();
 
+const { data, format } = tags.picture;
+let base64String = "";
+for (const i = 0; i < data.length; i++) {
+  base64String += String.fromCharCode(data[i]);
+}
 
+document.getElementById('albumArt').src = `data:${data.format};base64,${window.btoa(base64String)}`;
     </script>
 </body>
 </html>
