@@ -1,3 +1,4 @@
+
 var jsmediatags = require("jsmediatags");
 module.exports=function songReader(){
 jsmediatags.read("../Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3", {
