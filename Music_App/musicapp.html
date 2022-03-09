@@ -9,7 +9,7 @@
     <script src="js/jsmediatags.js"></script>
     <script src="js/jdataview.js"></script>
     <script src="js/ID3Reader.js"></script>
-    <script src="js/require.js"></script>
+    
 </head>
 
 <body>
@@ -18,9 +18,9 @@
     <h2 id="artistHeader">Artist: </h2>
     <audio controls src="/Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3"></audio>
     <script>
-var sr=require("ID3Reader.js");
-var tags=sr.songReader();
-alert(tags.artist);
+
+
+
 document.getElementById('artistHeader').innerText=tags.artist;
 const { data, format } = tags.picture;
 let base64String = "";

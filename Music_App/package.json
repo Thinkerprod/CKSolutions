@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Thinkerprod/CKSolutions#readme",
   "dependencies": {
+    "express": "^4.17.3",
     "jsmediatags": "^3.9.7"
   }
 }
