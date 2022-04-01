@@ -1,8 +1,12 @@
 
+var server=require('http');
 var jsmediatags = require('jsmediatags');
 var express= require('express');
 var app=express();
 var tagsArray=new Array();
+
+
+
 jsmediatags.read("../Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3", {
   onSuccess: function(tag) {
     // console.log(tag);
@@ -19,6 +23,7 @@ var server = http.createServer(function (request, response) {
     response.writeHead(200, {"Content-Type": "text/plain"});
     response.write(data); // You Can Call Response.write Infinite Times BEFORE response.end
     response.end("Hello World\n");
+  
 }).listen(5500);
     // var artist=tags.artist;
     // app.get('/ID3Reader.js', function (req, res) {
