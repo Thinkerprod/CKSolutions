@@ -37,18 +37,7 @@ jsmediatags.read("../Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(Par
 
 var data = "data to send to client";
 
-// var server = http.createServer(function (request, response) {
-//     response.writeHead(200, {"Content-Type": "text/plain"});
-//     response.write(data); // You Can Call Response.write Infinite Times BEFORE response.end
-//     response.end("connected");
-  
-// }).listen(5500);
-    // var artist=tags.artist;
-    // app.get('/ID3Reader.js', function (req, res) {
-    //   res.json({Array:tagsArray});
-    // })
-    
-    // app.listen(5500)
+
   },
   onError: function(error) {
     console.log(':(', error.type, error.info);
