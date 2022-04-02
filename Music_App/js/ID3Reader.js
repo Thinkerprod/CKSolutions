@@ -18,14 +18,21 @@ app.get('/', (req, res)=>{
 
 });
 
-app.listen(port, host, ()=>{
+const server =app.listen(port, host, ()=>{
 
   console.log("server started at "+host+"port:"+port);
+
+  
+});
+
+process.on('SIGTERM', () => {
+  server.close(() => {
+    console.log('Process terminated')
+  })
 })
 
 
-
-jsmediatags.read("../Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3", {
+jsmediatags.read("./Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3", {
   onSuccess: function(tag) {
     // console.log(tag);
     
