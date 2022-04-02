@@ -16,30 +16,14 @@
 <body>
     
     <img src="" id="albumArt" alt="">
-    <h2 id="artistHeader">Artist: </h2>
+    <h2 >Artist: </h2>
+    <h2>Album: </h2>
+    <h2>Song: </h2>
     <audio controls src="/Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3"></audio>
-    <script>
-        var tagsArray=new Array();
-$(function(){
 
 
-$.get("/data",function(data, status){
-    console.log(data)
-    alert("Data: "+data.Array+"\nStatus: "+status);
-
-});
-
-});
 
 
-// document.getElementById('artistHeader').innerText=tags.artist;
-// const { data, format } = tags.picture;
-// let base64String = "";
-// for (const i = 0; i < data.length; i++) {
-//   base64String += String.fromCharCode(data[i]);
-// }
-
-// document.getElementById('albumArt').src = `data:${data.format};base64,${window.btoa(base64String)}`;
     </script>
 </body>
 </html>
