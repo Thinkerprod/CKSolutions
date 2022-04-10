@@ -15,16 +15,16 @@ app.use('/public',express.static('public'));
 app.set('views','./views');
 app.set('view engine', 'pug');
 
-var html="<h1>Hello</h1>"
+// var html="<h1>Hello</h1>"
 
-fs.writeFile('index.html',html, (error)=>{
-  if(error){
-    console.log(error)
-  }
-  else{
-    console.log("success")
-  }
-})
+// fs.writeFile('index.html',html, (error)=>{
+//   if(error){
+//     console.log(error)
+//   }
+//   else{
+//     console.log("success")
+//   }
+// })
 
 const server =app.listen(port, host, ()=>{
 
@@ -40,7 +40,7 @@ process.on('SIGTERM', () => {
 })
 
 
-jsmediatags.read("./Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3", {
+jsmediatags.read("./public/Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3", {
   onSuccess: function(tag) {
     // console.log(tag);
     
