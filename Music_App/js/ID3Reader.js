@@ -5,15 +5,26 @@ var express= require('express');
 var app=express();
 var pug=require('pug');
 const fs=require('fs');
+const { error } = require('console');
 var tagsArray=Array();
 
 const port=3000;
 const host='localhost';
 
+app.use('/public',express.static('public'));
 app.set('views','./views');
 app.set('view engine', 'pug');
 
+var html="<h1>Hello</h1>"
 
+fs.writeFile('index.html',html, (error)=>{
+  if(error){
+    console.log(error)
+  }
+  else{
+    console.log("success")
+  }
+})
 
 const server =app.listen(port, host, ()=>{
 
@@ -44,16 +55,16 @@ jsmediatags.read("./Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(Part
     app.get('/', (req, res)=>{
 
       res.render("index", {
-        artist,
-        album,
-        title,
-        track
+        artist:tags.artist,
+        album: tags.album,
+        title: tags.title,
+        track: tags.track
         
       });
-    
+    });
     //   res.render('index');
     
-    });
+    
 
 
 

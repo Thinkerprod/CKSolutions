@@ -3,7 +3,8 @@ html(lang="en")
 head
     title Music App
     //- img#albumArt(src= albumCover )
-    h2 Artist: artist
-    h2 Album: album
-    h2 Song: song
-    audio(controls='true' src='/Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3')
+    h2 Artist: #{artist}
+    h2 Album: #{album}
+    h2 Song: #{title}
+    h2 Track: #{track}
+    audio(controls src="/public/Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3")
