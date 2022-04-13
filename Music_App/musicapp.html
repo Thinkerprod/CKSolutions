@@ -5,17 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Player</title>
-    <script src="js/jsmediatags.min.js"></script>
-    <script src="js/jsmediatags.js"></script>
-    <script src="js/jdataview.js"></script>
-    <script src="js/ID3Reader.js"></script>
-    <script src="js/jquery.js"></script>
+
+    <script src="js/albumArt.js"></script>
     
 </head>
 
 <body>
     
-    <img src="" id="albumArt" alt="">
+    <img src="" id="albumC" alt="">
     <h2 >Artist: </h2>
     <h2>Album: </h2>
     <h2>Song: </h2>
@@ -24,6 +21,9 @@
 
 
 
+    <script>
+var albumCover = albumArt(art);
+document.getElementById("albumC").setAttribute('src',albumCover);
     </script>
 </body>
 </html>

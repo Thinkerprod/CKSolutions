@@ -1,10 +1,15 @@
-<!DOCTYPE html>
 html(lang="en")
-head
-    title Music App
-    //- img#albumArt(src= albumCover )
-    h2 Artist: #{artist}
-    h2 Album: #{album}
-    h2 Song: #{title}
-    h2 Track: #{track}
-    audio(controls src="/public/Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3")
+    head
+        title Music App
+        script(src='public/albumArt.js')
+    body
+        img#albumC(src='' alt='')
+        h2 Artist: #{artist}
+        h2 Album: #{album}
+        h2 Song: #{title}
+        h2 Track: #{track}
+        audio(controls src="/public/Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3")
+        script.
+            var albumCover = albumArt(#{art})
+            console.log(#{art})
+            document.getElementById("albumC").setAttribute('src',albumCover)

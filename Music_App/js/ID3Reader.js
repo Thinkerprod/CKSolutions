@@ -50,7 +50,8 @@ jsmediatags.read("./public/Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamo
     var album=tags.album;
     var title=tags.title;
     var track=tags.track;
-    // var albumCover=albumDisplay(tags.picture);
+    var art=tags.picture;
+    // console.log(tags.picture);
 
     app.get('/', (req, res)=>{
 
@@ -58,7 +59,8 @@ jsmediatags.read("./public/Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamo
         artist:tags.artist,
         album: tags.album,
         title: tags.title,
-        track: tags.track
+        track: tags.track,
+        art: tags.picture
         
       });
     });
@@ -75,16 +77,16 @@ jsmediatags.read("./public/Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamo
 });
 
 
-function albumDisplay(picture){
-    const { data, format } = picture;
-let base64String = "";
-for (var i = 0; i < data.length; i++) {
-  base64String += String.fromCharCode(data[i]);
-}
+// function albumDisplay(picture){
+   
+// let base64String = "";
+// for (var i = 0; i < picture.data.length; i++) {
+//   base64String += String.fromCharCode(picture.data[i]);
+// }
 
-var pictureData = `data:${data.format};base64,${window.btoa(base64String)}`;
-return pictureData;
-}
+// var pictureData = "data:"+picture.format+";base64,"+window.btoa(base64String);
+// return pictureData;
+// }
 
 
 
