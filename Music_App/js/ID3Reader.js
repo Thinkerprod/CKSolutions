@@ -50,9 +50,9 @@ jsmediatags.read("./public/Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamo
     var album=tags.album;
     var title=tags.title;
     var track=tags.track;
-    for (var i = 0; i < picture.data.length; i++) {
-      var base64Url=Buffer.from(tags.picture.data[i]).toString("base64");
-}
+   
+      var base64Url=Buffer.from(tags.picture.data).toString("base64");
+
     // var base64Url=Buffer.from(base64String).toString("base64");
     var artInfo="data:"+tags.picture.format+";base64,"+base64Url;
     
