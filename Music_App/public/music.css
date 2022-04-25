@@ -1,0 +1,124 @@
+body{
+    background-color: #000;
+}
+
+.container{
+  display:flex;
+  justify-content: space-around;
+}
+
+img{
+  max-width: 400px;
+  height:auto;
+  margin: 0 auto;
+  padding-top: 1em;
+}
+.display{
+  display:flex;
+  max-width: fit-content;
+  height: auto;
+  justify-content: center;
+  flex-direction: column;
+  border: solid #b8b8b8 2px;
+  border-radius: 15px;
+}
+
+.controls {
+  display: flex;
+  border: solid #b8b8b8 2px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2em;
+}
+
+
+
+.playbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.play {
+    display: flex;
+    background: linear-gradient(#282928, green);
+    width: 8vh;
+    height: 8vh;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+    margin-right: 1em;
+    align-items: center;
+  }
+  
+  .playRef {
+    display: flex;
+    background: linear-gradient(green, black 70%);
+    width: 8vh;
+    height: 8vh;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+    margin-right: 1em;
+    align-items: center;
+  }
+  
+  .pause {
+    display: flex;
+    margin-right: 1em;
+    justify-content: center;
+  }
+  .PA {
+    background: linear-gradient(#282928, blue);
+    width: 2vh;
+    height: 8vh;
+    border-radius: 15%;
+  
+    margin-right: 0.5em;
+  }
+  .PB {
+    background: linear-gradient(#282928, blue);
+    width: 2vh;
+    height: 8vh;
+    border-radius: 15%;
+  }
+  
+  .PAref {
+    background: linear-gradient(blue, black 70%);
+    width: 2vh;
+    height: 8vh;
+    border-radius: 15%;
+  
+    margin-right: 0.5em;
+  }
+  .PBref {
+    background: linear-gradient(blue, black 70%);
+    width: 2vh;
+    height: 8vh;
+    border-radius: 15%;
+  
+    /*   margin-right: 0.5em; */
+  }
+  
+  .stop {
+    width: 8vh;
+    height: 8vh;
+    background: linear-gradient(#282928, red 95%);
+  }
+  .stopRef {
+    width: 8vh;
+    height: 8vh;
+    background: linear-gradient(red, black 70%);
+  }
+  
+  .reflect {
+    width: 10vh;
+    height: 1vh;
+    background-color: black;
+    box-shadow: 5px 5px 5px 5px;
+  }
+
+  .displayHeader{
+    padding-left: 1em;
+    padding-right: 1em;
+    font-size: 2rem;
+    color: #b8b8b8;
+  }
+  
+  

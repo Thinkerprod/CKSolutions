@@ -5,18 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Player</title>
-
+    <link rel="stylesheet" href="style.css">
     <script src="js/albumArt.js"></script>
     
 </head>
 
 <body>
-    
-    <img src="" id="albumC" alt="">
+    <div class="container">
+        <div class="display">
+    <img src="" id="albumC" alt="album cover">
+    <div class="playbox">
+        <div class="play" ></div>
+        <div class="reflect"></div>
+        <div class="playRef"></div>
+      </div>
+      <div class="pausebox">
+        <div class="pause">
+          <div class="PA center" ></div>
+          <div class="PB center" ></div>
+        </div>
+        <div class="reflect"></div>
+        <div class="pause">
+          <div class="PAref center" ></div>
+          <div class="PBref center" ></div>
+        </div>
+      </div>
+      <div class="stopbox">
+        <div class="stop" ></div>
+        <div class="reflect"></div>
+        <div class="stopRef"></div>
+      </div>
+    </div>
     <h2 >Artist: </h2>
     <h2>Album: </h2>
     <h2>Song: </h2>
+        </div>
     <audio controls src="Music_App\Music\Pink_Floyd\WishYouWereHere\ShineOnYouCrazyDiamond(PartsI-V).mp3"></audio>
+    </div>
 
 
 
