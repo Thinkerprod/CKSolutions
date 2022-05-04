@@ -38,6 +38,7 @@ img{
   display: flex;
   flex-direction: column;
   justify-content: center;
+  cursor:pointer;
 }
 .play {
     display: flex;
@@ -63,6 +64,7 @@ img{
     display: flex;
     margin-right: 1em;
     justify-content: center;
+    cursor:pointer;
   }
   .PA {
     background: linear-gradient(#282928, blue);
@@ -100,6 +102,7 @@ img{
     width: 8vh;
     height: 8vh;
     background: linear-gradient(#282928, red 95%);
+    cursor:pointer;
   }
   .stopRef {
     width: 8vh;

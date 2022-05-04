@@ -4,6 +4,7 @@ html(lang="en")
         meta(http-equiv='X-UA-Compatible' content='IE=edge')
         meta(name='viewport' content='width=device-width, initial-scale=1.0')
         title Music App
+        
         link(rel='stylesheet' type='text/css' href='/public/music.css')
     body
         .container
@@ -11,11 +12,11 @@ html(lang="en")
                 img#albumC(src=art alt='album cover')
                 .controls
                     .playbox
-                        .play
+                        #playBtn.play
                         .reflect
                         .playRef
                     .pausebox
-                        .pause
+                        #pauseBtn.pause
                             .PA.center
                             .PB.center
                         .reflect
@@ -23,11 +24,14 @@ html(lang="en")
                             .PAref.center
                             .PBref.center
                     .stopbox
-                        .stop
+                        #stopBtn.stop
                         .reflect
                         .stopRef
                 h2.displayHeader  #{artist}
                 h2.displayHeader  #{album}
                 h2.displayHeader  #{title}
                 //- h2.displayHeader Track: #{track}
-                audio(controls src="/public/Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3")
+                audio#player(controls  src="/public/Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3")
+                script(type='text/javascript' src='/public/js/music-controls.js')
+                
+

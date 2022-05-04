@@ -11,7 +11,7 @@ var tagsArray=Array();
 const port=3000;
 const host='localhost';
 
-app.use('/public', express.static(path.join(__dirname, '../public')));
+app.use('/public', express.static(path.join(__dirname, '/public')));
 // app.use('/public/Music', express.static(path.join(__dirname, '/public')));
 // app.use( express.static(path.join(__dirname, 'public')));
 // app.use('/public', express.static('public'));
