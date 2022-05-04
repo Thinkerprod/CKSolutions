@@ -32,7 +32,46 @@ img{
   margin-top: 2em;
 }
 
+.timeDisplay{
+  display:flex;
+  width:100%;
+  height:4em;
+  justify-content: center;
+}
 
+
+.timeBarContainer{
+  display:block;
+  /* border:2px solid #fff; */
+  width: 70%;
+  height:4em;
+  margin: 0 auto;
+  padding-top: 1em;
+  
+  /* justify-content: center; */
+}
+
+.timeBar{
+  border: 2px solid #b8b8b8;
+  border-radius: 20px;
+  width:inherit;
+  height:3em;
+ position: relative;
+  display:flex;
+  justify-content: space-between;
+  top:0.25em;
+  margin: 0 auto;
+
+}
+.bar{
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+  position: relative;
+  height: 2.5em;
+  top:0.25em;
+  width:1em;
+  left:0;
+}
 
 .playbox {
   display: flex;

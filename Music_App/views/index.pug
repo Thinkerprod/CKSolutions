@@ -10,7 +10,14 @@ html(lang="en")
         .container
             .display
                 img#albumC(src=art alt='album cover')
+                .timeDisplay
+                    .timeBarContainer
+                        .timeBar
+                            p#elapse.elapsed 1.3
+                            p#songDur.songDuration 1.4
+                        .bar
                 .controls
+                    
                     .playbox
                         #playBtn.play
                         .reflect
