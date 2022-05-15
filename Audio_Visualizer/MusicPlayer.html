@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Music Station</title>
+     <link href="/fontawesome/css/all.css" rel="stylesheet">
+     <link href="musicstyle.css" rel="stylesheet">
+    <script src="http://cwilso.github.io/AudioContext-MonkeyPatch/AudioContextMonkeyPatch.js"></script>
+</head>
+<body>
+  <audio id="player" controls>
+       <source src="Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3">
+   </audio>
+  <button class="controlButt" id="buttPlay"><i class="fas fa-play"><i class="fas fa-pause"></i></i></button>
+   <canvas width="500px" height="400px" background-color="#000000" id="soundCanv"></canvas>
+   <div class="visContainer" id="vis"></div>
+
+   
+   
+    <script>
+        const container=document.querySelector('#vis');
+        var music=document.getElementById("player"); 
+        
+//        document.getElementById("buttPause").addEventListener("click",()=>{
+//            if(music.play){
+//                music.pause();
+//            }
+//            else{
+//                music.play();
+//            }
+//        });
+        document.getElementById("buttPlay").addEventListener("click",()=>{
+            if(music.play){
+                music.pause();
+            }
+            if(music.paused){
+                music.paused(false);
+            }
+        window.AudioContext = window.AudioContext||window.webkitAudioContext;
+        let audioCtx = new AudioContext();
+       
+     var canvas=document.getElementById("soundCanv");
+        var canvasCtx=canvas.getContext("2d");
+        var myAudio=document.querySelector('audio');
+        
+        
+var analyser = audioCtx.createAnalyser(); 
+//    var source = audioCtx.createMediaStreamSource(music.captureStream());
+            var source=audioCtx.createMediaElementSource(myAudio);
+source.connect(analyser);
+        analyser.connect(audioCtx.destination);
+
+console.log("Hello");
+    
+    
+    analyser.fftSize = 256;
+var bufferLength = analyser.frequencyBinCount;
+console.log(bufferLength);
+var dataArray = new Uint8Array(bufferLength);
+
+console.log("Hello There");
+            music.play();
+    
+        function draw() {
+            removeAllChildren(container);
+//      canvasCtx.clearRect(0, 0,canvas.width, canvas.height);
+
+      analyser.getByteFrequencyData(dataArray);
+
+//      canvasCtx.fillStyle = 'rgb(0, 0, 0)';
+//      canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
+            
+//            var barWidth = (canvas.width / bufferLength) * 2.5;
+var barHeight;
+var x = 0;
+            
+            
+            var visCont=document.getElementById("vis");
+               var divWidth=((500/bufferLength)*0.65);
+//            console.log(divWidth);console.log(divWidth);
+            var divNumber=parseInt(500/divWidth);
+            
+            
+            
+            
+                  for(var i = 0; i < bufferLength; i++) {
+//        barHeight = dataArray[i]/2;
+
+//        canvasCtx.fillStyle = 'rgb(' + (barHeight+100) + ',50,50)';
+//        canvasCtx.fillRect(x,canvas.height-barHeight/2,barWidth,barHeight);
+
+//        x += barWidth + 1;
+                      
+            //Div visualizer drawn here
+                      
+                      var divHeight=dataArray[i]/2;
+                      var divColor='rgb(93,202,49)';
+                   
+                      var idArray=new Array(divNumber);
+//                        var realWidth=500/idArray.length;
+                      var newDiv=document.createElement("div");
+
+                          newDiv.setAttribute("class","musicBar");
+                          newDiv.style.width=divWidth+"px";
+                          newDiv.style.height=divHeight+"px";
+                      container.appendChild(newDiv);
+//                      for(var a=0; a<idArray.length; a++){
+//                var b="bar";
+//                idArray[a]=b+(a+1);
+//                    
+////                          console.log(idArray[a]);
+//                
+////                document.getElementById("vis").createCh("div").id=
+////                document.getElementById(idArray[a]).addClass("musicBar");
+////                document.getElementById(idArray[a]).style.width=divWidth+"px";
+////                document.getElementById(idArray[a]).style.height=divHeight+"px";
+//                
+//                a++;
+////                          console.log(a);
+//                
+//            }
+                      
+                
+                      
+      }
+            
+            
+        window.requestAnimationFrame(draw);    
+    };
+        window.requestAnimationFrame(draw);
+        draw();
+            
+             function removeAllChildren(parent){
+                 while(parent.firstChild){
+                     parent.removeChild(parent.firstChild);
+                     
+                 }
+                 
+             }
+            
+    
+    });
+    </script>
+</body>
+</html>
