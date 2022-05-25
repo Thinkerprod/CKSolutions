@@ -13,6 +13,87 @@ img{
   margin: 0 auto;
   padding-top: 1em;
 }
+.playerContainer{
+  display: flex;
+  align-items: center;
+}
+
+.extraControls{
+  display: flex;
+  align-items: center;
+  width:14rem;
+  /* border: 2px solid #fff; */
+}
+
+.iconContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.iconRow{
+  width: 40px;
+  height: auto;
+  display: flex;
+  align-items: center;
+}
+
+.icon{
+  width:30px;
+  height: auto;
+  margin-left: 2rem;
+}
+
+.label{
+  font-size: 30px;
+  color:#fff;
+  margin-left: 2rem;
+}
+
+.volumeContainer{
+  display: flex;
+  width: 8em;
+  height: 14em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 2rem;
+  /* border: 2px solid #b8b8b8; */
+}
+
+.volume{
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  width:2.5em;
+  height:12em;
+  border: 2px solid #b8b8b8;
+  border-radius: 15px;
+}
+
+.plusMinusVol{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height:25px;
+  /* border:2px solid #fff; */
+  color:#fff;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.volBar{
+width: 2.4em;
+height: 25%;
+background-color: #b8b8b8;
+border-radius: 15px;
+margin-top: 0.1em;
+margin-bottom: 0.1em;
+}
+
+
 .display{
   display:flex;
   max-width: 600px;
@@ -89,6 +170,8 @@ margin: 0 0.5rem 0 0.5rem;
   border-radius: 15px;
   
 }
+
+
 
 .controls {
   display: flex;

@@ -8,37 +8,59 @@ html(lang="en")
         link(rel='stylesheet' type='text/css' href='/public/music.css')
     body
         .container
-            .display
-                img#albumC(src=art alt='album cover')
-                .timeDisplay
-                    .timeBarContainer
-                        img#speaker(src='/public/images/speaker-filled-audio-tool.png' alt='https://www.flaticon.com/free-icons/speaker')
-                        p#elapse.songTime 1.3
-                        .timeBar
-                            .bar#progBar
-                        p#songDur.songTime 1.4
-                .controls
-                    .playbox
-                        #playBtn.play
-                        .reflect
-                        .playRef
-                    .pausebox
-                        #pauseBtn.pause
-                            .PA.center
-                            .PB.center
-                        .reflect
-                        .pause
-                            .PAref.center
-                            .PBref.center
-                    .stopbox
-                        #stopBtn.stop
-                        .reflect
-                        .stopRef
-                h2.displayHeader  #{artist}
-                h2.displayHeader  #{album}
-                h2.displayHeader  #{title}
-                //- h2.displayHeader Track: #{track}
-                audio#player(controls  src="/public/Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3")
-                script(type='text/javascript' src='/public/js/music-controls.js')
+            .playerContainer
+
+                .display
+                    img#albumC(src=art alt='album cover')
+                    .timeDisplay
+                        .timeBarContainer
+                            p#elapse.songTime
+                            .timeBar
+                                .bar#progBar
+                            p#songDur.songTime
+                        
+
+                    .controls
+                        .playbox
+                            #playBtn.play
+                            .reflect
+                            .playRef
+                        .pausebox
+                            #pauseBtn.pause
+                                .PA.center
+                                .PB.center
+                            .reflect
+                            .pause
+                                .PAref.center
+                                .PBref.center
+                        .stopbox
+                            #stopBtn.stop
+                            .reflect
+                            .stopRef
+                    h2.displayHeader  #{artist}
+                    h2.displayHeader  #{album}
+                    h2.displayHeader  #{title}
+                    //- h2.displayHeader Track: #{track}
+                    audio#player(controls  src="/public/Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3")
+                .extraControls
+                    .iconContainer
+                        .iconRow
+                            img#plusIcon.icon(src='/public/images/white-plus-icon.png' alt='white-plus-icon')
+                            .label#speakerlabel Create Playlist
+                        .iconRow
+                            img#listIcon.icon(src='/public/images/white-list-icon.png' alt='white-list-icon')
+                            .label#speakerlabel Album Playlist
+                        .iconRow
+                            img#visIcon.icon(src='/public/images/white-audiowave-icon.png' alt='white-audiowave-icon')
+                            .label#speakerlabel Audio Visualizer
+                        .iconRow
+                            img#speakerIcon.icon(src='/public/images/speaker-filled-audio-tool.png' alt='https://www.flaticon.com/free-icons/speaker')
+                            .label#speakerlabel Volume Control
+                .volumeContainer#volShowControl
+                    .plusMinusVol#plus + 
+                    .volume
+                        .volBar#volControl
+                    .plusMinusVol#minus -
+            script(type='text/javascript' src='/public/js/music-controls.js')
                 
 

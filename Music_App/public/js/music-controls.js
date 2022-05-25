@@ -17,7 +17,7 @@ var progBarWidthRate=""
         var min=Math.floor(document.getElementById("player").duration/60)
         var sec=Math.floor(document.getElementById("player").duration%60)
         document.getElementById("songDur").innerText = min+":"+sec
-        myReq=window.requestAnimationFrame(timeProgress())
+        myReq=window.requestAnimationFrame(timeProgress)
                 
 
 
