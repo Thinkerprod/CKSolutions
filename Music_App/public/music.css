@@ -53,7 +53,7 @@ img{
 .volumeContainer{
   display: flex;
   width: 8em;
-  height: 14em;
+  height: 25em;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -72,6 +72,16 @@ img{
   border-radius: 15px;
 }
 
+.volumeLabel{
+  color: #fff;
+  font-size: 30px;  
+}
+
+.mute{
+  font-size: 20px;
+  cursor: pointer;
+}
+
 .plusMinusVol{
   display: flex;
   justify-content: center;
@@ -86,7 +96,7 @@ img{
 
 .volBar{
 width: 2.4em;
-height: 25%;
+/* height: 25%; */
 background-color: #b8b8b8;
 border-radius: 15px;
 margin-top: 0.1em;

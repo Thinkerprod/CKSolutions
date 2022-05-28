@@ -41,7 +41,7 @@ html(lang="en")
                     h2.displayHeader  #{album}
                     h2.displayHeader  #{title}
                     //- h2.displayHeader Track: #{track}
-                    audio#player(controls  src="/public/Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3")
+                    //- audio#player(src="/public/Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3")
                 .extraControls
                     .iconContainer
                         .iconRow
@@ -57,10 +57,15 @@ html(lang="en")
                             img#speakerIcon.icon(src='/public/images/speaker-filled-audio-tool.png' alt='https://www.flaticon.com/free-icons/speaker')
                             .label#speakerlabel Volume Control
                 .volumeContainer#volShowControl
+                    h3.volumeLabel#volLabel
                     .plusMinusVol#plus + 
                     .volume
                         .volBar#volControl
                     .plusMinusVol#minus -
+                    h3.volumeLabel.mute#mute Mute
             script(type='text/javascript' src='/public/js/music-controls.js')
+            
+            script(type='text/javascript').
+                createMusicPlayer("/public/Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3")
                 
 
