@@ -7,6 +7,9 @@ const path=require('path')
 const fs=require('fs');
 const { error } = require('console');
 var tagsArray=Array();
+var mp=require('./public/js/music-picker.js');
+
+mp.defaultAlbumReader();
 
 const port=3000;
 const host='localhost';

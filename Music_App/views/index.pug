@@ -8,6 +8,14 @@ html(lang="en")
         link(rel='stylesheet' type='text/css' href='/public/music.css')
     body
         .container
+            .table-container
+            table.albumTable
+                th Traack
+                th Song
+                th Artist
+                th Album
+                th Year
+                th Play
             .playerContainer
 
                 .display
@@ -46,17 +54,17 @@ html(lang="en")
                     .iconContainer
                         .iconRow
                             img#plusIcon.icon(src='/public/images/white-plus-icon.png' alt='white-plus-icon')
-                            .label#speakerlabel Create Playlist
+                            .label#pluslabel Create Playlist
                         .iconRow
                             img#listIcon.icon(src='/public/images/white-list-icon.png' alt='white-list-icon')
-                            .label#speakerlabel Album Playlist
+                            .label#listlabel Album Playlist
                         .iconRow
                             img#visIcon.icon(src='/public/images/white-audiowave-icon.png' alt='white-audiowave-icon')
-                            .label#speakerlabel Audio Visualizer
+                            .label#vislabel Audio Visualizer
                         .iconRow
                             img#speakerIcon.icon(src='/public/images/speaker-filled-audio-tool.png' alt='https://www.flaticon.com/free-icons/speaker')
                             .label#speakerlabel Volume Control
-                .volumeContainer#volShowControl
+                .volumeContainer.volShow#volShowControl
                     h3.volumeLabel#volLabel
                     .plusMinusVol#plus + 
                     .volume

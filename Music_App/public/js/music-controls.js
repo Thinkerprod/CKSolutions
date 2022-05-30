@@ -19,6 +19,10 @@ function createMusicPlayer(path){
 document.getElementById("volControl").style.height=volumeHeight
 }
 
+document.getElementById("speakerIcon").addEventListener("click",function (e){
+    document.getElementById("volShowControl").classList.toggle("volShow")
+})
+
 
 setVolumeDefault(0.25)
 

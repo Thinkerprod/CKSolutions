@@ -27,15 +27,20 @@ img{
 
 .iconContainer{
   display: flex;
+  width: 20rem;
   flex-direction: column;
   align-items: center;
+  /* border:2px solid #fff; */
 }
 
 .iconRow{
-  width: 40px;
+  width: 20rem;
   height: auto;
   display: flex;
   align-items: center;
+  margin-right: 4rem;
+  margin-left: 1rem;
+  /* border:2px solid #fff; */
 }
 
 .icon{
@@ -44,10 +49,37 @@ img{
   margin-left: 2rem;
 }
 
+#visIcon{
+  width:50px;
+}
+
 .label{
+  display: none;
   font-size: 30px;
   color:#fff;
   margin-left: 2rem;
+}
+
+
+#plusIcon:hover ~ #pluslabel{
+ display: block;
+}
+#listIcon:hover ~ #listlabel{
+  display: block;
+ }
+ #visIcon:hover ~ #vislabel{
+  display: block;
+ }
+ #plusIcon:hover ~ #pluslabel{
+  display: block;
+ }
+ #speakerIcon:hover ~ #speakerlabel{
+  display: block;
+  cursor: pointer;
+ }
+
+#speakerIcon{
+  cursor: pointer;
 }
 
 .volumeContainer{
@@ -59,6 +91,9 @@ img{
   align-items: center;
   margin-left: 2rem;
   /* border: 2px solid #b8b8b8; */
+}
+.volShow{
+  display: none;
 }
 
 .volume{
