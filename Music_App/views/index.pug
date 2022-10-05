@@ -10,12 +10,17 @@ html(lang="en")
         .container
             .table-container
             table.albumTable
-                th Traack
+                th Track
                 th Song
                 th Artist
                 th Album
                 th Year
                 th Play
+                var songInfo=[#{defTrack},#{defTitle},#{defArtist},#{defAlbum},#{defYear}]
+                tr
+                    each item in songInfo
+                        td=item
+                    
             .playerContainer
 
                 .display
@@ -75,5 +80,7 @@ html(lang="en")
             
             script(type='text/javascript').
                 createMusicPlayer("/public/Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3")
+               
+                
                 
 
