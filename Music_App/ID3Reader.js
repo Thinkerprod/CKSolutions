@@ -9,8 +9,8 @@ const { error } = require('console');
 var tagsArray=Array();
 var mp=require('./public/js/music-picker.js');
 
-mp.defaultAlbumReader();
-
+var albumArray=mp.defaultAlbumReader();
+console.log("this array is:"+albumArray);
 const port=3000;
 const host='localhost';
 
@@ -28,11 +28,11 @@ const server =app.listen(port, host, ()=>{
   
 });
 
-process.on('SIGTERM', () => {
-  server.close(() => {
-    console.log('Process terminated')
-  })
-})
+// process.on('SIGTERM', () => {
+//   server.close(() => {
+//     console.log('Process terminated')
+//   })
+// })
 
 
 jsmediatags.read("./public/Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3", {
@@ -41,10 +41,7 @@ jsmediatags.read("./public/Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamo
     
     var tags=tag.tags;
     tagsArray=[tags.artist,tags.track,tags.album,tags.title,tags.picture];
-    var artist=tags.artist;
-    var album=tags.album;
-    var title=tags.title;
-    var track=tags.track;
+    
    
       var base64Url=Buffer.from(tags.picture.data).toString("base64");
 

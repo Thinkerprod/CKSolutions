@@ -8,18 +8,20 @@ html(lang="en")
         link(rel='stylesheet' type='text/css' href='/public/music.css')
     body
         .container
+            p.tempText #{temp}
             .table-container
             table.albumTable
-                th Track
-                th Song
-                th Artist
-                th Album
-                th Year
-                th Play
-                //- var songInfo=[#{defTrack},#{defTitle},#{defArtist},#{defAlbum},#{defYear}]
+                tr
+                    th Track
+                    th Song
+                    th Artist
+                    th Album
+                    th Year
+                //- th Play
+                
                 //- tr
-                //-     each item in songInfo
-                //-         td=item
+                //-     each song in songRow
+                //-         td=song
                     
             .playerContainer
 
