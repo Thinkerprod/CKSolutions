@@ -5,10 +5,17 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "pwa-chrome",
+            "name": "Launch Chrome",
             "request": "launch",
-            "name": "Open business.html",
-            "file": "e:\\Profile\\business.html"
+            "type": "chrome",
+            "url": "http://localhost/CKSolutions/CKSite/index.html",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Open index.html",
+            "file": "C:\\xampp\\htdocs\\CKSolutions\\CKSite\\index.html"
         }
     ]
 }
