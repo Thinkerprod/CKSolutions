@@ -4,23 +4,55 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thinker Productions-Business</title>
+    <title>Business</title>
     <link rel="stylesheet" href="css/business.css">
+    
     
 </head>
 <body>
 <header>
 
 <nav class="navbar">
+    <input type="checkbox" name="burgerCheck" id="burgerCheckbox">
   <h2 class="logo">CK</h2>
-  <ul>
+  <label for="burgerCheckbox" class="menu" id="menuBars">
+
+  
+    <div class="bars top" id="top-bar"></div>
+    <div class="bars middle" id="middle-bar"></div>
+    <div class="bars bottom" id="bottom-bar"></div>
+  
+
+</label>
+  <ul class="links">
     <li><a href="#">Home</a></li>
-    <li><a href="#project-section">Portfolio</a></li>
+    <li><a href="#project-section">Portfolio</a>
+    <ul class="proj-sub">
+<li><a href="#">Past Projects</a></li>
+<li><a href="#">Current Projects</a></li>
+    </ul>
+</li>
     <li><a href="#">About</a></li>
     <li><a href="#">Blog</a></li>
     <li><a href="#">Contact</a></li>
+    <li><a href="#">Login</a></li>
   </ul>
 </nav>
+<div class="mobile-nav">
+<ul class="mobile-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#project-section">Portfolio</a>
+    <ul>
+<li><a href="#">Past Projects</a></li>
+<li><a href="#">Current Projects</a></li>
+    </ul>
+</li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Blog</a></li>
+    <li><a href="#">Contact</a></li>
+    <li><a href="#">Login</a></li>
+  </ul>
+</div>
 
 </header>
 <section id="intro">
@@ -28,13 +60,12 @@
 <div class="intro-area">
 
   <div class="introWrapper">
-    <h1 class="intro"><span class="hello">Hello,</span> <br> My name is</br>John Smith. <br> I'm a <br>web developer.</h1>
+    <h1 class="intro"><span class="hello">Hello,</span> <br> My name is</br>Cory Kutschker. <br> I'm a <br>web developer.</h1>
   </div>
   <div class="hire">
-    <div class="head"><img src="https://placekitten.com/100/100" alt="" class="profile"></div>
+    <img src="https://placekitten.com/75/75" alt="" class="head">
     <div class="hireCombo">
       <div class="blackCircle"></div>
-
       <div class="hireBtn">
         <span id="hireText">Hire Me</span>
       </div>
