@@ -1,3 +1,9 @@
+let burgerMenu=document.getElementById("menuBars");
+
+burgerMenu.addEventListener("click",navToggle);
+
+
+
 let projects = document.getElementById("projects").children;
 let projectPos = document.getElementById("projPos");
 console.log(projectPos);
@@ -13,6 +19,23 @@ let backward = document.getElementById("backward");
 
 forward.addEventListener("click", clickForward);
 backward.addEventListener("click", clickBackward);
+
+var toggled=0;
+function navToggle(){
+
+
+  if(toggled==0){
+    document.getElementById("mobileNav").classList.add("toggle-display");
+    document.getElementById("mobileLinks").classList.add("toggle-nav-on");
+    toggled=1;
+  }
+  else{
+    document.getElementById("mobileNav").classList.remove("toggle-display");
+    document.getElementById("mobileLinks").classList.remove("toggle-nav-on");
+    toggled=0;
+  }
+
+}
 
 function clickForward() {
   if (pos == projects.length - 1) {
