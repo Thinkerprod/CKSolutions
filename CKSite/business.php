@@ -44,7 +44,7 @@
 <ul class="mobile-links" id="mobileLinks">
     <li><a href="#">Home</a></li>
     <li><a href="#project-section">Portfolio</a>
-
+    <li><a href="#">Testimonials</a></li>
     <li><a href="#">About</a></li>
     <li><a href="#">Blog</a></li>
     <li><a href="#">Contact</a></li>
@@ -58,7 +58,7 @@
 <div class="intro-area">
 
   <div class="introWrapper">
-    <h1 class="intro"><span class="hello">Hello,</span> <br> My name is</br>Cory Kutschker. <br> I'm a <br>web developer.</h1>
+    <h1 class="intro"><span class="hello">Hello,</span> <br> My name is</br>John Smith. <br> I'm a <br>web developer.</h1>
   </div>
   <div class="hire">
     <img src="https://placekitten.com/75/75" alt="" class="head">
@@ -136,6 +136,7 @@
 </div>
 
 </section>
+<script src="js/jquery-3.6.3.min.js"></script>
 <script src="js/business.js"></script>
 </body>
 </html>

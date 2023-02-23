@@ -37,7 +37,7 @@ overflow: hidden;
 }
 #burgerCheckbox:checked ~ #menuBars>#middle-bar{
     display: none;
-    transition: ease-in 2s;
+    
     
 }
 #burgerCheckbox:checked ~ #menuBars>#top-bar{
@@ -68,7 +68,7 @@ overflow: hidden;
   
 justify-content: center;
 align-items: flex-start;
-margin-right: 5rem;
+
   
   
   
@@ -83,7 +83,7 @@ margin-right: 5rem;
     justify-content: center;
     align-items: center;
     grid-column: 3/4;
-    margin-right: 0.1em;
+    /* margin-right: 0.1em; */
 }
 .bars{
     height:0.1em;
@@ -91,7 +91,9 @@ margin-right: 5rem;
     background-color: #b8b8b8;
 }
 .middle{
+  opacity: 1;
     margin:0.5em 0 0.5em 0;
+    transition: opacity 0.2s;
 }
 .logo {
     display: flex;
@@ -140,13 +142,16 @@ nav a {
   text-decoration: none;
   text-transform: uppercase;
 }
-.mobile-nav{
+#mobileNav{
     display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width:95vw;
     height:30%;
+    border-top:1px solid #b8b8b8;
+    border-bottom:1px solid #b8b8b8;
+    transition:height 2s 1s, opacity 1s 1s;
     
     
 }
@@ -161,14 +166,13 @@ nav a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-top:1px solid #b8b8b8;
-  border-bottom:1px solid #b8b8b8;
+
   opacity: 0;
-  transition: height 3s, opacity 8s;
+  /* transition: height 3s, opacity 8s; */
 }
 
   .toggle-nav-on{
-    width:100%;
+    /* width:100%; */
   display:flex;
   flex-direction: column;
   height:100%;
@@ -177,7 +181,7 @@ nav a {
   justify-content: center;
   border-top:1px solid #b8b8b8;
   border-bottom:1px solid #b8b8b8;
-  /* transition:height 2s,opacity 3s; */
+
   }
 
 .mobile-links li{
@@ -505,6 +509,77 @@ h1 {
 
 }
 @media (min-width:375px){
+
+}
+@media(min-width:750px){
+
+  :root{
+    --circleRadius:10rem;
+    --marginPush:3rem;
+  }
+
+  .menu{
+    width:3em;
+    height:3em;
+  
+    /* margin-right: 0.1em; */
+}
+.bars{
+  height:0.5em;
+  width:2em;
+}
+#burgerCheckbox:checked ~ #menuBars>#bottom-bar{
+  transform-origin: 50% 100%;
+  width: 2.5em;
+}
+#burgerCheckbox:checked ~ #menuBars>#top-bar{
+  transform-origin: 50% 100%;
+  width: 2.75em;
+}
+  h1{
+    font-size: 3em;
+  }
+  .hire {
+    height:75%;
+    width:50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+}
+.hireBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75em;
+  right: var(--marginPush);
+
+
+  height: var(--circleRadius);
+  width:8rem;
+  text-align: center;
+  padding-left: 3rem;
+  padding-right: 1rem;
+
+  color: #b8b8b8;
+  border-radius: 10px;
+}
+
+.logo{
+  font-size: 2.25em;
+}
+
+}
+@media (orientation:landscape){
+
+
+
+
+
+
+
+
 
 }
 @media (min-width:1000px){
