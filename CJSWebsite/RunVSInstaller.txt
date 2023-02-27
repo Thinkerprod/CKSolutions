@@ -1,0 +1,6 @@
+1.Restart
+2. Make sure your Windows is up-to-date, check for any pending Windows Updates
+3. Disable any anti-virus/firewall temporarily (this includes Windows Defender). Installer needs unblocked access to the internet to access Microsoft Servers.
+4. Clean up the (C:\Windows\Temp) folder
+5. When launching the Installer, Right Click and select "Run as Admin"
+Overlooking the above steps results in most installations failures.

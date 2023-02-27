@@ -1,0 +1,82 @@
+@media (min-width:360px){
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .navbar-default{
+        background-color:#41a52b;
+    }
+    .nav-link{
+        color: #000;
+    }
+    .navbar-toggler-icon{
+        border-color: #000;
+    }
+    .container{
+        width: 100%;
+        justify-content: center;
+    }
+         
+      .card{
+          min-width:300px;
+          min-height:300px;
+      }
+      .head{
+          text-align: center;
+      }
+      .cb{
+          padding: 0 15px 0 15px;
+      }
+      
+      .name{
+          font-weight: bold;
+      }
+      .card-title{
+          text-align: center;
+      }
+      .footy{
+          min-width: 100%;
+          margin-top: 1em;
+          padding-top: 30px;
+          background-color:#41a52b;
+          text-align: center;
+      }
+      .footy a{
+          color: #000;
+          text-decoration: underline;
+      }
+     .text-container{
+         text-align: left;
+         min-width: 308px;
+         max-width: 975px;
+         word-wrap:break-word;
+         padding: 0;
+         
+     }
+}     
+@media (min-width:375px){}
+@media (min-width:414px){}
+@media(min-width:576px){
+
+
+}
+@media (min-width:768px){}
+@media (min-width:800px){}
+@media (min-width:992px){
+
+    .nav-link:hover{
+        background-color: #58cd3e;
+        color: #000;
+        border-radius: 5px;
+    }
+    .card{
+        width: 75%;
+        height: auto;
+        cursor: pointer;
+    }
+}
+
+@media (min-width:1900px){
+    
+
+
+}

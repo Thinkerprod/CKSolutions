@@ -1,0 +1,171 @@
+
+@media (min-width:320px){
+    body{
+        padding: 0;
+    }
+    .title-container{
+        background-color: #72bcd4;
+        width:100%;
+        height: auto;
+        text-align: center;
+        font-weight: bolder;
+        font-size: 24px;
+        font-family:  'Playfair Display', serif;
+        padding: 1em 0 1em 0;
+    }
+    
+
+    .navbar-default{
+        background-color:#41a52b;
+    }
+    .nav-link{
+        color: #000;
+    }
+    .navbar-toggler-icon{
+        border-color: #000;
+    }
+    form{
+        text-align: center;
+    }
+    .contact{
+        background-color:  rgba(198,228,237,0.6);
+    }
+    input,textarea, button{
+        width : 190px;
+        margin: 0;
+        
+      
+        -webkit-box-sizing: border-box; /* For legacy WebKit based browsers */
+           -moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
+                box-sizing: border-box;
+
+                border-radius: 10px;
+    }
+   
+    input{
+        text-align: left;
+    }
+    input:valid{
+        border-color:rgba(50,153,50,0.6);
+    }
+    input:valid ::after{
+        content: 'ok';
+        color:green;
+    }
+
+    input:invalid{
+        border-color: red;
+    }
+    input:invalid ::after{
+        content: 'invalid';
+        color:red;
+    }
+    .sendE{
+        text-align: center;
+        font-size: 20px;
+    }
+    .contact{
+        text-align: center;
+        margin: 0 auto;
+    }
+    .myCol{
+        padding: 0;
+    }
+    .info{
+        min-width: 100%;
+        margin: 0.5em 0.5em 0.5em 0.5em;
+        background:rgba(114,188,212,0.3);
+        text-align: center;
+        padding: 0;
+        
+    }
+    p{
+        width: 303px;
+        padding: 0;
+        
+    }
+    .hours{
+        text-align: center;
+        margin: 0 auto;
+    }
+    .phone{
+        text-align: center;
+        margin: 0 auto;
+    }
+    .contactBox{
+        
+        text-align: center;
+        width: 500;
+        height: auto;
+    }
+
+    .hoursBox{
+        
+        text-align: center;
+        width: 500;
+        height: auto;
+    }
+    
+    
+    .map-title{
+        text-align: center;
+    }
+    .map-wrapper{
+        display: flex;
+        margin: 0 0 2em 0;
+    }
+
+    .footy{
+        background-color: #41a52b;
+        text-align: center;
+        width: 100%;
+        padding: 0;
+        margin: 0 auto;
+    }
+    .footy h2{
+        font-weight: bold;
+        font-size: 23px;
+    }
+    .footy a{
+        color:#000;
+        text-decoration: underline;
+    }
+    .footCol{
+        padding: 0;
+    }
+    .otherLinks{
+        
+        margin: 1em 0 1em 0;
+        padding: 0;
+    }
+    .socialMedia{
+        
+        margin: 1em 0 1em 0;
+        padding: 0;
+        text-align: center;
+    }
+}
+@media(min-width:360px){
+    .contactBox{
+        text-align: center;
+    }
+}
+@media (min-width:375px){}
+@media (min-width:414px){}
+@media(min-width:576px){
+  
+}
+@media (min-width:768px){}
+@media (min-width:800px){}
+@media (min-width:992px){
+    .title-container::after{
+        content: url("images/cellphoneweb.png");
+        display: inline;
+    }
+}
+
+@media (min-width:1900px){
+    
+
+
+}
