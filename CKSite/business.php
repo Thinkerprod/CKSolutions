@@ -26,24 +26,29 @@
   
 
 </label>
-  <ul class="links">
-    <li><a href="#">Home</a></li>
-    <li><a href="#project-section">Portfolio</a>
-    <ul class="proj-sub">
-<li><a href="#">Past Projects</a></li>
-<li><a href="#">Current Projects</a></li>
-    </ul>
-</li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Blog</a></li>
-    <li><a href="#">Contact</a></li>
-    <li><a href="#">Login</a></li>
-  </ul>
+<div class="navLinks ">
+<a class="menuItem hoverLine" href="#">Home</a>
+<div class="menuItem subNav" id="sub">
+  <div class="folio">Portfolio</div>
+  <div class="subnav-content">
+    <a href="#" class="past" id="past-link">Past Projects</a>
+    <a href="#" class="current" id="current-link">Current Projects</a>
+  </div>
+</div>
+<a class="menuItem hoverLine" href="#">About</a>
+<a class="menuItem hoverLine" href="#">Blog</a>
+<a class="menuItem hoverLine" href="#">Contact</a>
+<a class="menuItem hoverLine" href="#">Login</a>
+</div>
+
+
 </nav>
 <div class="mobile-nav" id="mobileNav">
 <ul class="mobile-links" id="mobileLinks">
     <li><a href="#">Home</a></li>
-    <li><a href="#project-section">Portfolio</a>
+    <li id="folio-links" class="folio-mobile"><a href="#">Portfolio</a></li>
+    <!-- <li id="past-mobile"><a href="#">Past Projects</a></li>
+<li id="current-mobile"><a href="#">Current Projects</a></li> -->
     <li><a href="#">Testimonials</a></li>
     <li><a href="#">About</a></li>
     <li><a href="#">Blog</a></li>
@@ -83,8 +88,8 @@
     <div class="head rotated"><img src="https://placekitten.com/100/100" alt="" class="profile"></div>
     <div class="hireCombo">
       <div class="blackCircle"></div>
-      <div class="buttonContainer ">
-        <h3 class="hireBtn rotated">Hire Me</h3>
+      <div class="hireBtn introFlipped hireBtnFlipped">
+        <span id="hireText">Hire Me</span>
       </div>
 
     </div>
