@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Time To Get A Watch</title>
+    <script src="HelpfulClasses.js"></script>
+    <link rel="stylesheet" href="TimeStyle.css">
+</head>
+<body onload="setClock">
+    <img src="images/secondhand38per.png" alt="secondclock" id="secHand">
+    <img src="images/minutehand38per.png" alt="secondclock" id="minHand">
+    <img src="images/hourhand38per.png" alt="secondclock" id="hourHand">
+    <h2 id="test"></h2>
+    <h2 id="afternoon"></h2>
+    <h2 id="hourTime"></h2>
+    <script>
+       
+       
+       
+        
+        // document.getElementById("hourHand").style.transform="rotate("+(inihours*30)+"deg)";
+        // if(hours>=12){
+        //     hours=hours-12;
+        // }
+        // if(minutes==0){
+        //     hours=d.getHours();
+        //     if(hours>=12){
+        //         hours=hours-12;
+        //     }
+        //     document.getElementById("hourHand").style.transform="rotate("+(hours*30)+"deg)";
+        // }
+//         function setClock(){
+//            var date=new Date();
+//            var sec=date.getSeconds();
+//            var min=date.getMinutes();
+//            var hours=date.getHours();
+//            document.getElementById("secHand").style.transform="rotate("+(seconds*6)+"deg)";
+//            document.getElementById("minHand").style.transform="rotate("+(minutes*6)+"deg)";
+//            if(hours<=12){
+//        document.getElementById("hourHand").style.transform="rotate("+((hours*30)+(minutes*0.5))+"deg)";
+//        clock();
+//
+//    }
+//            if(hours>12){
+//             var Hdeg=((hours-12)*30);
+//            //  var H=hours-12;
+//            document.getElementById("hourHand").style.transform="rotate("+Hdeg+"deg)";
+//            document.getElementById("hourHand").style.transform="rotate("+(minutes*0.5)+"deg)";
+//            document.getElementById("afternoon").innerHTML="Hello, it is afternoon";
+//            //  document.getElementById("hourTime").innerHTML=H;
+//     }
+//        }
+//   function clock(){
+//    var d=new Date();
+//     var hours=d.getHours();
+//     
+//     if(hours>12){
+//        if(minutes==0){
+//        document.getElementById("hourHand").style.transform="rotate("+Hdeg+"deg)";
+//     }
+//     else{
+//         
+//        document.getElementById("hourHand").style.transform="rotate("+Hdeg+(minutes*0.5)+"deg)";
+//        // document.getElementById("hourHand").style.transform="rotate("((minutes*0.5))+"deg)";
+//     }
+//         var Hdeg=((hours-12)*30);
+//         var H=hours;
+//        //  document.getElementById("hourHand").style.transform="rotate("+Hdeg+"deg)";
+//        //  document.getElementById("hourHand").style.transform="rotate("+(minutes*0.5)+"deg)";
+//         document.getElementById("afternoon").innerHTML="Hello, it is afternoon";
+//         document.getElementById("hourTime").innerHTML=H;
+//     }
+//     var seconds=d.getSeconds();
+//     var minutes=d.getMinutes();
+//    document.getElementById("test").innerHTML=seconds;
+//    
+//   document.getElementById("secHand").style.transform="rotate("+(seconds*6)+"deg)";
+//    document.getElementById("minHand").style.transform="rotate("+(minutes*6)+"deg)";
+//    
+//    if(hours<=12){
+//        var regHours=d.getHours();
+//        document.getElementById("hourHand").style.transform="rotate("((hours*30))+"deg)";
+//    }
+//    
+//    window.requestAnimationFrame(clock);
+//
+//   }
+////    setInterval(clock,1000);
+//window.requestAnimationFrame(clock);
+        
+        
+        
+        //Set the clock
+        function setClock(){
+            let day=new Date();
+       let h=day.getHours();
+       let seconds=day.getSeconds();
+       let minutes=day.getMinutes();
+        
+           //set the angle of clock hands 
+            let clock=new Clock();
+        document.getElementById("secHand").style.transform="rotate("+(clock.secHandAngle(seconds))+"deg)";
+        document.getElementById("minHand").style.transform="rotate("+(clock.minHandAngle(minutes))+"deg)";
+            document.getElementById("hourHand").style.transform="rotate("+(clock.hourHandAngle(h,minutes))+"deg)";
+        }
+        
+        //Get ticking
+        function update(){
+               let day=new Date();
+       let h=day.getHours();
+       let seconds=day.getSeconds();
+       let minutes=day.getMinutes();
+            let clock=new Clock();
+        document.getElementById("secHand").style.transform="rotate("+(seconds*6)+"deg)";
+        document.getElementById("minHand").style.transform="rotate("+(minutes*6)+"deg)";
+            document.getElementById("hourHand").style.transform="rotate("+(clock.hourHandAngle(h,minutes))+"deg)";
+            window.requestAnimationFrame(update);
+        }
+        
+        window.requestAnimationFrame(update);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+html{
+    scroll-behavior: smooth;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+body{
+    background: url("images/watchwithouthands1920.png")no-repeat top -300px center fixed;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+#secHand{
+    position: relative;
+    left: 230px;
+    top: 75px;
+    z-index: 100;
+    }
+#minHand{
+    position: relative;
+     
+    right: 7px;
+    top: 30px;
+    z-index: 50;
+}
+#hourHand{
+    position: relative;
+    right:272px;
+    top: 38px; 
+}
+#hourTime{
+    margin: 0;
+    float: right;
+}
