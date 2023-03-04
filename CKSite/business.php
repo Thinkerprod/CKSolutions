@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/business.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Babylonica&family=Bitter&family=Crimson+Text&family=Montserrat:wght@300&family=Work+Sans:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Babylonica&family=Bitter&family=Mukta&family=Crimson+Text&family=Montserrat:wght@300&family=Work+Sans:wght@300&display=swap" rel="stylesheet">
     
 </head>
 <body>
@@ -44,17 +44,28 @@
 
 </nav>
 <div class="mobile-nav" id="mobileNav">
-<ul class="mobile-links" id="mobileLinks">
-    <li><a href="#">Home</a></li>
-    <li id="folio-links" class="folio-mobile"><a href="#">Portfolio</a></li>
-    <!-- <li id="past-mobile"><a href="#">Past Projects</a></li>
-<li id="current-mobile"><a href="#">Current Projects</a></li> -->
-    <li><a href="#">Testimonials</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Blog</a></li>
-    <li><a href="#">Contact</a></li>
-    <li><a href="#">Login</a></li>
-  </ul>
+
+<div class="mobile-links">
+
+  <div class="mobile-link"><a href="#">Home</a></div>
+  <!-- <div ><a href="#">Portfolio</a></div> -->
+  <label class="mobile-link" for="subNavCheck" id="subNavLabel">Portfolio</label>
+  <input type="checkbox" name="subNav-Checkbox" id="subNavCheck">
+  <div class="mobile-link mobile-sub">
+
+<div class="past-projects mobile-projects" ><a id="past-mobile" href="#">Past Projects</a></div>
+<div class="current-projects mobile-projects" ><a id="current-mobile" href="#">Current Projects</a></div>
+
+  </div>
+  <div class="mobile-link"><a href="#">Testimonials</a></div>
+  <div class="mobile-link"><a href="#">About</a></div>
+  <div class="mobile-link"><a href="#">Blog</a></div>
+  <div class="mobile-link"><a href="#">Contact</a></div>
+  <div class="mobile-link"><a href="#">Login</a></div>
+
+  </div>
+  
+
 </div>
 
 </header>

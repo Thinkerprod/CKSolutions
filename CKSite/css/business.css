@@ -56,12 +56,6 @@ overflow: hidden;
     width: 2.5em;
     transform-origin: 50% 100%;
     transition: transform 0.5s, width 0.5s;
-    
-    
-    
-    
-    
-    
 }
 
 #burgerCheckbox:checked ~ #menuBars{
@@ -97,7 +91,7 @@ align-items: flex-start;
     justify-content: center;
     align-content: center;
   color: green;
-  font-family: "Bitter", serif;
+  font-family: "Mukta", serif;
 font-size: 1.5em;
   grid-column: 1/1;
   /* padding: 1em 0 1em 0; */
@@ -124,9 +118,9 @@ header::after {
   align-items: center;
   align-content:center;
 }
-nav>ul{
+nav .mobile-links{
   display: none;
-  font-family: "Bitter", serif;
+  font-family: "Work Sans", sans-serif;
   padding: 1em 0 2em 0;
   /* justify-content: center; */
  align-content:center;
@@ -141,6 +135,7 @@ nav a {
 .navLinks{
   display: none;
 }
+
 .mobile-nav{
   visibility: hidden;
     display: flex;
@@ -152,7 +147,7 @@ nav a {
     border-top:1px solid #b8b8b8;
     border-bottom:1px solid #b8b8b8;
     transform:scale(1,0);
-    transition: transform ease-in-out 1s;
+    transition: transform ease-in-out 500ms;
 }
 
 
@@ -163,39 +158,97 @@ height: 30%;
  transform:scale(1,1);
 }
 
-.mobile-Links{
+.mobile-links{
   width:100%;
-  height:0;
+  height:100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  opacity: 0;
+  opacity: 1;
  
-}
-
-.mobile-links li{
-  width:100%;
   text-decoration: none;
   text-align: center;
   color: #b8b8b8;
   background-color: #000;
   list-style: none;
   padding:0.5rem 0 0.5rem 0;
- 
 }
 
-.mobile-links li a{
+.mobile-link{
+ margin:0.5rem 0 0.5rem 0;
+ font-family:"Work Sans", sans-serif;
+ text-transform: uppercase;
+}
+
+.mobile-sub{
+  display: none;
+  height:0;
   text-decoration: none;
   color: #b8b8b8;
   background-color: #000;
+  font-family:"Work Sans", sans-serif;
+  text-transform: uppercase;
+  text-align: left;
+  border-left:1px solid #b8b8b8;
+  border-right:1px solid #b8b8b8;
+
 }
-#past-mobile, #current-mobile{
-  visibility: hidden;
+
+.mobile-link > a{
+  
+  text-decoration: none;
+  color: #b8b8b8;
+  background-color: #000;
+  font-family:"Work Sans", sans-serif;
+  text-transform: uppercase;
+  
+}
+/* .mobile-projects{
+  visibility:hidden;
   height:0;
-  transform:scale(1,0);
+} */
+
+#past-mobile, #current-mobile{
+  text-decoration: none;
+  color: #b8b8b8;
+  background-color: #000;
+  font-family:"Work Sans", sans-serif;
+  text-transform: uppercase;
+
 }
+
+/* #past-mobile{
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #b8b8b8;
+} */
+.past-projects{
+  /* margin-bottom: 1rem; */
+  padding: 0.25rem 1rem 0.25rem 1rem;
+  
+  
+}
+.current-projects{
+  padding: 0.25rem 1rem 0.25rem 1rem;
+}
+
+#subNavCheck{
+  display: none;
+}
+
+#subNavCheck:checked ~ .mobile-sub{
+  display:flex;
+  height:10%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+
+}
+
+/* Intro Section */
+
 
 #intro {
     width: 100%;
@@ -296,6 +349,7 @@ h1 {
   text-decoration: none;
   color: #b8b8b8;
   border-radius: 10px;
+  font-family: "Work Sans", serif;
 }
 .hireBtn:hover {
   color: #000;
