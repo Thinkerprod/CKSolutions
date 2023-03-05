@@ -1,4 +1,17 @@
 <?php
+session_start();
+
+
+if(isset($_SESSION['email'])){
+    $_POST['email'];
+}
+else{
+    error_log("user didn't enter email");
+}
+
+if(isset($_SESSION['password'])){
+    $_POST['password'];
+}
 
 ?>
 
@@ -25,9 +38,9 @@
         <h2 class="warning"></h2>
         <form action="submit" method="post">
             <label for="email-input">Email</label>
-            <input class="input-text" type="email" name="email" id="email-input">
+            <input class="input-text" type="email" name="email" id="email-input" required>
             <label for="password-input">Password</label>
-            <input class="input-text" type="password" name="password" id="password-input">
+            <input class="input-text" type="password" name="password" id="password-input" required>
             <input class="input-button" type="button" value="Submit">
         </form>
 
