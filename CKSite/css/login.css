@@ -1,0 +1,108 @@
+html {
+    overflow: hidden;
+    scroll-behavior: smooth;
+    min-height:100%;
+    margin: 0;
+    padding: 0;    
+}
+
+body {
+    height:100vh;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+      background-color: #000;
+      font-family: "Work Sans", sans-serif;
+      font-weight: 800;
+    
+    }
+
+    .login-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height:75%;
+        width:65%;
+        border:1px solid #b8b8b8;
+        border-radius: 10px;
+        border-image: linear-gradient(bottom, green,rgba(255,255,255,1));
+    }
+    h1{
+        font-family: "Montserrat", sans-serif;
+        font-weight: 800;
+        font-size: 1.5em;
+        color:#b8b8b8;
+    }
+    h2{
+        width:50%;
+        height:auto;
+
+        font-family: "Work Sans", sans-serif;
+        font-weight: 800;
+        font-size: 0.9em;
+        color:#b8b8b8;
+    }
+
+
+    form{
+        width:75%;
+        height:50%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    label{
+        font-family: "Montserrat", sans-serif;
+        font-weight: 800;
+        font-size: 0.9em;
+        color:#b8b8b8;
+    }
+
+    .input-text{
+        width:100%;
+        height: 2.25em;
+        border-radius: 15px;
+        background-color: #fff;
+        color:#000;
+        margin-bottom: 1rem;
+
+
+    }
+    .input-button{
+        align-self: center;
+        border-radius: 15px;
+        width:75%;
+        height:2.25em;
+        font-size: 0.9em;
+        font-family: "Montserrat", sans-serif;
+        background-color: green;
+        margin-top:2rem;
+
+
+    }
+
+    @media (min-width:750px){
+        h1{
+            font-size: 2.5em;
+        }
+        h2{
+            font-size: 1.5em;
+        }
+        label{
+            font-size: 1.5em;
+        }
+        .input-text{
+            width:85%;
+            height: 2.5em;
+        }
+        .input-button{
+            width:55%;
+            height:2.5em;
+            font-size: 1.25em;
+        }
+    }

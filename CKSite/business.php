@@ -38,7 +38,7 @@
 <a class="menuItem hoverLine" href="#">About</a>
 <a class="menuItem hoverLine" href="#">Blog</a>
 <a class="menuItem hoverLine" href="#">Contact</a>
-<a class="menuItem hoverLine" href="#">Login</a>
+<a class="menuItem hoverLine" href="/CKSolutions/CKSite/login.php">Login</a>
 </div>
 
 
@@ -61,7 +61,7 @@
   <div class="mobile-link"><a href="#">About</a></div>
   <div class="mobile-link"><a href="#">Blog</a></div>
   <div class="mobile-link"><a href="#">Contact</a></div>
-  <div class="mobile-link"><a href="#">Login</a></div>
+  <div class="mobile-link"><a href="/CKSolutions/CKSite/login.php">Login</a></div>
 
   </div>
   
