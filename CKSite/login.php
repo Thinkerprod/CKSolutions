@@ -36,7 +36,7 @@ if(isset($_SESSION['password'])){
     <div class="login-container">
         <h1>Login</h1>
         <h2 class="warning"></h2>
-        <form action="submit" method="post">
+        <form action="php_util/auth.php" method="post">
             <label for="email-input">Email</label>
             <input class="input-text" type="email" name="email" id="email-input" required>
             <label for="password-input">Password</label>

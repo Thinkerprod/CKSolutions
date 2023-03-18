@@ -45,10 +45,7 @@ overflow: hidden;
     width: 2.5em;
     transform-origin: 50% 100%;
     transition: transform 0.5s, width 0.5s;
-    
-    
-    
-    
+
     
 }
 #burgerCheckbox:checked ~ #menuBars>#bottom-bar{
@@ -602,6 +599,10 @@ h1 {
 
 }
 
+.past{
+  padding-top: 0.5rem;
+}
+
   h1{
     font-size: 3em;
   }
@@ -783,7 +784,7 @@ h1 {
   
   .hire {
       height:25%;
-      width:65%;
+      width:60%;
   
     display: flex;
     align-items: center;
@@ -804,7 +805,7 @@ h1 {
   }
     
     .intro-area {
-      width:75%;
+      width:65%;
       height:100%;
       margin: 0;
       display: grid;
