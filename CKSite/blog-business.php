@@ -10,6 +10,9 @@
     
 </head>
 <body>
-    
+    <?php require_once("headers/nav.php")  ?>
+    <div class="header-image"></div>
+    <div class="side-bar"></div>
+    <div class="blog-entry"></div>
 </body>
 </html>
