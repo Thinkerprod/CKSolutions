@@ -805,7 +805,7 @@ h1 {
   }
     
     .intro-area {
-      width:65%;
+      width:60%;
       height:100%;
       margin: 0;
       display: grid;
@@ -852,10 +852,10 @@ h1 {
     
     
       height: var(--circleRadius);
-      width:10rem;
+      width:14rem;
       text-align: center;
       padding-left: 3rem;
-      padding-right: 1rem;
+      padding-right: 0.1rem;
     
       color: #b8b8b8;
       border-radius: 10px;
@@ -880,21 +880,15 @@ h1 {
     }
     .mask {
       position: absolute;
-      top: 13.5rem;
+      top: 10rem;
       left: 0;
       height: 100%;
       width: 100%;
-      background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 60%);
+      background: linear-gradient(rgba(0, 0, 0, 0) , rgba(0, 0, 0, 1) 58% );
       z-index: 40;
       pointer-events: none;
     }
 
-
-    
-/* .flippedArea {
-      margin-top: 2em;
-      display: grid;
-    } */
     
     .projects {
       display: grid;
