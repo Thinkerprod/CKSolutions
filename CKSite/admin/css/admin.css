@@ -152,6 +152,24 @@ body {
         border:none;
     }
 
+    .post-row{
+        white-space: nowrap;
+overflow: hidden;
+/* width: 180px; */
+height: 30px;
+text-overflow: ellipsis;
+    }
+
+    table td,
+    table th {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      min-width: 100px;
+      max-width: 100px;
+    }
+    
+
     @media (min-width:540px){
         :root{
             --global-font-size:1.15em;
@@ -213,6 +231,8 @@ body {
             background-color: #b8b8b8;
             color: #000;
         }
+
+        
 
     }
 

@@ -1,37 +1,7 @@
-<?php 
-
-require_once("php_util/db.php");
-
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/bb58b73510.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="css/admin.css">
-
-    <title>Admin Portal</title>
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">CK</div>
-            <div class="nav-title">Admin Portal</div>
-            <div class="logout"><a href="php_util/logout.php">logout</a></div>
-        </nav>
-        
-    </header>
-    <div class="admin-container container-sm container-md container-lg">
+<?php include "includes/header.php"?>
+    <div class="admin-container container-sm container-md container-lg d-flex">
         <div class="banner">
-            <img src="media/images/Thinker.png" alt="Thinker" class="thinker">
+            <img src="images/Thinker.png" alt="Thinker" class="thinker">
             <h1>Welcome<br>Cory</h1>
         </div>
         <div class="adminNav-wrapper">
@@ -48,7 +18,9 @@ require_once("php_util/db.php");
         <div class="wrapper blog-wrapper" id="blog">
             <div class="code-blog" id="codeBlog">
                 <h2>Coding Blog</h2>
-
+<?php  
+// include_once "../../php_functions/blog_functions.php";
+include_once "../admin/includes/admin_blog_display.php"; ?>
             </div>
             <div class="personal-blog" id="personalBlog">
                 <h2>Personal Blog</h2>
