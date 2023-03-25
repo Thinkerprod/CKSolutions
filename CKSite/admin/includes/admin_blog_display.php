@@ -5,7 +5,7 @@ include_once("admin_blog_functions.php");
 ?>
 
 <div class="table-responsive" data-mdb-perfect-scrollbar="true">
-<table class="table table-striped table-sm">
+<table class="table table-striped table-light table-sm">
     <thead class="table-light">
       <tr>
         <th scope="col">post_id</th>

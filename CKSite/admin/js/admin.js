@@ -5,6 +5,12 @@ $(function(){
     $('#projects').hide();
     $('#analytics').hide();
 
+$('#side-toggle').on('click',function(){
+    console.log("clicked");
+    $('#dashboard').toggleClass('dashboard-expanded');
+    $('#dash-links').toggleClass('links-appear');
+});
+
 $('#blogBtn').on('click',function(){
     
     $('#blog').show();
