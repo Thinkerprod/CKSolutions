@@ -1,12 +1,5 @@
 
-<?php 
-require_once("db.php");
 
-// $query="SELECT * FROM posts WHERE cat_id = 1"
-
-
-
-?>
 
 
 
