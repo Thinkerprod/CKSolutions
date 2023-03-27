@@ -295,6 +295,8 @@ h1 {
 
 .head {
     display: flex;
+    width:100px;
+    height: 100px;
     background-color: #b8b8b8;
     height: var(--circleRadius);
     width: var(--circleRadius);
