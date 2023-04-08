@@ -24,3 +24,7 @@ function navToggle(){
   }
 
 }
+
+// var blogPostText=document.getElementById("post-text").innerText;
+
+
