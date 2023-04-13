@@ -324,7 +324,7 @@ h1 {
   font-size: 1.2em;
   right: var(--marginPush);
   position: relative;
-  background-color: green;
+  background-color: #008000;
   height: var(--circleRadius);
   width:5rem;
   text-align: center;

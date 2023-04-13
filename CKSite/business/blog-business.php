@@ -5,12 +5,15 @@
     
 <?php require_once ("includes/blog-sidebar-business.php"); ?>
 
+   
+
+
+    
+    <div class="blog-section">
     <div class="header-image"><img src="images/TheCodeCanvas-banner.png" alt="The-code-canvas-banner"></div>
-
-
     <?php require_once ("includes/blog-sidebar-m.php");?>
-
     <?php require_once("includes/business-blog-post.php");  ?>
+    </div>
 
         <!-- <div class="blog-entry" id="blogPost">
     <h2>Blog post title</h2>

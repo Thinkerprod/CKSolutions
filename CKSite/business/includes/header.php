@@ -28,7 +28,7 @@
 
 </label>
 <div class="navLinks ">
-<a class="menuItem hoverLine" href="#">Home</a>
+<a class="menuItem hoverLine" href="CKSite/business/index.php">Home</a>
 <div class="menuItem subNav" id="sub">
   <div class="folio">Portfolio</div>
   <div class="subnav-content">

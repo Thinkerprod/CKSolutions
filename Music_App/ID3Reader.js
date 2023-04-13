@@ -9,8 +9,8 @@ const { error } = require('console');
 var tagsArray=Array();
 var mp=require('./public/js/music-picker.js');
 
-var albumArray=mp.defaultAlbumReader();
-console.log("this array is:"+albumArray);
+
+// console.log("this array is:"+albumArray);
 const port=3000;
 const host='localhost';
 
@@ -35,7 +35,7 @@ const server =app.listen(port, host, ()=>{
 // })
 
 
-jsmediatags.read("./public/Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3", {
+jsmediatags.read("./public/Music/Pink_Floyd/WishYouWereHere/1_ShineOnYouCrazyDiamond(PartsI-V).mp3", {
   onSuccess: function(tag) {
 
     
@@ -69,6 +69,8 @@ jsmediatags.read("./public/Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamo
     console.log(':(', error.type, error.info);
   }
 });
+
+mp.defaultAlbumReader();
 
 
 

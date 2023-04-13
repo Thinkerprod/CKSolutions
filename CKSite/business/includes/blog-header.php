@@ -30,7 +30,7 @@
 
 </label>
 <div class="navLinks ">
-<a class="menuItem hoverLine" href="#">Home</a>
+<a class="menuItem hoverLine" href="index.php">Home</a>
 <div class="menuItem subNav" id="sub">
   <div class="folio">Portfolio</div>
   <div class="subnav-content">
@@ -40,7 +40,7 @@
 </div>
 <a class="menuItem hoverLine" href="#">About</a>
 <a class="menuItem hoverLine" href="/CKSolutions/CKSite/business/blog-business.php">Blog</a>
-<a class="menuItem hoverLine" href="#">Contact</a>
+<a class="menuItem hoverLine" href="contact.php">Contact</a>
 <a class="menuItem hoverLine" href="/CKSolutions/CKSite/login.php" target="_blank">Login</a>
 <a class="menuItem hoverLine" href="/CKSolutions/CKSite/admin/" target="_blank">Admin</a>
 </div>

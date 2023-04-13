@@ -36,7 +36,7 @@ while($row=mysqli_fetch_assoc($select_all_business_posts_query)){
     <h3>by $post_author</h3>
     <small>created on $post_date</small>
 
-    <img class='x-post-image' src='' alt=''>
+    
     <p class='x-post-content' id='post-text'>{$post_content}</p>
         <p class='tags'>{$post_tags}</p>
     </div>";
