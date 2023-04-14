@@ -10,6 +10,9 @@ body{
   height:100%;
   width:25%
 }
+.albumTable{
+  color:#fff;
+}
 .tempText{
   color:#fff;
   font-size: 1rem;

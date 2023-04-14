@@ -41,10 +41,9 @@ module.exports.defaultAlbumReader = function () {
   var ordered = getArray(files, globalFileCount)
   
   setTimeout(() => {
-    ordered.then(result => sendToFront(result));
+  ordered.then(result => sendToFront(result));
   }, 3000);
   
-
 
 
 }
@@ -77,7 +76,7 @@ function awaitableSortingEngine (file,arrayCount) {
         
         setTimeout(() => {
           resolve(songsAlbumOrder)
-        }, 2000);
+        }, 1000);
 
           
         
@@ -102,7 +101,7 @@ function sendToFront (fileArray) {
       onSuccess: function (tag) {
         var tags = tag.tags
 
-        console.log(tags.title)
+        console.log(tags.title+" gzgxrhbdx")
         //  console.log('made it')
         // var base64Url=Buffer.from(tags.picture.data).toString("base64");
 
@@ -112,12 +111,17 @@ function sendToFront (fileArray) {
         // console.log(`data:${tags.picture.format};base64,`);
         // var songRow=[tags.artist,tags.track,tags.album,tags.title,tags.year];
 
-        app.get('/', (req, res) => {
-          res.render('index', {
-            temp: tags.artist
-          })
-          console.log('yayyyyyy')
-        })
+        // app.get('../js', (req, res) => {
+        //   res.render('../../views/index', {
+        //     temp: tags.artist
+        //   })
+        //   console.log('yayyyyyy')
+        // })
+        songs=new Array()
+        songs = '{'+file+' : [' +
+'{ "fileName":'+file+',"track":'+tags.track+', "title":'+tags.title+', "artist":'+tags.artist+',"album":'+tags.album+',"year":'+tags.year+'} ]}';
+
+        
       },
       onError: function (error) {
         console.log(':(', error.type, error.info)

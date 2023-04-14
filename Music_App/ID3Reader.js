@@ -69,8 +69,21 @@ jsmediatags.read("./public/Music/Pink_Floyd/WishYouWereHere/1_ShineOnYouCrazyDia
     console.log(':(', error.type, error.info);
   }
 });
+var song=mp.defaultAlbumReader();
+console.log(song)
+// app.get('/', (req, res)=>{
+//   res.render("index", {
+//     artist:tags.artist,
+//     album: tags.album,
+//     title: tags.title,
+//     track: tags.track,
+//     art: artInfo
+    
+//   });
+//   console.log('done');
+// });
 
-mp.defaultAlbumReader();
+
 
 
 
