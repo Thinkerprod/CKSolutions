@@ -40,11 +40,10 @@ module.exports.defaultAlbumReader = function () {
 
   var ordered = getArray(files, globalFileCount)
   
-  // function sendToFront(array){
-  //   dirArray=array;
-  // }
-  // console.log(orderedArray)
-  ordered.then(result => sendToFront(result));
+  setTimeout(() => {
+    ordered.then(result => sendToFront(result));
+  }, 3000);
+  
 
 
 
@@ -54,11 +53,13 @@ module.exports.defaultAlbumReader = function () {
 
 
 function awaitableSortingEngine (file,arrayCount) {
-  var songsAlbumOrder = new Array(arrayCount)
+  var songsAlbumOrder = new Array(2)
   var jsmediatags = require('jsmediatags')
   return new Promise(function (resolve, reject) {
     jsmediatags.read('./public/Music/Pink_Floyd/WishYouWereHere/' + file, {
       onSuccess: function (tag) {
+
+        //changes the track number from a fraction to a straight number
         var tags = tag.tags
         var track = tags.track
         console.log(tags.track)
@@ -70,9 +71,17 @@ function awaitableSortingEngine (file,arrayCount) {
           var trackNum = track.slice(0, 2)
         }
         var arrayIndex = trackNum - 1
-        songsAlbumOrder[arrayIndex] = file
+        songsAlbumOrder[0] = file
+        songsAlbumOrder[1] = arrayIndex
+        
+        
+        setTimeout(() => {
+          resolve(songsAlbumOrder)
+        }, 2000);
 
-        resolve(songsAlbumOrder)
+          
+        
+        
       },
       onError: function (error) {
         console.log(':(', error.type, error.info)
@@ -83,6 +92,7 @@ function awaitableSortingEngine (file,arrayCount) {
 }
 
 function sendToFront (fileArray) {
+  console.log(fileArray)
   var express = require('express')
   var app = express()
   console.log('moooo')
@@ -117,11 +127,19 @@ function sendToFront (fileArray) {
 }
 
 async function getArray (files, arrayCount) {
+  arrayPos=new Array(2)
+  orderedArray=new Array(arrayCount)
   for (const file of files) {
-    var data = await awaitableSortingEngine(file, arrayCount)
-    // console.log(data)
+ 
+    arrayPos = await awaitableSortingEngine(file, arrayCount)
+    var song=arrayPos[0]
+    var pos=arrayPos[1]
+
+    
+    orderedArray[pos]=song
+    
   }
 
-  //  setTimeout((data),1000)
-  return data
+
+  return orderedArray
 }
