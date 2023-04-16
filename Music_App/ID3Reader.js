@@ -6,8 +6,9 @@ var pug=require('pug');
 const path=require('path')
 const fs=require('fs');
 const { error } = require('console');
-var tagsArray=Array();
-var mp=require('./public/js/music-picker.js');
+const tableData=require('./public/js/TableSongData.js');
+
+
 
 
 // console.log("this array is:"+albumArray);
@@ -34,54 +35,25 @@ const server =app.listen(port, host, ()=>{
 //   })
 // })
 
+async function sendData(){
 
-jsmediatags.read("./public/Music/Pink_Floyd/WishYouWereHere/1_ShineOnYouCrazyDiamond(PartsI-V).mp3", {
-  onSuccess: function(tag) {
+  app.get('/', (req, res)=>{
 
-    
-    var tags=tag.tags;
-    tagsArray=[tags.artist,tags.track,tags.album,tags.title,tags.picture];
-    
-   
-      var base64Url=Buffer.from(tags.picture.data).toString("base64");
-
-    // var base64Url=Buffer.from(base64String).toString("base64");
-    var artInfo="data:"+tags.picture.format+";base64,"+base64Url;
-    
-    console.log(`data:${tags.picture.format};base64,`);
-
-    app.get('/', (req, res)=>{
-
-      res.render("index", {
-        artist:tags.artist,
-        album: tags.album,
-        title: tags.title,
-        track: tags.track,
-        art: artInfo
-        
-      });
-      console.log('done');
+    res.render("index", {
+      artist:tags.artist,
+      album: tags.album,
+      title: tags.title,
+      track: tags.track,
+      art: artInfo,
+      
     });
+    console.log('done');
+  });
 
+}
+// sendSongData()
+tableData.getTableSongData()
 
-  },
-  onError: function(error) {
-    console.log(':(', error.type, error.info);
-  }
-});
-var song=mp.defaultAlbumReader();
-console.log(song)
-// app.get('/', (req, res)=>{
-//   res.render("index", {
-//     artist:tags.artist,
-//     album: tags.album,
-//     title: tags.title,
-//     track: tags.track,
-//     art: artInfo
-    
-//   });
-//   console.log('done');
-// });
 
 
 

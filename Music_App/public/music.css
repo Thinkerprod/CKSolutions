@@ -58,6 +58,7 @@ img{
   width:30px;
   height: auto;
   margin-left: 2rem;
+  cursor: pointer;
 }
 
 #visIcon{
