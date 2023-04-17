@@ -15,9 +15,11 @@ module.exports.defaultAlbumReader = function () {
   // app.use('/public/Music', express.static(path.join(__dirname, '/public')));
   // app.use( express.static(path.join(__dirname, 'public')));
   // app.use('/public', express.static('public'));
-  app.set('views',path.join(__dirname,'views'));
-  app.set('view engine', 'pug');
+  // app.set('views',path.join(__dirname,'views'));
+  // app.set('view engine', 'pug');
 
+  getArtists()
+  getAlbums('Pink Floyd')
   var filesToCount = fs.readdirSync(
     './public/Music/Pink Floyd/WishYouWereHere/'
   )
@@ -102,7 +104,7 @@ async function getArray (files, arrayCount) {
   orderedArray=new Array(arrayCount)
   for (const file of files) {
  
-    arrayPos = await awaitableSortingEngine(file)
+    arrayPos = await awaitableSortingEngine(files[file])
     var song=arrayPos[1]
     var pos=arrayPos[0]
 
@@ -113,4 +115,22 @@ async function getArray (files, arrayCount) {
 
 
   return orderedArray
+}
+
+function getArtists(){
+  const fs=require('fs')
+
+ var artists=fs.readdirSync('./public/Music/')
+
+  console.log(artists)
+}
+
+function getAlbums(artist){
+
+  const fs=require('fs')
+
+  var albums=fs.readdirSync('./public/Music/'+artist)
+ 
+   console.log(albums)
+  
 }

@@ -36,7 +36,7 @@ const server =app.listen(port, host, ()=>{
 // })
 
 async function sendData(){
-
+ 
   app.get('/', (req, res)=>{
 
     res.render("index", {
@@ -52,10 +52,10 @@ async function sendData(){
 
 }
 // sendSongData()
+
 tableData.getTableSongData()
 
-
-
+// sendData()
 
 
 
