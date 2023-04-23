@@ -19,15 +19,16 @@ html(lang="en")
                     th Album
                     th Year
                     //- th #{temp}
-                
-                tr
-                    each song in tableArray
+                each song in tableArray
+                    tr
+                    
+                        td=song[5]
                         td=song[0]
                         td=song[1]
                         td=song[2]
                         td=song[3]
                         td=song[4]
-                        td=song[5]
+                        
 
                     
             .playerContainer
