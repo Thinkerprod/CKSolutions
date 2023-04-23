@@ -7,6 +7,8 @@ const path=require('path')
 const fs=require('fs');
 const { error } = require('console');
 const tableData=require('./public/js/TableSongData.js');
+const mp=require('./public/js/music-picker.js')
+const r=require('./public/js/render.js')
 
 
 
@@ -29,31 +31,37 @@ const server =app.listen(port, host, ()=>{
   
 });
 
+
+
 // process.on('SIGTERM', () => {
 //   server.close(() => {
 //     console.log('Process terminated')
 //   })
 // })
 
-async function sendData(){
+// async function sendData(){
  
   app.get('/', (req, res)=>{
+    
+// mp.defaultAlbumReader(res)
+// tableData.getTableSongData(res)
 
-    res.render("index", {
-      artist:tags.artist,
-      album: tags.album,
-      title: tags.title,
-      track: tags.track,
-      art: artInfo,
+r.renderPage(res)
+    // res.render("index", {
+    //   artist:tags.artist,
+    //   album: tags.album,
+    //   title: tags.title,
+    //   track: tags.track,
+    //   art: artInfo,
       
-    });
+    // });
     console.log('done');
   });
-
-}
+  
+// }
 // sendSongData()
 
-tableData.getTableSongData()
+// tableData.getTableSongData()
 
 // sendData()
 

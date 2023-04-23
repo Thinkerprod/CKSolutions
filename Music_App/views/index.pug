@@ -12,6 +12,7 @@ html(lang="en")
             .table-container
             table.albumTable
                 tr
+                    th#fileColumn file 
                     th Track
                     th Song
                     th Artist
@@ -19,9 +20,15 @@ html(lang="en")
                     th Year
                     //- th #{temp}
                 
-                //- tr
-                //-     each song in songRow
-                //-         td=song
+                tr
+                    each song in tableArray
+                        td=song[0]
+                        td=song[1]
+                        td=song[2]
+                        td=song[3]
+                        td=song[4]
+                        td=song[5]
+
                     
             .playerContainer
 

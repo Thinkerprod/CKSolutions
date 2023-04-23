@@ -1,4 +1,4 @@
-module.exports.defaultAlbumReader = function () {
+module.exports.defaultAlbumReader = async function () {
  var globalFileCount = 0
 
 
@@ -18,8 +18,8 @@ module.exports.defaultAlbumReader = function () {
   // app.set('views',path.join(__dirname,'views'));
   // app.set('view engine', 'pug');
 
-  getArtists()
-  getAlbums('Pink Floyd')
+  // getArtists()
+  // getAlbums('Pink Floyd')
   var filesToCount = fs.readdirSync(
     './public/Music/Pink Floyd/WishYouWereHere/'
   )
@@ -29,27 +29,27 @@ module.exports.defaultAlbumReader = function () {
 
 
 
-  var files = fs.readdirSync('./public/Music/Pink Floyd/WishYouWereHere/')
+  // var files = fs.readdirSync('./public/Music/Pink Floyd/WishYouWereHere/')
 
   //sort the files in order of track number ascending
+var songArray=await getArray()
+return songArray
+//   var ordered = getArray(files, globalFileCount)
 
-
-  var ordered = getArray(files, globalFileCount)
-
-  const getFiles= ()=>{
+//   const getFiles= ()=>{
     
-      return ordered.then(result => {return result})
-      .catch(err=>{return err})
+//       return ordered.then(result => {return result})
+//       .catch(err=>{return err})
       
 
-  }
+//   }
 
-const getOrderedArray= async ()=>{
-  var data=await getFiles()
-  return data
-}
+// const getOrderedArray= async ()=>{
+//   var data=await getFiles()
+//   return data
+// }
   
-return getOrderedArray()
+// return getOrderedArray()
  
   
 
@@ -59,11 +59,11 @@ return getOrderedArray()
 
 
 
-function awaitableSortingEngine (file) {
-  var songsAlbumOrder = new Array(2)
+function awaitableSortingEngine () {
+  // var songsAlbumOrder = new Array(2)
   var jsmediatags = require('jsmediatags')
   return new Promise(function (resolve, reject) {
-    jsmediatags.read('./public/Music/Pink Floyd/WishYouWereHere/' + file, {
+    jsmediatags.read('./public/Music/Pink Floyd/WishYouWereHere/1_ShineOnYouCrazyDiamond(PartsI-V).mp3' , {
       onSuccess: function (tag) {
 
         //changes the track number from a fraction to a straight number
@@ -77,14 +77,16 @@ function awaitableSortingEngine (file) {
         } else {
           var trackNum = track.slice(0, 2)
         }
-        var arrayIndex = trackNum - 1
-        songsAlbumOrder[0] = file
-        songsAlbumOrder[1] = arrayIndex
+        // var arrayIndex = trackNum - 1
+       
+
+        var artInfo=`data:${tags.picture.format};base64,${Buffer.from(tags.picture.data).toString("base64")}`;
         
+        var displayData=[tags.artist,tags.album,tags.title,trackNum,artInfo]
         
-        setTimeout(() => {
-          resolve(songsAlbumOrder)
-        }, 1000);
+        // setTimeout(() => {
+          resolve(displayData)
+        // }, 1000);
 
           
         
@@ -98,39 +100,30 @@ function awaitableSortingEngine (file) {
   })
 }
 
-
-async function getArray (files, arrayCount) {
-  arrayPos=new Array(2)
-  orderedArray=new Array(arrayCount)
-  for (const file of files) {
- 
-    arrayPos = await awaitableSortingEngine(files[file])
-    var song=arrayPos[1]
-    var pos=arrayPos[0]
-
-    
-    orderedArray[pos]=song
-    
-  }
-
-
-  return orderedArray
+async function getArray(){
+  var songArray=await awaitableSortingEngine()
+  console.log()
+  return songArray
 }
 
-function getArtists(){
-  const fs=require('fs')
 
- var artists=fs.readdirSync('./public/Music/')
 
-  console.log(artists)
-}
 
-function getAlbums(artist){
 
-  const fs=require('fs')
+// function getArtists(){
+//   const fs=require('fs')
 
-  var albums=fs.readdirSync('./public/Music/'+artist)
+//  var artists=fs.readdirSync('./public/Music/')
+
+//   console.log(artists)
+// }
+
+// function getAlbums(artist){
+
+//   const fs=require('fs')
+
+//   var albums=fs.readdirSync('./public/Music/'+artist)
  
-   console.log(albums)
+//    console.log(albums)
   
-}
+// }

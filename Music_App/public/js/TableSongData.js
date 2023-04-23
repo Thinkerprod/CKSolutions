@@ -1,10 +1,10 @@
 // const { promises } = require('dns');
 
-module.exports.getTableSongData= function (){
+module.exports.getTableSongData= async function (){
 
 
-  arraySorter()
- 
+   var sortedArray=await getTableDataLoop()
+    return sortedArray
     }
   
     function countFiles(){
@@ -25,26 +25,28 @@ module.exports.getTableSongData= function (){
 
      async function getTableDataLoop(){
      
-        
+        var fileCount=countFiles()
         const songsArray=getSongList()
         // console.log(songsArray+'ruff')
-        var songDataArray=new Array(5)
-        var counter=0
+        var songDataArray=new Array(fileCount)
+        // var counter=0
         for(var i=0;i<songsArray.length;i++){
           
 
             // songDataArray[i]=getTableDataPromise(songsArray[i])
             
-            setTimeout(()=>{},1000)
+            // setTimeout(()=>{},500)
             songDataArray[i]=await tableDataGatherer(songsArray[i])
-            setTimeout(()=>{},1000)
+            // setTimeout(()=>{},500)
             
           }
           
           console.log(songDataArray+"mooooo")
+          var sortedSongDataArray=songDataArray.sort((a,b)=>a[0]-b[0])
 
-          return songDataArray
-    }
+          return sortedSongDataArray
+        }
+          
 
     function tableDataGatherer(song){
        
@@ -76,13 +78,14 @@ module.exports.getTableSongData= function (){
           var tableTitle=tags.title
           var tableAlbum=tags.album
           var tableYear=tags.year
-          var songFile=toString(song)
-        var songObj=[tableTrackNum,tableArtist,tableTitle,tableAlbum,tableYear,songFile]
+        //   console.log(song)
+    
+        var songObj=[tableTrackNum,tableArtist,tableTitle,tableAlbum,tableYear,song]
         //   console.log(songObj[1])
        
-          setTimeout(()=>{ resolve(songObj) },1000)
+          // setTimeout(()=>{  },500)
            
-
+          resolve(songObj)
           
             },
             onError: function(error) {
@@ -91,62 +94,21 @@ module.exports.getTableSongData= function (){
             }
           });
         })
-          
-// const songData=as()=>{
-//     songValues.then()
-}
-        //   setTimeout(() => {
-        //     return songValues
-        //   }, 500);
+      }   
         
     
 
-    function arraySorter(){
-        var toBeSorted=getTableDataLoop()
-        var fileCount=countFiles()
-        var countedArray=new Array(fileCount)
-        var finalObj={}
+    // async function arraySorter(){
+    //     var toBeSorted=await getTableDataLoop()
+    //     // console.log(toBeSorted)
+    //     const sortedSongData=toBeSorted.sort((a,b)=>a[0]-b[0])
+    //     console.log(sortedSongData)
+      
+    //     //  sortedSongData
+
         
-        for(var i=0;i<countedArray.length;i++){
-            countedArray[i]=i+1
-        }
-        console.log(countedArray+"arf")
-//creates an array of JSON literals
-        for(var i=0;i<countedArray.length;i++){
-            for(var j=0;j<toBeSorted.length;j++){
-                if(toBeSorted[j]==countedArray[i]){
-
-
-                    var key = countedArray[i]
-                    var set="{"+key+":[{'artist':"+toBeSorted[j+1]+",'title':"+toBeSorted[j+2]+",'album':"+toBeSorted[j+3]+",'year':"+toBeSorted[j+4]+",'filename':"+toBeSorted[j+5]+"}]"+"}"
-                    var stringSet=toString(set)
-                    countedArray[i]=stringSet
-
-
-
-                }
-            }
-        }
-
-        console.log(countedArray)
-
-    }
-
-
-    // function getTableDataPromise(song){
-    //     var songDataPromises= tableDataGatherer(song)
-    //     const songData = ()=>{
-    //         return songDataPromises.then(result=>{return result})
-    //         .catch(err=>{return err})
-    //     }
-
-    //     const getSongData=async ()=>{
-    //         var data=await songData()
-    //         return data
-    //     }
-
-    //     return getSongData()
     // }
+
 
     function getSongList(){
         const fs=require('fs')
