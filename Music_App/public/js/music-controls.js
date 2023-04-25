@@ -8,9 +8,24 @@ var progBarWidthRate=""
 var audioElement=""
 var globalPath=""
 var globalVolume=""
+// Event.AT_TARGET
 
+document.getElementById("listIcon").addEventListener("click",function(e){
+    document.getElementById("albumInfo").classList.toggle("tableShow")
+})
+// function rowClicker(evt){
+//     console.log("something")
+//     var songRow=evt.rowIndex
+//     var file=document.getElementById('albumInfo').rows[songRow].cells[0].innerText
+//     console.log(file+" was clicked")
+// }
 
-
+$('tr').on('click',function(e){
+    // $('div').html("triggered by "+e.currentTarget.nodeName)
+    let row=$(e.target).closest('tr').find('td.fileColumn').text()
+    console.log(row+" was clicked")
+    
+})
 function createMusicPlayer(path){
     audioElement=new Audio(path)
     audioElement.volume=globalVolume

@@ -8,11 +8,11 @@ html(lang="en")
         link(rel='stylesheet' type='text/css' href='/public/music.css')
     body
         .container
-            p.tempText #{temp}
-            .table-container
-            table.albumTable
+            //- p.tempText #{temp}
+            //- .table-container
+            table.albumTable#albumInfo
                 tr
-                    th#fileColumn file 
+                    th.fileColumn file 
                     th Track
                     th Song
                     th Artist
@@ -20,14 +20,16 @@ html(lang="en")
                     th Year
                     //- th #{temp}
                 each song in tableArray
-                    tr
+                    tr.albumRow
                     
-                        td=song[5]
-                        td=song[0]
-                        td=song[1]
-                        td=song[2]
-                        td=song[3]
-                        td=song[4]
+                        td.fileColumn=song[5]
+                        td.trackColumn=song[0]
+                        td.songColumn=song[2]
+                        td.artistColumn=song[1]
+                        td.albumColumn=song[3]
+                        td.yearColumn=song[4]
+                        td.playColumn
+                            .playBtn
                         
 
                     
@@ -72,7 +74,7 @@ html(lang="en")
                             .label#pluslabel Create Playlist
                         .iconRow
                             img#listIcon.icon(src='/public/images/white-list-icon.png' alt='white-list-icon')
-                            .label#listlabel Album Playlist
+                            .label#listLabel Album Playlist
                         .iconRow
                             img#visIcon.icon(src='/public/images/white-audiowave-icon.png' alt='white-audiowave-icon')
                             .label#vislabel Audio Visualizer
@@ -86,6 +88,7 @@ html(lang="en")
                         .volBar#volControl
                     .plusMinusVol#minus -
                     h3.volumeLabel.mute#mute Mute
+            script(type='text/javascript' src='/public/js/jquery.js')
             script(type='text/javascript' src='/public/js/music-controls.js')
             
             script(type='text/javascript').

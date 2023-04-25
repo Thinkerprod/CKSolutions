@@ -4,12 +4,10 @@ body{
 
 .container{
   display:flex;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
 }
-.table-container{
-  height:100%;
-  width:25%
-}
+
 .albumTable{
   color:#fff;
 }
@@ -67,9 +65,9 @@ img{
 
 .label{
   display: none;
-  font-size: 30px;
+  font-size: 2em;
   color:#fff;
-  margin-left: 2rem;
+  margin-left: 1rem;
 }
 
 
@@ -329,4 +327,48 @@ margin: 0 0.5rem 0 0.5rem;
     color: #b8b8b8;
   }
   
-  
+  table, th, td{
+    border: 1px solid #b8b8b8;
+    border-collapse: collapse;
+    /* border-radius:10px; */
+    text-align: center;
+    height: 2rem;
+    padding:0.5rem 0.5rem 0.5rem 0.5rem;
+  }
+  table tr{
+    height:2rem;
+  }
+  table{
+    margin-right: 3rem;
+    caret-color: transparent;
+    transform: scale(0,0);
+    /* visibility: hidden; */
+    opacity:0;
+    transition:opacity ease-in-out 400ms;
+  }
+
+  .tableShow{
+    visibility:visible;
+    transform: scale(1,1);
+    opacity:1;
+  }
+
+  .fileColumn{
+    display: none;
+  }
+  .albumRow:hover{
+    background-color: #b8b8b8;
+    color: #000;
+    cursor: pointer;
+    border: 1px solid #000;
+  }
+  .playBtn{
+    clip-path: polygon(50% 50%, 0 0, 0 100%);
+    background-color: #b8b8b8;
+    height:1em;
+    width:1em;
+  }
+
+    .albumRow:hover>.playColumn>.playBtn{
+      background-color: #000;
+    }
