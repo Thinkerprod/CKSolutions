@@ -62,11 +62,11 @@ html(lang="en")
                             #stopBtn.stop
                             .reflect
                             .stopRef
-                    h2.displayHeader  #{artist}
-                    h2.displayHeader  #{album}
-                    h2.displayHeader  #{title}
+                    h2.displayHeader#artistHeader  #{artist}
+                    h2.displayHeader#albumHeader   #{album}
+                    h2.displayHeader#titleHeader   #{title}
                     //- h2.displayHeader Track: #{track}
-                    //- audio#player(src="/public/Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3")
+                    //- audio#player(src="/public/Music/Pink_Floyd/Wish You Were Here/ShineOnYouCrazyDiamond(PartsI-V).mp3")
                 .extraControls
                     .iconContainer
                         .iconRow
@@ -88,11 +88,16 @@ html(lang="en")
                         .volBar#volControl
                     .plusMinusVol#minus -
                     h3.volumeLabel.mute#mute Mute
+
+            
+
             script(type='text/javascript' src='/public/js/jquery.js')
             script(type='text/javascript' src='/public/js/music-controls.js')
             
             script(type='text/javascript').
-                createMusicPlayer("/public/Music/Pink Floyd/WishYouWereHere/1_ShineOnYouCrazyDiamond(PartsI-V).mp3")
+                var songPath= !{JSON.stringify(path)}
+                console.log(songPath)
+                    createMusicPlayer(songPath)
                
                 
                 

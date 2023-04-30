@@ -18,7 +18,8 @@ var tableData=await table.getTableSongData()
         title: titleDisplay,
         track: trackNum,
         art: artInfo,
-        tableArray:tableData
+        tableArray:tableData,
+        path:"/public/Music/Pink Floyd/Wish You Were Here/1_ShineOnYouCrazyDiamond(PartsI-V).mp3"
         
         
       });

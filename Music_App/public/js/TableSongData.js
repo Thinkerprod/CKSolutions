@@ -11,7 +11,7 @@ module.exports.getTableSongData= async function (){
         const fs=require('fs')
 
         var filesToCount = fs.readdirSync(
-            './public/Music/Pink Floyd/WishYouWereHere/'
+            './public/Music/Pink Floyd/Wish You Were Here/'
           )
         
           FileCount = filesToCount.length
@@ -54,7 +54,7 @@ module.exports.getTableSongData= async function (){
         const jsmediatags=require('jsmediatags')
         // const songValues=new Array(5)
    return new Promise (function(resolve,reject){
-        jsmediatags.read("./public/Music/Pink Floyd/WishYouWereHere/"+song, {
+        jsmediatags.read("./public/Music/Pink Floyd/Wish You Were Here/"+song, {
             onSuccess: function(tag) {
           
               
@@ -114,7 +114,7 @@ module.exports.getTableSongData= async function (){
         const fs=require('fs')
 
         var songsArray = fs.readdirSync(
-            './public/Music/Pink Floyd/WishYouWereHere/'
+            './public/Music/Pink Floyd/Wish You Were Here/'
           )
 
           return songsArray

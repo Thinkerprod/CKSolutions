@@ -8,12 +8,10 @@ const fs=require('fs');
 const { error } = require('console');
 const tableData=require('./public/js/TableSongData.js');
 const mp=require('./public/js/music-picker.js')
-const r=require('./public/js/render.js')
+const render=require('./public/js/render.js')
+const response=require('./public/js/serverResponse.js')
 
 
-
-
-// console.log("this array is:"+albumArray);
 const port=3000;
 const host='localhost';
 
@@ -40,21 +38,16 @@ const server =app.listen(port, host, ()=>{
 // })
 
 // async function sendData(){
- 
+ app.get('/request',(req,res)=>{
+  console.log(req.query.rowFile+" was clicked")
+response.responder(res,req.query.rowFile)
+    // console.log(file+" user clicked")
+ })
   app.get('/', (req, res)=>{
-    
-// mp.defaultAlbumReader(res)
-// tableData.getTableSongData(res)
 
-r.renderPage(res)
-    // res.render("index", {
-    //   artist:tags.artist,
-    //   album: tags.album,
-    //   title: tags.title,
-    //   track: tags.track,
-    //   art: artInfo,
-      
-    // });
+
+render.renderPage(res)
+
     console.log('done');
   });
   

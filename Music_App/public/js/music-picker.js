@@ -21,7 +21,7 @@ module.exports.defaultAlbumReader = async function () {
   // getArtists()
   // getAlbums('Pink Floyd')
   var filesToCount = fs.readdirSync(
-    './public/Music/Pink Floyd/WishYouWereHere/'
+    './public/Music/Pink Floyd/Wish You Were Here/'
   )
 
   globalFileCount = filesToCount.length
@@ -29,7 +29,7 @@ module.exports.defaultAlbumReader = async function () {
 
 
 
-  // var files = fs.readdirSync('./public/Music/Pink Floyd/WishYouWereHere/')
+  // var files = fs.readdirSync('./public/Music/Pink Floyd/Wish You Were Here/')
 
   //sort the files in order of track number ascending
 var songArray=await getArray()
@@ -63,7 +63,7 @@ function awaitableSortingEngine () {
   // var songsAlbumOrder = new Array(2)
   var jsmediatags = require('jsmediatags')
   return new Promise(function (resolve, reject) {
-    jsmediatags.read('./public/Music/Pink Floyd/WishYouWereHere/1_ShineOnYouCrazyDiamond(PartsI-V).mp3' , {
+    jsmediatags.read('./public/Music/Pink Floyd/Wish You Were Here/1_ShineOnYouCrazyDiamond(PartsI-V).mp3' , {
       onSuccess: function (tag) {
 
         //changes the track number from a fraction to a straight number
