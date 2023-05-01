@@ -1,6 +1,7 @@
 
 console.log("js loaded")
 // var path='/public/Music/Pink Floyd/Wish You Were Here/1_ShineOnYouCrazyDiamond(PartsI-V).mp3'
+var playlistIndex=0
 var songDuration="-:--"
 var songElapsed="-:--"
 var globalBarWidth=0
@@ -26,6 +27,8 @@ document.getElementById("listIcon").addEventListener("click",function(e){
 $('tr').on('click',function(e){
     // $('div').html("triggered by "+e.currentTarget.nodeName)
     let file=$(e.target).closest('tr').find('td.fileColumn').text()
+    playlistIndex=($(e.target).closest('tr').find('td.trackColumn').text())-1
+    console.log(file+" is index "+playlistIndex)
     // console.log(file+" was clicked")
     clickedPath="/public/Music/Pink Floyd/Wish You Were Here/"+file
     // var displayData=new Array(4)
@@ -63,6 +66,7 @@ setVolumeDefault(0.25)
     document.getElementById('playBtn').addEventListener('click',function (){play()})
     document.getElementById('stopBtn').addEventListener('click',function (){stop()})    
     document.getElementById('pauseBtn').addEventListener('click',function (){pause()})
+    document.getElementById('skipper').addEventListener('click',function(){skipToEnd()})
     
 
     
@@ -128,21 +132,27 @@ function setVolumeDefault(volumeDefault){
 function nextSong(){
     // var trackLastPlayed=0
     var i=0
-$('td.fileColumn').each(function(){
+    $('td.fileColumn').each(function(){
     albumSongs[i]=$(this).text()
     i++
-})
+    })
 // console.log("sfdfd"+albumSongs[0])
-var strSource=audioElement.src.split("/")
-
-for(var j=0; j<albumSongs.length; j++){
-    if(albumSongs[i]==strSource[strSource.length-1]){
+    var strSource=audioElement.src.split("/")
+    // var currentSong=strSource[strSource.length-1]
+    var nextIndex=playlistIndex+1
+        if(albumSongs[playlistIndex]!=(albumSongs.length-1)){
+            var nextSong=albumSongs[nextIndex]
+            console.log(nextSong+" is next")
+            
+        return nextSong
         
-    }
-}
+        }
+    
 }
 
 nextSong()
+
+
 
 
 
@@ -212,11 +222,31 @@ function songSelected(source,display){
         // document.getElementById("songDur").innerText = min+":"+sec
 }
 
-
+function skipToEnd(){
+    audioElement.currentTime=audioElement.duration-3;
+}
 
 audioElement.addEventListener('ended',()=>{
-    console.log(audioElement.duration)
-    
+    // console.log(audioElement.duration)
+console.log("ended")
+    var next=nextSong()
+    // console.log(next+" is queued")
+    $.get("/requestnext",{nextFile:next},function(data,status){
+        // console.log(data+" is here now")
+        console.log(status)
+        var display=data
+        $('#artistHeader').text(display[0])
+        // console.log("aefagezrbgz")
+        $('#albumHeader').text(display[1])
+        $('#titleHeader').text(display[2])
+        $('#albumC').attr('src',display[3])
+    })
+    audioElement.src='/public/Music/Pink Floyd/Wish You Were Here/'+next
+    audioElement.load()
+    audioElement.addEventListener('loadeddata', ()=>{
+        console.log(audioElement.duration)
+        play()
+    })
 },true)
 
 

@@ -41,8 +41,16 @@ const server =app.listen(port, host, ()=>{
  app.get('/request',(req,res)=>{
   console.log(req.query.rowFile+" was clicked")
 response.responder(res,req.query.rowFile)
-    // console.log(file+" user clicked")
+
  })
+
+ app.get('/requestnext',(req,res)=>{
+  console.log(req.query.nextFile+" has ended")
+response.responder(res,req.query.nextFile)
+    
+ })
+
+
   app.get('/', (req, res)=>{
 
 

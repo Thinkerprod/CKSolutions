@@ -372,3 +372,14 @@ margin: 0 0.5rem 0 0.5rem;
     .albumRow:hover>.playColumn>.playBtn{
       background-color: #000;
     }
+
+    .skipBox{
+      height:2rem;
+      width:3rem;
+      font-size: 1.3em;
+      background-color: #000;
+      border:1px solid #b8b8b8;
+      color:#b8b8b8;
+      caret-color: transparent;
+      cursor: pointer;
+    }
