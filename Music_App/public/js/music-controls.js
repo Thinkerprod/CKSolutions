@@ -6,7 +6,7 @@ var songElapsed="-:--"
 var globalBarWidth=0
 var myReq=""
 var progBarWidthRate=""
-var audioElement=""
+var audioElement=new Audio("/public/Music/Pink Floyd/Wish You Were Here/1_ShineOnYouCrazyDiamond(PartsI-V).mp3")
 // var globalPath=""
 var clickedPath=""
 var countAlbumRows=''
@@ -41,16 +41,8 @@ $('tr').on('click',function(e){
     // createMusicPlayer(clickedPath)
 })
 function createMusicPlayer(path){
-    audioElement=new Audio(path)
-    // if(clickedPath=''){
-
-    //     audioElement=new Audio(path)
-    // }
-    // else{
-    //     path=clickedPath
-    //     audioElement=new Audio(path)
-    // }
-    // audioElement=new Audio(path)
+    audioElement.src=path
+    audioElement.load()
     audioElement.volume=globalVolume
     var volumeHeight=Math.floor(audioElement.volume*100)+"%"
    
@@ -64,8 +56,6 @@ document.getElementById("speakerIcon").addEventListener("click",function (e){
 
 setVolumeDefault(0.25)
 
-
-
     document.getElementById("elapse").innerText= songElapsed
     document.getElementById("songDur").innerText = songDuration
     
@@ -73,6 +63,7 @@ setVolumeDefault(0.25)
     document.getElementById('playBtn').addEventListener('click',function (){play()})
     document.getElementById('stopBtn').addEventListener('click',function (){stop()})    
     document.getElementById('pauseBtn').addEventListener('click',function (){pause()})
+    
 
     
 function timeProgress(){
@@ -99,14 +90,12 @@ if(document.getElementById("progBar").style.width=="100%"){
 function play(){
     var song=audioElement
         song.play();
-        console.log(audioElement.duration)
+        // console.log(audioElement.duration)
         var min=Math.floor(audioElement.duration/60)
         var sec=Math.floor(audioElement.duration%60)
         document.getElementById("songDur").innerText = min+":"+sec
         myReq=window.requestAnimationFrame(timeProgress)
 }
-
-
 
 function pause(){
 
@@ -118,7 +107,6 @@ function pause(){
     else{
         song.play()
     }
-
 }
 
 function stop(){
@@ -138,15 +126,23 @@ function setVolumeDefault(volumeDefault){
 }
 
 function nextSong(){
+    // var trackLastPlayed=0
     var i=0
 $('td.fileColumn').each(function(){
     albumSongs[i]=$(this).text()
     i++
 })
+// console.log("sfdfd"+albumSongs[0])
+var strSource=audioElement.src.split("/")
 
+for(var j=0; j<albumSongs.length; j++){
+    if(albumSongs[i]==strSource[strSource.length-1]){
+        
+    }
+}
 }
 
-// nextSong()
+nextSong()
 
 
 
@@ -160,7 +156,7 @@ function increaseVolume(){
     
 document.getElementById("volControl").style.height=volumeHeight
 document.getElementById("volLabel").innerText=volumeHeight
-console.log(audioElement.volume)
+// console.log(audioElement.volume)
     }
 }
 
@@ -174,7 +170,7 @@ if(audioElement.volume>0){
     
 document.getElementById("volControl").style.height=volumeHeight
 document.getElementById("volLabel").innerText=volumeHeight
-console.log(audioElement.volume)
+// console.log(audioElement.volume)
 }
 }
 
@@ -206,10 +202,22 @@ function songSelected(source,display){
     $('#albumHeader').text(display[1])
     $('#titleHeader').text(display[2])
     $('#albumC').attr('src',display[3])
-
-    play()
-
+    audioElement.addEventListener('loadeddata', ()=>{
+        console.log(audioElement.duration)
+        play()
+    })
+    
+        // var min=Math.floor(audioElement.duration/60)
+        // var sec=Math.floor(audioElement.duration%60)
+        // document.getElementById("songDur").innerText = min+":"+sec
 }
+
+
+
+audioElement.addEventListener('ended',()=>{
+    console.log(audioElement.duration)
+    
+},true)
 
 
 
