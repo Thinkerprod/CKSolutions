@@ -23,6 +23,15 @@ document.getElementById("listIcon").addEventListener("click",function(e){
     document.getElementById("albumInfo").classList.toggle("tableShow")
 })
 
+document.getElementById('visIcon').addEventListener('click',()=>{
+    console.log("clicked")
+    $('#openVisContainer').toggleClass('openVis')
+})
+
+document.getElementById('closeBtnId').addEventListener('click',()=>{
+    $('#openVisContainer').toggleClass('openVis')
+})
+
 // createMusicPlayer(path)
 $('tr').on('click',function(e){
     // $('div').html("triggered by "+e.currentTarget.nodeName)
@@ -104,6 +113,7 @@ function play(){
         var sec=Math.floor(audioElement.duration%60)
         document.getElementById("songDur").innerText = min+":"+sec
         myReq=window.requestAnimationFrame(timeProgress)
+        visualizerStart()
 }
 
 function pause(){
@@ -298,6 +308,62 @@ audioElement.addEventListener('ended',()=>{
 console.log("ended")
     nextSong()
 },true)
+
+function visualizerStart(){
+    let audioCtx = new AudioContext();
+    var analyser = audioCtx.createAnalyser();
+    
+    var source=audioCtx.createMediaElementSource(audioElement);
+    source.connect(analyser);
+    analyser.connect(audioCtx.destination);
+    analyser.fftSize = 256;
+var bufferLength = analyser.frequencyBinCount;
+var dataArray = new Uint8Array(bufferLength);
+
+const draw=()=>{
+    var container=document.getElementById('vis')
+    removeAllChildren(container);
+    analyser.getByteFrequencyData(dataArray);
+    
+    var barHeight;
+    var x = 0;
+    // var visCont=document.getElementById("vis");
+    var divWidth=((500/bufferLength)*0.65);
+    var divNumber=parseInt(500/divWidth);
+    for(var i = 0; i < bufferLength; i++) {
+        var divHeight=dataArray[i]/2;
+                    //   var divColor='rgb(93,202,49)';
+                   
+                      var idArray=new Array(divNumber);
+//                        
+                      var newDiv=document.createElement("div");
+
+                          newDiv.setAttribute("class","visBar");
+                          newDiv.style.width=divWidth+"px";
+                          newDiv.style.height=divHeight+"px";
+                        container.appendChild(newDiv);
+    }
+    window.requestAnimationFrame(draw); 
+}
+
+
+draw()
+window.requestAnimationFrame(draw);
+
+
+}
+
+// function draw(AnalyserNode,dataArray,bufferLength){
+    
+// }
+
+function removeAllChildren(parent){
+    while(parent.firstChild){
+        parent.removeChild(parent.firstChild);
+        
+    }
+    
+}
 
 
 

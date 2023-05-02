@@ -32,7 +32,10 @@ html(lang="en")
                             .playBtn
                         
 
-                    
+            .visContainer#openVisContainer
+                .closeContainer
+                    .closeBtn#closeBtnId X
+                .visualizer#vis       
             .playerContainer
 
                 .display
@@ -112,6 +115,7 @@ html(lang="en")
             
 
             script(type='text/javascript' src='/public/js/jquery.js')
+            script(type='text/javascript' src='http://cwilso.github.io/AudioContext-MonkeyPatch/AudioContextMonkeyPatch.js')
             script(type='text/javascript' src='/public/js/music-controls.js')
             
             script(type='text/javascript').
