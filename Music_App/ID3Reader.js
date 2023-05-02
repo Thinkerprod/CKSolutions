@@ -50,6 +50,12 @@ response.responder(res,req.query.nextFile)
     
  })
 
+ app.get('/requestprev',(req,res)=>{
+  console.log(req.query.prevFile+" has ended")
+response.responder(res,req.query.prevFile)
+    
+ })
+
 
   app.get('/', (req, res)=>{
 

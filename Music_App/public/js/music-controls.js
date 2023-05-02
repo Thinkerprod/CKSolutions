@@ -28,7 +28,7 @@ $('tr').on('click',function(e){
     // $('div').html("triggered by "+e.currentTarget.nodeName)
     let file=$(e.target).closest('tr').find('td.fileColumn').text()
     playlistIndex=($(e.target).closest('tr').find('td.trackColumn').text())-1
-    console.log(file+" is index "+playlistIndex)
+    // console.log(file+" is index "+playlistIndex)
     // console.log(file+" was clicked")
     clickedPath="/public/Music/Pink Floyd/Wish You Were Here/"+file
     // var displayData=new Array(4)
@@ -66,7 +66,12 @@ setVolumeDefault(0.25)
     document.getElementById('playBtn').addEventListener('click',function (){play()})
     document.getElementById('stopBtn').addEventListener('click',function (){stop()})    
     document.getElementById('pauseBtn').addEventListener('click',function (){pause()})
-    document.getElementById('skipper').addEventListener('click',function(){skipToEnd()})
+    document.getElementById('prevBtn').addEventListener('click',function(){
+        prevSong()
+    })
+    document.getElementById('nextBtn').addEventListener('click',function(){
+        nextSong()
+    })
     
 
     
@@ -105,7 +110,7 @@ function pause(){
 
     var song=audioElement
     if(!song.paused){
-        console.log(song.paused)
+        // console.log(song.paused)
         song.pause()
     }
     else{
@@ -129,6 +134,47 @@ function setVolumeDefault(volumeDefault){
     
 }
 
+function prevSong(){
+        
+        var i=0
+        $('td.fileColumn').each(function(){
+        albumSongs[i]=$(this).text()
+        i++
+        })
+   
+        var strSource=audioElement.src.split("/")
+        
+        
+            if(albumSongs[playlistIndex]!=(albumSongs[0])){
+                var nextIndex=playlistIndex-1
+                var prevSong=albumSongs[nextIndex]
+                
+                
+                var prev=prevSong
+                // console.log(next+" is queued")
+                $.get("/requestprev",{prevFile:prev},function(data,status){
+                    // console.log(data+" is here now")
+                    console.log(status)
+                    var display=data
+                    $('#artistHeader').text(display[0])
+                    // console.log("aefagezrbgz")
+                    $('#albumHeader').text(display[1])
+                    $('#titleHeader').text(display[2])
+                    $('#albumC').attr('src',display[3])
+                })
+                audioElement.src='/public/Music/Pink Floyd/Wish You Were Here/'+prev
+                audioElement.load()
+                audioElement.addEventListener('loadeddata', ()=>{
+                    // console.log(audioElement.duration)
+                    play()
+                })
+            
+            }
+            else{
+                console.log("You're already at the start")
+            }
+}
+
 function nextSong(){
     // var trackLastPlayed=0
     var i=0
@@ -139,18 +185,39 @@ function nextSong(){
 // console.log("sfdfd"+albumSongs[0])
     var strSource=audioElement.src.split("/")
     // var currentSong=strSource[strSource.length-1]
-    var nextIndex=playlistIndex+1
+    
         if(albumSongs[playlistIndex]!=(albumSongs.length-1)){
+            var nextIndex=playlistIndex+1
             var nextSong=albumSongs[nextIndex]
-            console.log(nextSong+" is next")
+            // console.log(nextSong+" is next")
             
-        return nextSong
+            var next=nextSong
+            // console.log(next+" is queued")
+            $.get("/requestnext",{nextFile:next},function(data,status){
+                // console.log(data+" is here now")
+                console.log(status)
+                var display=data
+                $('#artistHeader').text(display[0])
+                // console.log("aefagezrbgz")
+                $('#albumHeader').text(display[1])
+                $('#titleHeader').text(display[2])
+                $('#albumC').attr('src',display[3])
+            })
+            audioElement.src='/public/Music/Pink Floyd/Wish You Were Here/'+next
+            audioElement.load()
+            audioElement.addEventListener('loadeddata', ()=>{
+                // console.log(audioElement.duration)
+                play()
+            })
         
+        }
+        else{
+            console.log("You're already at the end")
         }
     
 }
 
-nextSong()
+// nextSong()
 
 
 
@@ -213,7 +280,7 @@ function songSelected(source,display){
     $('#titleHeader').text(display[2])
     $('#albumC').attr('src',display[3])
     audioElement.addEventListener('loadeddata', ()=>{
-        console.log(audioElement.duration)
+        // console.log(audioElement.duration)
         play()
     })
     
@@ -229,24 +296,7 @@ function skipToEnd(){
 audioElement.addEventListener('ended',()=>{
     // console.log(audioElement.duration)
 console.log("ended")
-    var next=nextSong()
-    // console.log(next+" is queued")
-    $.get("/requestnext",{nextFile:next},function(data,status){
-        // console.log(data+" is here now")
-        console.log(status)
-        var display=data
-        $('#artistHeader').text(display[0])
-        // console.log("aefagezrbgz")
-        $('#albumHeader').text(display[1])
-        $('#titleHeader').text(display[2])
-        $('#albumC').attr('src',display[3])
-    })
-    audioElement.src='/public/Music/Pink Floyd/Wish You Were Here/'+next
-    audioElement.load()
-    audioElement.addEventListener('loadeddata', ()=>{
-        console.log(audioElement.duration)
-        play()
-    })
+    nextSong()
 },true)
 
 
