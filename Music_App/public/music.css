@@ -3,6 +3,153 @@ body{
     caret-color: transparent;
 }
 
+.musicLibrary{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width:25rem;
+  height: 100%;
+  float: left;
+  border-right: 1px solid #fff;
+}
+
+.musicLibraryContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width:90%;
+  height: 100%;
+  
+  
+
+}
+
+h2{
+  color:#b8b8b8;
+  font-size: 1.5em;
+  text-transform: uppercase;
+}
+
+.artistCascade{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width:100%;
+  height: auto;
+}
+
+.artistContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: space-between; */
+  width:100%;
+  height: 2rem;
+  border: 1px solid #b8b8b8;
+  border-collapse: collapse;
+}
+/* .artistContainer:hover{
+  cursor: pointer;
+  background-color: #b8b8b8;
+  color: #000;
+} */
+.expandArtist{
+  height: auto;
+}
+.removeActivity{
+  pointer-events: none;
+}
+
+.artistChoice{
+  display:flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-size: 1.25em;
+  color: #b8b8b8;
+  /* text-decoration: underline; */
+  width: 100%;
+  height: 2rem;
+  /* padding-top: 0.25em; */
+}
+
+.artistChoice:hover{
+
+  cursor: pointer;
+}
+
+/* .artistChoice::after{
+  content: '';
+  display:block;
+  position: absolute;
+  top:1.5em;
+  width: 10rem;
+  height: 1px;
+  background-color: #b8b8b8;
+} */
+
+.albumChoices{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  transform: scale(0,0);
+}
+
+.showAlbums{
+  transform: scale(1,1);
+}
+
+.albumContainer{
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+}
+
+
+
+.chooseAlbum{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 2rem;
+  font-size: 1.25em;
+  color: #b8b8b8;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  /* border-bottom: 1px solid #b8b8b8; */
+}
+
+.chooseAlbum:hover{
+  cursor: pointer;
+}
+
+.chooseAlbum::after{
+  content: '';
+  display:block;
+  position: absolute;
+  top:2em;
+  width: 0;
+  height: 1px;
+  background-color: #b8b8b8;
+  transition: width ease-in-out 200ms;
+}
+
+.chooseAlbum:hover::after{
+  width: 12em;
+}
+
+
+
 .container{
   display:flex;
   position: relative;
@@ -549,7 +696,7 @@ margin: 0 0.5rem 0 0.5rem;
       display: flex;
       justify-content: flex-end;
       width:100%;
-      height: 2rem;
+      height: 10%;
       align-self: flex-start;
 
     }

@@ -41,7 +41,7 @@ module.exports.getTableSongData= async function (){
             
           }
           
-          console.log(songDataArray+"mooooo")
+          // console.log(songDataArray+"mooooo")
           var sortedSongDataArray=songDataArray.sort((a,b)=>a[0]-b[0])
 
           return sortedSongDataArray

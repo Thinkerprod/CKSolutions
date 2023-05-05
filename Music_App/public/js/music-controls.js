@@ -17,7 +17,8 @@ $('td.fileColumn').each(function(){
 var albumSongs=new Array(countAlbumRows)
 
 var globalVolume=""
-// Event.AT_TARGET
+var chosenArtist=""
+var chosenAlbum=""
 
 document.getElementById("listIcon").addEventListener("click",function(e){
     document.getElementById("albumInfo").classList.toggle("tableShow")
@@ -30,6 +31,15 @@ document.getElementById('visIcon').addEventListener('click',()=>{
 
 document.getElementById('closeBtnId').addEventListener('click',()=>{
     $('#openVisContainer').toggleClass('openVis')
+})
+
+$('.artistChoice').on('click',function(e){
+    chosenArtist=$(e.target).closest('.artistChoice').text()
+    console.log(chosenArtist)
+    $(e.target).closest('.artistContainer').toggleClass('expandArtist')
+    // $(e.target).closest('.artistContainer').toggleClass('removeActivity')
+    $(e.target).closest('.artistContainer').find('.albumChoices').toggleClass('showAlbums')
+    // $('.artistContainer').not(this).toggleClass('expandArtist')
 })
 
 // createMusicPlayer(path)
@@ -364,6 +374,7 @@ function removeAllChildren(parent){
     }
     
 }
+
 
 
 

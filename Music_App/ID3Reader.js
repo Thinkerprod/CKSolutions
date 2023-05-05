@@ -37,21 +37,21 @@ const server =app.listen(port, host, ()=>{
 //   })
 // })
 
-// async function sendData(){
+
  app.get('/request',(req,res)=>{
-  console.log(req.query.rowFile+" was clicked")
+  // console.log(req.query.rowFile+" was clicked")
 response.responder(res,req.query.rowFile)
 
  })
 
  app.get('/requestnext',(req,res)=>{
-  console.log(req.query.nextFile+" has ended")
+  // console.log(req.query.nextFile+" has ended")
 response.responder(res,req.query.nextFile)
     
  })
 
  app.get('/requestprev',(req,res)=>{
-  console.log(req.query.prevFile+" has ended")
+  // console.log(req.query.prevFile+" has ended")
 response.responder(res,req.query.prevFile)
     
  })
@@ -65,12 +65,7 @@ render.renderPage(res)
     console.log('done');
   });
   
-// }
-// sendSongData()
 
-// tableData.getTableSongData()
-
-// sendData()
 
 
 

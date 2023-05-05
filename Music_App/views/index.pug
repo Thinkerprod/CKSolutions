@@ -7,6 +7,26 @@ html(lang="en")
         
         link(rel='stylesheet' type='text/css' href='/public/music.css')
     body
+        .musicLibrary
+            
+            .musicLibraryContainer
+                h2.choose Choose Artist and Album
+                .artistCascade
+            
+                each item in musicLibrary
+                    .artistContainer
+                        .artistChoice=item.artist
+                        .albumChoices
+                            each album in item.albums
+                                .albumContainer
+                                    .chooseAlbum.bottomLine=album
+                           
+                           
+            .drawer
+                .drawerSwitch#switch
+                    .switchBar 
+                    .switchBar
+
         .container
             //- p.tempText #{temp}
             //- .table-container

@@ -110,20 +110,3 @@ async function getArray(){
 
 
 
-// function getArtists(){
-//   const fs=require('fs')
-
-//  var artists=fs.readdirSync('./public/Music/')
-
-//   console.log(artists)
-// }
-
-// function getAlbums(artist){
-
-//   const fs=require('fs')
-
-//   var albums=fs.readdirSync('./public/Music/'+artist)
- 
-//    console.log(albums)
-  
-// }
