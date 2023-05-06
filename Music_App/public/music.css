@@ -5,25 +5,44 @@ body{
 
 .musicLibrary{
   display: flex;
+
   align-items: center;
-  justify-content: space-between;
-  width:25rem;
+  justify-content: flex-end;
+  width:5.5rem;
   height: 100%;
   float: left;
   border-right: 1px solid #fff;
+  transition: width ease-in-out 400ms;
+}
+
+.openDrawer{
+width:25rem;
 }
 
 .musicLibraryContainer{
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  /* transform: scale(0,0); */
+  opacity: 0;
   width:90%;
-  height: 100%;
+  height: auto;
+  transition: opacity ease-in-out 600ms;
   
-  
-
 }
+
+.hideMusicLibrary{
+  position:absolute !important;
+  top:-999px !important;
+  
+}
+.showMusicLibrary{
+  opacity:1;
+}
+
+
 
 h2{
   color:#b8b8b8;
@@ -48,7 +67,7 @@ h2{
   width:100%;
   height: 2rem;
   border: 1px solid #b8b8b8;
-  border-collapse: collapse;
+  /* border-collapse: collapse; */
 }
 /* .artistContainer:hover{
   cursor: pointer;
@@ -73,7 +92,7 @@ h2{
   /* text-decoration: underline; */
   width: 100%;
   height: 2rem;
-  /* padding-top: 0.25em; */
+  padding-top: 0.2em;
 }
 
 .artistChoice:hover{
@@ -148,7 +167,33 @@ h2{
   width: 12em;
 }
 
+.drawer{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  height: 100%;
+  width:1.5rem;
+}
 
+.drawerSwitch{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:4rem;
+  width:0.5rem;
+  margin-right: 0.5em;
+}
+.drawerSwitch:hover{
+  cursor: pointer;
+}
+
+.switchBar{
+  height:2rem;
+  width:1px;
+  background-color: #fff;
+  margin-left: 0.2em;
+}
 
 .container{
   display:flex;
@@ -160,10 +205,7 @@ h2{
 .albumTable{
   color:#fff;
 }
-.tempText{
-  color:#fff;
-  font-size: 1rem;
-}
+
 
 img{
   max-width: 400px;
@@ -300,7 +342,7 @@ margin-bottom: 0.1em;
 
 .display{
   display:flex;
-  max-width: 600px;
+  max-width: 38rem;
   height: auto;
   justify-content: center;
   flex-direction: column;
@@ -625,17 +667,24 @@ margin: 0 0.5rem 0 0.5rem;
     height:2rem;
   }
   table{
+    
     margin-right: 3rem;
     caret-color: transparent;
-    transform: scale(0,0);
+    
     /* visibility: hidden; */
     opacity:0;
     transition:opacity ease-in-out 400ms;
   }
 
-  .tableShow{
-    visibility:visible;
+  .tableHide{
+    position: absolute !important;
+    top:-999px !important;
+    
+    
     transform: scale(1,1);
+    opacity:0;
+  }
+  .tableShow{
     opacity:1;
   }
 

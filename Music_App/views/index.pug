@@ -9,7 +9,7 @@ html(lang="en")
     body
         .musicLibrary
             
-            .musicLibraryContainer
+            .musicLibraryContainer.hideMusicLibrary
                 h2.choose Choose Artist and Album
                 .artistCascade
             
@@ -30,7 +30,7 @@ html(lang="en")
         .container
             //- p.tempText #{temp}
             //- .table-container
-            table.albumTable#albumInfo
+            table.albumTable.tableHide#albumInfo
                 tr
                     th.fileColumn file 
                     th Track

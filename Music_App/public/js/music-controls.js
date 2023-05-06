@@ -21,6 +21,8 @@ var chosenArtist=""
 var chosenAlbum=""
 
 document.getElementById("listIcon").addEventListener("click",function(e){
+
+    document.getElementById("albumInfo").classList.toggle("tableHide")
     document.getElementById("albumInfo").classList.toggle("tableShow")
 })
 
@@ -33,13 +35,28 @@ document.getElementById('closeBtnId').addEventListener('click',()=>{
     $('#openVisContainer').toggleClass('openVis')
 })
 
-$('.artistChoice').on('click',function(e){
+$('#switch').on('click', ()=>{
+    $('.musicLibrary').toggleClass('openDrawer')
+    $('.musicLibraryContainer').toggleClass('hideMusicLibrary')
+    $('.musicLibraryContainer').toggleClass('showMusicLibrary')
+})
+
+$('.artistContainer').on('click',function(e){
     chosenArtist=$(e.target).closest('.artistChoice').text()
     console.log(chosenArtist)
     $(e.target).closest('.artistContainer').toggleClass('expandArtist')
     // $(e.target).closest('.artistContainer').toggleClass('removeActivity')
-    $(e.target).closest('.artistContainer').find('.albumChoices').toggleClass('showAlbums')
+    $(e.target).closest('.artistContainer').children('.albumChoices').toggleClass('showAlbums')
     // $('.artistContainer').not(this).toggleClass('expandArtist')
+    $('.artistContainer').not(this).removeClass('expandArtist')
+    $('.artistContainer').not(this).children('.albumChoices').removeClass('showAlbums')
+})
+
+$('.chooseAlbum').on('click',(e)=>{
+    chosenAlbum=$(e.target).closest('.chooseAlbum').text()
+    console.log(chosenAlbum)
+
+
 })
 
 // createMusicPlayer(path)
