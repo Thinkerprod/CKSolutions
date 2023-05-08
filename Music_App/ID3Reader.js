@@ -56,6 +56,10 @@ response.responder(res,req.query.prevFile)
     
  })
 
+ app.get('/chosenmusic',(req,res)=>{
+  response.musicLibraryResponder(res,req.query.chosen)
+ })
+
 
   app.get('/', (req, res)=>{
 

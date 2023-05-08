@@ -54,7 +54,36 @@ $('.artistContainer').on('click',function(e){
 
 $('.chooseAlbum').on('click',(e)=>{
     chosenAlbum=$(e.target).closest('.chooseAlbum').text()
+    $('.musicLibrary').toggleClass('openDrawer')
+    $('.musicLibraryContainer').toggleClass('hideMusicLibrary')
+    $('.musicLibraryContainer').toggleClass('showMusicLibrary')
     console.log(chosenAlbum)
+    var chosenMusic=[chosenArtist,chosenAlbum]
+
+    $.get('/chosenmusic',{chosen:chosenMusic},function(data,status){
+        $('#albumC').attr('src',data[0][6])
+        $('#artistHeader').text(data[0][3])
+        $('#albumHeader').text(data[0][4])
+        $('#titleHeader').text(data[0][2])
+        for(var i=0; i<data.length;i++){
+            $('tr.albumRow').each((i)=>{
+                        $('td.fileColumn').text(data[i][0])
+                        $('td.trackColumn').text(data[i][1])
+                        $('td.songColumn').text(data[i][2])
+                        $('td.artistColumn').text(data[i][3])
+                        $('td.albumColumn').text(data[i][4])
+                        $('td.yearColumn').text(data[i][5])
+            })
+        }
+    var chosenPath="/public/Music/"+chosenArtist+"/"+chosenAlbum+"/"+data[0][0]
+    audioElement.src=chosenPath
+    audioElement.load()
+    audioElement.addEventListener('loadeddata', ()=>{
+        console.log(audioElement.duration)
+        
+    })
+    console.log(status)
+    })
 
 
 })
