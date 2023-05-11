@@ -73,22 +73,25 @@ function awaitableSortingEngine (file) {
         onSuccess: function (tag) {
   
           //changes the track number from a fraction to a straight number
+          // console.log(file)
           var tags = tag.tags
           var track = tags.track
           // console.log(tags.track)
-          if (track.length < 4) {
-            var trackNum = track.slice(0, 1)
-          } else if (track.length == 4) {
-            var trackNum = track.slice(0, 1)
-          } else {
-            var trackNum = track.slice(0, 2)
-          }
+          // if (track.length <= 4) {
+          //   var trackNum = track.slice(0, 1)
+          // } 
+          // else if (track.length == 4) {
+          //   var trackNum = track.slice(0, 1)
+          // } 
+          // else {
+          //   var trackNum = track.slice(0, 2)
+          // }
           // var arrayIndex = trackNum - 1
-         
+         var trackNum=track.split('/')
   
           var artInfo=`data:${tags.picture.format};base64,${Buffer.from(tags.picture.data).toString("base64")}`;
           
-          var displayData=[file,trackNum,tags.title,tags.artist,tags.album,tags.year,artInfo]
+          var displayData=[file,trackNum[0],tags.title,tags.artist,tags.album,tags.year,artInfo]
           
           // setTimeout(() => {
             resolve(displayData)
@@ -150,7 +153,7 @@ async function getTableDataLoop(artist,album){
     }
     
     // console.log(songDataArray+"mooooo")
-    var sortedSongDataArray=songDataArray.sort((a,b)=>a[0]-b[0])
+    var sortedSongDataArray=songDataArray.sort((a,b)=>a[1]-b[1])
 
     return sortedSongDataArray
   }

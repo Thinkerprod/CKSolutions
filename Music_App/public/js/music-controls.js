@@ -17,7 +17,7 @@ $('td.fileColumn').each(function(){
 var albumSongs=new Array(countAlbumRows)
 
 var globalVolume=""
-var chosenArtist=""
+let chosenArtist=""
 var chosenAlbum=""
 
 document.getElementById("listIcon").addEventListener("click",function(e){
@@ -57,25 +57,63 @@ $('.chooseAlbum').on('click',(e)=>{
     $('.musicLibrary').toggleClass('openDrawer')
     $('.musicLibraryContainer').toggleClass('hideMusicLibrary')
     $('.musicLibraryContainer').toggleClass('showMusicLibrary')
-    console.log(chosenAlbum)
+    // console.log(chosenArtist)
     var chosenMusic=[chosenArtist,chosenAlbum]
 
     $.get('/chosenmusic',{chosen:chosenMusic},function(data,status){
+
+
         $('#albumC').attr('src',data[0][6])
         $('#artistHeader').text(data[0][3])
         $('#albumHeader').text(data[0][4])
         $('#titleHeader').text(data[0][2])
-        for(var i=0; i<data.length;i++){
-            $('tr.albumRow').each((i)=>{
-                        $('td.fileColumn').text(data[i][0])
-                        $('td.trackColumn').text(data[i][1])
-                        $('td.songColumn').text(data[i][2])
-                        $('td.artistColumn').text(data[i][3])
-                        $('td.albumColumn').text(data[i][4])
-                        $('td.yearColumn').text(data[i][5])
-            })
-        }
-    var chosenPath="/public/Music/"+chosenArtist+"/"+chosenAlbum+"/"+data[0][0]
+
+
+        var tr='<tr>'
+       tr+=' <th class="fileColumn">file</th>'
+       tr+='<th>Track</th>'
+       tr+='<th>Song</th>'
+       tr+='<th>Artist</th>'
+       tr+='<th>Album</th>'
+       tr+='<th>Year</th>'
+       tr+='</tr>'
+
+
+    //    tr+='<tr class="albumRow">'
+    //    trAlbum+=''
+        
+            $('table').empty()
+            // $('table').append(trH)
+            
+        
+                for(var i=0; i<data.length; i++){
+                    tr+='<tr class="albumRow">'
+                    tr+='<td class="fileColumn">'+data[i][0]
+                    tr+='</td>'
+                    tr+='<td class="trackColumn">'+data[i][1]
+                    tr+='</td>'
+                    tr+='<td class="songColumn">'+data[i][2]
+                    tr+='</td>'
+                    tr+='<td class="artistColumn">'+data[i][3]
+                    tr+='</td>'
+                    tr+='<td class="albumColumn">'+data[i][4]
+                    tr+='</td>'
+                    tr+='<td class="yearColumn">'+data[i][5]
+                    tr+='</td>'
+                    tr+='<td class="playColumn"><div class="playBtn">'
+                    tr+='</td>'
+                    tr+='</tr>'
+
+                    // console.log(data[i][2])
+                    
+                }
+                console.log(data)
+                // tr+='</table>'
+                $('table').append(tr)
+
+
+        console.log('shhgshrhbr'+chosenMusic[0])
+    var chosenPath="/public/Music/"+chosenMusic[0]+"/"+chosenAlbum+"/"+data[0][0]
     audioElement.src=chosenPath
     audioElement.load()
     audioElement.addEventListener('loadeddata', ()=>{
