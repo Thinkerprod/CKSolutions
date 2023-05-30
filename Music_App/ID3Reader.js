@@ -40,7 +40,7 @@ const server =app.listen(port, host, ()=>{
 
  app.get('/request',(req,res)=>{
   // console.log(req.query.rowFile+" was clicked")
-response.responder(res,req.query.rowFile)
+response.responder(res,req.query.rowData)
 
  })
 

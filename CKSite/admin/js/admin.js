@@ -47,4 +47,49 @@ $('#analyticsBtn').on('click',function(){
     $('#adminCheckbox').prop('checked',false);
 });
 
+$('#add-post').on('click',function(){
+    $('#dashboard').toggleClass('dashboard-expanded');
+    $('#dash-links').toggleClass('links-appear');
+    $('#addPostPop').addClass('showAddPost')
+    
+    
+});
+
+if(!$('#is_creative_writing').attr('checked')){$('#genre_select').prop('disabled',true)}
+
+
+$('#is_creative_writing').on('change',function(){
+
+if($('#is_creative_writing').prop('checked')){
+
+    $('#post_category').prop('disabled',true)
+    $('#post_image').prop('disabled',true)
+    $('#genre_select').prop('disabled',false)
+}
+else{
+    $('#post_category').prop('disabled',false)
+    $('#post_image').prop('disabled',false)
+    $('#genre_select').prop('disabled',true)
+}
+})
+
+
+$('#add-all-paintings').on('click',function(){
+    $('#dashboard').toggleClass('dashboard-expanded');
+    $('#dash-links').toggleClass('links-appear');
+    $('#addall').addClass('showAddAll')
+    
+    
+});
+
+$('#closeAddAll').on('click',function(){
+    $('#addall').removeClass('showAddAll')
+
+})
+
+$('#closeAddBtn').on('click',function(){
+    $('#addPostPop').removeClass('showAddPost')
+
+})
+
 });

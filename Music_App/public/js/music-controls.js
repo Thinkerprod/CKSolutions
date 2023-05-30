@@ -1,6 +1,9 @@
 
-console.log("js loaded")
+
 // var path='/public/Music/Pink Floyd/Wish You Were Here/1_ShineOnYouCrazyDiamond(PartsI-V).mp3'
+var currentSong='1_ShineOnYouCrazyDiamond(PartsI-V).mp3'
+var currentArtist='Pink Floyd'
+var currentAlbum='Wish You Were Here'
 var playlistIndex=0
 var songDuration="-:--"
 var songElapsed="-:--"
@@ -59,7 +62,8 @@ $('.chooseAlbum').on('click',(e)=>{
     $('.musicLibraryContainer').toggleClass('showMusicLibrary')
     // console.log(chosenArtist)
     var chosenMusic=[chosenArtist,chosenAlbum]
-
+    currentArtist=chosenMusic[0]
+    currentAlbum=chosenMusic[1]
     $.get('/chosenmusic',{chosen:chosenMusic},function(data,status){
 
 
@@ -104,7 +108,6 @@ $('.chooseAlbum').on('click',(e)=>{
                     tr+='</td>'
                     tr+='</tr>'
 
-                    // console.log(data[i][2])
                     
                 }
                 console.log(data)
@@ -112,13 +115,16 @@ $('.chooseAlbum').on('click',(e)=>{
                 $('table').append(tr)
 
 
-        console.log('shhgshrhbr'+chosenMusic[0])
+        // console.log('shhgshrhbr'+chosenMusic[0])
     var chosenPath="/public/Music/"+chosenMusic[0]+"/"+chosenAlbum+"/"+data[0][0]
+    currentSong=data[0][0]
+    currentArtist=chosenMusic[0]
+    currentAlbum=chosenAlbum
     audioElement.src=chosenPath
     audioElement.load()
     audioElement.addEventListener('loadeddata', ()=>{
         console.log(audioElement.duration)
-        
+        play(audioElement)
     })
     console.log(status)
     })
@@ -127,17 +133,20 @@ $('.chooseAlbum').on('click',(e)=>{
 })
 
 // createMusicPlayer(path)
-$('tr').on('click',function(e){
+$('tr.albumRow').on('click',function(e){
+    console.log("aaaaaaaaaaaa")
     // $('div').html("triggered by "+e.currentTarget.nodeName)
     let file=$(e.target).closest('tr').find('td.fileColumn').text()
+    let artist=$(e.target).closest('tr').find('td.artistColumn').text()
+    let album=$(e.target).closest('tr').find('td.albumColumn').text()
     playlistIndex=($(e.target).closest('tr').find('td.trackColumn').text())-1
     // console.log(file+" is index "+playlistIndex)
-    // console.log(file+" was clicked")
-    clickedPath="/public/Music/Pink Floyd/Wish You Were Here/"+file
+    console.log(file+" was clicked")
+    clickedPath="/public/Music/"+artist+"/"+album+"/"+file
     // var displayData=new Array(4)
-    
-        
-        $.get("/request",{rowFile:file},function(data,status){
+    currentSong=file
+        var clickedRow=[file,album,artist]
+        $.get("/request",{rowData:clickedRow},function(data,status){
             // console.log(data+" is here now")
             console.log(status)
             songSelected(clickedPath,data)
@@ -160,20 +169,20 @@ document.getElementById("speakerIcon").addEventListener("click",function (e){
 })
 
 
-setVolumeDefault(0.25)
+setVolumeDefault(0.5)
 
     document.getElementById("elapse").innerText= songElapsed
     document.getElementById("songDur").innerText = songDuration
     
     
-    document.getElementById('playBtn').addEventListener('click',function (){play()})
+    document.getElementById('playBtn').addEventListener('click',function (){play(audioElement)})
     document.getElementById('stopBtn').addEventListener('click',function (){stop()})    
     document.getElementById('pauseBtn').addEventListener('click',function (){pause()})
     document.getElementById('prevBtn').addEventListener('click',function(){
-        prevSong()
+        prevSong(currentArtist,currentAlbum)
     })
     document.getElementById('nextBtn').addEventListener('click',function(){
-        nextSong()
+        nextSong(currentArtist,currentAlbum)
     })
     
 
@@ -199,15 +208,19 @@ if(document.getElementById("progBar").style.width=="100%"){
 
 }
 
-function play(){
+function play(audioElement){
     var song=audioElement
+    var playPath=audioElement.src
+    playPath=playPath.split('/')
+    currentSong=playPath[playPath.length-1]
+    console.log(currentSong+" is playing")
         song.play();
         // console.log(audioElement.duration)
         var min=Math.floor(audioElement.duration/60)
         var sec=Math.floor(audioElement.duration%60)
         document.getElementById("songDur").innerText = min+":"+sec
         myReq=window.requestAnimationFrame(timeProgress)
-        visualizerStart()
+        visualizerStart(song)
 }
 
 function pause(){
@@ -238,7 +251,7 @@ function setVolumeDefault(volumeDefault){
     
 }
 
-function prevSong(){
+function prevSong(currentArtist,currentAlbum){
         
         var i=0
         $('td.fileColumn').each(function(){
@@ -246,17 +259,18 @@ function prevSong(){
         i++
         })
    
-        var strSource=audioElement.src.split("/")
+        // var strSource=audioElement.src.split("/")
         
         
             if(albumSongs[playlistIndex]!=(albumSongs[0])){
                 var nextIndex=playlistIndex-1
-                var prevSong=albumSongs[nextIndex]
+                var prev=albumSongs[nextIndex]
                 
                 
-                var prev=prevSong
+                
+                var pathInfo=[prev,currentAlbum,currentArtist]
                 // console.log(next+" is queued")
-                $.get("/requestprev",{prevFile:prev},function(data,status){
+                $.get("/requestprev",{prevFile:pathInfo},function(data,status){
                     // console.log(data+" is here now")
                     console.log(status)
                     var display=data
@@ -266,20 +280,23 @@ function prevSong(){
                     $('#titleHeader').text(display[2])
                     $('#albumC').attr('src',display[3])
                 })
-                audioElement.src='/public/Music/Pink Floyd/Wish You Were Here/'+prev
+                audioElement.src='/public/Music/'+currentArtist+'/'+currentAlbum+'/'+prev
                 audioElement.load()
                 audioElement.addEventListener('loadeddata', ()=>{
                     // console.log(audioElement.duration)
-                    play()
+                    playlistIndex--
+                currentSong=albumSongs[playlistIndex]
+                    play(audioElement)
+
                 })
-            
+                
             }
             else{
                 console.log("You're already at the start")
             }
 }
 
-function nextSong(){
+function nextSong(currentArtist,currentAlbum){
     // var trackLastPlayed=0
     var i=0
     $('td.fileColumn').each(function(){
@@ -287,17 +304,18 @@ function nextSong(){
     i++
     })
 // console.log("sfdfd"+albumSongs[0])
-    var strSource=audioElement.src.split("/")
+    // var strSource=audioElement.src.split("/")
     // var currentSong=strSource[strSource.length-1]
     
         if(albumSongs[playlistIndex]!=(albumSongs.length-1)){
             var nextIndex=playlistIndex+1
-            var nextSong=albumSongs[nextIndex]
+            var next=albumSongs[nextIndex]
             // console.log(nextSong+" is next")
             
-            var next=nextSong
+            
+            var pathInfo=[next,currentAlbum,currentArtist]
             // console.log(next+" is queued")
-            $.get("/requestnext",{nextFile:next},function(data,status){
+            $.get("/requestnext",{nextFile:pathInfo},function(data,status){
                 // console.log(data+" is here now")
                 console.log(status)
                 var display=data
@@ -307,13 +325,16 @@ function nextSong(){
                 $('#titleHeader').text(display[2])
                 $('#albumC').attr('src',display[3])
             })
-            audioElement.src='/public/Music/Pink Floyd/Wish You Were Here/'+next
+            audioElement.src='/public/Music/'+currentArtist+'/'+currentAlbum+'/'+next
+            // console.log()
             audioElement.load()
             audioElement.addEventListener('loadeddata', ()=>{
                 // console.log(audioElement.duration)
-                play()
+                playlistIndex++
+            currentSong=albumSongs[playlistIndex]
+                play(audioElement)
             })
-        
+            
         }
         else{
             console.log("You're already at the end")
@@ -321,7 +342,7 @@ function nextSong(){
     
 }
 
-// nextSong()
+
 
 
 
@@ -377,7 +398,7 @@ document.getElementById("mute").addEventListener("click", function (e){
 function songSelected(source,display){
     audioElement.src=source
     audioElement.load()
-    
+    visualizerStart(audioElement)
     $('#artistHeader').text(display[0])
     // console.log("aefagezrbgz")
     $('#albumHeader').text(display[1])
@@ -385,7 +406,7 @@ function songSelected(source,display){
     $('#albumC').attr('src',display[3])
     audioElement.addEventListener('loadeddata', ()=>{
         // console.log(audioElement.duration)
-        play()
+        play(audioElement)
     })
     
         // var min=Math.floor(audioElement.duration/60)
@@ -403,7 +424,7 @@ console.log("ended")
     nextSong()
 },true)
 
-function visualizerStart(){
+function visualizerStart(audioElement){
     let audioCtx = new AudioContext();
     var analyser = audioCtx.createAnalyser();
     

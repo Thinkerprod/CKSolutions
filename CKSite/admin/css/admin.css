@@ -86,6 +86,132 @@ body {
         justify-content: center;
     }
 
+    .add-all-container{
+        width:80%;
+        height: 90vh;
+        position:absolute;
+        top:0;
+        left:10rem;
+        display: none;
+        flex-direction: column;
+        /* opacity:0.9; */
+        overflow:scroll;
+        background-color: #000;
+    }
+    .showAddAll{
+        display: flex;
+    }
+    .x-row{
+        width: 100%;
+        height:auto;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .x-row button{
+        width: 1.3em;
+        height: 1.3em;
+        font-size: 1.2em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color:white;
+        border:1px solid white;
+        border-radius: 50%;
+        margin:1em 1em 1em 1em;
+        background-color: #000;
+    }
+    .x-row button:hover{
+        cursor: pointer;
+    }
+
+    .addAll-Row{
+        width:100%;
+        height:auto;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin:2rem 0 2rem 0;
+    }
+
+    .colForm-addAll{
+        width:50%;
+        height:auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+
+    }
+
+    .colForm-addAll label{
+        color: #fff;
+        font-size: 1.3em;
+    }
+
+    .colForm-addAll img{
+        width:100px;
+        height: auto;
+    }
+
+    .add-post-container{
+        width:40%;
+        height: 90vh;
+        position:absolute;
+        top:0;
+        left:10rem;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* opacity:0.9; */
+        overflow:scroll;
+        background-color: #000;
+    }
+    .add-form{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        color: #fff;
+    }
+
+    .showAddPost{
+        display: flex;
+    }
+
+    .form-close-row{
+        width: 100%;
+        height:auto;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .form-close-row button{
+        width: 1.3em;
+        height: 1.3em;
+        font-size: 1.2em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color:white;
+        border:1px solid white;
+        border-radius: 50%;
+        margin:1em 1em 1em 1em;
+        background-color: #000;
+    }
+
+    .form-close-row button{
+        cursor: pointer;
+    }
+
+    .add-post-container form label{
+        color: #fff;
+        font-size: 1.3em;
+    }
 
     .side-bar{
         display: flex;
@@ -151,7 +277,8 @@ body {
     .dash-btn:hover{
         background-color: #b8b8b8;
         color: #000;
-        
+        caret-color: transparent;
+        cursor: pointer;
     }
 
 
@@ -213,7 +340,20 @@ body {
     }
 
 
+    .code-blog{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
+    }
 
+    .personal-blog{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
     .adminNav-wrapper{
         display: flex;
@@ -332,6 +472,8 @@ body {
         .menuBtn:hover{
             background-color: #b8b8b8;
             color: #000;
+            caret-color: transparent;
+            cursor:pointer;
         }
 
         

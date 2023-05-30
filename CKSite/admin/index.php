@@ -1,9 +1,16 @@
 <?php include "includes/header.php"?>
 
+
 <div class="admin-container">
     <?php include "includes/dashboard.php"; ?>
     
         <div class="main-content">
+
+        
+            <?php include "includes/addAllPaintings.php"?>
+            <?php include "includes/addPost.php"?>
+
+
         <div class="banner">
             <img src="images/Thinker.png" alt="Thinker" class="thinker">
             <h1>Welcome<br>Cory</h1>
@@ -27,7 +34,8 @@
         <div class="analytics-wrapper" id="analytics">
             <h2>Analytics</h2>
         </div>
-    </div></div>
+    </div>
+</div>
     <script src="js/jquery-3.6.3.min.js"></script>
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="js/admin.js"></script>

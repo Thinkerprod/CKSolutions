@@ -16,11 +16,11 @@ module.exports.responder=async function(res,dataReceived){
 res.send(request)
 }
 
-function awaitableSortingEngine (file) {
+function awaitableSortingEngine (songData) {
     // var songsAlbumOrder = new Array(2)
     var jsmediatags = require('jsmediatags')
     return new Promise(function (resolve, reject) {
-      jsmediatags.read('./public/Music/Pink Floyd/Wish You Were Here/'+file , {
+      jsmediatags.read('./public/Music/'+songData[2]+'/'+songData[1]+'/'+songData[0] , {
         onSuccess: function (tag) {
   
           //changes the track number from a fraction to a straight number
