@@ -22,10 +22,7 @@ while($row=mysqli_fetch_assoc($getGenreQuery)){
     $genreOptions.='<option value="'.$genre_id.'">'.$genre_title.'</option>';
 
 }
-
-
 ?>
-
 
 
 <div class="add-post-container" id="addPostPop">
@@ -33,27 +30,31 @@ while($row=mysqli_fetch_assoc($getGenreQuery)){
         <button class="closeForm" id="closeAddBtn">X</button>
     </div>
     <h2>Add Blog Post | Creative Writing</h2>
-    <form action="" class="add-form" method="post" id="addPostForm">
+    <form action="blog_functions/addPost.php" class="add-form" method="post" id="addPostForm" enctype="multipart/form-data">
         <label for="post_title">Post Title</label>
-      <input type="text" name="post_title" id="post_title">
+      <input type="text" name="post_title" >
       <label for="is_creative_writing">Check if Creative Writing</label>
-      <input type="checkbox" name="is_creative_writing" id="is_creative_writing">
+      <select name="is_creative_writing" id="is_creative">
+        <option value="0">0</option>
+        <option value="1">1</option>
+      </select>
+      
       <label for="post_category">Pick Category</label>
-      <select name="post_category" id="post_category">
+      <select name="post_category" id="category">
         <?php echo $options; ?>
       </select>
       <label for="genre_select">Pick Genre</label>
-      <select name="genre_select" id="genre_select">
+      <select name="genre_select" id="genre">
       <?php echo $genreOptions; ?>
       </select>
       <label for="post_date">Date</label>
-      <input type="date" name="post_date" id="post_date">
+      <input type="date" name="post_date" >
       <label for="post_image">Choose Image</label>
-      <input type="file" name="post_image" id="post_image">
+      <input type="file" name="post_image" id="pimage">
       <label for="post_content">Content</label>
-      <textarea name="post_content" id="post_content" rows="10" cols="45" form="addPostForm"></textarea>
+      <textarea type="text" name="post_content" rows="10" cols="45" form="addPostForm"></textarea>
       <label for="post_tags">Tags</label>
-      <input type="text" name="post_tags" id="post_tags">
-      <input type="button" value="submit" id="create_post">
+      <input type="text" name="post_tags" >
+      <input type="submit" value="Create Blog Post" name="create_post" id='submitBtn'>
     </form>
 </div>

@@ -8,7 +8,7 @@
 
         
             <?php include "includes/addAllPaintings.php"?>
-            <?php include "includes/addPost.php"?>
+            <?php include "includes/addPostForm.php"?>
 
 
         <div class="banner">
@@ -19,14 +19,16 @@
         <div class="wrapper blog-wrapper" id="blog">
             <div class="code-blog" id="codeBlog">
                 <h2>Coding Blog</h2>
-<?php  include_once "../admin/includes/admin_blog_display.php"; ?>
+                <?php  include_once "../admin/includes/admin_businessblog_display.php"; ?>
             </div>
             <div class="personal-blog" id="personalBlog">
                 <h2>Personal Blog</h2>
+                <?php  include_once "../admin/includes/admin_personalblog_display.php"; ?>
             </div>
         </div>
         <div class="cw-wrapper" id="creative-writing">
-            <h2>Fiction</h2>
+            <h2>Creative Writing</h2>
+            <?php  include_once "../admin/includes/admin_creativewriting_display.php"; ?>
         </div>
         <div class="projects-wrapper" id="projects">
             <h2>Projects</h2>

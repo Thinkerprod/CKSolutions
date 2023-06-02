@@ -38,11 +38,19 @@ while($row=mysqli_fetch_assoc($select_all_business_posts_query)){
 
     
     <p class='x-post-content' id='post-text'>{$post_content}</p>
+    <a class='readMore' href='#'>Read More</a>
         <p class='tags'>{$post_tags}</p>
+        
     </div>";
 
 
 }
+
+
+}
+
+function readSelectedBlogPost($connection){
+
 
 
 }
@@ -55,3 +63,4 @@ while($row=mysqli_fetch_assoc($select_all_business_posts_query)){
 
 
 ?>
+

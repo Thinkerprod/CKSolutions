@@ -9,6 +9,7 @@ include_once("admin_blog_functions.php");
     <thead class="table-light">
       <tr>
         <th scope="col">post_id</th>
+        <th scope="col">post_cat_id</th>
         <th scope="col">post_title</th>
         <th scope="col">post_author</th>
         <th scope="col">post_date</th>
