@@ -29,8 +29,10 @@ while($row=mysqli_fetch_assoc($select_all_business_posts_query)){
     echo "<td scope='row'>{$post_tags}</td>";
     echo "<td scope='row'>{$post_comment_count}</td>";
     echo "<td scope='row'>{$post_status}</td>";
+    echo "<td scope='row'><a class='db-link' href='blog_functions/previewPost.php?p_id=".$post_id."'>Preview</a></td></tr>";
     echo "<td scope='row'><a class='db-link' href='blog_functions/editPost.php?p_id=".$post_id."'>edit</a></td>";
     echo "<td scope='row'><a class='db-link' href='blog_functions/deleteFromPosts.php?p_id=".$post_id."'>delete</a></td></tr>";
+    
 
 
 }
@@ -53,7 +55,7 @@ function adminDisplayAllPersonalBlogPosts($connection){
     
     
         
-        echo "<td scope='row'>{$post_id}</td>";
+        echo "<tr><td scope='row'>{$post_id}</td>";
         echo "<td scope='row'>{$post_cat_id}</td>";
         echo "<td scope='row'>{$post_title}</td>";
         echo "<td scope='row'>{$post_author}</td>";
@@ -63,6 +65,7 @@ function adminDisplayAllPersonalBlogPosts($connection){
         echo "<td scope='row'>{$post_tags}</td>";
         echo "<td scope='row'>{$post_comment_count}</td>";
         echo "<td scope='row'>{$post_status}</td>";
+        echo "<td scope='row'><a class='db-link' href='blog_functions/previewPost.php?p_id=".$post_id."'>Preview</a></td>";
         echo "<td scope='row'><a class='db-link'  href='blog_functions/editPost.php?p_id=".$post_id."'>edit</a></td>";
         echo "<td scope='row'><a class='db-link' href='blog_functions/deleteFromPosts.php?p_id=".$post_id."'>delete</a></td></tr>";
 

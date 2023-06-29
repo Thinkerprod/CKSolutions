@@ -121,27 +121,39 @@ if(isset($_POST['update_post'])){
     $update_title       =$_POST['update_title'];
     $update_category    =$_POST['update_category'];
     $update_date        =$_POST['update_date'];
-    
+    $post_image_temp=$_FILES['post_image']['tmp_name'];
     $update_content     =$_POST['update_content'];
     $update_tags        =$_POST['update_tags'];
 
 if(isset($_POST['update_image'])){
     $image =$_POST['update_image']; 
-    
+    if($post_category_id!=1){
+        $moveImgPath="../../adventure/images/blogImages/".$image;
+        move_uploaded_file($post_image_temp,$moveImgPath);
+        // $imgPath="images/blogImages/".$post_image;
+    }
+
+    else{
+        $moveImgPath="../../business/images/blogImages/".$image;
+        move_uploaded_file($post_image_temp, $moveImgPath);
+    }
 }
 else{
     $image=$post_image;
 }
-    $query="UPDATE posts SET";
-    $query .="post_title= '{$update_title}', ";
-    $query .="post_category_id='{$update_category}', ";
-    $query .="post_author='Cory Kutschker', ";
-    $query .="post_date='{$update_date}', ";
-    $query .="post_status='draft', ";
-    $query .="post_tags='{$update_tags}', ";
-    $query .="post_image='{$image}', ";
-    $query .="post_content='{$update_content}' ";
-    $query .="WHERE post_id='{$post_id}' ";
+    $query="UPDATE posts SET ";
+    $query .="post_category_id='{$update_category}',";
+    $query .="post_title= '{$update_title}',";
+    
+    $query .="post_author='Cory Kutschker',";
+    $query .="post_date='{$update_date}',";
+    $query .="post_image='{$image}',";
+    $query .="post_content='{$update_content}',";
+    $query .="post_tags='{$update_tags}',";
+    $query .="post_status='draft' ";
+    $query .="WHERE post_id='{$post_id}' "; 
+    
+
     
     $updateQuery=mysqli_query($connection,$query);
     
