@@ -121,7 +121,7 @@ if(isset($_POST['update_post'])){
     $update_title       =$_POST['update_title'];
     $update_category    =$_POST['update_category'];
     $update_date        =$_POST['update_date'];
-    $post_image_temp=$_FILES['post_image']['tmp_name'];
+    $post_image_temp=$_FILES['update_image']['tmp_name'];
     $update_content     =$_POST['update_content'];
     $update_tags        =$_POST['update_tags'];
 
