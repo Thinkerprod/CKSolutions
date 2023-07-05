@@ -32,6 +32,11 @@
         </div>
         <div class="projects-wrapper" id="projects">
             <h2>Projects</h2>
+            <?php  include_once "../admin/includes/admin_projects_display.php"; ?>
+        </div>
+        <div class="paintings-wrapper" id="paintings">
+            <h2>Paintings</h2>
+            <?php  include_once "../admin/includes/admin_projects_display.php"; ?>
         </div>
         <div class="analytics-wrapper" id="analytics">
             <h2>Analytics</h2>

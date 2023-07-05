@@ -102,11 +102,11 @@ if(isset($_POST['save_all'])){
         confirmQuery($test_query);
 
     }
-
+    header("Location: ../../admin");
 }
 
 
 
-header("Location: ../../admin");
+
 ?>
 
