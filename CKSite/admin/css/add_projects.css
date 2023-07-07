@@ -1,0 +1,21 @@
+html {
+    overflow: hidden;
+    scroll-behavior: smooth;
+    min-height:100%;
+    margin: 0;
+    padding: 0;    
+}
+
+body {
+
+    overflow: hidden;
+    background-color: #000;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 800;
+    color: #b8b8b8;
+    
+    }
+
+    input{
+        margin:1rem 1rem 1rem 1rem;
+    }

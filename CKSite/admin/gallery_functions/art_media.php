@@ -30,8 +30,8 @@ $media_query=mysqli_query($connection,$query);
 <table class="table table-striped table-light table-sm">
     <thead class="table-light">
       <tr>
-        <th scope="col">cat_id</th>
-        <th scope="col">cat_title</th>
+        <th scope="col">media_id</th>
+        <th scope="col">media_type</th>
 
       </tr>
     </thead>
@@ -39,12 +39,13 @@ $media_query=mysqli_query($connection,$query);
 <?php 
 
 while($row=mysqli_fetch_assoc($media_query)){
-    $media_id=$row['cat_id'];
-    $media_type=$row['cat_title'];
+    $media_id=$row['media_id'];
+    $media_type=$row['media_type'];
 
     echo "<tr><td scope='row'>{$media_id}</td>";
     echo "<td scope='row'>{$media_type}</td>";
     echo "<td scope='row'><a class='db-link' href='categories.php?del_id=".$media_id."'>delete</a></td></tr>";
+    
 }
 ?>
 </table>
