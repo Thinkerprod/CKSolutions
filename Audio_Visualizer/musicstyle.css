@@ -1,3 +1,46 @@
+
+
+.controls-container{
+    height:5rem;
+    width:8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.play{
+height: 3rem;
+width: 3rem;
+background-color: green;
+clip-path: polygon(0 0, 100% 50%, 0 100%);
+margin-right: 1rem;
+}
+.pause-container{
+    height: 3rem;
+    width:3rem;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.pause-A{
+    height: 3rem;
+    width:0.5rem;
+    background-color: blue;
+    margin-right: 1rem;
+}
+.pause-B{
+    height: 3rem;
+    width:0.5rem;
+    background-color: blue;
+}
+.stop{
+    height: 3rem;
+    width: 3rem;
+    background-color: red;
+}
+
+
 .musicBar{
 
 
@@ -14,6 +57,8 @@
 
 .visContainer{
     position:relative;
+    display: flex;
+    align-items: center;
     margin: 0;
     padding: 0;
     background-color: #000000;
@@ -22,8 +67,10 @@
 }
 
 .childDiv{
-    display: flex;
-    flex-direction: row;
+    
+    display: inline-block;
+    justify-content: center;
+    /* flex-direction: row; */
     height: 40px;
     width: 40px;
     background-color: green;

@@ -2,22 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Music Station</title>
-     <link href="/fontawesome/css/all.css" rel="stylesheet">
+    <title>Audio Visualizer</title>
+     <!-- <link href="/fontawesome/css/all.css" rel="stylesheet"> -->
      <link href="musicstyle.css" rel="stylesheet">
     <script src="http://cwilso.github.io/AudioContext-MonkeyPatch/AudioContextMonkeyPatch.js"></script>
 </head>
 <body>
-  <audio id="player" controls>
+  <!-- <audio id="player" controls>
        <source src="Music/Pink_Floyd/WishYouWereHere/ShineOnYouCrazyDiamond(PartsI-V).mp3">
-   </audio>
-  <button class="controlButt" id="buttPlay"><i class="fas fa-play"><i class="fas fa-pause"></i></i></button>
-   <canvas width="500px" height="400px" background-color="#000000" id="soundCanv"></canvas>
+   </audio> -->
+  <!-- <button class="controlButt" id="buttPlay"><i class="fas fa-play"><i class="fas fa-pause"></i></i></button> -->
+   <!-- <canvas width="500px" height="400px" background-color="#000000" id="soundCanv"></canvas> -->
+   <div class="controls-container">
+    <div class="play" id="playBtn"></div>
+    <div class="pause-container" id="pauseBtn">
+        <div class="pause-A"></div>
+        <div class="pause-B"></div>
+    </div>
+    <div class="stop" id="stopBtn"></div>
+   </div>
    <div class="visContainer" id="vis"></div>
 
    
-   
-    <script>
+   <script src="js/visualizer.js"></script>
+    <!-- <script>
         const container=document.querySelector('#vis');
         var music=document.getElementById("player"); 
         
@@ -140,6 +148,6 @@ var x = 0;
             
     
     });
-    </script>
+    </script> -->
 </body>
 </html>
