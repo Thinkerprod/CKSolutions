@@ -38,8 +38,8 @@
     color: black;
     text-align:center;
     cursor: pointer;
-    box-shadow: 2px 2px #000000
-
+    box-shadow: 2px 2px #000000;
+        margin-top: 1em;
     }
     
     #HServices{
@@ -599,7 +599,7 @@ color:rgb(17, 17, 71);
 
 
 .title-button{
-    padding:20px 5px 5px 5px;
+    padding:5px 5px 5px 5px;
     /* height: 67%;
     width:290px; */
     background-color: #33d110;
@@ -610,6 +610,7 @@ color:rgb(17, 17, 71);
     text-align:center;
     cursor: pointer;
     box-shadow: 2px 2px 18px #000000;
+    margin-top: 10rem;
     
 }
 

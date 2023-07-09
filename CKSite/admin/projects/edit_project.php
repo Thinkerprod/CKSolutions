@@ -24,6 +24,7 @@ if(isset($_GET['p_id'])){
 
 
 ?>
+<?php echo $proj_id;?>
 <?php echo $proj_name;?>
 <title>Edit Project</title>
 <body>
@@ -38,14 +39,14 @@ if(isset($_GET['p_id'])){
         </div>
         <div class="form-group">
             <label for="proj_status">Project Status</label>
-            <select name="proj_status" id="">
+            <select name="proj_status" id="" value="<?php echo $proj_status;?>">
                <option value="current">current</option>
                 <option value="past">past</option>
             </select>
         </div>
         <div class="form-group">
             <label for="proj_location">Project Location</label>
-            <input type="text" class="form-control" name="proj_location" id="" value="<?php echo $proj_status;?>">
+            <input type="text" class="form-control" name="proj_location" id="" value="<?php echo $proj_location;?>">
         </div>
         <div class="form-group">
             <label for="proj_image">Project Image</label>
@@ -71,7 +72,7 @@ if(isset($_GET['p_id'])){
             <input type="date" class="form-control" name="proj_date" id="" value="<?php echo $proj_date;?>">
         </div>
         <div class="form-group">
-        <input type="submit" name="save_proj" id="">
+        <input type="submit" name="save_proj" id="" value="Save Project">
         </div>
     </form>
 </div>
@@ -96,12 +97,13 @@ if(isset($_POST['save_proj'])){
    proj_image='{$proj_image}',
    proj_stack='{$proj_stack}',
    proj_desc='{$proj_desc}',
-   proj_date='{$proj_date}'";
+   proj_date='{$proj_date}' WHERE proj_id={$p_id}";
 
    $test_query=mysqli_query($connection,$edit_final_query);
    confirmQuery($test_query);
    
    echo "Edit Saved :)";
+   header('Location:../../admin');
 }
 
 ?>

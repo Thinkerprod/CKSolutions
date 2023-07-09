@@ -90,7 +90,19 @@
 ////    setInterval(clock,1000);
 //window.requestAnimationFrame(clock);
         
-        
+        function secHandAngle(sec){
+            var angle =(360/60)*sec
+            return angle
+        }
+        function minHandAngle(min){
+            var angle=(360/60)*min
+            return angle
+        }
+        function hourHandAngle(hours, minutes){
+            var angle=(30*hours)+(0.5*minutes)
+            return angle
+        }
+
         
         //Set the clock
         function setClock(){
@@ -100,10 +112,10 @@
        let minutes=day.getMinutes();
         
            //set the angle of clock hands 
-            let clock=new Clock();
-        document.getElementById("secHand").style.transform="rotate("+(clock.secHandAngle(seconds))+"deg)";
-        document.getElementById("minHand").style.transform="rotate("+(clock.minHandAngle(minutes))+"deg)";
-            document.getElementById("hourHand").style.transform="rotate("+(clock.hourHandAngle(h,minutes))+"deg)";
+            // let clock=new Clock();
+        document.getElementById("secHand").style.transform="rotate("+(secHandAngle(seconds))+"deg)";
+        document.getElementById("minHand").style.transform="rotate("+(minHandAngle(minutes))+"deg)";
+            document.getElementById("hourHand").style.transform="rotate("+(hourHandAngle(h,minutes))+"deg)";
         }
         
         //Get ticking
@@ -112,10 +124,10 @@
        let h=day.getHours();
        let seconds=day.getSeconds();
        let minutes=day.getMinutes();
-            let clock=new Clock();
+            // let clock=new Clock();
         document.getElementById("secHand").style.transform="rotate("+(seconds*6)+"deg)";
         document.getElementById("minHand").style.transform="rotate("+(minutes*6)+"deg)";
-            document.getElementById("hourHand").style.transform="rotate("+(clock.hourHandAngle(h,minutes))+"deg)";
+            document.getElementById("hourHand").style.transform="rotate("+(hourHandAngle(h,minutes))+"deg)";
             window.requestAnimationFrame(update);
         }
         
