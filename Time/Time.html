@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Time To Get A Watch</title>
-    <script src="HelpfulClasses.js"></script>
+    <!-- <script src="HelpfulClasses.js"></script> -->
     <link rel="stylesheet" href="TimeStyle.css">
 </head>
 <body onload="setClock">
     <img src="images/secondhand38per.png" alt="secondclock" id="secHand">
     <img src="images/minutehand38per.png" alt="secondclock" id="minHand">
     <img src="images/hourhand38per.png" alt="secondclock" id="hourHand">
-    <h2 id="test"></h2>
+    <!-- <h2 id="test"></h2>
     <h2 id="afternoon"></h2>
-    <h2 id="hourTime"></h2>
+    <h2 id="hourTime"></h2> -->
     <script>
        
        
@@ -112,7 +112,7 @@
        let minutes=day.getMinutes();
         
            //set the angle of clock hands 
-            // let clock=new Clock();
+           
         document.getElementById("secHand").style.transform="rotate("+(secHandAngle(seconds))+"deg)";
         document.getElementById("minHand").style.transform="rotate("+(minHandAngle(minutes))+"deg)";
             document.getElementById("hourHand").style.transform="rotate("+(hourHandAngle(h,minutes))+"deg)";
@@ -124,7 +124,7 @@
        let h=day.getHours();
        let seconds=day.getSeconds();
        let minutes=day.getMinutes();
-            // let clock=new Clock();
+    
         document.getElementById("secHand").style.transform="rotate("+(seconds*6)+"deg)";
         document.getElementById("minHand").style.transform="rotate("+(minutes*6)+"deg)";
             document.getElementById("hourHand").style.transform="rotate("+(hourHandAngle(h,minutes))+"deg)";
