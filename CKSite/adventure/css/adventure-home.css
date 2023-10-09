@@ -1,0 +1,168 @@
+html {
+    /* overflow: hidden; */
+    scroll-behavior: smooth;
+    min-height:100%;
+    margin: 0;
+    padding: 0;    
+}
+
+body {
+
+    
+    background-color: #000;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 800;
+    color: #b8b8b8;
+    margin:0;
+    padding:0;
+    
+    }
+    .home{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width:100vw;
+        height:100vh;
+        background: url('../images/bookstack-m.png');
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: scroll;
+    }
+    .home-links{
+        width:100%;
+        height:100%;
+        margin-top: 5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        /* text-align: left; */
+        font-family: 'Cinzel','Times New Roman', Times, serif;
+        margin: 8rem 30rem 0 0;
+        padding-bottom: 5rem;
+        list-style: none;
+    }
+    ul li{
+        display: inline-block;
+        margin-bottom: 5rem;
+        
+    }
+    .home-links a{
+        display: inline-block;
+        text-decoration: none;
+        color:#b8b8b8;
+        position: relative;
+        font-size: 2em;
+
+        
+        
+    }
+    .home-links a::before{
+        display: block;
+        content:"";
+        height: 1px;
+        width:100%;
+        background-color: #000;
+        position: absolute;
+        bottom:0;
+        
+    }
+.home-links a:hover{
+    opacity: 1;
+}
+.watch{
+    display: none;
+}
+    .profile{
+        width: 100px;
+        height:auto;
+        border-radius: 50%;
+
+    }
+    .about{
+        display: flex;
+        flex-direction:column;
+        align-items: center;
+        justify-content: center;
+        background-color: #000;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        
+        width:100%;
+        height:auto;
+        background-attachment: scroll;
+    }
+    .intro{
+        color:#b8b8b8;
+        padding: 0 1rem 0 1rem;
+    }
+    footer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        width:100%;
+        height:25%;
+        background-color: #fff;
+        color:#000;
+        margin:0;
+    }
+    footer a{
+        text-transform: uppercase;
+        font-size: 1.25em;
+        text-decoration: none;
+    }
+    .social-media{
+        font-size: 2.5em;
+        margin-top: 1rem;
+    }
+    @media  (min-width:750px){
+        .home{
+            position:relative;
+            background: url('../images/books_with_watch-HandsRemoved.png');
+            background-position: top center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: scroll;
+        }
+
+        .home-links a{
+            display: inline-block;
+            text-decoration: none;
+            color:#000;
+            position: relative;
+            font-size: 2em;
+            opacity: 0.1;
+            transition: opacity 2000ms ease-in-out;
+            
+            
+        }
+
+        .watch{
+            display: block;
+            width:300px;
+            height:300px;
+            position: absolute;
+            top:32rem;
+            left:27.5rem;
+            border:1px solid black;
+            }
+
+        #hour{
+            position:absolute;
+            top:0.75rem;
+            left:1.3rem;
+            z-index: 0;
+        }
+        #minute{
+            position: absolute;
+            top:1.15rem;
+            left:1.7rem;
+            z-index: 1;
+        }
+        #second{
+            position: absolute;
+            top:9.9rem;
+            left:6rem;
+        }
+    }

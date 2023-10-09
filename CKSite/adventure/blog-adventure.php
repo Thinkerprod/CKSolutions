@@ -8,7 +8,7 @@
     </div>
     </nav>
 
-    <div class="header-image"><img src="images/TheCodeCanvas-banner.png" alt="The-code-canvas-banner"></div>
+    <div class="header-image"><img src="images/NoiseUpstairs-banner-image.png" alt="The-Noise-upstairs-banner"></div>
     
 
     <div class="extra-identifiers">

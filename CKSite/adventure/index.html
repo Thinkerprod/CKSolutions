@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&family=Cinzel:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/adventure-home.css">
+    <script src="https://kit.fontawesome.com/2eeafdf812.js" crossorigin="anonymous"></script>
+    <title>Adventure</title>
+</head>
+<body>
+    <nav class="home" id="home-section">
+        
+            <ul class="home-links">
+                <li><a href="gallery.php">Gallery</a></li>
+                <li><a href="blog-adventure.php">Blog</a></li>
+                <li><a href="creative-writing.php">Creative Writing</a></li>
+                <li><a href="#about-section">About</a></li>
+            </ul>
+            <div class="watch">
+                <img class="watch-hand" id="hour" src="images/bgwatchhourhand.png" alt="">
+                <img class="watch-hand" id="minute" src="images/bgwatchminutehand.png" alt="">
+                <img class="watch-hand" id="second" src="images/bgwatchsecondhand.png" alt="">
+            </div>
+    </nav>
+    <section class="about" id="about-section">
+        <img src="images/Cory-Profile.jpg" alt="a picture of Cory K" class="profile">
+        <p class="intro">Cory lives with his wife Amber in Saskatchewan, Canada. He loves being creative in multiple facets. He paints, writes, and creates websites (to name a few). </p>
+    </section>
+    <footer>
+        <a href="#home-section">return to top</a>
+        <div class="social-media">
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-linkedin"></i>
+        </div>
+        <h3 class="copyright" id="h3-copyright"></h3>
+
+    </footer>
+    <script>
+        const d=new Date()
+        document.getElementById('h3-copyright').innerHTML="© Cory Kutschker "+d.getFullYear()
+    </script>
+    <script src="js/pocketwatch.js"></script>
+</body>
+</html>

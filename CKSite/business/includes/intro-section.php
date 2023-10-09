@@ -19,9 +19,9 @@
 </div>
 
 <div class="intro-area flippedArea">
-
+<div class="mask"></div>
   <div class="introWrapper">
-    <div class="mask"></div>
+    
     <h1 class="intro introFlipped"><span class="hello">Hello,</span> <br><span class="flipText">My name is</span> </br><span class="flipText">Cory Kutschker.</span> <br> <span class="flipText">I'm a</span> <br><span class="flipText">web developer.</span></h1>
   </div>
   <div class="hire">

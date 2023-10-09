@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Business</title>
+    
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/business.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,7 +52,7 @@
 <div class="mobile-links">
 
   <div class="mobile-link"><a href="#">Home</a></div>
-  <!-- <div ><a href="#">Portfolio</a></div> -->
+  <div ><a href="#">Portfolio</a></div>
   <label class="mobile-link" for="subNavCheck" id="subNavLabel">Portfolio</label>
   <input type="checkbox" name="subNav-Checkbox" id="subNavCheck">
   <div class="mobile-link mobile-sub">

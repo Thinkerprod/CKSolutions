@@ -42,38 +42,5 @@ function navToggle(){
 
 }
 
-function clickForward() {
-  if (pos == projects.length - 1) {
-    projects[pos].classList.remove("project-selected");
-    projectPosArray[pos].classList.remove("proj-dot-selected");
-    pos = 0;
-    projects[pos].classList.add("project-selected");
-    projectPosArray[pos].classList.add("proj-dot-selected");
-  } else {
-    projects[pos].classList.remove("project-selected");
-    projectPosArray[pos].classList.remove("proj-dot-selected");
-    pos++;
-    projects[pos].classList.add("project-selected");
-    projectPosArray[pos].classList.add("proj-dot-selected");
-  }
-}
-function clickBackward() {
-  if (pos == 0) {
-    projects[pos].classList.remove("project-selected");
-    projectPosArray[pos].classList.remove("proj-dot-selected");
-    pos = projects.length - 1;
-    projects[pos].classList.add("project-selected");
-    projectPosArray[pos].classList.add("proj-dot-selected");
-  } else {
-    projects[pos].classList.remove("project-selected");
-    projectPosArray[pos].classList.remove("proj-dot-selected");
-    pos--;
-    projects[pos].classList.add("project-selected");
-    projectPosArray[pos].classList.add("proj-dot-selected");
-  }
-}
-function defaultSelected() {
-  projects[pos].classList.add("project-selected");
-  projectPosArray[pos].classList.add("proj-dot-selected");
-}
-defaultSelected();
+
+

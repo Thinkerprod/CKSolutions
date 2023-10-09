@@ -1,10 +1,11 @@
 
 html {
-    overflow: hidden;
+    overflow: auto;
     scroll-behavior: smooth;
-    min-height:100%;
+    min-height:100vh;
     margin: 0;
-    padding: 0;    
+    padding: 0;
+    box-sizing: border-box;    
 }
 
 
@@ -16,10 +17,11 @@ html {
 
 body {
 
-overflow: hidden;
+overflow:hidden;
   background-color: #000;
   font-family: "Work Sans", sans-serif;
   font-weight: 800;
+  margin: 0;
   /* max-width: 100vw; */
 }
 
@@ -352,11 +354,11 @@ h1 {
 }
 .mask {
   position: absolute;
-  top: 13.5rem;
+  top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 60%);
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 30%);
   z-index: 40;
   pointer-events: none;
 }
@@ -366,99 +368,27 @@ h1 {
   display: none;
 }
 
-.projects {
-  display: grid;
-  margin-top: 5em;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-row-gap: 3em;
-  grid-column-gap: 3em;
-  justify-content: center;
-}
+
 .tag {
   color: #b8b8b8;
 }
 
 .projSection {
+  display: block;
     height:100%;
     width:100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top:3em;
-  margin-bottom: 3em;
-}
-.backwards {
-  position: relative;
-  width: 2em;
-  height: 2em;
-  background-color: #fff;
+    visibility: visible;
+    background-color: #fff;
+    margin-top: 5rem;
 
-  clip-path: polygon(50% 50%, 100% 0, 100% 100%);
-  margin-right: 1em;
-}
-.b-fill {
-  position: absolute;
-  bottom: 1.5px;
-  right: 0.9px;
-  width: 1.8em;
-  height: 1.8em;
-  background-color: #000;
-
-  clip-path: polygon(50% 50%, 100% 0, 100% 100%);
-}
-.b-fill:hover {
-  background-color: #fff;
-  cursor: pointer;
-}
-.forwards {
-  position: relative;
-  width: 2em;
-  height: 2em;
-  background-color: #fff;
-
-  clip-path: polygon(50% 50%, 0 0, 0 100%);
-  margin-left: 1em;
-}
-.f-fill {
-  position: absolute;
-  bottom: 1.5px;
-  left: 0.9px;
-  width: 1.8em;
-  height: 1.8em;
-  background-color: #000;
-
-  clip-path: polygon(50% 50%, 0 0, 0 100%);
-}
-.f-fill:hover {
-  background-color: #fff;
-  cursor: pointer;
-}
-.proj-dots {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: solid 1px #fff;
-  margin: 1em 1em 1em 1em;
-}
-.proj-dot-selected {
-  background-color: #fff;
-}
-.position-container {
-  display: flex;
-  margin-top: 3em;
-  align-items: center;
-}
-.project-position {
-  display: flex;
-}
-.proj-container {
-  display: flex;
 }
 
-.projHeader {
-  display: flex;
-  justify-content: center;
+.img-project{
+  width:50%;
+  height:auto;
 }
+
+
 .headers {
   color: #b8b8b8;
   font-family: "Bitter", serif;
@@ -467,19 +397,11 @@ h1 {
   margin-bottom: 2em;
   letter-spacing: 7px;
 }
-.project {
-  display: flex;
-  justify-content: center;
-  width: 14rem;
-  height: 7rem;
-  transform-style: preserve-3d;
-  transform: rotatey(-85deg);
-  transition: transform 0.3s ease-in-out;
+
+.projHeader{
+  color:#000;
 }
-.project-selected {
-  transform: rotatey(0deg);
-  transition: transform 0.5s ease-in-out;
-}
+
 .testimonial {
   display: flex;
   flex-direction: column;
@@ -873,7 +795,7 @@ h1 {
     }
     .mask {
       position: absolute;
-      top: 10rem;
+      top: 0;
       left: 0;
       height: 100%;
       width: 100%;
@@ -896,84 +818,15 @@ h1 {
     }
 
     .projSection {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top:3em;
-      margin-bottom: 3em;
-    }
-    .backwards {
-      position: relative;
-      width: 2em;
-      height: 2em;
-      background-color: #fff;
-    
-      clip-path: polygon(50% 50%, 100% 0, 100% 100%);
-      margin-right: 1em;
-    }
-    .b-fill {
-      position: absolute;
-      bottom: 1.5px;
-      right: 0.9px;
-      width: 1.8em;
-      height: 1.8em;
-      background-color: #000;
-    
-      clip-path: polygon(50% 50%, 100% 0, 100% 100%);
-    }
-    .b-fill:hover {
-      background-color: #fff;
-      cursor: pointer;
-    }
-    .forwards {
-      position: relative;
-      width: 2em;
-      height: 2em;
-      background-color: #fff;
-    
-      clip-path: polygon(50% 50%, 0 0, 0 100%);
-      margin-left: 1em;
-    }
-    .f-fill {
-      position: absolute;
-      bottom: 1.5px;
-      left: 0.9px;
-      width: 1.8em;
-      height: 1.8em;
-      background-color: #000;
-    
-      clip-path: polygon(50% 50%, 0 0, 0 100%);
-    }
-    .f-fill:hover {
-      background-color: #fff;
-      cursor: pointer;
-    }
-    .proj-dots {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      border: solid 1px #fff;
-      margin: 1em 1em 1em 1em;
-    }
-    .proj-dot-selected {
+      display: block;
+      width: 100%;
+      height: 100vh;
+
       background-color: #fff;
     }
-    .position-container {
-      display: flex;
-      margin-top: 3em;
-      align-items: center;
-    }
-    .project-position {
-      display: flex;
-    }
-    .proj-container {
-      display: flex;
-    }
     
-    .projHeader {
-      display: flex;
-      justify-content: center;
-    }
+    
+   
     .headers {
       color: #b8b8b8;
       font-family: "Bitter", serif;
@@ -982,19 +835,12 @@ h1 {
       margin-bottom: 2em;
       letter-spacing: 7px;
     }
-    .project {
-      display: flex;
-      justify-content: center;
-      width: 14rem;
-      height: 7rem;
-      transform-style: preserve-3d;
-      transform: rotatey(-85deg);
-      transition: transform 0.3s ease-in-out;
+
+    .projHeader{
+      color:#000;
     }
-    .project-selected {
-      transform: rotatey(0deg);
-      transition: transform 0.5s ease-in-out;
-    }
+
+
     .testimonial {
       display: flex;
       flex-direction: column;
@@ -1053,5 +899,10 @@ h1 {
     
     .about-profile{
       margin-left: 2em;
+    }
+    footer{
+      background-color: #fff;
+      height: 30%;
+      width: 100%;
     }
 }
