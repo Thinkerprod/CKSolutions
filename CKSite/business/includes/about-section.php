@@ -1,5 +1,5 @@
 <section class="about" id="about-section">
-<h2 class="about-header">About</h2>
+<h2 class="display-3 text-center white-headers">About</h2>
 <div class="about-container">
   <div class="about-profile"><img src="https://placekitten.com/300/300" alt="" class="about-img"></div>
   <div class="about-article">

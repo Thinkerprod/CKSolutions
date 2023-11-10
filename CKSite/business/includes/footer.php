@@ -1,5 +1,5 @@
 <footer>
-<h1>footer</h1>
+<h1 class="display-3 text-center white-header">footer</h1>
 
 
 </footer>
