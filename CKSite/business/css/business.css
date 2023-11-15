@@ -368,7 +368,7 @@ h1 {
   left: 0;
   height: 100%;
   width: 100%;
-  background: linear-gradient(to bottom,rgba(0, 0, 0, 0) , rgba(0, 0, 0, 1) );
+  background: linear-gradient(to bottom,rgba(0, 0, 0, 0.1) , rgba(0, 0, 0, 1) );
   z-index: 40;
   pointer-events: none;
 }
@@ -399,6 +399,23 @@ display: block;
   height:auto;
 }
 
+.html5-icon{
+  color:red;
+}
+.css3-icon{
+  color:blue;
+}
+.js-icon{
+  color:#fcb900;
+}
+.php-icon{
+  color:#AEB2D5;
+}
+.nodejs-icon{
+  color:#3c873a;
+
+}
+
 
 .headers {
   color: #b8b8b8;
@@ -427,12 +444,12 @@ display: block;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 12rem;
+  /* margin-top: 12rem; */
 }
 
 .testimony {
   color: #b8b8b8;
-  /* font-family: Times New Roman; */
+  font-family: sans-serif;
   font-size: 2em;
   text-align: center;
   padding: 1em 1em 2em 1em;
@@ -823,7 +840,7 @@ display: block;
       left: 0;
       height: 100%;
       width: 100%;
-      background: linear-gradient(rgba(0, 0, 0, 0)2%, rgba(0, 0, 0, 1) 60% );
+      background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 1) 70%);
       z-index: 40;
       pointer-events: none;
     }
@@ -869,12 +886,12 @@ display: block;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      margin-top: 12rem;
+      /* margin-top: 12rem; */
     }
     
     .testimony {
       color: #b8b8b8;
-      font-family: Times New Roman;
+      font-family:"Montserrat", sans-serif;
       font-size: 2em;
       text-align: center;
       padding: 1em 1em 2em 1em;
@@ -914,7 +931,7 @@ display: block;
       align-items: center;
     }
     .about-me{
-      color: #b8b8b8;
+      color: #000;
       font-size:1.5em;
     }
     .about-article{

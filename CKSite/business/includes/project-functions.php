@@ -14,7 +14,7 @@ $proj_desc=$row['proj_desc'];
 
 // echo $proj_name;
 $currentProject="<div class='col-sm-12 col-md-6 col-lg-4 h-100'>
-<div class='card text-bg-light h-25 w-100 mb-2'>
+<div class='card text-bg-light h-25 w-100 mb-2 shadow'>
 <img src='images/projects/".$proj_image."' alt='".$proj_desc."' class='img-project card-img-top align-center'>
     <div class='card-body'>
         <h5 class='card-title'>".$proj_name."</h5>
@@ -44,7 +44,7 @@ $proj_desc=$row['proj_desc'];
 // echo $proj_name;
 
 $pastProject="<div class='col-sm-12 col-md-6 col-lg-4 h-100'>
-<div class='card text-bg-light w-100 mb-2'>
+<div class='card text-bg-light w-100 mb-2 shadow'>
 <img src='images/projects/".$proj_image."' alt='".$proj_desc."' class='img-project card-img-top align-center'>
 <div class='card-body'>
 <h5 class='card-title'>".$proj_name."</h5>
