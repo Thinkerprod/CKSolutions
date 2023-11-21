@@ -8,9 +8,11 @@
     <div class="container-fluid d-flex justify-content-center stack-icons my-5">
       <i class="fa-brands fa-html5 display-3 mx-2 html5-icon"></i>
       <i class="fa-brands fa-css3-alt display-3 mx-2 css3-icon"></i>
+      <i class="fa-brands fa-bootstrap display-3 mx-2 bootstrap-icon"></i>
       <i class="fa-brands fa-js display-3 mx-2 js-icon"></i>
       <i class="fa-brands fa-php display-3 mx-2 php-icon"></i>
       <i class="fa-brands fa-node-js display-3 mx-2 nodejs-icon"></i>
+      
     </div>
    
       

@@ -3,16 +3,27 @@
     
 <div class="blog-container">
     
-<?php require_once ("includes/blog-sidebar-business.php"); ?>
+
 
    
 
 
     
-    <div class="blog-section">
-    <div class="header-image"><img src="images/TheCodeCanvas-banner.png" alt="The-code-canvas-banner"></div>
-    <?php require_once ("includes/blog-sidebar-m.php");?>
-    <?php require_once("includes/business-blog-post.php");  ?>
+    <div class="container-fluid blog-section">
+        <div class="row">
+            <div class="col-sm-12 col-lg-10">
+                <div class="header-image"><img src="images/TheCodeCanvas-banner.png" alt="The-code-canvas-banner"></div>
+                <?php require_once("includes/business-blog-post.php");  ?>
+            </div>
+            <div class="col-sm-12 col-lg-2">
+            <?php require_once ("includes/blog-sidebar-business.php"); ?>
+
+            </div>
+        </div>
+    
+    
+ 
+    
     </div>
 
         <!-- <div class="blog-entry" id="blogPost">

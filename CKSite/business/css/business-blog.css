@@ -100,13 +100,13 @@ body {
 }
 
 @media (min-width: 1000px){
-.blog-container{
+/* .blog-container{
   display: grid;
   grid-template-columns: 75% 25%;
   column-gap: 2rem;
   align-items:start;
   row-gap: 1rem;
-}
+} */
 
 .header-image{
   grid-column: 1/2;

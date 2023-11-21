@@ -20,7 +20,7 @@
 <body>
 <header>
 
-<nav class="navbar">
+<nav class="navbar" id="top">
     <input type="checkbox" name="burgerCheck" id="burgerCheckbox">
   <h2 class="logo">CK</h2>
   <label for="burgerCheckbox" class="menu" id="menuBars">

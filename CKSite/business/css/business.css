@@ -415,7 +415,10 @@ display: block;
   color:#3c873a;
 
 }
+.bootstrap-icon{
+  color:#602c50;
 
+}
 
 .headers {
   color: #b8b8b8;
@@ -500,6 +503,20 @@ display: block;
 .about-profile{
   margin-left: 2em;
 }
+footer a{
+  color:#b8b8b8;
+}
+
+footer h3{
+  color:#b8b8b8;
+}
+
+.footer-icons{
+  color:#b8b8b8;
+  margin:1rem 1rem 1rem 1rem;
+}
+
+
 @media (min-width:280px){
 
 }
@@ -945,5 +962,9 @@ display: block;
       background-color: #000;
       height: 30%;
       width: 100%;
+    }
+
+    .footer-icons:hover{
+      color: #fff;
     }
 }
