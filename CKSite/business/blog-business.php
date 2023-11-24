@@ -13,6 +13,7 @@
         <div class="row">
             <div class="col-sm-12 col-lg-10">
                 <div class="header-image"><img src="images/TheCodeCanvas-banner.png" alt="The-code-canvas-banner"></div>
+                
                 <?php require_once("includes/business-blog-post.php");  ?>
             </div>
             <div class="col-sm-12 col-lg-2">
