@@ -71,7 +71,7 @@ function readSelectedBlogPost($connection){
 
         <div class='d-flex flex-column justify-content-start fs-4 comment-form mx-5'>
 
-        <form action='comments.php' method='post' enctype='multipart/form-data'>
+        <form action='includes/comments.php?p_id={$p_id}' method='post' enctype='multipart/form-data'>
 
         <div class='row g-1 mb-3'>
         <div class='col-sm-4'>
@@ -154,6 +154,23 @@ function getPostId(){
 
         return $p_id;
     }
+}
+
+function commentCounter($connection){
+
+    $p_id=getPostId();
+    echo $p_id." id number";
+    $query="SELECT post_comment_count FROM posts WHERE post_id =".$p_id;
+    $business_comment_counter_query=mysqli_query($connection,$query);
+    
+    $row=mysqli_fetch_assoc($business_comment_counter_query);
+        $post_comment_counter=$row['post_comment_count'];
+        $post_comment_counter++;
+
+        $update_query="UPDATE posts SET post_comment_count='{$post_comment_counter}' WHERE post_id='{$p_id}'";
+        $comment_update_query=mysqli_query($connection,$update_query);
+        confirmQuery($comment_update_query);
+    
 }
 
 // function createComment($connection){
