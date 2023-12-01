@@ -98,6 +98,11 @@ body {
   background-color: #b8b8b8;
 }
 
+.comments{
+  color:#b8b8b8;
+  font-family:'Montserrat',sans-serif;
+}
+
 @media (min-width: 1000px){
 /* .blog-container{
   display: grid;

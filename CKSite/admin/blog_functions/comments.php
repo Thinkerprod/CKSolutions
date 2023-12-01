@@ -93,10 +93,14 @@ if(isset($_GET['app_id'])){
     <thead class="table-light">
       <tr>
         <th scope="col">com_id</th>
+        <th scope="col">is_reply</th>
+        <th scope="col">parent_id</th>
         <th scope="col">com_post_id</th>
         <th scope="col">com_cw_id</th>
+        <th scope="col">is_cw</th>
         <th scope="col">com_name</th>
         <th scope="col">com_date</th>
+        <th scope="col">com_time</th>
         <th scope="col">com_content</th>
         <th scope="col">com_status</th>
 
@@ -106,18 +110,26 @@ if(isset($_GET['app_id'])){
 <?php
 while($row=mysqli_fetch_assoc($comments_query)){
     $com_id=$row['com_id'];
+    $is_reply=$row['is_reply'];
+    $parent_id=$row['parent_id'];
     $com_post_id=$row['com_post_id'];
     $com_cw_id=$row['com_cw_id'];
+    $is_cw=$row['is_cw'];
     $com_name=$row['com_name'];
     $com_date=$row['com_date'];
+    $com_time=$row['com_time'];
     $com_content=$row['com_content'];
     $com_status=$row['com_status'];
 
     echo "<tr><td scope='row'>{$com_id}</td>";
+    echo "<td scope='row'>{$is_reply}</td>";
+    echo "<td scope='row'>{$parent_id}</td>";
     echo "<td scope='row'>{$com_post_id}</td>";
     echo "<td scope='row'>{$com_cw_id}</td>";
+    echo "<td scope='row'>{$is_cw}</td>";
     echo "<td scope='row'>{$com_name}</td>";
     echo "<td scope='row'>{$com_date}</td>";
+    echo "<td scope='row'>{$com_time}</td>";
     echo "<td scope='row'>{$com_content}</td>";
     echo "<td scope='row'>{$com_status}</td>";
     echo "<td scope='row'><a class='db-link' href='comments.php?del_id=".$com_id."'>Delete</a></td>";
