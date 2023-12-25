@@ -64,6 +64,7 @@ $('.chooseAlbum').on('click',(e)=>{
     var chosenMusic=[chosenArtist,chosenAlbum]
     currentArtist=chosenMusic[0]
     currentAlbum=chosenMusic[1]
+    console.log("You chose "+currentArtist+" "+currentAlbum)
     $.get('/chosenmusic',{chosen:chosenMusic},function(data,status){
 
 
@@ -124,7 +125,7 @@ $('.chooseAlbum').on('click',(e)=>{
     audioElement.load()
     audioElement.addEventListener('loadeddata', ()=>{
         console.log(audioElement.duration)
-        play(audioElement)
+        playMusic(audioElement)
     })
     console.log(status)
     })
@@ -133,7 +134,7 @@ $('.chooseAlbum').on('click',(e)=>{
 })
 
 // createMusicPlayer(path)
-$('tr.albumRow').on('click',function(e){
+$('#albumInfo').on('click','tr.albumRow',function(e){
     console.log("aaaaaaaaaaaa")
     // $('div').html("triggered by "+e.currentTarget.nodeName)
     let file=$(e.target).closest('tr').find('td.fileColumn').text()
@@ -175,7 +176,7 @@ setVolumeDefault(0.5)
     document.getElementById("songDur").innerText = songDuration
     
     
-    document.getElementById('playBtn').addEventListener('click',function (){play(audioElement)})
+    document.getElementById('playBtn').addEventListener('click',function (){playMusic(audioElement)})
     document.getElementById('stopBtn').addEventListener('click',function (){stop()})    
     document.getElementById('pauseBtn').addEventListener('click',function (){pause()})
     document.getElementById('prevBtn').addEventListener('click',function(){
@@ -208,7 +209,7 @@ if(document.getElementById("progBar").style.width=="100%"){
 
 }
 
-function play(audioElement){
+function playMusic(audioElement){
     var song=audioElement
     var playPath=audioElement.src
     playPath=playPath.split('/')
@@ -286,7 +287,7 @@ function prevSong(currentArtist,currentAlbum){
                     // console.log(audioElement.duration)
                     playlistIndex--
                 currentSong=albumSongs[playlistIndex]
-                    play(audioElement)
+                    playMusic(audioElement)
 
                 })
                 
@@ -332,7 +333,7 @@ function nextSong(currentArtist,currentAlbum){
                 // console.log(audioElement.duration)
                 playlistIndex++
             currentSong=albumSongs[playlistIndex]
-                play(audioElement)
+                playMusic(audioElement)
             })
             
         }
@@ -398,15 +399,15 @@ document.getElementById("mute").addEventListener("click", function (e){
 function songSelected(source,display){
     audioElement.src=source
     audioElement.load()
-    visualizerStart(audioElement)
+    // visualizerStart(audioElement)
     $('#artistHeader').text(display[0])
-    // console.log("aefagezrbgz")
+    console.log("aefagezrbgz")
     $('#albumHeader').text(display[1])
     $('#titleHeader').text(display[2])
     $('#albumC').attr('src',display[3])
     audioElement.addEventListener('loadeddata', ()=>{
         // console.log(audioElement.duration)
-        play(audioElement)
+        playMusic(audioElement)
     })
     
         // var min=Math.floor(audioElement.duration/60)
