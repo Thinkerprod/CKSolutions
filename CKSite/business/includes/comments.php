@@ -25,10 +25,10 @@ switch($src){
     deleteComment($connection);
     break;
 
-    case "delReply":
-        if(isset($_GET['del_id'])){}
-    deleteReply($connection);
-    break;
+    // case "delReply":
+    //     if(isset($_GET['del_id'])){}
+    // deleteReply($connection);
+    // break;
 
     default:
 

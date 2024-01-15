@@ -2,10 +2,14 @@
 
 include_once "../php_util/db.php";
 include_once "blog-functions.php";
-if(isset($_GET['source'])){
-$source=$_GET['source'];
+if(isset($_GET['src'])){
+$src=$_GET['src'];
+}
+else{
+    $src='';
+}
 
-switch($source){
+switch($src){
     case "recent":
         readAllBusinessPosts($connection);
         break;
@@ -24,10 +28,8 @@ switch($source){
 
 }
 
-}
-else{
-    readAllBusinessPosts($connection);
-}
+
+
 
 
 ?>

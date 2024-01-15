@@ -26,7 +26,7 @@ function readAllBusinessPosts($connection){
     <img class='post-image' src='images/blogImages/".$post_image."' alt=''>
     <p class='post-content' id='post-text'>{$post_content}</p>
         <p class='tags'>{$post_tags}</p>
-        <a class='readMore' href='blog-business.php?source=post&p_id=".$post_id."'>Read More</a>
+        <a class='readMore' href='blog-business.php?src=post&p_id=".$post_id."'>Read More</a>
     </div>";
 
 
@@ -85,13 +85,6 @@ function readSelectedBlogPost($connection){
         </div>
         </div>
 
-        <div class='row g-1 mb-3'>
-        <div class='col-sm-4'>
-        <label for='input-email' class='form-label'>E-mail</label>
-        
-        <input type='email' name='email' id='input-email' class='form-control'>
-        </div>
-        </div>
         
         <div class='row g-1 mb-3'>
         <div class='col-sm-6'>
@@ -131,7 +124,7 @@ function createComment($connection){
     
         $com_post_id=getPostId();
         $com_name=mysqli_real_escape_string($connection, $_POST['name']);
-        $com_email=$_POST['email'];
+        
         $com_content=mysqli_real_escape_string($connection, $_POST['comment']);
         $com_date=date("Y-m-d H:i:s");
         $com_time=date("Y-m-d H:i:s");
@@ -140,8 +133,8 @@ function createComment($connection){
     
     
     
-        $query="INSERT INTO comments (com_post_id,com_name,com_email,com_date,com_time,com_content) 
-        VALUES('{$com_post_id}','{$com_name}','{$com_email}','{$com_date}','{$com_time}','{$com_content}')";
+        $query="INSERT INTO comments (com_post_id,com_name,com_date,com_time,com_content) 
+        VALUES('{$com_post_id}','{$com_name}','{$com_date}','{$com_time}','{$com_content}')";
         $commentQuery=mysqli_query($connection,$query);
         confirmQuery($commentQuery);
         if($commentQuery){
@@ -191,7 +184,7 @@ function readAllComments($connection){
                 <p class='fs-5 lh-sm text-left'>{$com_content}</p>
                 <p class='fs-6 lh-1'>{$reply_count} replies</p>
                  <div class='d-flex text-end my-1'>
-                <a href='blog-business.php?source=post&p_id=".$p_id."&parent_id=".$com_id."#reply-form'>reply</a>
+                <a href='blog-business.php?src=post&p_id=".$p_id."&parent_id=".$com_id."#reply-form'>reply</a>
                 <a class='mx-2' href='includes/comments.php?src='delComment'&del_id=".$com_id."'>delete</a>
                 </div>";
 
@@ -201,7 +194,8 @@ function readAllComments($connection){
                 }
 
                 else{
-                    $comment.=reply_sorter($connection,$p_id,$com_id);
+                    $threads=reply_sorter($connection,$p_id,$com_id);
+                    $comment.=$threads;
                     echo $comment;
                 }
                 
@@ -222,7 +216,7 @@ function reply_sorter($connection,$post_id,$com_id){
     // $reply_array=array();
     // $threaded_replies=array();
     // $count_thread_layers=0;
-    $new_thread="<div class='d-flex flex-column thread mx-1 my-3'>";
+    $new_thread="<div class='d-flex flex-column comments thread mx-1 my-3'>";
     $close_thread="</div>";
     
     $query="SELECT * FROM comments WHERE is_reply=1 AND com_post_id=".$post_id." AND com_status='Approved'";
@@ -238,7 +232,7 @@ function reply_sorter($connection,$post_id,$com_id){
         $parent_id=$row['com_date'];
 
         $formatted_date=date_format(date_create($com_date), "D j M Y");
-            $formatted_time=date_format(date_create($com_time), "h:i a");
+        $formatted_time=date_format(date_create($com_time), "h:i a");
 
 
             //create reply rendered string
@@ -248,9 +242,8 @@ function reply_sorter($connection,$post_id,$com_id){
     <p class='fs-5 lh-sm text-left'>{$com_content}</p>
     <p class='fs-6 lh-1'>{$reply_count} replies</p>
      <div class='d-flex text-end my-1'>
-    <a class='mx-1' href='blog-business.php?source=post&p_id=".$post_id."&parent_id=".$com_id."'>reply</a>
-    <a class='mx-1' href='includes/comments.php?src='delReply
-    '&del_id=".$com_id."'>delete</a>
+     <a href='blog-business.php?src=post&p_id=".$post_id."&parent_id=".$com_id."#reply-form'>reply</a>
+     <a class='mx-2' href='includes/comments.php?src='delComment'&del_id=".$com_id."'>delete</a>
     </div>";
 
 
@@ -314,13 +307,6 @@ $op_com_name=$row['com_name'];
     </div>
     </div>
 
-    <div class='row g-1 mb-3'>
-    <div class='col-sm-4'>
-    <label for='input-email' class='form-label'>E-mail</label>
-    
-    <input type='email' name='email' id='input-email' class='form-control'>
-    </div>
-    </div>
     
     <div class='row g-1 mb-3'>
     <div class='col-sm-6'>
@@ -354,7 +340,7 @@ if(isset($_POST['submit-reply'])){
     }
     
    $reply_name = $_POST['name'];
-   $reply_email = $_POST['email'];
+  
    $reply_comment = $_POST['comment'];
         
 
@@ -363,7 +349,7 @@ if(isset($_POST['submit-reply'])){
 
 
     //CREATE REPLY IN COMMENTS TABLE
-    $create_comment_query="INSERT INTO comments (is_reply,parent_id,com_post_id,com_name,com_email,com_date,com_time,com_content) VALUES(1,'{$op_com_id}','{$reply_post}','{$reply_name}','{$reply_email}','{$reply_date}','{$reply_time}','{$reply_comment}')";
+    $create_comment_query="INSERT INTO comments (is_reply,parent_id,com_post_id,com_name,com_date,com_time,com_content) VALUES(1,'{$op_com_id}','{$reply_post}','{$reply_name}','{$reply_date}','{$reply_time}','{$reply_comment}')";
     $new_comment_reply=mysqli_query($connection,$create_comment_query);
     confirmQuery($new_comment_reply);
 
@@ -372,7 +358,7 @@ if(isset($_POST['submit-reply'])){
     commentCounter($connection);
    
 
-    // header("Location: ../../business/blog-business.php?source=post&p_id={$com_post_id}");
+    header("Location: ../../business/blog-business.php?source=post&p_id={$reply_post}");
 
 }
 
@@ -429,24 +415,26 @@ function deleteComment($connection){
     if(isset($_GET['p_id'])){
         $p_id=$_GET['p_id'];
     }
-    if(isset($_GET['com_id'])){
-        $com_id=$_GET['com_id'];
+    if(isset($_GET['del_id'])){
+        $del_id=$_GET['del_id'];
     }
 
     
 
-    $search_query="SELECT reply_count FROM comments WHERE com_id=".$com_id." AND com_post_id=".$p_id;
+    $search_query="SELECT reply_count FROM comments WHERE com_id=".$del_id." AND com_post_id=".$p_id;
     $reply_query=mysqli_query($connection,$search_query);
     $row=mysqli_fetch_assoc($reply_query);
     $reply_count=$row['reply_count'];
 
-    
+    if(is_child($connection,$del_id)>0){
+        replyCountDecrement($connection,is_child($connection,$del_id),$p_id);
+    }
 
     if($reply_count>0){
         //create array of ids
 
         
-        $comment_with_children=find_children($connection,$com_id,$p_id);
+        $comment_with_children=find_children($connection,$del_id,$p_id);
 
 
         for($i=0;$i<count($comment_with_children);$i++){
@@ -470,7 +458,7 @@ function deleteComment($connection){
 
     else{
 
-        $del_query="DELETE FROM comments WHERE com_id=".$com_id;
+        $del_query="DELETE FROM comments WHERE com_id=".$del_id;
         
         $test_del_query=mysqli_query($connection,$del_query);
         
@@ -485,65 +473,65 @@ function deleteComment($connection){
 
 }
 
-function deleteReply($connection){
-    if(isset($_GET['p_id'])){
-        $p_id=$_GET['p_id'];
-    }
-    if(isset($_GET['com_id'])){
-        $com_id=$_GET['com_id'];
-    }
+// function deleteReply($connection){
+//     if(isset($_GET['p_id'])){
+//         $p_id=$_GET['p_id'];
+//     }
+//     if(isset($_GET['com_id'])){
+//         $com_id=$_GET['com_id'];
+//     }
 
     
 
-    $search_query="SELECT reply_count FROM comments WHERE com_id=".$com_id." AND com_post_id=".$p_id;
-    $reply_query=mysqli_query($connection,$search_query);
-    $row=mysqli_fetch_assoc($reply_query);
-    $reply_count=$row['reply_count'];
+//     $search_query="SELECT reply_count FROM comments WHERE com_id=".$com_id." AND com_post_id=".$p_id;
+//     $reply_query=mysqli_query($connection,$search_query);
+//     $row=mysqli_fetch_assoc($reply_query);
+//     $reply_count=$row['reply_count'];
 
     
 
-    if($reply_count>0){
-        //create array of ids
+//     if($reply_count>0){
+//         //create array of ids
 
         
-        $reply_with_children=find_children($connection,$com_id,$p_id);
+//         $reply_with_children=find_children($connection,$com_id,$p_id);
 
 
-        for($i=0;$i<count($reply_with_children);$i++){
+//         for($i=0;$i<count($reply_with_children);$i++){
 
-            $array_id=$reply_with_children[$i];
+//             $array_id=$reply_with_children[$i];
 
-            $del_query="DELETE FROM comments WHERE com_id=".$array_id;
+//             $del_query="DELETE FROM comments WHERE com_id=".$array_id;
             
-            $test_del_query=mysqli_query($connection,$del_query);
+//             $test_del_query=mysqli_query($connection,$del_query);
           
-            confirmQuery($test_del_query);
-            commentCounterDecrement($connection,$p_id);
+//             confirmQuery($test_del_query);
+//             commentCounterDecrement($connection,$p_id);
             
-        }
+//         }
 
 
-        header("Location: comments.php");
+//         header("Location: comments.php");
         
 
-    }
+//     }
 
-    else{
+//     else{
 
-        $del_query="DELETE FROM comments WHERE com_id=".$com_id;
+//         $del_query="DELETE FROM comments WHERE com_id=".$com_id;
         
-        $test_del_query=mysqli_query($connection,$del_query);
+//         $test_del_query=mysqli_query($connection,$del_query);
         
-        confirmQuery($test_del_query);
-        commentCounterDecrement($connection,$p_id);
-        header("Location: comments.php");
+//         confirmQuery($test_del_query);
+//         commentCounterDecrement($connection,$p_id);
+//         header("Location: comments.php");
 
-    }
-}
+//     }
+// }
 
 
 
-function replyCountDecrement($connection,$parent_id,$com_id,$post_id){
+function replyCountDecrement($connection,$parent_id,$post_id){
 
     //get parent's reply count
     $search_query="SELECT reply_count FROM comments WHERE post_id=".$post_id." AND com_id=".$parent_id;
@@ -551,31 +539,31 @@ function replyCountDecrement($connection,$parent_id,$com_id,$post_id){
     $row=mysqli_fetch_assoc($get_op_reply_count);
     $op_reply_count=$row['reply_count'];
 
-    //if reply has any children find them, count them, and decrement in loop
+    //if comment has any children find them, count them, and decrement in loop
 
-    $search_query="SELECT reply_count FROM comments WHERE post_id=".$post_id." AND com_id=".$com_id;
-    $get_reply_count=mysqli_query($connection,$search_query);
-    $row=mysqli_fetch_assoc($get_reply_count);
-    $reply_count=$row['reply_count'];
+    // $search_query="SELECT reply_count FROM comments WHERE post_id=".$post_id." AND com_id=".$com_id;
+    // $get_reply_count=mysqli_query($connection,$search_query);
+    // $row=mysqli_fetch_assoc($get_reply_count);
+    // $reply_count=$row['reply_count'];
 
-    if($reply_count>0){
-        $reply_children_array=find_children($connection,$com_id,$post_id);
+    // if($op_reply_count>0){
+    //     $reply_children_array=findThreadReplies($connection,$parent_id,$post_id);
 
-        for($i=0;$i<count($reply_children_array);$i++){
-            $op_reply_count--;
-        }
+    //     for($i=0;$i<count($reply_children_array);$i++){
+    //         $op_reply_count--;
+    //     }
 
-        $update_query="UPDATE posts SET post_comment_count=$op_reply_count WHERE post_id=".$post_id;
-        $set_comment_count=mysqli_query($connection,$update_query);
-        confirmQuery($set_comment_count);
-    }
-    else{
+    //     $update_query="UPDATE comments SET reply_count=$op_reply_count WHERE com_id=".$parent_id;
+    //     $set_comment_count=mysqli_query($connection,$update_query);
+    //     confirmQuery($set_comment_count);
+    // }
+    
         $op_reply_count--;
 
-        $update_query="UPDATE posts SET post_comment_count=$op_reply_count WHERE post_id=".$post_id;
-        $set_comment_count=mysqli_query($connection,$update_query);
-        confirmQuery($set_comment_count);
-    }
+        $update_query="UPDATE comments SET reply_count=$op_reply_count WHERE com_id=".$parent_id;
+        $set_reply_count=mysqli_query($connection,$update_query);
+        confirmQuery($set_reply_count);
+
 
 
 }
@@ -597,7 +585,7 @@ function commentCounterDecrement($connection,$post_id){
 
 
 function find_children($connection,$com_id,$post_id){
-    $com_id_array=($com_id);
+    $com_id_array=array($com_id);
     $search_query="SELECT * FROM comments WHERE is_reply=1 AND com_post_id=".$post_id;
     $reply_query=mysqli_query($connection,$search_query);
    while($row=mysqli_fetch_assoc($reply_query)){
@@ -622,6 +610,46 @@ function find_children($connection,$com_id,$post_id){
 
 
 }
+
+function findThreadReplies($connection,$com_id,$post_id){
+
+    $com_id_array=array();
+    $search_query="SELECT * FROM comments WHERE is_reply=1 AND com_post_id=".$post_id;
+    $reply_query=mysqli_query($connection,$search_query);
+   while($row=mysqli_fetch_assoc($reply_query)){
+  
+    $reply_com_id=$row['com_id'];
+    // $reply_count=$row['reply_count'];
+    $parent_id=$row['parent_id'];
+  
+  if($parent_id==$com_id){
+    array_push($com_id_array,$reply_com_id);
+  }
+  
+  
+   } 
+  
+   return $com_id_array;
+  
+  }
+
+  function is_child($connection,$com_id){
+
+    $query="SELECT is_reply FROM comments WHERE com_id=".$com_id;
+    $isChild_query=mysqli_query($connection,$query);
+    while($row=mysqli_fetch_assoc($isChild_query)){
+      
+      $is_reply=$row['is_reply'];
+      if($is_reply==1){
+        $parent_id=$row['parent_id'];
+        return $parent_id;
+      }
+      return $is_reply;
+    
+    }
+    
+    
+    }
 
 
 ?>

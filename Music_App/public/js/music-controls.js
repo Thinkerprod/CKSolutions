@@ -422,7 +422,7 @@ function skipToEnd(){
 audioElement.addEventListener('ended',()=>{
     // console.log(audioElement.duration)
 console.log("ended")
-    nextSong()
+    nextSong(currentArtist,currentAlbum)
 },true)
 
 function visualizerStart(audioElement){
