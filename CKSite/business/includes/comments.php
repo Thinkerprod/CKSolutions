@@ -21,8 +21,10 @@ switch($src){
     break;
 
     case "delComment":
-        if(isset($_GET['del_id'])){}
-    deleteComment($connection);
+        if(isset($_GET['del_id'])){
+            deleteComment($connection);
+        }
+    
     break;
 
     // case "delReply":
@@ -31,11 +33,12 @@ switch($src){
     // break;
 
     default:
+    echo "something screwed up";
 
 
 }
 
-//creating a comment
+
 
 
 

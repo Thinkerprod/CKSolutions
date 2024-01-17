@@ -73,14 +73,13 @@ function readSelectedBlogPost($connection){
                 $selectedPost.=createReplyForm($connection);
             }
             else{
-        $selectedPost.="<div class='d-flex flex-column justify-content-start fs-4 comment-form mx-5'>
+        $selectedPost.="<div class='d-flex flex-column justify-content-start fs-4 comment-form mx-'>
         <p class='display-5 my-3 mx-5'>Leave a comment</p>
         <form action='includes/comments.php?src=comment&p_id={$p_id}' method='post' enctype='multipart/form-data'>
 
         <div class='row g-1 mb-3'>
         <div class='col-sm-4'>
         <label for='input-name' class='form-label'>Name</label>
-        
         <input type='text' name='name' id='input-name' class='form-control'>
         </div>
         </div>
@@ -101,12 +100,14 @@ function readSelectedBlogPost($connection){
         
         </form>
         <p class='h5 my-3'>All Comments Are Subject To Review</p>
-    </div>";}
+        </div>";
+    }
     $selectedPost.="
     <div class='display-5 text-center comments my-3 '>Comments</div>
-    <div class='container-fluid d-flex flex-column text-left comments my-3 mx-5'>";
+    <div class='container-fluid d-flex flex-column text-left comments my-3 mx-1'>";
     echo $selectedPost;
     readAllComments($connection);
+    //end divs for start of selected post
     echo "</div>";
     echo "</div>";
 
@@ -156,13 +157,11 @@ function readAllComments($connection){
     $query="SELECT * FROM comments WHERE com_post_id =".$p_id." AND com_status='Approved' AND is_reply=0";
         $business_comments_query=mysqli_query($connection,$query);
 
-        
-        
 
         while($row=mysqli_fetch_assoc($business_comments_query)){
             $com_id=$row['com_id'];
-            $is_reply=$row['is_reply'];
-            $parent_id=$row['parent_id'];
+            // $is_reply=$row['is_reply'];
+            // $parent_id=$row['parent_id'];
             $reply_count=$row['reply_count'];
 
             // $com_post_id=$row['com_post_id'];
@@ -179,29 +178,37 @@ function readAllComments($connection){
                 // date_create($com_time)
 
                 //create html comment string
-                $comment= "<p class='fs-5 lh-1'>{$com_name}</p>
-                <p class='fs-6 lh-1'>Submitted {$formatted_date} at {$formatted_time}</p>
-                <p class='fs-5 lh-sm text-left'>{$com_content}</p>
-                <p class='fs-6 lh-1'>{$reply_count} replies</p>
-                 <div class='d-flex text-end my-1'>
-                <a href='blog-business.php?src=post&p_id=".$p_id."&parent_id=".$com_id."#reply-form'>reply</a>
-                <a class='mx-2' href='includes/comments.php?src='delComment'&del_id=".$com_id."'>delete</a>
-                </div>";
+                $comment= '<div class="container-fluid d-flex flex-column text-left comments my-3 mx-5">
+                <div class="d-flex flex-column text-left comments my-3 mx-1">
+                <p class="fs-5 lh-1">'.$com_name.'</p>
+                <p class="fs-6 lh-1">Submitted '.$formatted_date.' at '.$formatted_time.'</p>
+                <p class="fs-5 lh-sm text-left">'.$com_content.'</p>
+                <p class="fs-6 lh-1">'.$reply_count.' replies</p>
+                 <div class="d-flex text-end my-1">
+                <a href="blog-business.php?src=post&p_id='.$p_id.'&parent_id='.$com_id.'#reply-form">reply</a>
+                <a class="mx-2" href="./includes/comments.php?src=delComment&del_id='.$com_id.'">delete</a>
+                </div></div>';
 
                 //if comment has no replies, render
                 if($reply_count==0){
+                    //close comment
+                    $comment.='</div>';
                 echo $comment;
                 }
 
                 else{
                     $threads=reply_sorter($connection,$p_id,$com_id);
                     $comment.=$threads;
+                      //close comment
+                      $comment.='</div>';
                     echo $comment;
                 }
                 
 
             
         }
+
+        
     
 
 }
@@ -210,14 +217,14 @@ function readAllComments($connection){
 
 function reply_sorter($connection,$post_id,$com_id){
 
-
+    $new_thread="<div class='d-flex flex-column comments thread mx-5 my-5 ps-3'>";
     
     //create comment array
     // $reply_array=array();
     // $threaded_replies=array();
     // $count_thread_layers=0;
-    $new_thread="<div class='d-flex flex-column comments thread mx-1 my-3'>";
-    $close_thread="</div>";
+    // $new_thread="<div class='d-flex flex-column comments thread mx-1 my-3'>";
+    // $close_thread="</div>";
     
     $query="SELECT * FROM comments WHERE is_reply=1 AND com_post_id=".$post_id." AND com_status='Approved'";
     $get_all_replies=mysqli_query($connection,$query);
@@ -229,30 +236,37 @@ function reply_sorter($connection,$post_id,$com_id){
         $com_date=$row['com_date'];
         $com_time=$row['com_time'];
         $com_content=$row['com_content'];
-        $parent_id=$row['com_date'];
-
+        // $parent_id=$row['com_date'];
+        // echo $parent_id;
         $formatted_date=date_format(date_create($com_date), "D j M Y");
         $formatted_time=date_format(date_create($com_time), "h:i a");
 
 
             //create reply rendered string
-            $reply="
-    <p class='fs-5 lh-1'>{$com_name}</p>
-    <p class='fs-6 lh-1'>Submitted {$formatted_date} at {$formatted_time}</p>
-    <p class='fs-5 lh-sm text-left'>{$com_content}</p>
-    <p class='fs-6 lh-1'>{$reply_count} replies</p>
-     <div class='d-flex text-end my-1'>
-     <a href='blog-business.php?src=post&p_id=".$post_id."&parent_id=".$com_id."#reply-form'>reply</a>
-     <a class='mx-2' href='includes/comments.php?src='delComment'&del_id=".$com_id."'>delete</a>
-    </div>";
+
 
 
         if($parent_id==$com_id){
-            $new_thread.=$reply;
+            // echo $parent_id;
+            // $comment_array=array();
+            $new_thread.= '
+            <div class="d-flex flex-column comments threads mx-1 my-3">
+            <p class="fs-5 lh-1">'.$com_name.'</p>
+            <p class="fs-6 lh-1">Submitted '.$formatted_date.' at '.$formatted_time.'</p>
+            <p class="fs-5 lh-sm text-left">'.$com_content.'</p>
+            <p class="fs-6 lh-1">'.$reply_count.' replies</p>
+             <div class="d-flex text-end my-1">
+             <a href="blog-business.php?src=post&p_id='.$post_id.'&parent_id='.$com_id.'#reply-form">reply</a>
+             <a class="mx-2" href="./includes/comments.php?src=delComment&del_id='.$reply_com_id.'">delete</a>
+            </div></div>';
+            
 
             if($reply_count>0){
                 $new_thread.=reply_sorter($connection,$post_id,$reply_com_id);
             }
+            //close thread
+        
+            
 
         }
 
@@ -260,7 +274,7 @@ function reply_sorter($connection,$post_id,$com_id){
 
         
 
-    
+        
     
             // echo "<p class='fs-5 lh-1'>{$com_name}</p>
                         // <p class='fs-6 lh-1'>Submitted {$formatted_date} at {$formatted_time}</p>
@@ -271,9 +285,10 @@ function reply_sorter($connection,$post_id,$com_id){
                         // </div>";
         
     }
-    $new_thread.=$close_thread;
+    // $new_thread.=$close_thread;
+    $new_thread.="</div>";
     return $new_thread;
-    }
+}
 
 
 
@@ -451,7 +466,7 @@ function deleteComment($connection){
         }
 
 
-        header("Location: comments.php");
+        // header("Location: comments.php");
         
 
     }
