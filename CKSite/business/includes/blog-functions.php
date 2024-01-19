@@ -119,6 +119,62 @@ function readSelectedBlogPost($connection){
 }
 }
 
+function readPostsByMonth($connection){
+    if(isset($_GET['month'])){
+        $month=$_GET['month'];
+    }
+
+    // echo date("t");
+
+    
+$lowRangeDate=date('Y')."-".$month."-01";
+$highRangeDate=date('Y')."-".$month."-".date("t");
+// echo $lowRangeDate;
+    
+    $query="SELECT * FROM posts WHERE post_category_id = 1 AND post_status='published' AND post_date BETWEEN '".$lowRangeDate."' AND '".$highRangeDate."'";
+    $month_archive_query=mysqli_query($connection,$query);
+
+    while($row=mysqli_fetch_assoc($month_archive_query)){
+        $post_id=$row['post_id'];
+        // $post_cat_id=$row['post_category_id'];
+        $post_title=$row['post_title'];
+        $post_author=$row['post_author'];
+        $post_date=$row['post_date'];
+        $post_image=$row['post_image'];
+        $post_content=$row['post_content'];
+        $post_tags=$row['post_tags'];
+        // $post_comment_count=$row['post_comment_count'];
+        // $post_status=$row['post_status'];
+    
+       echo "<div class='blog-entry my-3' id='blogPost'>
+        <h2>{$post_title}</h2>
+        <h3>by $post_author</h3>
+        <small>created on $post_date</small>
+    
+        <img class='post-image' src='images/blogImages/".$post_image."' alt=''>
+        <p class='post-content' id='post-text'>{$post_content}</p>
+            <p class='tags'>{$post_tags}</p>
+            <a class='readMore' href='blog-business.php?src=post&p_id=".$post_id."'>Read More</a>
+        </div>";
+    
+    
+    
+    }
+    
+}
+
+function printYearLinks(){
+    $yearConceptDate='2020';
+    $year=date("Y");
+    $yearsInService=$year-$yearConceptDate;
+    for($i=0;$i<$yearsInService;$i++){
+        echo '<a class="mx-1" href="blog-business.php?src=year&year='.$yearConceptDate.'">'.$yearConceptDate.'</a>';
+        $yearConceptDate++;
+        
+
+    }
+}
+
 
 
 function createComment($connection){
@@ -180,14 +236,15 @@ function readAllComments($connection){
                 //create html comment string
                 $comment= '<div class="container-fluid d-flex flex-column text-left comments my-3 mx-5">
                 <div class="d-flex flex-column text-left comments my-3 mx-1">
-                <p class="fs-5 lh-1">'.$com_name.'</p>
-                <p class="fs-6 lh-1">Submitted '.$formatted_date.' at '.$formatted_time.'</p>
-                <p class="fs-5 lh-sm text-left">'.$com_content.'</p>
-                <p class="fs-6 lh-1">'.$reply_count.' replies</p>
-                 <div class="d-flex text-end my-1">
-                <a href="blog-business.php?src=post&p_id='.$p_id.'&parent_id='.$com_id.'#reply-form">reply</a>
-                <a class="mx-2" href="./includes/comments.php?src=delComment&del_id='.$com_id.'">delete</a>
-                </div></div>';
+                    <p class="fs-5 lh-1">'.$com_name.'</p>
+                    <p class="fs-6 lh-1">Submitted '.$formatted_date.' at '.$formatted_time.'</p>
+                    <p class="fs-5 lh-sm text-left">'.$com_content.'</p>
+                    <p class="fs-6 lh-1">'.$reply_count.' replies</p>
+                    <div class="d-flex text-end my-1">
+                        <a href="blog-business.php?src=post&p_id='.$p_id.'&parent_id='.$com_id.'#reply-form">reply</a>
+                        <a class="mx-2" href="./includes/comments.php?src=delComment&del_id='.$com_id.'&p_id='.$p_id.'">delete</a>
+                    </div>
+                </div>';
 
                 //if comment has no replies, render
                 if($reply_count==0){
@@ -256,8 +313,8 @@ function reply_sorter($connection,$post_id,$com_id){
             <p class="fs-5 lh-sm text-left">'.$com_content.'</p>
             <p class="fs-6 lh-1">'.$reply_count.' replies</p>
              <div class="d-flex text-end my-1">
-             <a href="blog-business.php?src=post&p_id='.$post_id.'&parent_id='.$com_id.'#reply-form">reply</a>
-             <a class="mx-2" href="./includes/comments.php?src=delComment&del_id='.$reply_com_id.'">delete</a>
+             <a href="blog-business.php?src=post&p_id='.$post_id.'&parent_id='.$reply_com_id.'#reply-form">reply</a>
+             <a class="mx-2" href="./includes/comments.php?src=delComment&del_id='.$reply_com_id.'&p_id='.$post_id.'">delete</a>
             </div></div>';
             
 
@@ -271,19 +328,6 @@ function reply_sorter($connection,$post_id,$com_id){
         }
 
 
-
-        
-
-        
-    
-            // echo "<p class='fs-5 lh-1'>{$com_name}</p>
-                        // <p class='fs-6 lh-1'>Submitted {$formatted_date} at {$formatted_time}</p>
-                        // <p class='fs-5 lh-sm text-left'>{$com_content}</p>
-                        //  <div class='d-flex text-end my-1'>
-                        // <a class='mx-1' href='comments.php?source=post&p_id=".$p_id."&reply_id=".$com_id."'>reply</a>
-                        // <a class='mx-1' href='includes/comments.php?del_id=".$com_id."'>delete</a>
-                        // </div>";
-        
     }
     // $new_thread.=$close_thread;
     $new_thread.="</div>";
@@ -371,9 +415,14 @@ if(isset($_POST['submit-reply'])){
     //increment the reply_count for the comment/reply replied to
     reply_counter($connection,$op_com_id);
     commentCounter($connection);
+
+//     $encodedParams = urlencode("source=post&p_id={$reply_post}");
+// $redirectURL = "../../business/blog-business.php?" . $encodedParams;
+header("Location: ../../business/blog-business.php?src=post&p_id={$reply_post}");
+exit;
    
 
-    header("Location: ../../business/blog-business.php?source=post&p_id={$reply_post}");
+    // header("Location: ../../business/blog-business.php?source=post&p_id={$reply_post}");
 
 }
 
@@ -467,6 +516,12 @@ function deleteComment($connection){
 
 
         // header("Location: comments.php");
+        // $encodedParams = urlencode("source=post&p_id={$p_id}");
+        // $redirectURL = "./blog-business.php?" . $encodedParams;
+        // $path=$_SERVER['DOCUMENT ROOT'] . "/business/blog-business.php?src=post&p_id={$p_id}";
+        // echo $path;
+        header("Location: ../blog-business.php?src=post&p_id={$p_id}");
+        exit;
         
 
     }
@@ -479,7 +534,10 @@ function deleteComment($connection){
         
         confirmQuery($test_del_query);
         commentCounterDecrement($connection,$p_id);
-        header("Location: comments.php");
+        // $encodedParams = urlencode("source=post&p_id={$p_id}");
+        // $redirectURL = "./blog-business.php?" . $encodedParams;
+        header("Location: ../blog-business.php?src=post&p_id={$p_id}");
+        exit;
 
     }
 
@@ -488,68 +546,14 @@ function deleteComment($connection){
 
 }
 
-// function deleteReply($connection){
-//     if(isset($_GET['p_id'])){
-//         $p_id=$_GET['p_id'];
-//     }
-//     if(isset($_GET['com_id'])){
-//         $com_id=$_GET['com_id'];
-//     }
 
-    
-
-//     $search_query="SELECT reply_count FROM comments WHERE com_id=".$com_id." AND com_post_id=".$p_id;
-//     $reply_query=mysqli_query($connection,$search_query);
-//     $row=mysqli_fetch_assoc($reply_query);
-//     $reply_count=$row['reply_count'];
-
-    
-
-//     if($reply_count>0){
-//         //create array of ids
-
-        
-//         $reply_with_children=find_children($connection,$com_id,$p_id);
-
-
-//         for($i=0;$i<count($reply_with_children);$i++){
-
-//             $array_id=$reply_with_children[$i];
-
-//             $del_query="DELETE FROM comments WHERE com_id=".$array_id;
-            
-//             $test_del_query=mysqli_query($connection,$del_query);
-          
-//             confirmQuery($test_del_query);
-//             commentCounterDecrement($connection,$p_id);
-            
-//         }
-
-
-//         header("Location: comments.php");
-        
-
-//     }
-
-//     else{
-
-//         $del_query="DELETE FROM comments WHERE com_id=".$com_id;
-        
-//         $test_del_query=mysqli_query($connection,$del_query);
-        
-//         confirmQuery($test_del_query);
-//         commentCounterDecrement($connection,$p_id);
-//         header("Location: comments.php");
-
-//     }
-// }
 
 
 
 function replyCountDecrement($connection,$parent_id,$post_id){
 
     //get parent's reply count
-    $search_query="SELECT reply_count FROM comments WHERE post_id=".$post_id." AND com_id=".$parent_id;
+    $search_query="SELECT reply_count FROM comments WHERE com_post_id=".$post_id." AND com_id=".$parent_id;
     $get_op_reply_count=mysqli_query($connection,$search_query);
     $row=mysqli_fetch_assoc($get_op_reply_count);
     $op_reply_count=$row['reply_count'];
@@ -650,7 +654,7 @@ function findThreadReplies($connection,$com_id,$post_id){
 
   function is_child($connection,$com_id){
 
-    $query="SELECT is_reply FROM comments WHERE com_id=".$com_id;
+    $query="SELECT is_reply, parent_id FROM comments WHERE com_id=".$com_id;
     $isChild_query=mysqli_query($connection,$query);
     while($row=mysqli_fetch_assoc($isChild_query)){
       
@@ -659,7 +663,10 @@ function findThreadReplies($connection,$com_id,$post_id){
         $parent_id=$row['parent_id'];
         return $parent_id;
       }
-      return $is_reply;
+      else{
+        return $is_reply;
+      }
+      
     
     }
     

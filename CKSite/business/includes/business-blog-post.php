@@ -17,6 +17,7 @@ switch($src){
         readSelectedBlogPost($connection);
         break;
     case "month":
+        readPostsByMonth($connection);
         break;
     case "year":
         break;
