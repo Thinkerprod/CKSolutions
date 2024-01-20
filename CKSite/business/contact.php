@@ -6,13 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/bb58b73510.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/contact.css">
-
+    <link rel="stylesheet" href="css/master-nav.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap" rel="stylesheet">
     <title>Contact</title>
 </head>
 <body>
+<?php include_once "includes/contact-header.php";?>
+
     <div class="container">    
         
     <form action="contact.php" method="post">
@@ -35,6 +37,7 @@
         </div>
         <input type="button" value="Submit" class="submit-btn">
     </form>
+    <div class="wide-background"></div>
     </div>
 
     

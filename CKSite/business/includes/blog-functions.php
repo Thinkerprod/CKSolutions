@@ -128,13 +128,57 @@ function readPostsByMonth($connection){
 
     
 $lowRangeDate=date('Y')."-".$month."-01";
-$highRangeDate=date('Y')."-".$month."-".date("t");
+$highRangeDate=date('Y')."-".$month."-".cal_days_in_month(CAL_GREGORIAN,$month,date('Y'));
 // echo $lowRangeDate;
     
     $query="SELECT * FROM posts WHERE post_category_id = 1 AND post_status='published' AND post_date BETWEEN '".$lowRangeDate."' AND '".$highRangeDate."'";
     $month_archive_query=mysqli_query($connection,$query);
 
     while($row=mysqli_fetch_assoc($month_archive_query)){
+        $post_id=$row['post_id'];
+        // $post_cat_id=$row['post_category_id'];
+        $post_title=$row['post_title'];
+        $post_author=$row['post_author'];
+        $post_date=$row['post_date'];
+        $post_image=$row['post_image'];
+        $post_content=$row['post_content'];
+        $post_tags=$row['post_tags'];
+        // $post_comment_count=$row['post_comment_count'];
+        // $post_status=$row['post_status'];
+    
+       echo "<div class='blog-entry my-3' id='blogPost'>
+        <h2>{$post_title}</h2>
+        <h3>by $post_author</h3>
+        <small>created on $post_date</small>
+    
+        <img class='post-image' src='images/blogImages/".$post_image."' alt=''>
+        <p class='post-content' id='post-text'>{$post_content}</p>
+            <p class='tags'>{$post_tags}</p>
+            <a class='readMore' href='blog-business.php?src=post&p_id=".$post_id."'>Read More</a>
+        </div>";
+    
+    
+    
+    }
+    
+}
+
+function readPostsByYear($connection){
+    if(isset($_GET['year'])){
+        $year=$_GET['year'];
+    }
+
+    // echo date("t");
+
+    
+$lowRangeDate=$year."-01-01";
+$highRangeDate=$year."-12-31";
+// echo $lowRangeDate;
+    
+    $query="SELECT * FROM posts WHERE post_category_id = 1 AND post_status='published' AND post_date BETWEEN '".$lowRangeDate."' AND '".$highRangeDate."'";
+    $year_archive_query=mysqli_query($connection,$query);
+
+    while($row=mysqli_fetch_assoc($year_archive_query)){
         $post_id=$row['post_id'];
         // $post_cat_id=$row['post_category_id'];
         $post_title=$row['post_title'];

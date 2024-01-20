@@ -20,6 +20,7 @@ switch($src){
         readPostsByMonth($connection);
         break;
     case "year":
+        readPostsByYear($connection);
         break;
     case "genre":
         break;
