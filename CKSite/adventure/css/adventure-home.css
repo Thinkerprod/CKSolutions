@@ -70,7 +70,7 @@ body {
 .home-links a:hover{
     opacity: 1;
 }
-.watch{
+.hands{
     display: none;
 }
     .profile{
@@ -116,14 +116,38 @@ body {
         font-size: 2.5em;
         margin-top: 1rem;
     }
+    .pocket-watch{
+        display: none;
+    }
     @media  (min-width:750px){
         .home{
             position:relative;
-            background: url('../images/books_with_watch-HandsRemoved.png');
+            background: url('../images/books_without_pocketwatch.png');
             background-position: top center;
             background-repeat: no-repeat;
             background-size: cover;
             background-attachment: scroll;
+        }
+        .home-nav{
+
+        }
+
+
+
+        .pocket-watch{
+            display: block;
+            position:absolute;
+            float:left;
+            top:-10px;
+            left:0px;
+            z-index: 10;
+            background: url('../images/pocketwatchAsset-without-hands.png');
+            background-position: top center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width:772px;
+            height:772px;
+            position:relative;
         }
 
         .home-links a{
@@ -138,7 +162,7 @@ body {
             
         }
 
-        .watch{
+        .hands{
             display: block;
             width:300px;
             height:300px;
