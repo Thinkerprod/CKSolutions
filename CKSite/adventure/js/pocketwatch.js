@@ -26,17 +26,27 @@ document.getElementById("minute").style.transform="rotate("+(minHandAngle(minute
     document.getElementById("second").style.transform="rotate("+(hourHandAngle(h,minutes))+"deg)";
 }
 
+
 //Get ticking
 function update(){
-       let day=new Date();
-let h=day.getHours();
-let seconds=day.getSeconds();
-let minutes=day.getMinutes();
+    let day=new Date();
+    let h=day.getHours();
+    let seconds=day.getSeconds();
+    let minutes=day.getMinutes();
 
-document.getElementById("second").style.transform="rotate("+(seconds*6)+"deg)";
-document.getElementById("minute").style.transform="rotate("+(minutes*6)+"deg)";
+    document.getElementById("second").style.transform="rotate("+(seconds*6)+"deg)";
+    document.getElementById("minute").style.transform="rotate("+(minutes*6)+"deg)";
     document.getElementById("hour").style.transform="rotate("+(hourHandAngle(h,minutes))+"deg)";
+
+    
+
+
+    
     window.requestAnimationFrame(update);
 }
 
 window.requestAnimationFrame(update);
+
+
+
+
