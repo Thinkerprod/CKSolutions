@@ -3,7 +3,7 @@ function secHandAngle(sec){
     return angle
 }
 function minHandAngle(min){
-    var angle=(360/60)*min
+    var angle=(360/60)*min-50
     return angle
 }
 function hourHandAngle(hours, minutes){

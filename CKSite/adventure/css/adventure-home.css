@@ -160,7 +160,7 @@ body {
             display: block;
             position:absolute;
             float:left;
-            top:-10px;
+            top:-15px;
             left:0px;
             z-index: 10;
             background: url('../images/pocketwatchAsset-without-hands.png');

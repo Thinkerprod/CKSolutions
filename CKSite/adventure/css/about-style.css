@@ -1,0 +1,65 @@
+html {
+    overflow: hidden;
+    scroll-behavior: smooth;
+    min-width: 100vw;
+    min-height:100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;      
+}
+body{
+    /* width: 100%; */
+    background-color: #000;
+    background-image: url("../images/forestBackground.jpeg");
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: scroll;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 800;
+    color: #000;
+    margin:0;
+    padding:0;
+}
+
+.container{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255,255,255,0.75);
+    /* filter: blur(12px); */
+    /* margin-top: 1rem; */
+    /* opacity: 0.8; */
+}
+
+img{
+    margin-top: 2rem;
+    width:300px;
+    height: auto;
+    /* opacity: 1; */
+}
+
+.about-text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 300px;
+}
+footer{
+    
+}
+@media (min-width:700px){
+
+    .container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin-top: 5rem;
+    }
+
+    img{
+        margin-bottom: 3rem;
+    }
+
+}

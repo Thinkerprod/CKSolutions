@@ -1,6 +1,4 @@
-#burgerCheckbox{
-    display:none;
-}
+
 #burgerCheckbox:checked ~ #menuBars>#middle-bar{
     display: none;
     
@@ -99,20 +97,7 @@ nav a {
   display: none;
 }
 
-.mobile-nav{
-  visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width:95vw;
-    height:0;
-    border-top:1px solid #b8b8b8;
-    border-bottom:1px solid #b8b8b8;
-    margin-bottom: 1rem;
-    transform:scale(1,0);
-    transition: transform ease-in-out 500ms;
-}
+
 
 
 .toggle-display{
@@ -122,88 +107,12 @@ height: 30%;
  transform:scale(1,1);
 }
 
-.mobile-links{
-  width:100%;
-  height:100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  opacity: 1;
- 
-  text-decoration: none;
-  text-align: center;
-  color: #b8b8b8;
-  background-color: #000;
-  list-style: none;
-  padding:0.5rem 0 0.5rem 0;
-}
-
-.mobile-link{
- margin:0.5rem 0 0.5rem 0;
- font-family:"Work Sans", sans-serif;
- text-transform: uppercase;
-}
-
-.mobile-sub{
-  display: none;
-  height:0;
-  text-decoration: none;
-  color: #b8b8b8;
-  background-color: #000;
-  font-family:"Work Sans", sans-serif;
-  text-transform: uppercase;
-  text-align: left;
-  border-left:1px solid #b8b8b8;
-  border-right:1px solid #b8b8b8;
-
-}
-
-.mobile-link > a{
-  
-  text-decoration: none;
-  color: #b8b8b8;
-  background-color: #000;
-  font-family:"Work Sans", sans-serif;
-  text-transform: uppercase;
-  
-}
 
 
-#past-mobile, #current-mobile{
-  text-decoration: none;
-  color: #b8b8b8;
-  background-color: #000;
-  font-family:"Work Sans", sans-serif;
-  text-transform: uppercase;
-
-}
 
 
-.past-projects{
-  /* margin-bottom: 1rem; */
-  padding: 0.25rem 1rem 0.25rem 1rem;
-  
-  
-}
-.current-projects{
-  padding: 0.25rem 1rem 0.25rem 1rem;
-}
-
-#subNavCheck{
-  display: none;
-}
-
-#subNavCheck:checked ~ .mobile-sub{
-  display:flex;
-  height:10%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 
 
-}
 
 @media(min-width:750px){
 
@@ -217,22 +126,13 @@ height: 30%;
       height:0.2em;
       width:2em;
     }
-    #burgerCheckbox:checked ~ #menuBars>#bottom-bar{
-      transform-origin: 50% 100%;
-      width: 2.75em;
-    }
-    #burgerCheckbox:checked ~ #menuBars>#top-bar{
-      transform-origin: 50% 100%;
-      width: 2.75em;
-    }
+
     .mobile-links li a{
       font-size: 1.9em;
     
     }
     
-    .past{
-      padding-top: 0.5rem;
-    }
+
 
     .logo{
         font-size: 2.25em;

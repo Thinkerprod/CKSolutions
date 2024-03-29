@@ -19,25 +19,30 @@
         
     <form action="contact.php" method="post">
     <h1>Contact Me</h1>
-        <div class="input-design">
-        <input type="text" name="firstname" id="firstname" placeholder="First Name">
-        </div>
-        <div class="input-design">
-        <input type="text" name="lastname" id="lastname" placeholder="Last Name">
-        </div>
+    <div class="names">
+            <div class="input-design">
+                <input type="text" name="firstname" id="firstname" placeholder="First Name">
+            </div>
+            <div class="input-design">
+                <input type="text" name="lastname" id="lastname" placeholder="Last Name">
+            </div>
+    </div>
+    <div class="contact-info">
         <div class="input-design">
         <input type="email" name="email" id="email" placeholder="Email">
         </div>
         
         <div class="input-design">
         <input type="tel" name="telephone" id="telephone" placeholder="Phone #">
-        </div>
-        <div class="input-design large-input">
+        </div> 
+    </div>
+        
+        <div class=" large-input">
         <textarea name="message" id="message" placeholder="your message here"></textarea>
         </div>
         <input type="button" value="Submit" class="submit-btn">
     </form>
-    <div class="wide-background"></div>
+    <img src="images/envelope.png" alt="white envelope">
     </div>
 
     

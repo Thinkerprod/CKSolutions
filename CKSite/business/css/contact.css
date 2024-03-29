@@ -8,6 +8,7 @@ html {
 }
 
 body {
+
     height: 100vh;
     overflow: hidden;
     background-color: #000;
@@ -21,12 +22,18 @@ body {
     width: 100%;
     height: auto;
     display: flex;
-
+    background-image: url("../images/computer-with-glow.jpeg");
+    background-color: #000;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
     justify-content: center;
     align-items: center;
 }
 
 form {
+    width: 50%;
+    height: auto;
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -34,7 +41,7 @@ form {
     justify-content: center;
     border: 1px solid #b8b8b8;
     padding: 1rem;
-    border-radius: 10px;
+    border-radius: 15px;
     box-shadow:  0 4px 8px 0 rgba(255, 255, 255, 0.5), 0 6px 20px 0 rgba(255, 255, 255, 0.5);
 }
 
@@ -72,6 +79,7 @@ textarea{
   outline: none;
   border: none;
   border-style: none;
+  border-radius: 15px;
 }
 
 .large-input {
@@ -97,10 +105,43 @@ textarea{
 .wide-background{
     display: none;
 }
-@media(min-width:1000px){
+img{
+    display: none;
+}
+@media(min-width:750px){
     .container{
-        justify-content:center ;
-        margin-right:3rem;
+
+        display: flex;
+        justify-content:space-evenly ;
+        /* margin-right:3rem; */
+    }
+    img{
+        display: block;
+    width:300px;
+    height:auto;
     }
 
+    form{
+        display:flex;
+        border:none;
+        
+    }
+    .names{
+        display: flex;
+        flex-direction: row;
+        align-self: flex-start;
+        
+    }
+    .contact-info{
+        display: flex;
+        flex-direction: row;
+        align-self: flex-start;
+    }
+
+    .input-design{
+        margin-right: 3rem;
+    }
+    textarea{
+        width:75%;
+    }
 }
