@@ -170,7 +170,7 @@ transition: opacity 250ms ease-in-out;
     opacity: 0;
 }
 
-@media (min-width:700px){
+@media (min-width:890px){
 .hamburger{
     display: none;
 }

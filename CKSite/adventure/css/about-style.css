@@ -46,9 +46,7 @@ img{
     align-items: flex-start;
     width: 300px;
 }
-footer{
-    
-}
+
 @media (min-width:700px){
 
     .container{

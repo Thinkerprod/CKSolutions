@@ -1,6 +1,6 @@
 <?php
 session_start();
-//create a unique token for each succesful login
+
 
 if(isset($_SESSION['email'])){
     $_POST['email'];

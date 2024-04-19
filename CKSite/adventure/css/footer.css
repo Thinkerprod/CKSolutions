@@ -1,0 +1,28 @@
+footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgba(255,255,255,0.75);
+    width: 100%;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+}
+.icons{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 3rem;
+    margin: 0 1rem 0 1rem;
+    /* color: #000; */
+}
+.icons i{
+    color: #000;
+}
+@media (min-width:700px){
+    .icons{
+        justify-content: center;
+    }
+}

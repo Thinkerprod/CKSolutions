@@ -1,0 +1,33 @@
+html {
+    /* overflow: hidden; */
+    scroll-behavior: smooth;
+    min-height:100%;
+    margin: 0;
+    padding: 0;    
+}
+
+body {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    background-attachment: scroll;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 800;
+    color: #000;
+    margin:0;
+    padding:0;
+    
+    }
+
+.banner{
+    height:auto;
+    width:100%;
+    border: 3px solid #000;
+}
+.banner img{
+    height: auto;
+    width:100%;
+}
