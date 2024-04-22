@@ -21,18 +21,3 @@ body {
     padding:0;
     
     }
-
-.banner{
-    height:auto;
-    width:100%;
-    border: 3px solid #000;
-}
-.banner img{
-    height: auto;
-    width:100%;
-}
-#searchBtn{
-font-family: Font Awesome\ 5 Free;
-font-weight: 900;
-
-}

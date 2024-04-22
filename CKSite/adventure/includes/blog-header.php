@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>About</title>
+    <title>The Noise Upstairs - Blog</title>
 </head>
 <body>
 <header>
@@ -34,7 +34,7 @@
     <li><a href="blog-adventure.php">Blog</a></li>
     <li><a href="creaative-writing.php">Creative Writing</a></li>
     <li><a href="about.php">About</a></li>
-    <li><a href="admin/index.php"><i class="fa-solid fa-user"></i></a></li>
+    <li><a href="admin/admin-index.php"><i class="fa-solid fa-user"></i></a></li>
     </ul>
 </nav>
 </div>

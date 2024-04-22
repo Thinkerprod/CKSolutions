@@ -1,22 +1,23 @@
 
-<div class="row d-flex flex-column justify-content-start">
-    <h3 class="col-12">Search</h3> 
-    <div class="d-inline-flex align-items-center col-12">
-        
-        <form class="form-control" action="php_util/search.php" method="post">
+<div class="text-start d-sm-inline-flex d-lg-flex flex-lg-column justify-content-lg-center align-items-sm-center align-items-lg-start ">
+    <h2 class="text-start h4 mx-sm-2 mx-lg-0 p-lg-0" >Search</h3> 
+    <div class="d-sm-inline-flex align-items-center  my-2">
+    
+        <form class="form-control border border-0 p-0" action="includes/blog-search.php" method="post">
             <input type="text" name="search-bar" id="search-bar">
-            <input type="submit" value="Search &f002">
+            <button type="submit" class="btn btn-primary m-1" name="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <!-- <input type="submit" value="Search" class="fa-solid fa" id="searchBtn"> -->
         </form>
     </div>
-    <div class="col-12">
-
-    </div>
-    </div>
-
-        <div class="archive">
-            <label for="archive-select">Select Archive Period:</label>
-            <select name="archive-select" id="archive-select">
+    <div class="d-lg-flex flex-lg-column justify-content-lg-center align-items-sm-center align-items-lg-start">
+        <form action="includes/blog-search.php" class="form-control border border-0 p-0 ">
+        <label for="archive-select">Select Archive Period:</label>
+        <select name="archive-select" id="archive-select">
             
         </select><i class="fa-solid fa-calendar-days" id="mCalendar"></i></div>
-        </div>
+        </form>
+    </div>
+</div>
+
+
 

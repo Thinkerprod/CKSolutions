@@ -28,5 +28,7 @@ function confirmQuery($result){
   else{return true;}
 }
 
+$post_create_stmt=$connection->prepare("INSERT INTO posts (post_title, post_date, post_image, post_content, post_category) VALUES (?,?,?,?,?)");
+
 
 ?>
