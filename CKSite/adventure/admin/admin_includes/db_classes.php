@@ -61,6 +61,69 @@ $table.="<tr>
     echo $table;
    }
 }
+
+function read_All_Comments($connection){
+
+    $table="<table class='table'>
+    <thead>
+        <tr>
+            <th scope='col'>com_id</th>
+            <th scope='col'>is_reply</th>
+            <th scope='col'>parent_id</th>
+            <th scope='col'>reply_count</th>
+            <th scope='col'>com_post_id</th>
+            <th scope='col'>com_cw_id</th>
+            <th scope='col'>is_cw</th>
+            <th scope='col'>com_name</th>
+            <th scope='col'>com_date</th>
+            <th scope='col'>com_content</th>
+            <th scope='col'>com_published</th>
+        </tr>
+    </thead>
+    <tbody>";
+    
+        $sql_read_all_comments="SELECT * FROM comments";
+        $result=mysqli_query($connection,$sql_read_all_comments);
+       if(confirmQuery($result)){
+        while($row=mysqli_fetch_assoc($result)){
+    $com_id=$row['com_id'];       
+    $is_reply=$row['is_reply'];
+    $parent_id=$row['parent_id'];
+    $reply_count=$row['reply_count'];
+    $com_post_id=$row['com_post_id'];
+    $com_cw_id=$row['com_cw_id'];
+    $is_cw=$row['is_cw'];
+    $com_name=$row['com_name'];
+    $com_date=$row['com_date'];
+    $com_content=$row['com_content'];
+    $com_published=$row['com_published'];
+    
+    $table.="<tr>
+    <td>{$com_id}</td>
+    <td>{$is_reply}</td>
+    <td>{$parent_id}</td>
+    <td>{$reply_count}</td>
+    <td>{$com_post_id}</td>
+    <td>{$com_cw_id}</td>
+    <td>{$is_cw}</td>
+    <td>{$com_name}</td>
+    <td>{$com_date}</td>
+    <td>{$com_content}</td>
+    <td>{$com_published}</td>
+    <td><a class='text-uppercase' href='admin-index.php?src=pub&com_id='".$com_id."></a>Publish</td>
+    <td><a class='text-uppercase' href='admin-index.php?src=read&com_id='".$com_id."></a>Reply</td>
+    <td><a class='text-uppercase' href='admin-index.php?src=del&com_id='".$com_id."></a>Delete</td>
+    </tr>";
+    
+        }
+    
+        $table.="</tbody>
+        </table>";
+    
+        echo $table;
+       }
+    }
+
 function category_Select($connection){
 
     $select_menu="<select class='form-select' name='catSelect' aria-label='Select Menu'>";
@@ -102,6 +165,40 @@ function read_All_Categories($connection){
             <td>{$cat_id}</td>
             <td>{$cat_title}</td>
             <td><a href='admin-index.php?src=delcat' class='text-uppercase'></a></td>
+            </tr>";
+
+
+        }
+        $table.="</tbody></table>";
+        echo $table;
+    }
+}
+
+function read_All_Images($connection){
+
+    $table="<table class='table table-striped'>
+    <thead>
+        <tr>
+            <td scope='col'>img_id</td>
+            <td scope='col'>img_file</td>
+            <td scope='col'>is_cover</td>
+        </tr>
+    </thead>
+    <tbody>";
+
+    $media_query="SELECT * FROM post_images";
+    $result=mysqli_query($connection,$media_query);
+    if(confirmQuery($result)){
+        while($row=mysqli_fetch_assoc($result)){
+            $img_id=$row['img_id'];
+            $img_file=$row['img_file'];
+            $is_cover=$row['is_cover'];
+
+            $table.="<tr>
+            <td>{$img_id}</td>
+            <td>{$img_file}</td>
+            <td>{$is_cover}</td>
+            <td><a href='admin-index.php?src=delimg&id={$img_id}' class='text-uppercase'></a></td>
             </tr>";
 
 
@@ -162,7 +259,56 @@ function tags_Checkbox($connection){
 }
 
 //Creative Writing Functions
+function read_All_CW($connection){
 
+    $table="<table class='table'>
+    <thead>
+        <tr>
+            <th scope='col'>cw_id</th>
+            <th scope='col'>cw_title</th>
+            <th scope='col'>cw_genre_id</th>
+            <th scope='col'>cw_date</th>
+            <th scope='col'>cw_path</th>           
+            <th scope='col'>cw_comment_count</th>
+            <th scope='col'>cw_published</th>
+        </tr>
+    </thead>
+    <tbody>";
+    
+        $sql_read_all_cw="SELECT * FROM cw";
+        $result=mysqli_query($connection,$sql_read_all_cw);
+       if(confirmQuery($result)){
+        while($row=mysqli_fetch_assoc($result)){
+    $cw_id=$row['cw_id'];       
+    $cw_title=$row['cw_title'];
+    $cw_genre_id=$row['cw_genre_id'];
+    $cw_date=$row['cw_date'];
+    $cw_path=$row['post_content'];
+    
+    $cw_comment_count=$row['cw_comment_count'];
+    $cw_published=$row['cw_published'];
+    
+    $table.="<tr>
+    <td>{$cw_id}</td>
+    <td>{$cw_title}</td>
+    <td>{$cw_genre_id}</td>
+    <td>{$cw_date}</td>
+    <td>{$cw_path}</td>
+    <td>{$cw_comment_count}</td>
+    <td>{$cw_published}</td>
+    <td><a class='text-uppercase' href='admin-index.php?src=edit&p_id='".$cw_id."></a>Edit</td>
+    <td><a class='text-uppercase' href='admin-index.php?src=read&p_id='".$cw_id."></a>Read</td>
+    <td><a class='text-uppercase' href='admin-index.php?src=del&p_id='".$cw_id."></a>Delete</td>
+    </tr>";
+    
+        }
+    
+        $table.="</tbody>
+        </table>";
+    
+        echo $table;
+       }
+    }
 
 function read_All_CW_Tags($connection){
 
@@ -265,6 +411,88 @@ function genre_Select($connection){
 }
 
 //Gallery Functions
+function read_All_Gallery($connection){
+
+    $table="<table class='table'>
+    <thead>
+        <tr>
+            <th scope='col'>gallery_id</th>
+            <th scope='col'>gallery_title</th>
+            <th scope='col'>gallery_media_id</th>
+            <th scope='col'>is_blacklight</th>
+            <th scope='col'>gallery_year</th>
+            <th scope='col'>gallery_material_id</th>
+            <th scope='col'>gallery_image</th>           
+        </tr>
+    </thead>
+    <tbody>";
+    
+        $sql_read_all_gallery="SELECT * FROM gallery";
+        $result=mysqli_query($connection,$sql_read_all_gallery);
+       if(confirmQuery($result)){
+        while($row=mysqli_fetch_assoc($result)){
+    $gallery_id=$row['gallery_id'];       
+    $gallery_title=$row['gallery_title'];
+    $gallery_media_id=$row['gallery_media_id'];
+    $is_blacklight=$row['is_blacklight'];
+    $gallery_year=$row['gallery_year'];
+    $gallery_material_id=$row['gallery_material_id'];
+    $gallery_image=$row['gallery_image'];
+
+    
+    $table.="<tr>
+    <td>{$gallery_id}</td>
+    <td>{$gallery_title}</td>
+    <td>{$gallery_media_id}</td>
+    <td>{$is_blacklight}</td>
+    <td>{$gallery_year}</td>
+    <td>{$gallery_material_id}</td>
+    <td>{$gallery_image}</td>
+    <td><a class='text-uppercase' href='admin-index.php?src=edit&p_id='".$gallery_id."></a>Edit</td>
+    <td><a class='text-uppercase' href='admin-index.php?src=del&p_id='".$gallery_id."></a>Delete</td>
+    </tr>";
+    
+        }
+    
+        $table.="</tbody>
+        </table>";
+    
+        echo $table;
+       }
+    }
+
+
+    function read_All_Media($connection){
+
+        $table="<table class='table table-striped'>
+        <thead>
+            <tr>
+                <td scope='col'>media_id</td>
+                <td scope='col'>media_name</td>
+            </tr>
+        </thead>
+        <tbody>";
+    
+        $media_query="SELECT * FROM media";
+        $result=mysqli_query($connection,$media_query);
+        if(confirmQuery($result)){
+            while($row=mysqli_fetch_assoc($result)){
+                $media_id=$row['media_id'];
+                $media_type=$row['media_type'];
+    
+                $table.="<tr>
+                <td>{$media_id}</td>
+                <td>{$media_type}</td>
+                <td><a href='admin-index.php?src=delmed&id={$media_id}' class='text-uppercase'></a></td>
+                </tr>";
+    
+    
+            }
+            $table.="</tbody></table>";
+            echo $table;
+        }
+    }
+
 function media_Select($connection){
     $select_menu="<select name='media_select' class='form-select' aria-label='Select Menu'>";
 

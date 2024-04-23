@@ -17,6 +17,10 @@
                 <input type="checkbox" name="black_check" id="" class="form-check-input">
             </div>
             <div class="mb-3">
+                <label for="size_input" class="form-label">Size</label>
+                <input type="text" name="size_input" id="" class="form-control">
+            </div>
+            <div class="mb-3">
                 <label for="year_input" class="form-label">Year</label>
                 <input type="text" name="year_input" id="" class="form-control">
             </div>

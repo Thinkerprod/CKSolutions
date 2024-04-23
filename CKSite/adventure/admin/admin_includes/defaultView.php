@@ -13,33 +13,29 @@
 <btn class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseCatTag" role="button" aria-expanded="false" aria-controls="collapseCatTag">Categories & Tags</btn>
 <btn class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseComments" role="button" aria-expanded="false" aria-controls="collapseComments">Comments</btn>
 <btn class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapsePI" role="button" aria-expanded="false" aria-controls="collapsePI">Post Images</btn>
-<btn class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseGenres" role="button" aria-expanded="false" aria-controls="collapseGenres">Genres</btn>
-<btn class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseMedia" role="button" aria-expanded="false" aria-controls="collapseMedia">Media</btn>
+<btn class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseGenres" role="button" aria-expanded="false" aria-controls="collapseGenres">Genres & Media</btn>
 </div>
 <div class="row">
     <div class="col-12 collapse" id="collapsePosts">
     <?php read_All_Posts($connection)?>
     </div>
     <div class="col-12 collapse" id="collapseCW">
-    <?php read_All_Posts($connection)?>
+    <?php read_All_CW($connection)?>
     </div>
     <div class="col-12 collapse" id="collapseGallery">
-    <?php read_All_Posts($connection)?>
+    <?php read_All_Gallery($connection)?>
     </div>
     <div class="col-12 collapse" id="collapseCatTag">
     <?php include_once "admin_includes/CatTagView.php"?>
     </div>
     <div class="col-12 collapse" id="collapseComments">
-    <?php read_All_Posts($connection)?>
+    <?php read_All_Comments($connection)?>
     </div>
     <div class="col-12 collapse" id="collapsePI">
-    <?php read_All_Posts($connection)?>
+    <?php read_All_Images($connection)?>
     </div>
     <div class="col-12 collapse" id="collapseGenres">
-    <?php read_All_Posts($connection)?>
-    </div>
-    <div class="col-12 collapse" id="collapseMedia">
-    <?php read_All_Posts($connection)?>
+    <?php include_once "admin_includes/GenreMediaView.php"?>
     </div>
 </div>
 </div>

@@ -20,6 +20,10 @@
                 <div class="col-8">
                 <?php tags_Checkbox($connection)?>
                 </div>
+                <div class="col-12 mb-3">
+                    <label for="img_input" class="form-label">Choose Cover Image</label>
+                    <input type="file" name="img_input" id="" class="form-control">
+                </div>
                     
                 
             </div>
