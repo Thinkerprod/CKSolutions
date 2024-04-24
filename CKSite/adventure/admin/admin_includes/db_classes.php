@@ -186,8 +186,8 @@ function read_All_Images($connection){
     </thead>
     <tbody>";
 
-    $media_query="SELECT * FROM post_images";
-    $result=mysqli_query($connection,$media_query);
+    $image_query="SELECT * FROM post_images";
+    $result=mysqli_query($connection,$image_query);
     if(confirmQuery($result)){
         while($row=mysqli_fetch_assoc($result)){
             $img_id=$row['img_id'];

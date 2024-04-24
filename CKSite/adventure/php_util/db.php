@@ -28,7 +28,41 @@ function confirmQuery($result){
   else{return true;}
 }
 
-$post_create_stmt=$connection->prepare("INSERT INTO posts (post_title, post_date, post_image, post_content, post_category) VALUES (?,?,?,?,?)");
+// http_response_code(404);
+// include('my_404.php');
+// die();
+
+$post_tag_stmnt=$connection->prepare("INSERT INTO post_tags_ids (tag_post_id,tag_id) VALUES (?,?)");
+
+function check_tags($connection, $stmnt){
+$last_id_query="SELECT LAST_INSERT_ID()";
+$result=mysqli_query($connection,$last_id_query);
+if(confirmQuery($result)){
+  $row = mysqli_fetch_array($result);
+  $last_inserted_id = $row[0];
+
+ 
+}
+  $tag_query="SELECT * FROM post_tags";
+    $result=mysqli_query($connection,$tag_query);
+    if(confirmQuery($result)){
+        while($row=mysqli_fetch_assoc($result)){
+            $tag_id=$row['tag_id'];
+            // $tag_name=$row['tag_name'];
+
+            $check_name=$tag_id."-check";
+
+          if(isset($_POST[$check_name])){
+            $stmnt->bind_param("ii",$last_inserted_id,$tag_id);
+            $stmnt->execute();
+          }
+
+        }
+
+    }
+}
+
+$post_create_stmt=$connection->prepare("INSERT INTO posts (post_title, post_date, post_image, post_content, post_category_id) VALUES (?,?,?,?,?)");
 
 
 ?>

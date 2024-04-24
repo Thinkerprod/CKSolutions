@@ -1,3 +1,10 @@
+<?php 
+define('BASE_URL','C:/xampp/htdocs/CKSolutions/CKSite/');
+        $path=BASE_URL.'php_util/spooky-hell.gif';
+        echo $path;
+         ?>
+
+<!-- C:\xampp\htdocs\CKSolutions\CKSite\php_util\spooky-hell.gif -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +20,9 @@
 <body>
     <div class="not-found">
         <h1>404 Page Not Found!</h1>
-        <img src="../media/images/spooky-hell.gif" alt="woman screaming">
+        
+        <?php echo "<img src='".$path."' alt='woman screaming'>"; ?>
+        
     </div>
 </body>
 </html>
