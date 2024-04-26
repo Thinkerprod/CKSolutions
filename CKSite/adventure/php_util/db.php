@@ -34,6 +34,10 @@ function confirmQuery($result){
 
 $post_tag_stmnt=$connection->prepare("INSERT INTO post_tags_ids (tag_post_id,tag_id) VALUES (?,?)");
 
+$update_tag_stmt=$connection->prepare("UPDATE post_tags_ids SET tag_post_id=?, tag_id=?");
+
+
+
 function check_tags($connection, $stmnt){
 $last_id_query="SELECT LAST_INSERT_ID()";
 $result=mysqli_query($connection,$last_id_query);
@@ -62,7 +66,30 @@ if(confirmQuery($result)){
     }
 }
 
+function check_tags_update($connection, $stmnt,$post_id){
+
+    $tag_query="SELECT * FROM post_tags";
+      $result=mysqli_query($connection,$tag_query);
+      if(confirmQuery($result)){
+          while($row=mysqli_fetch_assoc($result)){
+              $tag_id=$row['tag_id'];
+              // $tag_name=$row['tag_name'];
+  
+              $check_name=$tag_id."-check";
+  
+            if(isset($_POST[$check_name])){
+              $stmnt->bind_param("ii",$post_id,$tag_id);
+              $stmnt->execute();
+            }
+  
+          }
+  
+      }
+  }
+
 $post_create_stmt=$connection->prepare("INSERT INTO posts (post_title, post_date, post_image, post_content, post_category_id) VALUES (?,?,?,?,?)");
+$update_post_stmt=$connection->prepare("UPDATE posts SET post_title=?, post_date=?, post_image=?, post_content=?, post_category_id=? WHERE post_id=?");
+
 
 
 ?>

@@ -18,7 +18,7 @@ $table="<table class='table'>
         <th scope='col'>post_date</th>
         <th scope='col'>post_image</th>
         <th scope='col'>post_content</th>
-        <th scope='col'>post_category</th>
+        <th scope='col'>post_category_id</th>
         <th scope='col'>post_comment_count</th>
         <th scope='col'>post_published</th>
     </tr>
@@ -35,7 +35,7 @@ $post_title=$row['post_title'];
 $post_date=$row['post_date'];
 $post_content=$row['post_content'];
 $post_image=$row['post_image'];
-$post_category=$row['post_category'];
+$post_category_id=$row['post_category_id'];
 $post_comment_count=$row['post_comment_count'];
 $post_published=$row['post_published'];
 
@@ -45,12 +45,12 @@ $table.="<tr>
 <td>{$post_date}</td>
 <td>{$post_content}</td>
 <td>{$post_image}</td>
-<td>{$post_category}</td>
+<td>{$post_category_id}</td>
 <td>{$post_comment_count}</td>
 <td>{$post_published}</td>
-<td><a class='text-uppercase' href='admin-index.php?src=edit&p_id='".$post_id."></a>Edit</td>
-<td><a class='text-uppercase' href='admin-index.php?src=read&p_id='".$post_id."></a>Read</td>
-<td><a class='text-uppercase' href='admin-index.php?src=del&p_id='".$post_id."></a>Delete</td>
+<td><a class='text-uppercase' href='admin-index.php?src=edit&p_id=".$post_id."'>Edit</a></td>
+<td><a class='text-uppercase' href='admin-index.php?src=read&p_id=".$post_id."'>Read</a></td>
+<td><a class='text-uppercase' href='admin-index.php?src=del&p_id=".$post_id."'>Delete</a></td>
 </tr>";
 
     }
@@ -60,6 +60,13 @@ $table.="<tr>
 
     echo $table;
    }
+}
+
+function select_post_id($connection,$id){
+    $sql_read_all_posts="SELECT * FROM posts WHERE post_id=".$id;
+    $result=mysqli_query($connection,$sql_read_all_posts);
+return $result;
+
 }
 
 function read_All_Comments($connection){
@@ -136,6 +143,32 @@ function category_Select($connection){
             $cat_title=$row['cat_title'];
 
             $select_menu.="<option value='{$cat_id}' aria-label='{$cat_title}'>{$cat_title}</option>";
+
+
+        }
+        $select_menu.="</select>";
+        echo $select_menu;
+    }
+}
+function category_Selected($connection,$post_cat_id){
+
+    $select_menu="<select class='form-select' name='catSelect' aria-label='Select Menu'>";
+
+    $cat_query="SELECT * FROM categories";
+    $result=mysqli_query($connection,$cat_query);
+    if(confirmQuery($result)){
+        while($row=mysqli_fetch_assoc($result)){
+            $cat_id=$row['cat_id'];
+            $cat_title=$row['cat_title'];
+
+            if($cat_id==$post_cat_id){
+                $select_menu.="<option selected value='{$cat_id}' aria-label='{$cat_title}'>{$cat_title}</option>";
+            }
+            else{
+                $select_menu.="<option value='{$cat_id}' aria-label='{$cat_title}'>{$cat_title}</option>";
+            }
+
+            
 
 
         }
@@ -250,10 +283,72 @@ function tags_Checkbox($connection){
             $tag_name = $row['tag_name'];
 
             $input_check.="<div class='form-check col-md-4'><label class='form-check-label' for='".$tag_id."-check'>{$tag_name}</label>
-            <input class='form-check-input' type='checkbox' name='".$tag_id."-check' id='".$tag_name."-check'></div>";
+            <input class='form-check-input' type='checkbox' name='".$tag_id."-check' ></div>";
 
         }
 
+        echo $input_check;
+    }
+}
+
+function tags_Checkbox_Checked($connection,$post_id){
+    error_reporting(E_ALL);
+    $input_check="";
+    $tags_checked_sql="SELECT * FROM post_tags_ids WHERE tag_post_id=".$post_id;
+    $tag_query="SELECT * FROM post_tags";
+    
+    $result=mysqli_query($connection,$tag_query);
+    if(confirmQuery($result)){
+        
+        while($row=mysqli_fetch_assoc($result)){
+            $tag_id = $row['tag_id'];
+            $tag_name = $row['tag_name'];
+            // echo $tag_id;
+            // if(confirmQuery($checked_result)){
+                
+                $checked_result=mysqli_query($connection,$tags_checked_sql);
+                // echo "afaega";
+                // var_dump($checked_result);
+                if($checked_result->num_rows>0){
+                while($checked_row=mysqli_fetch_assoc($checked_result)){
+                    var_dump($checked_row['tag_id']);
+                    // echo $checked_row."here";
+                    if(!is_null($checked_row['tag_id'])){
+                        $checked_tag_id = $checked_row['tag_id'];
+                        $checked_tag_name = $checked_row['tag_name'];
+
+                        if($checked_tag_id==$tag_id){
+                            $input_check.="<div class='form-check col-md-4'><label class='form-check-label' for='".$checked_tag_id."-check'>{$checked_tag_name}</label>
+                            <input class='form-check-input' type='checkbox' name='".$checked_tag_id."-check'  checked></div>";
+                        }
+                        else{
+                            $input_check.="<div class='form-check col-md-4'><label class='form-check-label' for='".$tag_id."-check'>{$tag_name}</label>
+                            <input class='form-check-input' type='checkbox' name='".$tag_id."-check' ></div>";
+                        }
+                    }
+
+                    else{
+                        echo "something";
+                        $input_check.="<div class='form-check col-md-4'><label class='form-check-label' for='".$tag_id."-check'>{$tag_name}</label>
+                        <input class='form-check-input' type='checkbox' name='".$tag_id."-check' ></div>";
+                        echo $tag_id;
+                    }
+                    
+                    // $checked_tag_name = $row['tag_name'];
+
+                }
+            }
+
+            // }
+
+            else{
+                $input_check.="<div class='form-check col-md-4'><label class='form-check-label' for='".$tag_id."-check'>{$tag_name}</label>
+                <input class='form-check-input' type='checkbox' name='".$tag_id."-check' id='".$tag_name."-check'></div>";
+            }
+
+
+        }
+        // echo $tag_id;
         echo $input_check;
     }
 }

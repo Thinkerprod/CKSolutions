@@ -15,6 +15,9 @@ switch($src){
     case "add-gallery":
         include_once "admin_includes/add_gallery_form.php";
     break;
+    case "edit":
+        include_once "admin_includes/edit_posts_form.php";
+    break;
    default:
    include_once "admin_includes/defaultView.php"; 
 }
