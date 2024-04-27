@@ -38,19 +38,19 @@ $post_image=$row['post_image'];
 $post_category_id=$row['post_category_id'];
 $post_comment_count=$row['post_comment_count'];
 $post_published=$row['post_published'];
-
+$truncated_content=substr($post_content,0,50)."...";
 $table.="<tr>
 <td>{$post_id}</td>
 <td>{$post_title}</td>
 <td>{$post_date}</td>
-<td>{$post_content}</td>
 <td>{$post_image}</td>
+<td>{$truncated_content}</td>
 <td>{$post_category_id}</td>
 <td>{$post_comment_count}</td>
 <td>{$post_published}</td>
 <td><a class='text-uppercase' href='admin-index.php?src=edit&p_id=".$post_id."'>Edit</a></td>
 <td><a class='text-uppercase' href='admin-index.php?src=read&p_id=".$post_id."'>Read</a></td>
-<td><a class='text-uppercase' href='admin-index.php?src=del&p_id=".$post_id."'>Delete</a></td>
+<td><a class='text-uppercase' href='blog_actions/delete-post.php?p_id=".$post_id."'>Delete</a></td>
 </tr>";
 
     }
@@ -68,6 +68,8 @@ function select_post_id($connection,$id){
 return $result;
 
 }
+
+
 
 function read_All_Comments($connection){
 

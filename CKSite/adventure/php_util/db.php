@@ -33,9 +33,9 @@ function confirmQuery($result){
 // die();
 
 $post_tag_stmnt=$connection->prepare("INSERT INTO post_tags_ids (tag_post_id,tag_id) VALUES (?,?)");
-
+$post_tag_read_stmt=$connection->prepare("SELECT * FROM posts WHERE post_id=?");
 $update_tag_stmt=$connection->prepare("UPDATE post_tags_ids SET tag_post_id=?, tag_id=?");
-
+$delete_post_tag_stmt=$connection->prepare("DELETE FROM post_tags_ids WHERE tag_post_id=?");
 
 
 function check_tags($connection, $stmnt){
@@ -87,8 +87,12 @@ function check_tags_update($connection, $stmnt,$post_id){
       }
   }
 
+
+
 $post_create_stmt=$connection->prepare("INSERT INTO posts (post_title, post_date, post_image, post_content, post_category_id) VALUES (?,?,?,?,?)");
+$post_read_stmt=$connection->prepare("SELECT * FROM posts WHERE post_id=?");
 $update_post_stmt=$connection->prepare("UPDATE posts SET post_title=?, post_date=?, post_image=?, post_content=?, post_category_id=? WHERE post_id=?");
+$delete_post_stmt=$connection->prepare("DELETE FROM posts WHERE post_id=?");
 
 
 

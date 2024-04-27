@@ -18,6 +18,10 @@ switch($src){
     case "edit":
         include_once "admin_includes/edit_posts_form.php";
     break;
+    case "read":
+        include_once "admin_includes/read_post.php";
+    break;
+
    default:
    include_once "admin_includes/defaultView.php"; 
 }
