@@ -37,6 +37,8 @@ $post_tag_read_stmt=$connection->prepare("SELECT * FROM posts WHERE post_id=?");
 $update_tag_stmt=$connection->prepare("UPDATE post_tags_ids SET tag_post_id=?, tag_id=?");
 $delete_post_tag_stmt=$connection->prepare("DELETE FROM post_tags_ids WHERE tag_post_id=?");
 
+$post_tag_read_id_stmt=$connection->prepare("SELECT * FROM post_tags INNER JOIN post_tags_ids ON post_tags.tag_id=post_tags_ids.tag_id WHERE post_tags_ids.tag_post_id=?");
+
 
 function check_tags($connection, $stmnt){
 $last_id_query="SELECT LAST_INSERT_ID()";
@@ -88,11 +90,17 @@ function check_tags_update($connection, $stmnt,$post_id){
   }
 
 
-
+//post CRUD
 $post_create_stmt=$connection->prepare("INSERT INTO posts (post_title, post_date, post_image, post_content, post_category_id) VALUES (?,?,?,?,?)");
 $post_read_stmt=$connection->prepare("SELECT * FROM posts WHERE post_id=?");
 $update_post_stmt=$connection->prepare("UPDATE posts SET post_title=?, post_date=?, post_image=?, post_content=?, post_category_id=? WHERE post_id=?");
 $delete_post_stmt=$connection->prepare("DELETE FROM posts WHERE post_id=?");
+
+//category CRUD
+$cat_create_stmt=$connection->prepare("INSERT INTO categories (cat_title) VALUES (?)");
+$cat_read_stmt=$connection->prepare("SELECT * FROM categories WHERE cat_id=?");
+$cat_update_stmt=$connection->prepare("UPDATE categories SET cat_title=?");
+$cat_delete_stmt=$connection->prepare("DELETE FROM categories WHERE cat_id=?");
 
 
 

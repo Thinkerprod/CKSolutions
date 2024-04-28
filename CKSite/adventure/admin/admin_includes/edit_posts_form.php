@@ -18,6 +18,7 @@ $post_category_id=$row['post_category_id'];
 $post_comment_count=$row['post_comment_count'];
 // $post_published=$row['post_published'];
 // echo $post_image;
+$post_content=htmlspecialchars_decode($post_content);
 echo "
 <div class='row'>
         <div class='col-12 '>
@@ -60,7 +61,7 @@ echo "
                     <input class='form-control' type='text' name='post_title' id='' value='".$post_title."'>
                 </div>
                 <div class='mb-3'>
-                    <textarea class='form-control' name='post_content' id='' cols='70' rows='30'>".$post_content."</textarea>
+                    <textarea class='form-control' name='post_content' id='summernote' cols='70' rows='30'>".$post_content."</textarea>
                 </div>
                 <div class='mb-3'>
                     <input class='btn btn-primary' type='submit' value='Submit' name='submitBtn'>

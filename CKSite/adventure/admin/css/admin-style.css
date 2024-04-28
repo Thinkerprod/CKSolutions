@@ -21,3 +21,9 @@ body {
     padding:0;
     
     }
+
+    .author img{
+        width:70px;
+        height:auto;
+        border-radius: 50%;
+    }

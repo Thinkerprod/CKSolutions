@@ -41,7 +41,7 @@
                     <input class="form-control" type="text" name="post_title" id="">
                 </div>
                 <div class="mb-3">
-                    <textarea class="form-control" name="post_content" id="" cols="70" rows="30"></textarea>
+                    <textarea class="form-control" name="post_content" id="summernote" cols="70" rows="30"></textarea>
                 </div>
                 <div class="mb-3">
                     <input class="btn btn-primary" type="submit" value="Submit" name="submitBtn">

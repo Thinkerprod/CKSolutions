@@ -313,14 +313,15 @@ function tags_Checkbox_Checked($connection,$post_id){
                 // var_dump($checked_result);
                 if($checked_result->num_rows>0){
                 while($checked_row=mysqli_fetch_assoc($checked_result)){
-                    var_dump($checked_row['tag_id']);
+                    // var_dump($checked_row['tag_id']);
                     // echo $checked_row."here";
                     if(!is_null($checked_row['tag_id'])){
+                        // var_dump($checked_row['tag_id']);
                         $checked_tag_id = $checked_row['tag_id'];
-                        $checked_tag_name = $checked_row['tag_name'];
+                        // $checked_tag_name = $checked_row['tag_name'];
 
                         if($checked_tag_id==$tag_id){
-                            $input_check.="<div class='form-check col-md-4'><label class='form-check-label' for='".$checked_tag_id."-check'>{$checked_tag_name}</label>
+                            $input_check.="<div class='form-check col-md-4'><label class='form-check-label' for='".$checked_tag_id."-check'>{$tag_name}</label>
                             <input class='form-check-input' type='checkbox' name='".$checked_tag_id."-check'  checked></div>";
                         }
                         else{
