@@ -48,7 +48,7 @@ else
 $connection->close();
     // header('Location:../../admin');
 
-
+    header("Location: ../admin-index.php");
 }
 
 

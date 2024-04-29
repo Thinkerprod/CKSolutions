@@ -14,6 +14,7 @@
 <btn class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseComments" role="button" aria-expanded="false" aria-controls="collapseComments">Comments</btn>
 <btn class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapsePI" role="button" aria-expanded="false" aria-controls="collapsePI">Post Images</btn>
 <btn class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseGenres" role="button" aria-expanded="false" aria-controls="collapseGenres">Genres & Media</btn>
+<btn class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseCWTags" role="button" aria-expanded="false" aria-controls="collapseCWTags">CW Tags</btn>
 </div>
 <div class="row">
     <div class="col-12 collapse" id="collapsePosts">
@@ -36,6 +37,9 @@
     </div>
     <div class="col-12 collapse" id="collapseGenres">
     <?php include_once "admin_includes/GenreMediaView.php"?>
+    </div>
+    <div class="col-12 collapse" id="collapseCWTags">
+    <?php read_All_CW_Tags($connection)?>
     </div>
 </div>
 </div>

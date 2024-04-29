@@ -5,7 +5,7 @@
         <div class="col-12">
         <?php read_All_Categories($connection)?>
         
-        <form action="blog_actions/add-cat.php" method="post">
+        <form action="blog_actions/add-category.php" method="post">
             <div class="input-group">
                 <input type="text" name="cat_input" id="" class="form-control" placeholder="Add Category">
                 <button type="submit" name="submitBtn" class="btn btn-primary">Submit</button>

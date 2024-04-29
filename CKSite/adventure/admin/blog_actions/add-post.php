@@ -26,7 +26,7 @@ $post_content=htmlspecialchars($post_content);
     check_tags($connection,$post_tag_stmnt);
     confirmQuery($post_create_stmt);
     $connection->close();
-        // header('Location:../../admin');
+        header('Location:../admin-index.php');
 
 }
 

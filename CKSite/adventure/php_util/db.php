@@ -38,6 +38,10 @@ $update_tag_stmt=$connection->prepare("UPDATE post_tags_ids SET tag_post_id=?, t
 $delete_post_tag_stmt=$connection->prepare("DELETE FROM post_tags_ids WHERE tag_post_id=?");
 
 $post_tag_read_id_stmt=$connection->prepare("SELECT * FROM post_tags INNER JOIN post_tags_ids ON post_tags.tag_id=post_tags_ids.tag_id WHERE post_tags_ids.tag_post_id=?");
+$post_tag_delete_tag_id_stmt=$connection->prepare("DELETE FROM post_tags_ids WHERE tag_id=?");
+
+$tag_stmt=$connection->prepare("INSERT INTO post_tags (tag_name) VALUES (?)");
+$tag_delete_stmt=$connection->prepare("DELETE FROM post_tags WHERE tag_id=?");
 
 
 function check_tags($connection, $stmnt){
@@ -101,6 +105,31 @@ $cat_create_stmt=$connection->prepare("INSERT INTO categories (cat_title) VALUES
 $cat_read_stmt=$connection->prepare("SELECT * FROM categories WHERE cat_id=?");
 $cat_update_stmt=$connection->prepare("UPDATE categories SET cat_title=?");
 $cat_delete_stmt=$connection->prepare("DELETE FROM categories WHERE cat_id=?");
+
+//genre CRUD
+$genre_create_stmt=$connection->prepare("INSERT INTO genre (genre_name) VALUES (?)");
+$genre_read_stmt=$connection->prepare("SELECT * FROM genre WHERE genre_id=?");
+$genre_update_stmt=$connection->prepare("UPDATE genre SET genre_name=?");
+$genre_delete_stmt=$connection->prepare("DELETE FROM genre WHERE genre_id=?");
+
+//cw tag CRUD
+$CW_tag_create_stmt=$connection->prepare("INSERT INTO cw_tags (tag_name) VALUES (?)");
+$CW_tag_read_stmt=$connection->prepare("SELECT * FROM cw_tags WHERE tag_id=?");
+$CW_tag_update_stmt=$connection->prepare("UPDATE cw_tags SET tag_name=?");
+$CW_tag_delete_stmt=$connection->prepare("DELETE FROM cw_tags WHERE tag_id=?");
+
+//cw_tags_ids CRUD
+$CW_tag_id_create_stmt=$connection->prepare("INSERT INTO cw_tags_ids (cw_id,tag_id) VALUES (?,?)");
+$CW_tag_id_read_stmt=$connection->prepare("SELECT * FROM cw_tags_ids WHERE tag_id=?");
+$CW_tag_id_update_stmt=$connection->prepare("UPDATE cw_tags_ids SET cw_id=?, tag_id=?");
+$CW_tag_id_delete_stmt=$connection->prepare("DELETE FROM cw_tags_ids WHERE tag_id=?");
+
+
+//media CRUD
+$media_create_stmt=$connection->prepare("INSERT INTO media (media_type) VALUES (?)");
+$media_read_stmt=$connection->prepare("SELECT * FROM media WHERE media_id=?");
+$media_update_stmt=$connection->prepare("UPDATE media SET media_type=?");
+$media_delete_stmt=$connection->prepare("DELETE FROM media WHERE media_id=?");
 
 
 

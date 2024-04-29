@@ -199,7 +199,7 @@ function read_All_Categories($connection){
             $table.="<tr>
             <td>{$cat_id}</td>
             <td>{$cat_title}</td>
-            <td><a href='admin-index.php?src=delcat' class='text-uppercase'></a></td>
+            <td><a href='blog_actions/delete-category.php?cat_id={$cat_id}' class='text-uppercase'>Delete</a></td>
             </tr>";
 
 
@@ -216,7 +216,7 @@ function read_All_Images($connection){
         <tr>
             <td scope='col'>img_id</td>
             <td scope='col'>img_file</td>
-            <td scope='col'>is_cover</td>
+
         </tr>
     </thead>
     <tbody>";
@@ -232,8 +232,8 @@ function read_All_Images($connection){
             $table.="<tr>
             <td>{$img_id}</td>
             <td>{$img_file}</td>
-            <td>{$is_cover}</td>
-            <td><a href='admin-index.php?src=delimg&id={$img_id}' class='text-uppercase'></a></td>
+            
+            <td><a href='admin-index.php?src=delimg&id={$img_id}' class='text-uppercase'>Delete</a></td>
             </tr>";
 
 
@@ -265,7 +265,7 @@ function read_All_Tags($connection){
             $table.="<tr>
             <td>{$tag_id}</td>
             <td>{$tag_name}</td>
-            <td><a href='admin-index.php?src=deltag&t_id={$tag_id}' class='text-uppercase'></a></td>
+            <td><a href='blog_actions/delete-tag.php?t_id={$tag_id}' class='text-uppercase'>Delete</a></td>
             </tr>";
 
 
@@ -429,13 +429,20 @@ function read_All_CW_Tags($connection){
             $table.="<tr>
             <td>{$tag_id}</td>
             <td>{$tag_name}</td>
-            <td><a href='admin-index.php?src=deltag&t_id={$tag_id}' class='text-uppercase'></a></td>
+            <td><a href='blog_actions/delete-cw-tag.php?t_id={$tag_id}' class='text-uppercase'>Delete</a></td>
             </tr>";
 
 
         }
         $table.="</tbody></table>";
         echo $table;
+
+        echo "<form action='blog_actions/add-cw-tags.php' method='post'>
+        <div class='input-group mb-3'>
+                        <input type='text' name='cw_tag_input' class='form-control' placeholder='Add CW Tag' aria-label='add cw tags form'>
+                        <button type='submit' class='btn btn-primary' name='submitBtn'>Submit</button>
+                    </div>
+        </form>";
     }
 }
 
@@ -468,8 +475,8 @@ function read_All_Genres($connection){
     </thead>
     <tbody>";
 
-    $cat_query="SELECT * FROM genre";
-    $result=mysqli_query($connection,$cat_query);
+    $genre_query="SELECT * FROM genre";
+    $result=mysqli_query($connection,$genre_query);
     if(confirmQuery($result)){
         while($row=mysqli_fetch_assoc($result)){
             $genre_id=$row['genre_id'];
@@ -478,7 +485,7 @@ function read_All_Genres($connection){
             $table.="<tr>
             <td>{$genre_id}</td>
             <td>{$genre_name}</td>
-            <td><a href='admin-index.php?src=delcat' class='text-uppercase'></a></td>
+            <td><a href='blog_actions/delete-genre.php?g_id={$genre_id}' class='text-uppercase'>Delete</a></td>
             </tr>";
 
 
@@ -581,7 +588,7 @@ function read_All_Gallery($connection){
                 $table.="<tr>
                 <td>{$media_id}</td>
                 <td>{$media_type}</td>
-                <td><a href='admin-index.php?src=delmed&id={$media_id}' class='text-uppercase'></a></td>
+                <td><a href='blog_actions/delete-media.php?m_id={$media_id}' class='text-uppercase'>Delete</a></td>
                 </tr>";
     
     

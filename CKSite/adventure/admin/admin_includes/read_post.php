@@ -79,6 +79,11 @@ if(isset($_GET['p_id'])){
 
 echo $foot;
 
+if($post_published==0){
+
+
+}
+
 
     $result->free();
     $connection->close();
