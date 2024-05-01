@@ -4,7 +4,7 @@
     <div class="row gx-sm-2">
         <div class="d-flex justify-content-center align-items-center col-sm-12 col-md-12 col-lg-8 mb-3">
             <div class="banner">
-                <img src="images/NoiseUpstairs-banner-image.png" alt="image of brain with game controller, paintbrush, microscope, hand pointing, and pen from fanned out from behind">
+                <img src="images/NoiseUpstairs-banner-image.png" alt="image with text aying 'The Noise Upstairs' above an icon of a brain with game controller, paintbrush, microscope, hand pointing, and pen from fanned out from behind">
 
             </div>
         </div>

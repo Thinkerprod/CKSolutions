@@ -1,0 +1,48 @@
+html {
+    /* overflow: hidden; */
+    scroll-behavior: smooth;
+    min-height:100%;
+    margin: 0;
+    padding: 0;    
+}
+
+body {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    background-image: url("../images/old-paper-texture.png");
+    background-attachment: scroll;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 800;
+    color: #000;
+    margin:0;
+    padding:0;
+    
+    }
+
+    select{
+        background-color: transparent;
+    }
+
+    .genre-block{
+        height: auto;
+        width: 100%;
+        
+    }
+
+    .genre-block img{
+        max-width:300px;
+        height: auto;
+        border:1px solid #000;
+        box-shadow: 6px 6px 10px 3px #000 ;
+    }
+
+
+    @media(min-width:768px){
+        .side-well{
+            background-color:#EEEEEE ;
+        }
+    }
