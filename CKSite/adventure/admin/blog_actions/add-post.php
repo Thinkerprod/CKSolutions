@@ -13,10 +13,12 @@ if(isset($_POST['submitBtn'])){
     move_uploaded_file($post_image_temp,$moveImgPath);
 
     $post_title=$_POST['post_title'];
+    $post_title=mysqli_escape_string($connection,$post_title);
 
     $post_content=$_POST['post_content'];
 $post_content=nl2br($post_content);
 $post_content=htmlspecialchars($post_content);
+$post_content=mysqli_escape_string($connection,$post_content);
     // date_default_timezone_set("America/Regina");
     // $date=date("d-m-Y H:i:s");
     $datetime=new DateTime("America/Regina");

@@ -1,6 +1,7 @@
 <?php 
 include_once "admin_includes/admin_header.php";
 include_once "admin_includes/db_classes.php";
+include_once "../php_util/db.php";
 // $datetime=new DateTime('America/Regina');
 // date_default_timezone_set("America/Regina");
 // $post_date=$datetime->format("d-m-Y H:i:s");

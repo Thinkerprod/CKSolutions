@@ -4,8 +4,14 @@
     
     <div class="container-fluid paper">
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-8 d-flex justify-content-center align-items-center my-5 title-block">
-                    <div class="w-70">
+            <div class="col-12 d-flex justify-content-center align-items-center"></div>
+            <div class="col-sm-12 col-md-12 col-lg-8 d-flex justify-content-center align-items-center my-5 ">
+            
+                    <div class="w-70 d-flex flex-column justify-content-center align-items-center ">
+                        <div class="title-block">
+                            <h1 class="blog-name text-center h1 mb-4 title-block px-2 py-2">Between Forests And Planets</h1>
+                        </div>
+                    
                         <div class="genre-block d-flex justify-content-center align-items-center mx-3 w-70">
                             <!-- <div class="fantasy"></div>
                             <div class="sci-fi"></div>

@@ -11,11 +11,26 @@
         </form>
     </div>
     <div class="d-lg-flex flex-lg-column justify-content-lg-center align-items-sm-center align-items-lg-start">
-        <form action="includes/blog-search.php" class="form-control border border-0 p-0 ">
-        <label for="archive-select">Select Archive Period:</label>
-        <select class="form-select" name="archive-select" id="archive-select">
-            
-        </select><i class="fa-solid fa-calendar-days" id="mCalendar"></i></div>
+        <form action="includes/blog-search.php" class="form-control border border-0 p-0 bg-transparent">
+        <label class="form-label bg-transparent" for="archive-select">Select Archive Period:</label>
+            <div class="input-group">
+        
+        <select class="form-select bg-light" name="archive-select" id="archive-select">
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+        </select>
+        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-calendar-days" id="mCalendar"></i></button>
+        </div>
         </form>
     </div>
 </div>

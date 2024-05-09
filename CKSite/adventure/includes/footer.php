@@ -1,9 +1,9 @@
 <footer>
-    <h2>Social Media</h2>
+    <h2>Follow Me</h2>
     <div class="icons">
-        <a href="https://www.facebook.com/artsywriter"><i class="fa-brands fa-facebook"></i></a>
-        <a href="https://www.linkedin.com/in/cory-kutschker-621896aa/"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="https://github.com/Thinkerprod"><i class="fa-brands fa-github"></i></a>
+        <a class="mx-2" href="https://www.facebook.com/artsywriter"><i class="fa-brands fa-facebook"></i></a>
+        <a class="mx-2" href="https://www.linkedin.com/in/cory-kutschker-621896aa/"><i class="fa-brands fa-linkedin"></i></a>
+        <a class="mx-2" href="https://github.com/Thinkerprod"><i class="fa-brands fa-github"></i></a>
     </div>
     <h3 id="h3-copyright"></h3>
     <script>
