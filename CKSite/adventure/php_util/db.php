@@ -197,7 +197,10 @@ $CW_tag_delete_stmt=$connection->prepare("DELETE FROM cw_tags WHERE tag_id=?");
 
 //cw_tags_ids CRUD
 $CW_tag_id_create_stmt=$connection->prepare("INSERT INTO cw_tags_ids (cw_id,tag_id) VALUES (?,?)");
-$CW_tag_id_read_stmt=$connection->prepare("SELECT * FROM cw_tags_ids WHERE tag_id=?");
+
+$CW_tag_id_read_BY_CW_stmt=$connection->prepare("SELECT * FROM cw_tags_ids WHERE tag_id=?");
+$CW_tag_id_read_BY_Tag_stmt=$connection->prepare("SELECT * FROM cw_tags_ids WHERE cw_id=?");
+
 $CW_tag_id_update_stmt=$connection->prepare("UPDATE cw_tags_ids SET cw_id=?, tag_id=?");
 
 $CW_tag_id_delete_BY_Tag_stmt=$connection->prepare("DELETE FROM cw_tags_ids WHERE tag_id=?");

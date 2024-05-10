@@ -392,7 +392,7 @@ function read_All_CW($connection){
     <td>{$cw_filename}</td>
     <td>{$cw_comment_count}</td>
     <td>{$cw_published}</td>
-    <td><a class='text-uppercase' href='admin-index.php?src=cw_edit&cw_id=".$cw_id."'>Edit</a></td>
+    <td><a class='text-uppercase' href='admin-index.php?src=edit-cw&cw_id=".$cw_id."'>Edit</a></td>
     <td><a class='text-uppercase' href='admin-index.php?src=read&cw_id=".$cw_id."'>Read</a></td>
     <td><a class='text-uppercase' href='cw_actions/delete-cw.php?cw_id=".$cw_id."'>Delete</a></td>
     </tr>";
@@ -453,8 +453,10 @@ function tags_CW_Checkbox($connection){
             $tag_id = $row['tag_id'];
             $tag_name = $row['tag_name'];
 
-            $input_check.="<div class='form-check'><label class='form-check-label' for='".$tag_id."-check'>{$tag_name}</label>
-            <input class='form-check-input' type='checkbox' name='".$tag_id."-check' id='".$tag_name."-check'></div>";
+            $trimmed_tag_name=str_replace(" ","",$tag_name);
+
+            $input_check.="<div class='form-check'><label class='form-check-label' for='".$trimmed_tag_name."-check'>{$tag_name}</label>
+            <input class='form-check-input' type='checkbox' name='".$tag_id."-check' id='".$trimmed_tag_name."-check'></div>";
 
         }
 
@@ -508,11 +510,11 @@ function genre_Switch($connection){
             $switch_id=$trimmed_genre_name."_switch";
 
             $switch_menu.="<div class='form-check form-switch p-0'>";
-            $switch_menu.="<input class='form-check-input' type='checkbox' role='switch' name='{$switch_name}' id='{$switch_id}' value='{$genre_id}'><label class='form-check-label' for='{$switch_id}'>{$genre_name}</label>";
+            $switch_menu.="<input class='form-check-input' type='checkbox' role='switch' name='{$switch_name}' id='{$switch_id}' value='{$genre_id}'><label class='form-check-label' for='{$switch_id}'>{$genre_name}</label></div>";
 
 
         }
-        $switch_menu.="</div>";
+
         echo $switch_menu;
     }
 }
@@ -540,11 +542,11 @@ function genre_Switch_On($connection,$stmt,$cw_id){
 
                     if($genre_cw_db==$genre_id){
                 $switch_menu.="<div class='form-check form-switch p-0'>";
-                $switch_menu.="<input class='form-check-input' type='checkbox' role='switch' name='{$switch_name}' id='{$switch_id}' value='{$genre_id}' checked><label class='form-check-label' for='{$switch_id}'>{$genre_name}</label>";
+                $switch_menu.="<input class='form-check-input' type='checkbox' role='switch' name='{$switch_name}' id='{$switch_id}' value='{$genre_id}' checked><label class='form-check-label' for='{$switch_id}'>{$genre_name}</label></div>";
                     }
                     else{
                 $switch_menu.="<div class='form-check form-switch p-0'>";
-                $switch_menu.="<input class='form-check-input' type='checkbox' role='switch' name='{$switch_name}' id='{$switch_id}' value='{$genre_id}'><label class='form-check-label' for='{$switch_id}'>{$genre_name}</label>";
+                $switch_menu.="<input class='form-check-input' type='checkbox' role='switch' name='{$switch_name}' id='{$switch_id}' value='{$genre_id}'><label class='form-check-label' for='{$switch_id}'>{$genre_name}</label></div>";
                     }
 
                    
@@ -553,16 +555,16 @@ function genre_Switch_On($connection,$stmt,$cw_id){
             }
             else{
                 $switch_menu.="<div class='form-check form-switch p-0'>";
-                $switch_menu.="<input class='form-check-input' type='checkbox' role='switch' name='{$switch_name}' id='{$switch_id}' value='{$genre_id}'><label class='form-check-label' for='{$switch_id}'>{$genre_name}</label>";
+                $switch_menu.="<input class='form-check-input' type='checkbox' role='switch' name='{$switch_name}' id='{$switch_id}' value='{$genre_id}'><label class='form-check-label' for='{$switch_id}'>{$genre_name}</label></div>";
 
             }
     }
-        $switch_menu.="</div>";
+     
         return $switch_menu;
     }
 }
 
-function tags_CW_Checkbox_checked($connection,$stmt,$cw_id){
+function tags_CW_Checkbox_Checked($connection,$stmt,$cw_id){
     $input_check="";
     $tag_query="SELECT * FROM cw_tags";
 

@@ -27,6 +27,10 @@ if(isset($_GET['cw_id'])){
                 </div>
                 <div class='col-8'>";
 
+            $edit_form.=tags_CW_Checkbox_Checked($connection,$CW_tag_id_read_BY_Tag_stmt,$cw_id);
+
+
+
     $cw_read_stmt->bind_param("i",$cw_id);
     $cw_read_stmt->execute();
 
@@ -37,34 +41,33 @@ if(isset($_GET['cw_id'])){
     $cw_filename=$row['cw_filename'];
     $cw_content=read_writing($cw_filename);
    }
-
+   $edit_form.="                </div>
+                    
+                
+   </div>
+   </form>
+</div>
+<div class='col-12'>
+   
+       <div class='mb-3'>
+           <label for='post-title' class='form-label'>Title</label>
+           <input type='text' name='cw_title' class='form-control' id='' value='{$cw_title}' >
+       </div>
+       <div class='mb-3'>
+           <textarea class='form-control' name='cw_content' id='summernote' cols='100' rows='30'>{$cw_content}</textarea>
+       </div>
+       <div class='mb-3'>
+           <input class='btn btn-primary' type='submit' value='Submit' name='submitBtn'>
+       </div>
+   </form>
+</div>
+</div>";
 
 }
-
+echo $edit_form;
 
 ?>
 
                 
 
-                <?php tags_CW_Checkbox($connection)?>
-                </div>
-                    
-                
-            </div>
-            </form>
-        </div>
-        <div class='col-12'>
-            
-                <div class='mb-3'>
-                    <label for='post-title' class='form-label'>Title</label>
-                    <input type='text' name='cw_title' class='form-control' id='' >
-                </div>
-                <div class='mb-3'>
-                    <textarea class='form-control' name='cw_content' id='summernote' cols='100' rows='30'></textarea>
-                </div>
-                <div class='mb-3'>
-                    <input class='btn btn-primary' type='submit' value='Submit' name='submitBtn'>
-                </div>
-            </form>
-        </div>
-    </div>
+

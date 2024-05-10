@@ -12,6 +12,9 @@ switch($src){
     case "add-cw":
         include_once "admin_includes/add_cw_form.php";
     break;
+    case "edit-cw":
+        include_once "admin_includes/edit_cw_form.php";
+    break;
     case "add-gallery":
         include_once "admin_includes/add_gallery_form.php";
     break;
