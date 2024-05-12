@@ -308,7 +308,7 @@ function tags_Checkbox_Checked($connection,$post_id){
             // echo $tag_id;
             // if(confirmQuery($checked_result)){
                 
-                $checked_result=mysqli_query($connection,$tags_checked_sql);
+            $checked_result=mysqli_query($connection,$tags_checked_sql);
                 // echo "afaega";
                 // var_dump($checked_result);
                 if($checked_result->num_rows>0){
@@ -456,7 +456,7 @@ function tags_CW_Checkbox($connection){
             $trimmed_tag_name=str_replace(" ","",$tag_name);
 
             $input_check.="<div class='form-check'><label class='form-check-label' for='".$trimmed_tag_name."-check'>{$tag_name}</label>
-            <input class='form-check-input' type='checkbox' name='".$tag_id."-check' id='".$trimmed_tag_name."-check'></div>";
+            <input class='form-check-input' type='checkbox' name='{$trimmed_tag_name}' id='".$trimmed_tag_name."-check'></div>";
 
         }
 
@@ -524,45 +524,53 @@ function genre_Switch_On($connection,$stmt,$cw_id){
     $switch_menu="";
 
     $stmt->bind_param("i",$cw_id);
-    $stmt->execute();
-    $genre_id_result=$stmt->get_result();
+
+
     $genre_query="SELECT * FROM genre";
     $result=mysqli_query($connection,$genre_query);
+
+    $stmt->execute();
+    $genre_id_result=$stmt->get_result();
+    if($genre_id_result->num_rows>0){
+        while($genre_ids_row=$genre_id_result->fetch_assoc()){
+        $genre_ids[]=$genre_ids_row['genre_id'];
+        }
+    }
     if(confirmQuery($result)){
         while($row=mysqli_fetch_assoc($result)){
+
+            
 
             $genre_id=$row['genre_id'];
             $genre_name=$row['genre_name'];
             $trimmed_genre_name=str_replace(" ","",$genre_name);
             $switch_name=$trimmed_genre_name."_input";
             $switch_id=$trimmed_genre_name."_switch";
-            if($genre_id_result->num_rows>0){
-                while($genre_cw_row=$genre_id_result->fetch_assoc()){
-            $genre_cw_db=$genre_cw_row['genre_id'];
+            
+                
 
-                    if($genre_cw_db==$genre_id){
-                $switch_menu.="<div class='form-check form-switch p-0'>";
-                $switch_menu.="<input class='form-check-input' type='checkbox' role='switch' name='{$switch_name}' id='{$switch_id}' value='{$genre_id}' checked><label class='form-check-label' for='{$switch_id}'>{$genre_name}</label></div>";
+                    // $child_genre_id=$genre_ids_row['genre_id'];
+                    // $switch_on_name=$child_genre_id."_switch";
+
+                    if(in_array($genre_id,$genre_ids)){
+                        $checked="checked";
                     }
                     else{
-                $switch_menu.="<div class='form-check form-switch p-0'>";
-                $switch_menu.="<input class='form-check-input' type='checkbox' role='switch' name='{$switch_name}' id='{$switch_id}' value='{$genre_id}'><label class='form-check-label' for='{$switch_id}'>{$genre_name}</label></div>";
+                        $checked="";
                     }
 
-                   
+                $switch_menu.="<div class='form-check form-switch p-0'>";
+                $switch_menu.="<input class='form-check-input' type='checkbox' role='switch' name='{$switch_name}' id='{$switch_id}' value='{$genre_id}' {$checked}><label class='form-check-label' for='{$switch_id}'>{$genre_name}</label></div>";
 
                 }
             }
-            else{
-                $switch_menu.="<div class='form-check form-switch p-0'>";
-                $switch_menu.="<input class='form-check-input' type='checkbox' role='switch' name='{$switch_name}' id='{$switch_id}' value='{$genre_id}'><label class='form-check-label' for='{$switch_id}'>{$genre_name}</label></div>";
 
-            }
-    }
-     
-        return $switch_menu;
-    }
+            return $switch_menu;
+
 }
+     
+        
+
 
 function tags_CW_Checkbox_Checked($connection,$stmt,$cw_id){
     $input_check="";
@@ -571,6 +579,12 @@ function tags_CW_Checkbox_Checked($connection,$stmt,$cw_id){
     $stmt->bind_param("i",$cw_id);
     $stmt->execute();
     $tag_id_result=$stmt->get_result();
+    if($tag_id_result->num_rows>0){
+        while($tag_id_row=$tag_id_result->fetch_assoc()){
+           
+            $tags_ids[]=$tag_id_row['tag_id'];
+        }
+    }
 
 
     $result=mysqli_query($connection,$tag_query);
@@ -578,32 +592,35 @@ function tags_CW_Checkbox_Checked($connection,$stmt,$cw_id){
         while($row=mysqli_fetch_assoc($result)){
             $tag_id = $row['tag_id'];
             $tag_name = $row['tag_name'];
-            if($tag_id_result->num_rows>0){
-                while($tag_id_row=$tag_id_result->fetch_assoc()){
-                  $cw_tag_db = $tag_id_row['tag_id'];
+            $trimmed_tag_name=str_replace(" ","",$tag_name);
+            $tag_check=$trimmed_tag_name;
 
-                    if($cw_tag_db == $cw_tag_db){
-                        $input_check.="<div class='form-check'><label class='form-check-label' for='".$tag_id."-check'>{$tag_name}</label>
-                        <input class='form-check-input' type='checkbox' name='".$tag_id."-check' id='".$tag_name."-check' checked></div>";
+                //  var_dump($tags_ids);
+                if(!is_null($tags_ids)){
+
+                    if(in_array($tag_id,$tags_ids)){
+                        $checked="checked";
                     }
                     else{
-                        $input_check.="<div class='form-check'><label class='form-check-label' for='".$tag_id."-check'>{$tag_name}</label>
-                        <input class='form-check-input' type='checkbox' name='".$tag_id."-check' id='".$tag_name."-check'></div>";
+                        $checked="";
                     }
                 }
-            }
-            else{
-                $input_check.="<div class='form-check'><label class='form-check-label' for='".$tag_id."-check'>{$tag_name}</label>
-                <input class='form-check-input' type='checkbox' name='".$tag_id."-check' id='".$tag_name."-check'></div>";
-            }
+                else{
+                    $checked="";
+                }
 
-
+                    $input_check.="<div class='form-check'><label class='form-check-label' for='".$tag_id."-check'>{$tag_name}</label>
+                    <input class='form-check-input' type='checkbox' name='{$tag_check}' id='".$tag_name."-check' {$checked}></div>";
 
         }
-
-        return $input_check;
     }
+
+
+                return $input_check;
 }
+
+       
+
 
 //Gallery Functions
 function read_All_Gallery($connection){

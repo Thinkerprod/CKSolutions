@@ -6,7 +6,7 @@
                 <div class="col-12">
                     <h6>Genres</h6>
                 </div>
-                <div class="col-12">
+                <div class="col-8">
                 <?php genre_Switch($connection)?>
                 </div>
                 

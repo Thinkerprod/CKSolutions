@@ -93,15 +93,8 @@ function check_tags_update($connection, $stmnt,$post_id){
       }
   }
 
-  function check_cw_genres($connection, $stmnt){
-    $last_id_query="SELECT LAST_INSERT_ID()";
-    $result=mysqli_query($connection,$last_id_query);
-    if(confirmQuery($result)){
-      $row = mysqli_fetch_array($result);
-      $last_inserted_id = $row[0];
-    
-     
-    }
+  function check_cw_genres($connection, $stmnt,$last_inserted_id){
+
 
     $genre_query="SELECT * FROM genre";
     $result=mysqli_query($connection,$genre_query);
@@ -124,26 +117,70 @@ function check_tags_update($connection, $stmnt,$post_id){
     }
   }
 
-  function check_cw_tags($connection, $stmnt){
-    $last_id_query="SELECT LAST_INSERT_ID()";
-    $result=mysqli_query($connection,$last_id_query);
-    if(confirmQuery($result)){
-      $row = mysqli_fetch_array($result);
-      $last_inserted_id = $row[0];
-    
-     
-    }
+  function check_cw_tags($connection, $stmnt,$inserted_id){
+
+
       $tag_query="SELECT * FROM cw_tags";
         $result=mysqli_query($connection,$tag_query);
         if(confirmQuery($result)){
             while($row=mysqli_fetch_assoc($result)){
                 $tag_id=$row['tag_id'];
-                // $tag_name=$row['tag_name'];
+                $tag_name=$row['tag_name'];
+                $trimmed_tag_name=str_replace(" ","",$tag_name);
+                // $check_name=$tag_id."-check";
     
-                $check_name=$tag_id."-check";
+              if(isset($_POST[$trimmed_tag_name])){
+                $stmnt->bind_param("ii",$inserted_id,$tag_id);
+                $stmnt->execute();
+              }
     
-              if(isset($_POST[$check_name])){
-                $stmnt->bind_param("ii",$last_inserted_id,$tag_id);
+            }
+    
+        }
+    }
+
+
+    function check_cw_genres_update($connection,$delStmt, $stmnt,$id){
+      $delStmt->bind_param("i",$id);
+      $delStmt->execute();
+
+      $genre_query="SELECT * FROM genre";
+      $result=mysqli_query($connection,$genre_query);
+      if(confirmQuery($result)){
+          while($row=mysqli_fetch_assoc($result)){
+            
+              $genre_id=$row['genre_id'];
+              $genre_name=str_replace(" ","",$row['genre_name']);
+  
+              $switch_name=$genre_name."_input";
+  
+            if(isset($_POST[$switch_name])){
+            echo "statements ";
+              $stmnt->bind_param("ii",$id,$genre_id);
+              $stmnt->execute();
+            }
+  
+          }
+  
+      }
+    }
+  
+    function check_cw_tags_update($connection,$delStmt, $stmnt,$id){
+      $delStmt->bind_param("i",$id);
+      $delStmt->execute();
+
+
+      $tag_query="SELECT * FROM cw_tags";
+        $result=mysqli_query($connection,$tag_query);
+        if(confirmQuery($result)){
+            while($row=mysqli_fetch_assoc($result)){
+                $tag_id=$row['tag_id'];
+                $tag_name=$row['tag_name'];
+                $trimmed_tag_name=str_replace(" ","",$tag_name);
+                // $check_name=$tag_id."-check";
+    
+              if(isset($_POST[$trimmed_tag_name])){
+                $stmnt->bind_param("ii",$id,$tag_id);
                 $stmnt->execute();
               }
     
@@ -167,7 +204,9 @@ $cat_delete_stmt=$connection->prepare("DELETE FROM categories WHERE cat_id=?");
 //CW CRUD
 $cw_create_stmt=$connection->prepare("INSERT INTO cw (cw_title, cw_date, cw_filename) VALUES (?,?,?)");
 $cw_read_stmt=$connection->prepare("SELECT * FROM cw WHERE cw_id=?");
-$update_cw_stmt=$connection->prepare("UPDATE cw SET cw_title=?, cw_date=?, cw_filename=?, cw_comment_count=?, cw_published=? WHERE cw_id=?");
+$update_cw_stmt=$connection->prepare("UPDATE cw SET cw_title=?, cw_date=?, cw_filename=? WHERE cw_id=?");
+$update_cw_comment_stmt=$connection->prepare("UPDATE cw SET cw_comment_count=? WHERE cw_id=?");
+$publish_cw_stmt=$connection->prepare("UPDATE cw SET cw_published=? WHERE cw_id=?");
 $delete_cw_stmt=$connection->prepare("DELETE FROM cw WHERE cw_id=?");
 
 //genre CRUD
@@ -198,8 +237,8 @@ $CW_tag_delete_stmt=$connection->prepare("DELETE FROM cw_tags WHERE tag_id=?");
 //cw_tags_ids CRUD
 $CW_tag_id_create_stmt=$connection->prepare("INSERT INTO cw_tags_ids (cw_id,tag_id) VALUES (?,?)");
 
-$CW_tag_id_read_BY_CW_stmt=$connection->prepare("SELECT * FROM cw_tags_ids WHERE tag_id=?");
-$CW_tag_id_read_BY_Tag_stmt=$connection->prepare("SELECT * FROM cw_tags_ids WHERE cw_id=?");
+$CW_tag_id_read_BY_CW_stmt=$connection->prepare("SELECT * FROM cw_tags_ids WHERE cw_id=?");
+$CW_tag_id_read_BY_Tag_stmt=$connection->prepare("SELECT * FROM cw_tags_ids WHERE tag_id=?");
 
 $CW_tag_id_update_stmt=$connection->prepare("UPDATE cw_tags_ids SET cw_id=?, tag_id=?");
 
