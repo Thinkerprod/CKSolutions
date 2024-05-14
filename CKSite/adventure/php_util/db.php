@@ -202,16 +202,24 @@ $cat_update_stmt=$connection->prepare("UPDATE categories SET cat_title=?");
 $cat_delete_stmt=$connection->prepare("DELETE FROM categories WHERE cat_id=?");
 
 //CW CRUD
-$cw_create_stmt=$connection->prepare("INSERT INTO cw (cw_title, cw_date, cw_filename) VALUES (?,?,?)");
+$cw_create_stmt=$connection->prepare("INSERT INTO cw (cw_type, cw_title, cw_date, cw_filename) VALUES (?,?,?,?)");
 $cw_read_stmt=$connection->prepare("SELECT * FROM cw WHERE cw_id=?");
-$update_cw_stmt=$connection->prepare("UPDATE cw SET cw_title=?, cw_date=?, cw_filename=? WHERE cw_id=?");
+$update_cw_stmt=$connection->prepare("UPDATE cw SET cw_type=?, cw_title=?, cw_date=?, cw_filename=? WHERE cw_id=?");
 $update_cw_comment_stmt=$connection->prepare("UPDATE cw SET cw_comment_count=? WHERE cw_id=?");
 $publish_cw_stmt=$connection->prepare("UPDATE cw SET cw_published=? WHERE cw_id=?");
 $delete_cw_stmt=$connection->prepare("DELETE FROM cw WHERE cw_id=?");
 
+//type CRUD
+$cw_type_create_stmt=$connection->prepare("INSERT INTO cw_types (type_name) VALUES (?)");
+$cw_type_read_stmt=$connection->prepare("SELECT cw_type FROM cw WHERE cw_id=?");
+$cw_type_delete_stmt=$connection->prepare("DELETE FROM cw_types WHERE type_id=?");
+
 //genre CRUD
 $genre_create_stmt=$connection->prepare("INSERT INTO genre (genre_name) VALUES (?)");
 $genre_read_stmt=$connection->prepare("SELECT * FROM genre WHERE genre_id=?");
+
+$genre_read_BY_genre_id_Join_stmt=$connection->prepare("SELECT * FROM genre INNER JOIN genre_ids ON genre.genre_id=genre_ids.genre_id WHERE genre_ids.genre_cw_id=?");
+
 $genre_update_stmt=$connection->prepare("UPDATE genre SET genre_name=?");
 $genre_delete_stmt=$connection->prepare("DELETE FROM genre WHERE genre_id=?");
 
@@ -220,6 +228,8 @@ $CW_genre_id_create_stmt=$connection->prepare("INSERT INTO genre_ids (genre_cw_i
 
 $genre_id_read_BY_CW_stmt=$connection->prepare("SELECT * FROM genre_ids WHERE genre_cw_id=?");
 $genre_id_read_BY_Genre_stmt=$connection->prepare("SELECT * FROM genre_ids WHERE genre_id=?");
+
+
 
 $CW_genre_id_update_stmt=$connection->prepare("UPDATE genre_ids SET genre_cw_id=?, genre_id=?");
 
@@ -239,6 +249,10 @@ $CW_tag_id_create_stmt=$connection->prepare("INSERT INTO cw_tags_ids (cw_id,tag_
 
 $CW_tag_id_read_BY_CW_stmt=$connection->prepare("SELECT * FROM cw_tags_ids WHERE cw_id=?");
 $CW_tag_id_read_BY_Tag_stmt=$connection->prepare("SELECT * FROM cw_tags_ids WHERE tag_id=?");
+
+$CW_tag_id_read_BY_Tag_Join_stmt=$connection->prepare("SELECT * FROM cw_tags INNER JOIN cw_tags_ids ON cw_tags.tag_id=cw_tags_ids.tag_id WHERE cw_tags_ids.cw_id=?");
+
+
 
 $CW_tag_id_update_stmt=$connection->prepare("UPDATE cw_tags_ids SET cw_id=?, tag_id=?");
 

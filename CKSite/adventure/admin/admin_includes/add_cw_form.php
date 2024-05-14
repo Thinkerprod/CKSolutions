@@ -3,11 +3,16 @@
             <h1 class="display-4">Creative Writing Form</h1>
             <form action="cw_actions/add-cw.php" method="post" enctype="multipart/form-data" id="add_cw_form">
             <div class="row mb-3">
+            <div class="col-8">
+                <h6>Writing type</h6>
+                    <?php type_select($connection);?>
+                </div>
                 <div class="col-12">
                     <h6>Genres</h6>
                 </div>
+                
                 <div class="col-8">
-                <?php genre_Switch($connection)?>
+                <?php genre_Switch($connection);?>
                 </div>
                 
             </div>
@@ -16,7 +21,7 @@
                     <h6>Tags</h6>
                 </div>
                 <div class="col-8">
-                <?php tags_CW_Checkbox($connection)?>
+                <?php tags_CW_Checkbox($connection);?>
                 </div>
                     
                 

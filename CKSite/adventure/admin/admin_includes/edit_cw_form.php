@@ -12,7 +12,10 @@ if(isset($_GET['cw_id'])){
         <h1 class='display-4'>Edit Creative Writing Form</h1>
         <form action='cw_actions/edit-cw.php' method='post'>
         <input type='hidden' name='cw_id' value='{$cw_id}'>
-        <div class='row mb-3'>
+        <div class='row mb-3'><div class='col-8'>
+        <h6>Writing type</h6>";
+
+        $edit_form.=type_selected($connection,$cw_type_read_stmt,$cw_id)."</div>
             <div class='col-12'>
                 <h6>Genres</h6>
             </div>

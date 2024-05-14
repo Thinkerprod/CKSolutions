@@ -12,7 +12,7 @@ include_once "../php_util/db.php";
         <div class="col-lg-3 d-flex flex-column">
         <?php include_once "admin_includes/admin_well.php";?>
         </div>
-        <div class="col-lg-9">
+        <div class="col-lg-9 view-container">
         <?php include_once "admin_includes/controller.php";?>
         </div>
     </div>

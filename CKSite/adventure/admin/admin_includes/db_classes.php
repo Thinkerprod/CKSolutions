@@ -359,10 +359,12 @@ function tags_Checkbox_Checked($connection,$post_id){
 //Creative Writing Functions
 function read_All_CW($connection){
 
+
     $table="<table class='table'>
     <thead>
         <tr>
             <th scope='col'>cw_id</th>
+            <th scope='col'>cw_type</th>
             <th scope='col'>cw_title</th>
             <th scope='col'>cw_date</th>
             <th scope='col'>cw_path</th>           
@@ -376,7 +378,8 @@ function read_All_CW($connection){
         $result=mysqli_query($connection,$sql_read_all_cw);
        if(confirmQuery($result)){
         while($row=mysqli_fetch_assoc($result)){
-    $cw_id=$row['cw_id'];       
+    $cw_id=$row['cw_id']; 
+    $cw_type=$row['cw_type'];      
     $cw_title=$row['cw_title'];
     $cw_filename=$row['cw_filename'];
     $cw_date=$row['cw_date'];
@@ -387,13 +390,14 @@ function read_All_CW($connection){
     
     $table.="<tr>
     <td>{$cw_id}</td>
+    <td>{$cw_type}</td>
     <td>{$cw_title}</td>
     <td>{$cw_date}</td>
     <td>{$cw_filename}</td>
     <td>{$cw_comment_count}</td>
     <td>{$cw_published}</td>
     <td><a class='text-uppercase' href='admin-index.php?src=edit-cw&cw_id=".$cw_id."'>Edit</a></td>
-    <td><a class='text-uppercase' href='admin-index.php?src=read&cw_id=".$cw_id."'>Read</a></td>
+    <td><a class='text-uppercase' href='admin-index.php?src=read-cw&cw_id=".$cw_id."'>Read</a></td>
     <td><a class='text-uppercase' href='cw_actions/delete-cw.php?cw_id=".$cw_id."'>Delete</a></td>
     </tr>";
     
@@ -406,7 +410,8 @@ function read_All_CW($connection){
        }
     }
 
-function read_All_CW_Tags($connection){
+
+    function read_All_CW_Tags($connection){
 
     $table="<table class='table table-striped'>
     <thead>
@@ -435,7 +440,7 @@ function read_All_CW_Tags($connection){
         $table.="</tbody></table>";
         echo $table;
 
-        echo "<form action='blog_actions/add-cw-tags.php' method='post'>
+        echo "<form action='cw_actions/add-cw-tags.php' method='post'>
         <div class='input-group mb-3'>
                         <input type='text' name='cw_tag_input' class='form-control' placeholder='Add CW Tag' aria-label='add cw tags form'>
                         <button type='submit' class='btn btn-primary' name='submitBtn'>Submit</button>
@@ -444,6 +449,11 @@ function read_All_CW_Tags($connection){
     }
 }
 
+function create_pages($content){
+    $word_count=str_word_count($content);
+    $js_string="";
+
+}
 function tags_CW_Checkbox($connection){
     $input_check="";
     $tag_query="SELECT * FROM cw_tags";
@@ -493,6 +503,89 @@ function read_All_Genres($connection){
         $table.="</tbody></table>";
         echo $table;
     }
+}
+
+function read_All_Types($connection){
+
+    $table="<table class='table table-striped'>
+    <thead>
+        <tr>
+            <td scope='col'>type_id</td>
+            <td scope='col'>type_name</td>
+        </tr>
+    </thead>
+    <tbody>";
+
+    $type_query="SELECT * FROM cw_types";
+    $result=mysqli_query($connection,$type_query);
+    if(confirmQuery($result)){
+        while($row=mysqli_fetch_assoc($result)){
+            $type_id=$row['type_id'];
+            $type_name=$row['type_name'];
+
+            $table.="<tr>
+            <td>{$type_id}</td>
+            <td>{$type_name}</td>
+            <td><a href='cw_actions/delete-type.php?t_id={$type_id}' class='text-uppercase'>Delete</a></td>
+            </tr>";
+
+
+        }
+        $table.="</tbody></table>";
+        echo $table;
+        echo "<form action='cw_actions/add-type.php' method='post'>
+        <div class='input-group mb-3'>
+                        <input type='text' name='cw_type_input' class='form-control' placeholder='Add Type' aria-label='add cw tags form'>
+                        <button type='submit' class='btn btn-primary' name='submitBtn'>Submit</button>
+                    </div>
+        </form>";
+    }
+}
+
+function type_select($connection){
+    $type_select="<select name='type_input' class='form-select' aria-label='select type of creative writing'>";
+    $type_query="SELECT * FROM cw_types";
+    $result=mysqli_query($connection,$type_query);
+    while($row=mysqli_fetch_assoc($result)){
+        $type_id=$row['type_id'];
+        $type_name=$row['type_name'];
+
+        $type_select.="<option value='{$type_id}'>{$type_name}</option>";
+
+    }
+    echo $type_select."</select>";
+}
+
+function type_selected($connection,$stmt,$cw_id){
+    $type_select="<select name='type_input' class='form-select' aria-label='select type of creative writing'>";
+
+    $stmt->bind_param("i",$cw_id);
+    $stmt->execute();
+    $stmt_result=$stmt->get_result();
+
+    $type_row_id=$stmt_result->fetch_assoc();
+
+    // var_dump($type_row_id[0]);
+    // echo $type_row_id['cw_type'];
+
+    $type_query="SELECT * FROM cw_types";
+    $result=mysqli_query($connection,$type_query);
+    while($row=mysqli_fetch_assoc($result)){
+        $type_id=$row['type_id'];
+        $type_name=$row['type_name'];
+
+        if($type_row_id['cw_type']==$type_id){
+            $selected="selected";
+        }
+        else{
+            $selected="";
+        }
+
+        $type_select.="<option value='{$type_id}' {$selected}>{$type_name}</option>";
+
+    }
+    $stmt->close();
+    return $type_select."</select>";
 }
 
 function genre_Switch($connection){
@@ -749,5 +842,8 @@ function material_Select($connection){
 
 
 
+<script src="js/pagination.js"></script>
 
+<form action="cw_actions/add-type.php" method="post">
 
+</form>

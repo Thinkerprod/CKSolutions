@@ -39,7 +39,9 @@
     <?php include_once "admin_includes/GenreMediaView.php"?>
     </div>
     <div class="col-12 collapse" id="collapseCWTags">
-    <?php read_All_CW_Tags($connection)?>
+    <?php read_All_CW_Tags($connection);
+    read_All_Types($connection);
+    ?>
     </div>
 </div>
 </div>

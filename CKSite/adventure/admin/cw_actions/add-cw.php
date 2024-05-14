@@ -3,7 +3,8 @@ include_once "../../php_util/db.php";
 include_once "../../cw/cw_read_write.php";
 
 if(isset($_POST['submitBtn'])){
-    $cw_create_stmt->bind_param("sss",$cw_title,$cw_date,$cw_filename);
+    $cw_create_stmt->bind_param("isss",$cw_type,$cw_title,$cw_date,$cw_filename);
+    $cw_type=$_POST['type_input'];
 $cw_title=$_POST['cw_title'];
 $cw_title=mysqli_escape_string($connection,$cw_title);
 $cw_content=$_POST['cw_content'];
