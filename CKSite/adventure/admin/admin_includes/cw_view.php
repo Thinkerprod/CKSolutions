@@ -11,10 +11,16 @@ if(isset($_GET['cw_id'])){
         $cw_title=$cw_row['cw_title'];
         $cw_date=$cw_row['cw_date'];
         $cw_filename=$cw_row['cw_filename'];
-        $cw_comment_count=$cw_row['cw_comment_count'];
+        $cw_view_count=$cw_row['cw_view_count'];
+        $cw_likes=$cw_row['cw_likes'];
+        $cw_shares=$cw_row['cw_shares'];
         $cw_published=$cw_row['cw_published'];
 
-        $comment_string=$cw_comment_count." Comments";
+        $view_count_string="<p mb-0 d-flex align-items-center>".$cw_view_count."<i class='px-1 m-0 fa-solid fa-eye'></i></p> ";
+        $like_count_string="<p mb-0 d-flex align-items-center>".$cw_likes."<i class='px-1 m-0 fa-solid fa-thumbs-up'></i></p>";
+        $share_count_string=$cw_shares." shares";
+
+
         if($cw_published==0){
             $publish="<form action='cw_actions/publish.php' method='post'>
             <input type='hidden' name='cw_id' value='{$cw_id}'>
@@ -29,12 +35,12 @@ if(isset($_GET['cw_id'])){
         }
 
     }
-    $genre_string="<ul>";
+    $genre_string="<ul class='d-flex align-items-center'>";
     $genre_item="";
 
-    $genre_read_BY_genre_id_Join_stmt->bind_param("i",$cw_id);
-    $genre_read_BY_genre_id_Join_stmt->execute();
-    $genre_results=$genre_read_BY_genre_id_Join_stmt->get_result();
+    $genre_read_BY_cw_id_Join_stmt->bind_param("i",$cw_id);
+    $genre_read_BY_cw_id_Join_stmt->execute();
+    $genre_results=$genre_read_BY_cw_id_Join_stmt->get_result();
     while($genre_row=$genre_results->fetch_assoc()){
         $genre_name=$genre_row['genre_name'];
         $genre_item.="<li>".$genre_name."</li>";
@@ -42,6 +48,8 @@ if(isset($_GET['cw_id'])){
     }
 
     $genre_string.=$genre_item."</ul>";
+
+    $genre_read_BY_cw_id_Join_stmt->close();
 
 
     $tag_string="<ul>";
@@ -57,6 +65,8 @@ if(isset($_GET['cw_id'])){
     }
 
     $tag_string.=$tag."</ul>";
+
+    $CW_tag_id_read_BY_Tag_Join_stmt->close();
 
     $filepath="../cw/".$cw_filename;
 
@@ -77,7 +87,9 @@ if(isset($_GET['cw_id'])){
    <div class='col-12'>
        <div class='info d-flex justify-content-around align-items-center'>
             <div class='d-flex justify-content-center align-items-center' id='share'><i class='fa-solid fa-share-nodes'></i></div>
-            <div class='d-flex justify-content-center align-items-center' id='comments'>{$comment_string}</div>
+            <div class='d-flex justify-content-center align-items-center' id='views'>{$view_count_string}</div>
+            <div class='d-flex justify-content-center align-items-center' id='likes'>{$like_count_string}</div>
+            <div class='d-flex justify-content-center align-items-center' id='shares'>{$share_count_string}</div>
             <div class='d-flex justify-content-center align-items-center' id='genres'>{$genre_string}</div>
             <div class='d-flex justify-content-center align-items-center' id='tags'>{$tag_string}</div>
             <div class='d-flex justify-content-center align-items-center' id='published'>

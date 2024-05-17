@@ -46,7 +46,25 @@ body {
         border:1px solid #000;
         box-shadow: 6px 6px 10px 3px #000 ;
     }
+    .card{
+        max-width:90%;
+        max-height:auto;
+    }
+    .card img{
+        max-width:50%;
+        height: auto;
+    }
 
+    #genres ul{list-style: none;}
+    #genres ul>li{
+        display: inline-block;
+
+    }
+    #tags ul{list-style: none;}
+    #tags ul>li{
+        display: inline-block;
+        
+    }
 
     @media(min-width:768px){
         .side-well{

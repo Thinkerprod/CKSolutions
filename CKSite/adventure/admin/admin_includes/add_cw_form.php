@@ -38,6 +38,9 @@
                     <textarea class="form-control" name="cw_content" id="summernote" cols="100" rows="30"></textarea>
                 </div>
                 <div class="mb-3">
+                    <textarea class="form-control" name="cw_content_trunc" id="content_truncate" cols="100" rows="10"></textarea>
+                </div>
+                <div class="mb-3">
                     <input class="btn btn-primary" type="submit" value="Submit" name="submitBtn">
                 </div>
             </form>

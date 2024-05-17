@@ -367,8 +367,11 @@ function read_All_CW($connection){
             <th scope='col'>cw_type</th>
             <th scope='col'>cw_title</th>
             <th scope='col'>cw_date</th>
-            <th scope='col'>cw_path</th>           
-            <th scope='col'>cw_comment_count</th>
+            <th scope='col'>cw_trunc</th>
+            <th scope='col'>cw_filename</th>          
+            <th scope='col'>cw_view_count</th>
+            <th scope='col'>cw_likes</th>
+            <th scope='col'>cw_shares</th>
             <th scope='col'>cw_published</th>
         </tr>
     </thead>
@@ -383,9 +386,10 @@ function read_All_CW($connection){
     $cw_title=$row['cw_title'];
     $cw_filename=$row['cw_filename'];
     $cw_date=$row['cw_date'];
-  
-    
-    $cw_comment_count=$row['cw_comment_count'];
+    $cw_trunc=$row['cw_trunc'];
+    $cw_view_count=$row['cw_view_count'];
+    $cw_likes=$row['cw_likes'];
+    $cw_shares=$row['cw_shares'];
     $cw_published=$row['cw_published'];
     
     $table.="<tr>
@@ -393,8 +397,11 @@ function read_All_CW($connection){
     <td>{$cw_type}</td>
     <td>{$cw_title}</td>
     <td>{$cw_date}</td>
+    <td>{$cw_trunc}</td>
     <td>{$cw_filename}</td>
-    <td>{$cw_comment_count}</td>
+    <td>{$cw_view_count}</td>
+    <td>{$cw_likes}</td>
+    <td>{$cw_shares}</td>
     <td>{$cw_published}</td>
     <td><a class='text-uppercase' href='admin-index.php?src=edit-cw&cw_id=".$cw_id."'>Edit</a></td>
     <td><a class='text-uppercase' href='admin-index.php?src=read-cw&cw_id=".$cw_id."'>Read</a></td>

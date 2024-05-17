@@ -24,13 +24,17 @@
                         </div>
                     </div>
 
-
+                
 
             </div>
-                
+
 
             <div class="col-md-12 col-lg-4 w-90 d-flex flex-md-row flex-lg-column justify-content-center align-items-center side-well">
                 <?php include "includes/cw-side-well.php"; ?>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-8 d-flex justify-content-center">
+            <?php include_once "includes/view-controller.php"; ?>
             </div>
 
 

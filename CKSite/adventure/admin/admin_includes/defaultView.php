@@ -11,10 +11,10 @@
 <btn class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseCW" role="button" aria-expanded="false" aria-controls="collapseCW">Creative Writing</btn>
 <btn class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseGallery" role="button" aria-expanded="false" aria-controls="collapseGallery">Gallery</btn>
 <btn class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseCatTag" role="button" aria-expanded="false" aria-controls="collapseCatTag">Categories & Tags</btn>
-<btn class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseComments" role="button" aria-expanded="false" aria-controls="collapseComments">Comments</btn>
+<!-- <btn class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseComments" role="button" aria-expanded="false" aria-controls="collapseComments">Comments</btn> -->
 <btn class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapsePI" role="button" aria-expanded="false" aria-controls="collapsePI">Post Images</btn>
 <btn class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseGenres" role="button" aria-expanded="false" aria-controls="collapseGenres">Genres & Media</btn>
-<btn class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseCWTags" role="button" aria-expanded="false" aria-controls="collapseCWTags">CW Tags</btn>
+<btn class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseCWTags" role="button" aria-expanded="false" aria-controls="collapseCWTags">CW Tags & Types</btn>
 </div>
 <div class="row">
     <div class="col-12 collapse" id="collapsePosts">
@@ -29,9 +29,7 @@
     <div class="col-12 collapse" id="collapseCatTag">
     <?php include_once "admin_includes/CatTagView.php"?>
     </div>
-    <div class="col-12 collapse" id="collapseComments">
-    <?php read_All_Comments($connection)?>
-    </div>
+
     <div class="col-12 collapse" id="collapsePI">
     <?php read_All_Images($connection)?>
     </div>

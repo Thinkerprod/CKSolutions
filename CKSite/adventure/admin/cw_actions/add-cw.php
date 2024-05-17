@@ -3,7 +3,7 @@ include_once "../../php_util/db.php";
 include_once "../../cw/cw_read_write.php";
 
 if(isset($_POST['submitBtn'])){
-    $cw_create_stmt->bind_param("isss",$cw_type,$cw_title,$cw_date,$cw_filename);
+    $cw_create_stmt->bind_param("issss",$cw_type,$cw_title,$cw_date,$cw_trunc,$cw_filename);
     $cw_type=$_POST['type_input'];
 $cw_title=$_POST['cw_title'];
 $cw_title=mysqli_escape_string($connection,$cw_title);
@@ -14,7 +14,11 @@ $cw_filename="cw-".str_replace(" ","",$cw_title).".txt";
 $datetime=new DateTime("America/Regina");
 $cw_date=$datetime->format("Y-m-d h:i:s");
 
+$long_content=$_POST['cw_content_trunc'];
+$cw_trunc=substr($long_content,60);
+
 $cw_create_stmt->execute();
+$cw_create_stmt->close();
 
 $last_id_query="SELECT LAST_INSERT_ID()";
 $result=mysqli_query($connection,$last_id_query);

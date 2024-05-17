@@ -49,6 +49,9 @@ body {
         
         list-style: none;
     }
+    #views p{margin:0;}
+    #likes p{margin:0;}
+
     #genres ul>li{
         display:inline-block;
         border-right: 1px solid #000 ;
