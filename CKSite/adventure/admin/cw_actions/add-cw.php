@@ -15,7 +15,7 @@ $datetime=new DateTime("America/Regina");
 $cw_date=$datetime->format("Y-m-d h:i:s");
 
 $long_content=$_POST['cw_content_trunc'];
-$cw_trunc=substr($long_content,60);
+$cw_trunc=substr($long_content,0,350);
 
 $cw_create_stmt->execute();
 $cw_create_stmt->close();

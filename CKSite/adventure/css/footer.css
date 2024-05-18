@@ -6,8 +6,9 @@ footer{
     background-color: rgba(255,255,255,0.75);
     width: 100%;
     height: auto;
-    position: absolute;
+    position:fixed;
     bottom: 0;
+    margin:0;
 }
 .icons{
     width: 100%;

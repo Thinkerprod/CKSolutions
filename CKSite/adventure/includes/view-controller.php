@@ -25,7 +25,7 @@ switch($src){
         // include_once "admin_includes/edit_posts_form.php";
     break;
     case "read":
-        // include_once "admin_includes/read_post.php";
+        include_once "includes/cw_view.php";
     break;
 
    default:

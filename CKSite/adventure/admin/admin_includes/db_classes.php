@@ -391,13 +391,24 @@ function read_All_CW($connection){
     $cw_likes=$row['cw_likes'];
     $cw_shares=$row['cw_shares'];
     $cw_published=$row['cw_published'];
+
+    if(!is_null($cw_trunc)){
+        $trunc_bool="True";
+    }
+    else{
+        $trunc_bool="False";
+    }
+
+    // $cw_trunc_display=substr($cw_trunc,0,20);
+
+
     
     $table.="<tr>
     <td>{$cw_id}</td>
     <td>{$cw_type}</td>
     <td>{$cw_title}</td>
     <td>{$cw_date}</td>
-    <td>{$cw_trunc}</td>
+    <td>{$trunc_bool}</td>
     <td>{$cw_filename}</td>
     <td>{$cw_view_count}</td>
     <td>{$cw_likes}</td>

@@ -46,13 +46,36 @@ body {
         border:1px solid #000;
         box-shadow: 6px 6px 10px 3px #000 ;
     }
-    .card{
-        max-width:90%;
-        max-height:auto;
+
+    .card-container a{
+        text-decoration: none;
+        color:#000;
+
     }
+
+    .card{
+        background-image: url("../images/old-paper-texture.jpeg");
+        box-shadow: 6px 6px 10px 3px #000 ;
+        
+    }
+    .card-title{
+        font-family: "Spectral",'Times New Roman', Times, serif;
+    }
+
+    .card-body{
+        max-width:70%;
+        max-height:auto;
+        /* background-image: url("../images/aged-paper.jpeg");
+        background-position: bottom;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-clip: inherit; */
+    }
+
     .card img{
         max-width:50%;
         height: auto;
+        filter: drop-shadow(10px 7px 10px #000);
     }
 
     #genres ul{list-style: none;}
@@ -76,5 +99,21 @@ body {
         }
         form label{
             background-color: transparent;
+        }
+
+        .genre-block{
+            position: sticky;
+        }
+
+        .card{
+            background-image: url("../images/old-paper-texture.jpeg");
+            box-shadow: none;
+            transition: box-shadow ease-in 350ms;
+
+            
+        }
+
+        .card:hover{
+            box-shadow: 6px 6px 10px 3px #000 ;
         }
     }

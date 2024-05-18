@@ -18,7 +18,7 @@ if(isset($_POST['submitBtn'])){
     unlink($old_filepath);
     $cw_filename="cw-".str_replace(" ","",$cw_title).".txt";
     $filepath="../../cw/".$cw_filename;
-    $cw_trunc=$substr($cw_trunc_temp,30);
+    $cw_trunc=substr($cw_trunc_temp,0,350);
     
     $datetime=new DateTime("America/Regina");
     $cw_date=$datetime->format("Y-m-d h:i:s");

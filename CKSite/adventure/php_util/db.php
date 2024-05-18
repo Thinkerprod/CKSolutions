@@ -204,7 +204,7 @@ $cat_delete_stmt=$connection->prepare("DELETE FROM categories WHERE cat_id=?");
 //CW CRUD
 $cw_create_stmt=$connection->prepare("INSERT INTO cw (cw_type, cw_title, cw_date, cw_trunc, cw_filename) VALUES (?,?,?,?,?)");
 $cw_read_stmt=$connection->prepare("SELECT * FROM cw WHERE cw_id=?");
-$update_cw_stmt=$connection->prepare("UPDATE cw SET cw_type=?, cw_title=?, cw_date=?, cw_filename=? WHERE cw_id=?");
+$update_cw_stmt=$connection->prepare("UPDATE cw SET cw_type=?, cw_title=?, cw_date=?, cw_trunc=?, cw_filename=? WHERE cw_id=?");
 $update_cw_view_stmt=$connection->prepare("UPDATE cw SET cw_view_count=? WHERE cw_id=?");
 $publish_cw_stmt=$connection->prepare("UPDATE cw SET cw_published=? WHERE cw_id=?");
 $delete_cw_stmt=$connection->prepare("DELETE FROM cw WHERE cw_id=?");

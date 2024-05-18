@@ -65,7 +65,7 @@ if(isset($_GET['cw_id'])){
            <textarea class='form-control' name='cw_content' id='summernote' cols='100' rows='30'>{$cw_content}</textarea>
        </div>
        <div class='mb-3'>
-       <textarea class='form-control' name='cw_trunc' id='' cols='100' rows='30'>{$cw_content}</textarea>
+       <textarea class='form-control' name='cw_trunc' id='trunc_text' cols='100' rows='10'>{$cw_content}</textarea>
         </div>
        <div class='mb-3'>
            <input class='btn btn-primary' type='submit' value='Submit' name='submitBtn'>

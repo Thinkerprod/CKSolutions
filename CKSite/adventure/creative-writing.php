@@ -33,7 +33,11 @@
                 <?php include "includes/cw-side-well.php"; ?>
             </div>
 
-            <div class="col-sm-12 col-md-12 col-lg-8 d-flex justify-content-center">
+            <!-- <div class="col-sm-12 col-md-12 col-lg-8 d-flex justify-content-center">
+
+            </div> -->
+
+            <div class="col-sm-12 col-md-12 col-lg-8 d-flex flex-column justify-content-center">
             <?php include_once "includes/view-controller.php"; ?>
             </div>
 
