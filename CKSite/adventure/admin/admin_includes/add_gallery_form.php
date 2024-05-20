@@ -3,7 +3,7 @@
         <h1 class="display-3">Add to Gallery</h1>
     </div>
     <div class="col-6">
-        <form action="add-gallery.php" method="post">
+        <form action="gallery_actions/add-gallery.php" method="post">
             <div class="mb-3">
                 <label for="gallery_title" class="form-label">Title</label>
                 <input type="text" name="gallery_title" id="" class="form-control">
@@ -31,6 +31,10 @@
             <div class="mb-3">
                 <label for="image_input" class="form-label">Choose Image</label>
                 <input type="file" name="image_input" id="" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="image_input_BL" class="form-label">Choose Matching Blacklight Image</label>
+                <input type="file" name="image_input_BL" id="" class="form-control">
             </div>
             <div class="mb-3">
                 <input type="submit" value="Submit" class="form-control btn btn-primary" name="submitBtn">

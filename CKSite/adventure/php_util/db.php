@@ -206,6 +206,7 @@ $cw_create_stmt=$connection->prepare("INSERT INTO cw (cw_type, cw_title, cw_date
 $cw_read_stmt=$connection->prepare("SELECT * FROM cw WHERE cw_id=?");
 $update_cw_stmt=$connection->prepare("UPDATE cw SET cw_type=?, cw_title=?, cw_date=?, cw_trunc=?, cw_filename=? WHERE cw_id=?");
 $update_cw_view_stmt=$connection->prepare("UPDATE cw SET cw_view_count=? WHERE cw_id=?");
+
 $publish_cw_stmt=$connection->prepare("UPDATE cw SET cw_published=? WHERE cw_id=?");
 $delete_cw_stmt=$connection->prepare("DELETE FROM cw WHERE cw_id=?");
 
@@ -265,6 +266,15 @@ $media_create_stmt=$connection->prepare("INSERT INTO media (media_type) VALUES (
 $media_read_stmt=$connection->prepare("SELECT * FROM media WHERE media_id=?");
 $media_update_stmt=$connection->prepare("UPDATE media SET media_type=?");
 $media_delete_stmt=$connection->prepare("DELETE FROM media WHERE media_id=?");
+
+//gallery CRUD
+$gallery_create_paint_stmt=$connection->prepare("INSERT INTO gallery(gallery_title,gallery_media_id,is_blacklight,gallery_size,gallery_year,gallery_material_id,gallery_image) VALUES (?,?,?,?,?,?,?)");
+$gallery_create_BL_stmt=$connection->prepare("INSERT INTO gallery(gallery_title,gallery_media_id,is_blacklight,gallery_size,gallery_year,gallery_material_id,gallery_image,gallery_BL_image) VALUES (?,?,?,?,?,?,?,?)");
+$gallery_create_stmt=$connection->prepare("INSERT INTO gallery(gallery_title,gallery_media_id,is_blacklight,gallery_year,gallery_material_id,gallery_image) VALUES (?,?,?,?,?,?)");
+
+
+$size_create_stmt=$connection->prepare("INSERT INTO gallery_sizes (size_amount) VALUES (?)");
+$size_delete_stmt=$connection->prepare("DELETE FROM gallery_sizes WHERE size_id=?");
 
 
 

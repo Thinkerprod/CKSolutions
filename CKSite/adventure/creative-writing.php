@@ -1,8 +1,8 @@
 <?php include "includes/creative-writing-header.php"; ?>
 
 
-    
-    <div class="container-fluid paper">
+    <div class="page-container">
+    <div class="container-fluid content paper">
         <div class="row">
             <div class="col-12 d-flex justify-content-center align-items-center"></div>
             <div class="col-sm-12 col-md-12 col-lg-8 d-flex justify-content-center align-items-center my-5 ">
@@ -46,7 +46,9 @@
 
     </div>
 
-<?php include "includes/footer.php"; ?>
+    </div>
+    <?php include "includes/footer.php"; ?>
+
     
 
 

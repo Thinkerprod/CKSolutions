@@ -370,7 +370,7 @@ function read_All_CW($connection){
             <th scope='col'>cw_trunc</th>
             <th scope='col'>cw_filename</th>          
             <th scope='col'>cw_view_count</th>
-            <th scope='col'>cw_likes</th>
+
             <th scope='col'>cw_shares</th>
             <th scope='col'>cw_published</th>
         </tr>
@@ -388,7 +388,7 @@ function read_All_CW($connection){
     $cw_date=$row['cw_date'];
     $cw_trunc=$row['cw_trunc'];
     $cw_view_count=$row['cw_view_count'];
-    $cw_likes=$row['cw_likes'];
+
     $cw_shares=$row['cw_shares'];
     $cw_published=$row['cw_published'];
 
@@ -411,7 +411,6 @@ function read_All_CW($connection){
     <td>{$trunc_bool}</td>
     <td>{$cw_filename}</td>
     <td>{$cw_view_count}</td>
-    <td>{$cw_likes}</td>
     <td>{$cw_shares}</td>
     <td>{$cw_published}</td>
     <td><a class='text-uppercase' href='admin-index.php?src=edit-cw&cw_id=".$cw_id."'>Edit</a></td>
@@ -743,9 +742,11 @@ function read_All_Gallery($connection){
             <th scope='col'>gallery_title</th>
             <th scope='col'>gallery_media_id</th>
             <th scope='col'>is_blacklight</th>
+            <th scope='col'>gallery_size</th>
             <th scope='col'>gallery_year</th>
             <th scope='col'>gallery_material_id</th>
-            <th scope='col'>gallery_image</th>           
+            <th scope='col'>gallery_image</th>
+            <th scope='col'>gallery_BL_image</th>            
         </tr>
     </thead>
     <tbody>";
@@ -758,9 +759,11 @@ function read_All_Gallery($connection){
     $gallery_title=$row['gallery_title'];
     $gallery_media_id=$row['gallery_media_id'];
     $is_blacklight=$row['is_blacklight'];
+    $gallery_size=$row['gallery_size'];
     $gallery_year=$row['gallery_year'];
     $gallery_material_id=$row['gallery_material_id'];
     $gallery_image=$row['gallery_image'];
+    $gallery_BL_image=$row['gallery_BL_image'];
 
     
     $table.="<tr>
@@ -768,9 +771,11 @@ function read_All_Gallery($connection){
     <td>{$gallery_title}</td>
     <td>{$gallery_media_id}</td>
     <td>{$is_blacklight}</td>
+    <td>{$gallery_size}</td>
     <td>{$gallery_year}</td>
     <td>{$gallery_material_id}</td>
     <td>{$gallery_image}</td>
+    <td>{$gallery_BL_image}</td>
     <td><a class='text-uppercase' href='admin-index.php?src=edit&p_id='".$gallery_id."></a>Edit</td>
     <td><a class='text-uppercase' href='admin-index.php?src=del&p_id='".$gallery_id."></a>Delete</td>
     </tr>";
@@ -853,15 +858,88 @@ function material_Select($connection){
         echo $select_menu;
     }
 }
+function read_All_Material($connection){
+    
+    $table="<table class='table table-striped'>
+    <thead>
+        <tr>
+            <td scope='col'>mat_id</td>
+            <td scope='col'>mat_type</td>
+        </tr>
+    </thead>
+    <tbody>";
+
+    $mat_query="SELECT * FROM material";
+    $result=mysqli_query($connection,$mat_query);
+    if(confirmQuery($result)){
+        while($row=mysqli_fetch_assoc($result)){
+            $mat_id=$row['mat_id'];
+            $mat_type=$row['mat_type'];
+
+            $table.="<tr>
+            <td>{$mat_id}</td>
+            <td>{$mat_type}</td>
+            <td><a href='gallery_actions/delete_material.php?m_id={$mat_id}' class='text-uppercase'>Delete</a></td>
+            </tr>";
 
 
+        }
+        $table.="</tbody></table>";
+        echo $table;
+        echo "<form action='gallery_actions/add_material.php' method='post'>
+        <div class='input-group mb-3'>
+                        <input type='text' name='mat_input' class='form-control' placeholder='Add Material' aria-label='add material form'>
+                        <button type='submit' class='btn btn-primary' name='submitBtn'>Submit</button>
+                    </div>
+        </form>";
+    }
+
+}
+
+function read_All_Sizes($connection){
+
+    $table="<table class='table table-striped'>
+    <thead>
+        <tr>
+            <td scope='col'>size_id</td>
+            <td scope='col'>size_amount</td>
+        </tr>
+    </thead>
+    <tbody>";
+
+    $size_query="SELECT * FROM gallery_sizes";
+    $result=mysqli_query($connection,$size_query);
+    if(confirmQuery($result)){
+        while($row=mysqli_fetch_assoc($result)){
+            $size_id=$row['size_id'];
+            $size_amount=$row['size_amount'];
+
+            $table.="<tr>
+            <td>{$size_id}</td>
+            <td>{$size_amount}</td>
+            <td><a href='gallery_actions/delete_size.php?s_id={$size_id}' class='text-uppercase'>Delete</a></td>
+            </tr>";
+
+
+        }
+        $table.="</tbody></table>";
+        echo $table;
+        echo "<form action='gallery_actions/add_size.php' method='post'>
+        <div class='input-group mb-3'>
+                        <input type='text' name='gallery_size_input' class='form-control' placeholder='Add Size' aria-label='add size form'>
+                        <button type='submit' class='btn btn-primary' name='submitBtn'>Submit</button>
+                    </div>
+        </form>";
+    }
+
+}
 ?>
 
 
 
 
-<script src="js/pagination.js"></script>
+<!-- <script src="js/pagination.js"></script> -->
 
-<form action="cw_actions/add-type.php" method="post">
+<form action='cw_actions/add-type.php' method="post">
 
 </form>

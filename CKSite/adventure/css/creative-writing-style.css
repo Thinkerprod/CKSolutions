@@ -14,6 +14,8 @@ body {
     align-items: center;
     background-color: #fff;
     background-image: url("../images/old-paper-texture.png");
+    background-size: cover;
+    background-repeat: no-repeat;
     background-attachment: scroll;
     font-family: "Work Sans", sans-serif;
     font-weight: 800;
@@ -21,6 +23,14 @@ body {
     margin:0;
     padding:0;
     
+    }
+    .page-container{
+        display:block;
+        min-width:100%;
+        height:auto;
+    }
+    .content{
+        min-height: 100%;
     }
     .blog-name{
         font-family: "Spectral",'Times New Roman', Times, serif;
@@ -77,6 +87,31 @@ body {
         height: auto;
         filter: drop-shadow(10px 7px 10px #000);
     }
+
+    .author img{
+        max-width:150px;
+        height: auto;
+        border-radius: 50%;
+    }
+
+    .cw-read-container{
+        max-height:100vh;
+    }
+
+    .content-container{
+        width:90%;
+        max-height: 60%;
+    }
+
+    #content{
+        width:90%;
+        height:90%;
+        background-color: bisque;
+        overflow-y: scroll;
+        background-image: url("../images/old-paper-texture.jpeg");
+    }
+
+
 
     #genres ul{list-style: none;}
     #genres ul>li{

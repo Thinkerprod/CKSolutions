@@ -14,3 +14,29 @@
 
 </head>
 <body>
+<header>
+    <div class="nav-container">
+    <div class="logo">CK</div>
+    <div class="hamburger" id="mobile">
+        <div class="top-bar bars" id="top"></div>
+        <div class="middle-bar bars" id="middle"></div>
+        <div class="bottom-bar bars" id="bottom"></div>
+        <div class="x-middle" id="x-spot">
+            <div class="down-slash slash"></div>
+            <div class="up-slash slash"></div>
+        </div>
+    </div>
+    <nav id="nav-menu">
+
+    <ul id="menu-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="gallery.php">Gallery</a></li>
+    <li><a href="blog-adventure.php">Blog</a></li>
+    <li><a href="creaative-writing.php">Creative Writing</a></li>
+    <li><a href="about.php">About</a></li>
+    <li><a href="admin/admin-index.php"><i class="fa-solid fa-user"></i></a></li>
+    </ul>
+</nav>
+</div>
+
+</header>
