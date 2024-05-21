@@ -26,11 +26,11 @@ if(isset($_POST['submitBtn'])){
     $image_input_BL=$_FILES['image_input_BL']['name'];
     $image_input_BL_temp=$_FILES['image_input_BL']['tmp_name'];
 
-    $moveImgPath="../../images/gallery/".$image_input;
-    move_uploaded_file($image_input_temp,$moveImgPath);
+    // $moveImgPath="../../images/gallery/".$image_input;
+    // move_uploaded_file($image_input_temp,$moveImgPath);
 
-    $moveImgBLPath="../../images/gallery/".$image_input_BL;
-    move_uploaded_file($image_input_BL_temp,$moveImgBLPath);
+    // $moveImgBLPath="../../images/gallery/".$image_input_BL;
+    // move_uploaded_file($image_input_BL_temp,$moveImgBLPath);
 
 }
 

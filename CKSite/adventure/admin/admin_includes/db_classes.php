@@ -776,8 +776,8 @@ function read_All_Gallery($connection){
     <td>{$gallery_material_id}</td>
     <td>{$gallery_image}</td>
     <td>{$gallery_BL_image}</td>
-    <td><a class='text-uppercase' href='admin-index.php?src=edit&p_id='".$gallery_id."></a>Edit</td>
-    <td><a class='text-uppercase' href='admin-index.php?src=del&p_id='".$gallery_id."></a>Delete</td>
+    <td><a class='text-uppercase' href='admin-index.php?src=edit&g_id='".$gallery_id."></a>Edit</td>
+    <td><a class='text-uppercase' href='gallery_actions/delete_image.php?g_id='".$gallery_id."></a>Delete</td>
     </tr>";
     
         }
@@ -838,6 +838,55 @@ function media_Select($connection){
         $select_menu.="</select>";
         echo $select_menu;
     }
+}
+function media_selected($connection,$stmt,$g_id){
+    $media_select="<select name='type_input' class='form-select' aria-label='select type of creative writing'>";
+
+    $stmt->bind_param("i",$g_id);
+    $stmt->execute();
+    $stmt_result=$stmt->get_result();
+
+    $media_row_id=$stmt_result->fetch_assoc();
+
+    // var_dump($type_row_id[0]);
+    // echo $type_row_id['cw_type'];
+
+    $media_query="SELECT * FROM media";
+    $result=mysqli_query($connection,$media_query);
+    while($row=mysqli_fetch_assoc($result)){
+        $media_id=$row['media_id'];
+        $media_type=$row['media_type'];
+
+        if($media_row_id['gallery_media_id']==$media_id){
+            $selected="selected";
+        }
+        else{
+            $selected="";
+        }
+
+        $media_select.="<option value='{$media_id}' {$selected}>{$media_type}</option>";
+
+    }
+    $stmt->close();
+    return $media_select."</select>";
+}
+
+function blacklight_checked($stmt,$g_id){
+    $stmt->bind_param("i",$g_id);
+    $stmt->execute();
+    $stmt_result=$stmt->get_result();
+
+    $media_row_id=$stmt_result->fetch_assoc();
+    if($media_row_id['is_blacklight']==1){
+        $checked="<input type='checkbox' name='black_check' id='' class='form-check-input' checked>";
+    }
+    else{
+        $checked="<input type='checkbox' name='black_check' id='' class='form-check-input' >";
+    }
+
+    $stmt->close();
+    // $connection->close();
+return $checked;
 }
 
 function material_Select($connection){
@@ -932,6 +981,55 @@ function read_All_Sizes($connection){
         </form>";
     }
 
+}
+function size_Select($connection){
+    $select_menu="<select name='size_select' class='form-select' aria-label='Select Menu'>";
+
+    $size_query="SELECT * FROM gallery_sizes";
+    $result=mysqli_query($connection,$size_query);
+    if(confirmQuery($result)){
+        while($row=mysqli_fetch_assoc($result)){
+            $size_id=$row['size_id'];
+            $size_amount=$row['size_amount'];
+
+            $select_menu.="<option value='{$size_id}' aria-label='{$size_id}'>{$size_amount}</option>";
+
+
+        }
+        $select_menu.="</select>";
+        echo $select_menu;
+    }
+}
+function size_selected($connection,$stmt,$g_id){
+    $media_select="<select name='type_input' class='form-select' aria-label='select type of creative writing'>";
+
+    $stmt->bind_param("i",$g_id);
+    $stmt->execute();
+    $stmt_result=$stmt->get_result();
+
+    $size_row_id=$stmt_result->fetch_assoc();
+
+    // var_dump($type_row_id[0]);
+    // echo $type_row_id['cw_type'];
+
+    $size_query="SELECT * FROM media";
+    $result=mysqli_query($connection,$size_query);
+    while($row=mysqli_fetch_assoc($result)){
+        $size_id=$row['size_id'];
+        $size_amount=$row['size_amount'];
+
+        if($size_row_id['gallery_size']==$size_id){
+            $selected="selected";
+        }
+        else{
+            $selected="";
+        }
+
+        $media_select.="<option value='{$size_id}' {$selected}>{$size_amount}</option>";
+
+    }
+    $stmt->close();
+    return $media_select."</select>";
 }
 ?>
 

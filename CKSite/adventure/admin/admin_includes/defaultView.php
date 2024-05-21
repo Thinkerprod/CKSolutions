@@ -15,7 +15,7 @@
 <btn class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapsePI" role="button" aria-expanded="false" aria-controls="collapsePI">Post Images</btn>
 <btn class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseGenres" role="button" aria-expanded="false" aria-controls="collapseGenres">Genres & Media</btn>
 <btn class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseCWTags" role="button" aria-expanded="false" aria-controls="collapseCWTags">CW Tags & Types</btn>
-<btn class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseGallerySizes" role="button" aria-expanded="false" aria-controls="collapseGallerySizes">Gallery Sizes</btn>
+<btn class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseGallerySizes" role="button" aria-expanded="false" aria-controls="collapseGallerySizes">Gallery Sizes & Material</btn>
 </div>
 <div class="row">
     <div class="col-12 collapse" id="collapsePosts">
@@ -43,7 +43,8 @@
     ?>
     </div>
     <div class="col-12 collapse" id="collapseGallerySizes">
-    <?php read_All_Sizes($connection);?>
+    <?php read_All_Sizes($connection);
+    read_All_Material($connection);?>
     </div>
 </div>
 </div>
