@@ -27,7 +27,7 @@ $edit_form="<div class='row'>
     <h1 class='display-3'>Edit Gallery Form</h1>
 </div>
 <div class='col-6'>
-    <form action='gallery_actions/update_gallery.php' method='post'>
+    <form action='gallery_actions/update_gallery.php' method='post' enctype='multipart/form-data'>
         <div class='mb-3'>
             <label for='gallery_title' class='form-label'>Title</label>
             <input type='text' name='gallery_title' id='' value='{$gallery_title}' class='form-control'>
@@ -44,6 +44,30 @@ $edit_form="<div class='row'>
             <div class='mb-3'>
                 <label for='size_input' class='form-label'>Size</label>";
                 $edit_form.=size_selected($connection,$gallery_read_size_stmt,$g_id);
+                $edit_form.="            </div>
+                <div class='mb-3'>
+                    <label for='year_input' class='form-label'>Year</label>
+                    <input type='text' name='year_input' id='' value='{$gallery_year}' class='form-control'>
+                </div>
+                
+                <div class='mb-3'><label for='material_select' class='form-label'>Material</label>";
+                $edit_form.=material_Selected($connection,$gallery_read_material_stmt,$g_id);
+                $edit_form.="
+                </div>
+                <div class='mb-3'>
+                    <label for='image_input' class='form-label'>Choose Image</label>
+                    <input type='file' name='image_input' id='' value='{$gallery_image}' class='form-control'>
+                </div>
+                <div class='mb-3'>
+                    <label for='image_input_BL' class='form-label'>Choose Matching Blacklight Image</label>
+                    <input type='file' name='image_input_BL' id='' value='{$gallery_BL_image}' class='form-control'>
+                </div>
+                <div class='mb-3'>
+                    <input type='submit' value='Submit' class='form-control btn btn-primary' name='submitBtn'>
+                </div>
+            </form>
+        </div>
+    </div>";
 
 $gallery_read_stmt->close();
 $connection->close();
@@ -58,27 +82,5 @@ $connection->close();
 
 
 
-                <input type='text' name='size_input' id='' class='form-control'>
-            </div>
-            <div class='mb-3'>
-                <label for='year_input' class='form-label'>Year</label>
-                <input type='text' name='year_input' id='' class='form-control'>
-            </div>
-            
-            <div class='mb-3'><label for='material_select' class='form-label'>Material</label>
-            <?php material_Select($connection)?>
-            </div>
-            <div class='mb-3'>
-                <label for='image_input' class='form-label'>Choose Image</label>
-                <input type='file' name='image_input' id='' class='form-control'>
-            </div>
-            <div class='mb-3'>
-                <label for='image_input_BL' class='form-label'>Choose Matching Blacklight Image</label>
-                <input type='file' name='image_input_BL' id='' class='form-control'>
-            </div>
-            <div class='mb-3'>
-                <input type='submit' value='Submit' class='form-control btn btn-primary' name='submitBtn'>
-            </div>
-        </form>
-    </div>
-</div>
+                
+

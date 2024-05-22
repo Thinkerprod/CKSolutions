@@ -24,6 +24,9 @@ switch($src){
     case "edit":
         include_once "admin_includes/edit_posts_form.php";
     break;
+    case "edit-g":
+        include_once "admin_includes/edit_gallery_form.php";
+    break;
     case "read":
         include_once "admin_includes/read_post.php";
     break;

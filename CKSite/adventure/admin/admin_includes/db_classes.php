@@ -776,8 +776,8 @@ function read_All_Gallery($connection){
     <td>{$gallery_material_id}</td>
     <td>{$gallery_image}</td>
     <td>{$gallery_BL_image}</td>
-    <td><a class='text-uppercase' href='admin-index.php?src=edit&g_id='".$gallery_id."></a>Edit</td>
-    <td><a class='text-uppercase' href='gallery_actions/delete_image.php?g_id='".$gallery_id."></a>Delete</td>
+    <td><a class='text-uppercase' href='admin-index.php?src=edit-g&g_id='".$gallery_id.">Edit</a></td>
+    <td><a class='text-uppercase' href='gallery_actions/delete_image.php?g_id='".$gallery_id.">Delete</a></td>
     </tr>";
     
         }
@@ -906,6 +906,37 @@ function material_Select($connection){
         $select_menu.="</select>";
         echo $select_menu;
     }
+}
+function material_Selected($connection,$stmt,$g_id){
+    $mat_select="<select name='mat_input' class='form-select' aria-label='select type of material'>";
+
+    $stmt->bind_param("i",$g_id);
+    $stmt->execute();
+    $stmt_result=$stmt->get_result();
+
+    $mat_row_id=$stmt_result->fetch_assoc();
+
+    // var_dump($type_row_id[0]);
+    // echo $type_row_id['cw_type'];
+
+    $mat_query="SELECT * FROM material";
+    $result=mysqli_query($connection,$mat_query);
+    while($row=mysqli_fetch_assoc($result)){
+        $mat_id=$row['mat_id'];
+        $mat_type=$row['mat_type'];
+
+        if($mat_row_id['gallery_material_id']==$mat_id){
+            $selected="selected";
+        }
+        else{
+            $selected="";
+        }
+
+        $mat_select.="<option value='{$mat_id}' {$selected}>{$mat_type}</option>";
+
+    }
+    $stmt->close();
+    return $mat_select."</select>";
 }
 function read_All_Material($connection){
     
@@ -1038,6 +1069,3 @@ function size_selected($connection,$stmt,$g_id){
 
 <!-- <script src="js/pagination.js"></script> -->
 
-<form action='cw_actions/add-type.php' method="post">
-
-</form>

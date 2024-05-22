@@ -3,7 +3,7 @@
         <h1 class="display-3">Add to Gallery</h1>
     </div>
     <div class="col-6">
-        <form action="gallery_actions/add-gallery.php" method="post">
+        <form action="gallery_actions/add_gallery.php" method="post" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="gallery_title" class="form-label">Title</label>
                 <input type="text" name="gallery_title" id="" class="form-control">
@@ -18,7 +18,7 @@
             </div>
             <div class="mb-3">
                 <label for="size_input" class="form-label">Size</label>
-                <input type="text" name="size_input" id="" class="form-control">
+                <?php size_Select($connection);?>
             </div>
             <div class="mb-3">
                 <label for="year_input" class="form-label">Year</label>
