@@ -45,6 +45,8 @@ if(isset($_POST['submitBtn'])){
 
     echo "successful";
 
+    header("Location:../admin-index.php");
+
 
 
 

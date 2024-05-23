@@ -776,8 +776,8 @@ function read_All_Gallery($connection){
     <td>{$gallery_material_id}</td>
     <td>{$gallery_image}</td>
     <td>{$gallery_BL_image}</td>
-    <td><a class='text-uppercase' href='admin-index.php?src=edit-g&g_id='".$gallery_id.">Edit</a></td>
-    <td><a class='text-uppercase' href='gallery_actions/delete_image.php?g_id='".$gallery_id.">Delete</a></td>
+    <td><a class='text-uppercase' href='admin-index.php?src=edit-g&g_id={$gallery_id}'>Edit</a></td>
+    <td><a class='text-uppercase' href='gallery_actions/delete_gallery.php?g_id={$gallery_id}'>Delete</a></td>
     </tr>";
     
         }
