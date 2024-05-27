@@ -840,7 +840,7 @@ function media_Select($connection){
     }
 }
 function media_selected($connection,$stmt,$g_id){
-    $media_select="<select name='type_input' class='form-select' aria-label='select type of creative writing'>";
+    $media_select="<select name='media_input' class='form-select' aria-label='select type of creative writing'>";
 
     $stmt->bind_param("i",$g_id);
     $stmt->execute();
@@ -1032,7 +1032,7 @@ function size_Select($connection){
     }
 }
 function size_selected($connection,$stmt,$g_id){
-    $media_select="<select name='type_input' class='form-select' aria-label='select type of creative writing'>";
+    $media_select="<select name='size_input' class='form-select' aria-label='select type of creative writing'>";
 
     $stmt->bind_param("i",$g_id);
     $stmt->execute();
@@ -1043,7 +1043,7 @@ function size_selected($connection,$stmt,$g_id){
     // var_dump($type_row_id[0]);
     // echo $type_row_id['cw_type'];
 
-    $size_query="SELECT * FROM media";
+    $size_query="SELECT * FROM gallery_sizes";
     $result=mysqli_query($connection,$size_query);
     while($row=mysqli_fetch_assoc($result)){
         $size_id=$row['size_id'];
