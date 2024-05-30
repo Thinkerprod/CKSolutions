@@ -11,15 +11,16 @@ if(isset($_POST['submitBtn'])){
     if(isset($_POST['black_check'])){
         $black_check=1;
         echo $black_check."  sehhnhrhhrgr";
-        $gallery_update_BL_stmt->bind_param("siisiissi",$gallery_title,$media_select,$black_check,$size_input,$year_input,$material_select,$image_input,$image_input_BL,$gallery_id);
+        $gallery_update_BL_stmt->bind_param("siisiiissi",$gallery_title,$media_select,$black_check,$size_input,$o_select,$year_input,$material_select,$image_input,$image_input_BL,$gallery_id);
     }
     else{
         $black_check=0;
         echo $black_check." bleh";
-        $gallery_update_stmt->bind_param("siisiisi",$gallery_title,$media_select,$black_check,$size_input,$year_input,$material_select,$image_input,$gallery_id);
+        $gallery_update_stmt->bind_param("siisiiisi",$gallery_title,$media_select,$black_check,$size_input,$o_select,$year_input,$material_select,$image_input,$gallery_id);
     }
 
     $size_input=$_POST['size_input'];
+    $o_select=$_POST['o_select'];
     $year_input=$_POST['year_input'];
     $material_select=$_POST['mat_input'];
 

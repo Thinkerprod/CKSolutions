@@ -9,10 +9,10 @@ include_once "../php_util/db.php";
 ?>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-3 d-flex flex-column">
+        <div class="col-lg-2 d-flex flex-column">
         <?php include_once "admin_includes/admin_well.php";?>
         </div>
-        <div class="col-lg-9 view-container">
+        <div class="col-lg-10 view-container">
         <?php include_once "admin_includes/controller.php";?>
         </div>
     </div>

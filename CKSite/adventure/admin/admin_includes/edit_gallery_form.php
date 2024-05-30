@@ -45,7 +45,8 @@ $edit_form="<div class='row'>
             <div class='mb-3'>
                 <label for='size_input' class='form-label'>Size</label>";
                 $edit_form.=size_selected($connection,$gallery_read_size_stmt,$g_id);
-                $edit_form.="            </div>
+                $edit_form.="";
+                $edit_form.="</div>
                 <div class='mb-3'>
                     <label for='year_input' class='form-label'>Year</label>
                     <input type='text' name='year_input' id='' value='{$gallery_year}' class='form-control'>
@@ -53,9 +54,9 @@ $edit_form="<div class='row'>
                 
                 <div class='mb-3'><label for='material_select' class='form-label'>Material</label>";
                 $edit_form.=material_Selected($connection,$gallery_read_material_stmt,$g_id);
-                $edit_form.="
-                </div>
-                <div class='mb-3'>
+                $edit_form.=o_selected($gallery_read_o_stmt,$g_id);
+                
+                $edit_form.="<div class='mb-3'>
                 <input type='hidden' name='old_image' id='' value='{$gallery_image}' class='form-control'>
                     <label for='image_input' class='form-label'>Choose Image</label>
                     <input type='file' name='image_input' id='' value='{$gallery_image}' class='form-control'>

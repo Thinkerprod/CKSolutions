@@ -268,9 +268,9 @@ $media_update_stmt=$connection->prepare("UPDATE media SET media_type=?");
 $media_delete_stmt=$connection->prepare("DELETE FROM media WHERE media_id=?");
 
 //gallery CRUD
-$gallery_create_paint_stmt=$connection->prepare("INSERT INTO gallery(gallery_title,gallery_media_id,is_blacklight,gallery_size,gallery_year,gallery_material_id,gallery_image) VALUES (?,?,?,?,?,?,?)");
-$gallery_create_BL_stmt=$connection->prepare("INSERT INTO gallery(gallery_title,gallery_media_id,is_blacklight,gallery_size,gallery_year,gallery_material_id,gallery_image,gallery_BL_image) VALUES (?,?,?,?,?,?,?,?)");
-$gallery_create_stmt=$connection->prepare("INSERT INTO gallery(gallery_title,gallery_media_id,is_blacklight,gallery_year,gallery_material_id,gallery_image) VALUES (?,?,?,?,?,?)");
+$gallery_create_paint_stmt=$connection->prepare("INSERT INTO gallery(gallery_title,gallery_media_id,is_blacklight,gallery_size,gallery_orientation,gallery_year,gallery_material_id,gallery_image) VALUES (?,?,?,?,?,?,?,?)");
+$gallery_create_BL_stmt=$connection->prepare("INSERT INTO gallery(gallery_title,gallery_media_id,is_blacklight,gallery_size,gallery_orientation,gallery_year,gallery_material_id,gallery_image,gallery_BL_image) VALUES (?,?,?,?,?,?,?,?,?)");
+// $gallery_create_stmt=$connection->prepare("INSERT INTO gallery(gallery_title,gallery_media_id,is_blacklight,gallery_year,gallery_material_id,gallery_image) VALUES (?,?,?,?,?,?,?)");
 
 $gallery_read_stmt=$connection->prepare("SELECT * FROM gallery WHERE gallery_id=?");
 
@@ -280,10 +280,11 @@ $gallery_read_media_stmt=$connection->prepare("SELECT gallery_media_id FROM gall
 $gallery_read_BL_check_stmt=$connection->prepare("SELECT is_blacklight FROM gallery WHERE gallery_id=?");
 $gallery_read_size_stmt=$connection->prepare("SELECT gallery_size FROM gallery WHERE gallery_id=?");
 $gallery_read_material_stmt=$connection->prepare("SELECT gallery_material_id FROM gallery WHERE gallery_id=?");
+$gallery_read_o_stmt=$connection->prepare("SELECT gallery_orientation FROM gallery WHERE gallery_id=?");
 
 
-$gallery_update_BL_stmt=$connection->prepare("UPDATE gallery SET gallery_title=?,gallery_media_id=?,is_blacklight=?,gallery_size=?,gallery_year=?,gallery_material_id=?,gallery_image=?,gallery_BL_image=? WHERE gallery_id=?");
-$gallery_update_stmt=$connection->prepare("UPDATE gallery SET gallery_title=?,gallery_media_id=?,is_blacklight=?,gallery_size=?,gallery_year=?,gallery_material_id=?,gallery_image=? WHERE gallery_id=?");
+$gallery_update_BL_stmt=$connection->prepare("UPDATE gallery SET gallery_title=?,gallery_media_id=?,is_blacklight=?,gallery_size=?,gallery_orientation=?,gallery_year=?,gallery_material_id=?,gallery_image=?,gallery_BL_image=? WHERE gallery_id=?");
+$gallery_update_stmt=$connection->prepare("UPDATE gallery SET gallery_title=?,gallery_media_id=?,is_blacklight=?,gallery_size=?,gallery_orientation=?,gallery_year=?,gallery_material_id=?,gallery_image=? WHERE gallery_id=?");
 
 $gallery_delete_stmt=$connection->prepare("DELETE FROM gallery WHERE gallery_id=?");
 

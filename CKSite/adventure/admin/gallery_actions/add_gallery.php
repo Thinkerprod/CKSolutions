@@ -7,17 +7,18 @@ if(isset($_POST['submitBtn'])){
 
     if(isset($_POST['black_check'])){
         $black_check=1;
-        echo $black_check."  sehhnhrhhrgr";
-        $gallery_create_BL_stmt->bind_param("siisiiss",$gallery_title,$media_select,$black_check,$size_input,$year_input,$material_select,$image_input,$image_input_BL);
+        // echo $black_check."  sehhnhrhhrgr";
+        $gallery_create_BL_stmt->bind_param("siisiiiss",$gallery_title,$media_select,$black_check,$size_input,$o_select,$year_input,$material_select,$image_input,$image_input_BL);
     }
     else{
         $black_check=0;
         echo $black_check." bleh";
-        $gallery_create_paint_stmt->bind_param("siisiis",$gallery_title,$media_select,$black_check,$size_input,$year_input,$material_select,$image_input);
+        $gallery_create_paint_stmt->bind_param("siisiiis",$gallery_title,$media_select,$black_check,$size_input,$o_select,$year_input,$material_select,$image_input);
     }
 
     
     $size_input=$_POST['size_select'];
+    $o_select=$_POST['o_select'];
     $year_input=$_POST['year_input'];
     $material_select=$_POST['material_select'];
     // $image_input=$_POST['gallery_title'];

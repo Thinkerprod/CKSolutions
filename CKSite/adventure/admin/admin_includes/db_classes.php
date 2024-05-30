@@ -743,6 +743,7 @@ function read_All_Gallery($connection){
             <th scope='col'>gallery_media_id</th>
             <th scope='col'>is_blacklight</th>
             <th scope='col'>gallery_size</th>
+            <th scope='col'>gallery_orientation</th>
             <th scope='col'>gallery_year</th>
             <th scope='col'>gallery_material_id</th>
             <th scope='col'>gallery_image</th>
@@ -760,6 +761,7 @@ function read_All_Gallery($connection){
     $gallery_media_id=$row['gallery_media_id'];
     $is_blacklight=$row['is_blacklight'];
     $gallery_size=$row['gallery_size'];
+    $gallery_orientation=$row['gallery_orientation'];
     $gallery_year=$row['gallery_year'];
     $gallery_material_id=$row['gallery_material_id'];
     $gallery_image=$row['gallery_image'];
@@ -772,6 +774,7 @@ function read_All_Gallery($connection){
     <td>{$gallery_media_id}</td>
     <td>{$is_blacklight}</td>
     <td>{$gallery_size}</td>
+    <td>{$gallery_orientation}</td>
     <td>{$gallery_year}</td>
     <td>{$gallery_material_id}</td>
     <td>{$gallery_image}</td>
@@ -1060,7 +1063,31 @@ function size_selected($connection,$stmt,$g_id){
 
     }
     $stmt->close();
-    return $media_select."</select>";
+    return $media_select."</select></div>";
+}
+
+function o_selected($stmt,$g_id){
+    $o_select="<div class='mb-3'>
+    <label for='o_select' class='form-label'>Select Orientation</label>
+    <select name='o_select' id='' class='form-select' aria-label='select orientation'>";
+    $stmt->bind_param("i",$g_id);
+    $stmt->execute();
+    $stmt_result=$stmt->get_result();
+    $o_row=$stmt_result->fetch_assoc();
+    if($o_row['gallery_orientation']==1){
+        $select="<option value='1' selected>Landscape</option>
+        <option value='2'>Portrait</option>";
+    }
+    elseif($o_row['gallery_orientation']==2){
+        $select="<option value='1'>Landscape</option>
+        <option value='2' selected>Portrait</option>";
+    }
+    else{
+        $select="<option value='1'>Landscape</option>
+        <option value='2'>Portrait</option>";
+    }
+    $stmt->close();
+    return $o_select.$select."</select></div>";
 }
 ?>
 

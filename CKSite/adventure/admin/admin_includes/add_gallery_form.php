@@ -21,6 +21,13 @@
                 <?php size_Select($connection);?>
             </div>
             <div class="mb-3">
+                <label for="o_select" class="form-label">Select Orientation</label>
+                <select name="o_select" id="">
+                    <option value="1">Landscape</option>
+                    <option value="2">Portrait</option>
+                </select>
+            </div>
+            <div class="mb-3">
                 <label for="year_input" class="form-label">Year</label>
                 <input type="text" name="year_input" id="" class="form-control">
             </div>

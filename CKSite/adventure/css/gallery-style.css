@@ -18,6 +18,25 @@ body{
     margin:0;
     padding:0;
 }
-.BL-toggle{
-    display: none;
-}
+/* .grid{
+    display: ;
+} */
+.grid-sizer,.grid-item {
+
+    width: 33.333%;
+
+    /* border: 2px solid hsla(0, 0%, 0%, 0.5); */
+  }
+  .grid-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:0;
+
+  }
+  .grid-item img {
+    display: block;
+    max-width: 100%;
+  }
+  .grid-item img .BL-toggle{display:none;}
+  /* .grid-item--height2 { height: 40%; } */
