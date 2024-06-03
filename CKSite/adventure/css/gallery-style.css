@@ -39,4 +39,69 @@ body{
     max-width: 100%;
   }
   .grid-item img .BL-toggle{display:none;}
+  .gallery-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40rem;
+    height:6rem;
+    margin:3rem 0 3rem 0;
+    padding:0;
+    
+  }
+  h1{
+    display: block;
+    text-align: center;
+  }
+  .title-top{
+    display: block;
+    width:30rem;
+    position:relative;
+     font-family: "Cinzel",'Times New Roman', Times, serif;
+     letter-spacing: 0.25em;
+     font-size: 2em;
+     text-align: center;
+     /* padding-right:1em; */
+
+  }
+  .spectrum{
+    
+    display: block;
+    
+    background: linear-gradient(to bottom, red, orange, yellow, green, blue, indigo, violet), 
+                linear-gradient(to right, rgba(255, 255, 255, 1) ,  rgba(255, 255, 255, 0));
+    background-blend-mode: screen;
+    width:40rem;
+    height:3rem;
+    
+
+  }
+  .spectrum-inverse{
+    background: linear-gradient(to bottom, red, orange, yellow, green, blue, indigo, violet), 
+    linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 50%);
+background-blend-mode: multiply;
+  }
+  .title-bottom{
+    display: block;
+   width:100%;
+    font-family: "Cinzel",'Times New Roman', Times, serif;
+    letter-spacing: 1em;
+    font-size: 2em;
+    text-align: center;
+    padding:0;
+    margin-top: 0.5rem;
+  }
+  small{
+    font-family: "Cinzel",'Times New Roman', Times, serif;
+    font-style: italic;
+    font-size: 1em;
+    text-align: center;
+  }
+  .gallery-lg{display: none;}
+  @media (min-width:768px){
+    .gallery-lg{
+        display: block;
+        position: relative;
+    }
+  }
   /* .grid-item--height2 { height: 40%; } */

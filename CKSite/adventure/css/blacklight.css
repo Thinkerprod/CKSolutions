@@ -66,6 +66,7 @@
     writing-mode: vertical-lr;
     text-orientation: upright;
     text-transform: uppercase;
+    font-family: "Cinzel",'Times New Roman', Times, serif;
 }
 .blacklight-on{
     background-color: #5D0CED;

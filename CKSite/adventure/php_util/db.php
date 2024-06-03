@@ -282,6 +282,9 @@ $gallery_read_size_stmt=$connection->prepare("SELECT gallery_size FROM gallery W
 $gallery_read_material_stmt=$connection->prepare("SELECT gallery_material_id FROM gallery WHERE gallery_id=?");
 $gallery_read_o_stmt=$connection->prepare("SELECT gallery_orientation FROM gallery WHERE gallery_id=?");
 
+$gallery_display_read_stmt=$connection->prepare("SELECT g.gallery_title, m.media_type, gs.size_amount, g.gallery_orientation, mt.mat_type, g.is_blacklight, g.gallery_year, g.gallery_image, g.gallery_BL_image
+FROM gallery g INNER JOIN media m ON g.gallery_media_id=m.media_id INNER JOIN gallery_sizes gs ON g.gallery_size=gs.size_id INNER JOIN material mt ON g.gallery_material_id=mt.mat_id WHERE g.gallery_id=?");
+
 
 $gallery_update_BL_stmt=$connection->prepare("UPDATE gallery SET gallery_title=?,gallery_media_id=?,is_blacklight=?,gallery_size=?,gallery_orientation=?,gallery_year=?,gallery_material_id=?,gallery_image=?,gallery_BL_image=? WHERE gallery_id=?");
 $gallery_update_stmt=$connection->prepare("UPDATE gallery SET gallery_title=?,gallery_media_id=?,is_blacklight=?,gallery_size=?,gallery_orientation=?,gallery_year=?,gallery_material_id=?,gallery_image=? WHERE gallery_id=?");

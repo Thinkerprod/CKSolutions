@@ -1,12 +1,25 @@
+
 <?php 
 
 include_once "includes/gallery-header.php";
 include_once "php_util/db.php";
-$page="<div class='container-fluid'>
-<div class='gallery_title d-flex flex-column justify-content-center align-items-center'>
-    <h2 class='title-top'>Prism Expressions</h2>
-    <h1 class='title-bottom'>Gallery</h1>
-</div>";
+
+$container="<div class='container-fluid'>";
+if(isset($_GET['id'])){
+    $g_id=$_GET['id'];
+    
+}
+echo $container;
+
+$page="
+<div class='gallery_title d-flex flex-column justify-content-center align-items-center gy-3'>
+<div class='title-top'>Prism  Expressions</div>
+<div class='spectrum'></div>
+
+<div class='title-bottom'>Gallery</div>
+<small>All Artwork Seen Here Is Created By Cory Kutschker</small>
+</div>
+";
 
 $gallery_sm="    <div class='gallery-sm'>
 <div class='row'>
@@ -45,7 +58,10 @@ $gallery_lg="
             </div>
         </div>
         <div class='col-md-8 col-lg-6'>
-            <div class='grid'>
+        
+
+
+            <div class='grid my-5'>
             <div class='grid-sizer'></div>
 
     ";
@@ -62,16 +78,21 @@ $gallery_lg="
         }
         $('.blacklight').toggleClass('highlight')
         $('.plain').toggleClass('obscure')
+        $('.spectrum').toggleClass('spectrum-inverse')
         
         const blacklight_pairs=[";
 
-$gallery_query="SELECT g.gallery_title, m.media_type, gs.size_amount, g.gallery_orientation, mt.mat_type, g.is_blacklight, g.gallery_year, g.gallery_image, g.gallery_BL_image
+$gallery_query="SELECT g.gallery_id, g.gallery_title, m.media_type, gs.size_amount, g.gallery_orientation, mt.mat_type, g.is_blacklight, g.gallery_year, g.gallery_image, g.gallery_BL_image
 FROM gallery g INNER JOIN media m ON g.gallery_media_id=m.media_id INNER JOIN gallery_sizes gs ON g.gallery_size=gs.size_id INNER JOIN material mt ON g.gallery_material_id=mt.mat_id";
 
+$count_query="SELECT COUNT(gallery_id) AS total FROM gallery";
+
 $gallery_result=mysqli_query($connection,$gallery_query);
-$countable=$row=mysqli_fetch_array($gallery_result);
-$count_down=count($countable);
+$countable=mysqli_query($connection,$count_query);
+$count_row=$countable->fetch_assoc();
+$count_down=$count_row['total'];
 while($row=mysqli_fetch_assoc($gallery_result)){
+    $g_id=$row['gallery_id'];
     $g_title=$row['gallery_title'];
     $g_BL_check=$row['is_blacklight'];
     $g_year=$row['gallery_year'];
@@ -114,7 +135,7 @@ while($row=mysqli_fetch_assoc($gallery_result)){
         $img_id_BL=str_replace(" ","",$g_title)."_BL";
         $alt_BL="Blacklight image of ".$g_title;
         $image_BL_path="images/gallery/".$g_BL_image;
-        $img="<img src='{$image_path}' alt='{$alt}' class='img-fluid blacklight' id='{$img_id}'>";
+        $img="<a href='gallery.php?id={$g_id}'><img src='{$image_path}' alt='{$alt}' class='img-fluid blacklight' id='{$img_id}'></a>";
         $gallery_sm.=$img."</div>";
         $gallery_lg.=$img."</div>";
 
@@ -122,7 +143,7 @@ while($row=mysqli_fetch_assoc($gallery_result)){
 
     }
     else{
-        $img="<img src='{$image_path}' alt='{$alt}' class='img-fluid plain' id='{$img_id}'>";
+        $img="<a href='gallery.php?id={$g_id}'><img src='{$image_path}' alt='{$alt}' class='img-fluid plain' id='{$img_id}'></a>";
 
         $gallery_sm.=$img."</div>";
         $gallery_lg.=$img."</div>";
@@ -182,7 +203,7 @@ $gallery_lg.="
 
 $page.=$gallery_lg."</div>";
 echo $page;
-echo count($countable);
+
 
 $bottom_tags="</body>
 </html>";
@@ -197,7 +218,9 @@ echo $bottom_tags;
 
 
 
-
+<!-- <div class='stripe'>
+    <div class='spectrum'></div>
+</div> -->
     
 
     
