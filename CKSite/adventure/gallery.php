@@ -3,12 +3,10 @@
 
 include_once "includes/gallery-header.php";
 include_once "php_util/db.php";
+include_once "includes/dbFunctions.php";
 
 $container="<div class='container-fluid'>";
-if(isset($_GET['id'])){
-    $g_id=$_GET['id'];
-    
-}
+
 echo $container;
 
 $page="
@@ -40,7 +38,13 @@ $gallery_sm="    <div class='gallery-sm'>
             <!-- Slides -->";
 
 $gallery_lg="   
-<div class='gallery-lg'>
+<div class='gallery-lg'>";
+if(isset($_GET['id'])){
+    $g_id=$_GET['id'];
+    $gallery_lg.=display_gallery_info_lg($g_id,$gallery_display_read_stmt);
+    echo $gallery_lg;
+}
+$gallery_lg="
     <div class='row gy-2'>
         <div class='col-md-2 col-lg-3 d-flex justify-content-center'>
             <div class='bulb vertical'>

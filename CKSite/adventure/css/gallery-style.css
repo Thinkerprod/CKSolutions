@@ -103,5 +103,17 @@ background-blend-mode: multiply;
         display: block;
         position: relative;
     }
+    .display-large{
+        display: flex;
+        justify-content: center;
+        width:100%;
+        position: absolute;
+        top:1rem;
+        z-index: 10;
+        background-color: rgba(255,255,255,0.5);
+    }
+    .display-large img{
+        max-width: 800px;
+    }
   }
   /* .grid-item--height2 { height: 40%; } */

@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="css/gallery-style.css">
 <link rel="stylesheet" href="css/blacklight.css">
 <link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="css/swiper.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Babylonica&family=Bitter&family=Mukta&family=Crimson+Text&family=Montserrat:wght@300&family=Work+Sans:wght@300&family=Cinzel:wght@400&display=swap" rel="stylesheet">
