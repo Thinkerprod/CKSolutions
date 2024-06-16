@@ -19,23 +19,21 @@ $page="
 </div>
 ";
 
-$gallery_sm="    <div class='gallery-sm'>
-<div class='row'>
-    <div class='col-12 bulb d-flex justify-content-center align-items-center'>
-        
-        <div class='prongs-left'></div>
-        <div class='cap-left'></div>
-        <div class='tube'>off</div>
-        <div class='cap-right'></div>
-        <div class='prongs-right'></div>
-        
-    </div>
-    <div class='col-12'>
-        <!-- Slider main container -->
-        <div class='swiper-container'>
-        <!-- Additional required wrapper -->
-            <div class='swiper-wrapper'>                        
-            <!-- Slides -->";
+$gallery_sm="    
+<div class='gallery-sm'>
+    <div class='row'>
+        <div class='col-12 bulb d-flex justify-content-center align-items-center'>
+
+            <div class='prongs-left'></div>
+            <div class='cap-left'></div>
+            <div class='tube'>off</div>
+            <div class='cap-right'></div>
+            <div class='prongs-right'></div>
+
+        </div>
+        <div class='col-12'>
+            <div class='carousel slide'>
+                <div class='carousel-inner'>";
 
 $gallery_lg="   
 <div class='gallery-lg'>";
@@ -107,7 +105,44 @@ while($row=mysqli_fetch_assoc($gallery_result)){
     $media_type=$row['media_type'];
     $mat_type=$row['mat_type'];
 
-    $gallery_sm.="<div class='swiper-slide'>";
+    $gallery_lg.="<div class='grid-item'>";
+
+    
+    $image_path="images/gallery/{$g_image}";
+    $alt="image of ".$g_title;
+
+    $img_id=str_replace(" ","",$g_title);
+        $js_id="#".$img_id;
+
+        $a_img_info_id_sm="#".$img_id."card";
+        $card_img_info_id_sm=$img_id."card";
+
+    
+
+    if($count_down==$count_row['total']){
+        $active="active";
+    }
+    else{
+        $active="";
+    }
+
+    $gallery_sm.="
+    <div class='carousel-item position-relative {$active}'>
+        <div class='collapse multi-collapse position-absolute top' id='{$card_img_info_id_sm}'>
+            <div class='card w-100'>
+                <div class='card-body'>
+                    <div class='card-title'>{$g_title}</div>
+                    <div class='card-text'>
+                        <ul>
+                            <li>{$media_type}</li>
+                            <li>{$mat_type}</li>
+                            <li>{$size_amount}</li>
+                            <li>{$g_year}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div> 
+        </div>";
 
 
     $count_down--;
@@ -119,38 +154,35 @@ while($row=mysqli_fetch_assoc($gallery_result)){
     // else{
     //     $gallery_lg.="<div class='grid-sizer'></div><div class='grid-item grid-item--height2'>";
     // }
+
+
+
         if($count_down==1){
             $comma="";
         }
         else{
             $comma=",";
         }
-    $gallery_lg.="<div class='grid-item'>";
 
-
-    $image_path="images/gallery/{$g_image}";
-    $alt="image of ".$g_title;
-
-    $img_id=str_replace(" ","",$g_title);
-        $js_id="#".$img_id;
 
     if($g_BL_check==1){
         $img_id_src=str_replace(" ","",$g_title)."_src";
         $img_id_BL=str_replace(" ","",$g_title)."_BL";
         $alt_BL="Blacklight image of ".$g_title;
         $image_BL_path="images/gallery/".$g_BL_image;
-        $img="<a href='gallery.php?id={$g_id}'><img src='{$image_path}' alt='{$alt}' class='img-fluid blacklight' id='{$img_id}'></a>";
-        $gallery_sm.=$img."</div>";
-        $gallery_lg.=$img."</div>";
+        $img_L="<a href='gallery.php?id={$g_id}'><img src='{$image_path}' alt='{$alt}' class='img-fluid blacklight' id='{$img_id}'></a>";
+        $img_sm="<a href='{$a_img_info_id_sm}' data-bs-toggle='collapse'><img src='{$image_path}' alt='{$alt}' class='img-fluid blacklight' id='{$img_id}'></a>";
+        $gallery_sm.=$img_sm."</div>";
+        $gallery_lg.=$img_L."</div>";
 
         $js_script.="['{$image_path}','{$image_BL_path}','{$js_id}']".$comma;
 
     }
     else{
-        $img="<a href='gallery.php?id={$g_id}'><img src='{$image_path}' alt='{$alt}' class='img-fluid plain' id='{$img_id}'></a>";
-
-        $gallery_sm.=$img."</div>";
-        $gallery_lg.=$img."</div>";
+        $img_L="<a href='gallery.php?id={$g_id}'><img src='{$image_path}' alt='{$alt}' class='img-fluid plain' id='{$img_id}'></a>";
+        $img_sm="<a href='{$a_img_info_id_sm}'><img src='{$image_path}' alt='{$alt}' class='img-fluid plain' id='{$img_id}'></a>";
+        $gallery_sm.=$img_sm."</div>";
+        $gallery_lg.=$img_L."</div>";
     }
 
 //     <img src='{$image_BL_path}' alt='{$alt_BL}' class='img-fluid blacklight BL-toggle'>
@@ -166,19 +198,10 @@ $('body').toggleClass('blacklight-page');
 })
 </script>";
 
-$gallery_sm.="                    </div>
-<!-- If we need pagination -->
-<div class='swiper-pagination'></div>
-
-<!-- If we need navigation buttons -->
-<div class='swiper-button-prev'></div>
-<div class='swiper-button-next'></div>
-
-<!-- If we need scrollbar -->
-<div class='swiper-scrollbar'></div>
+$gallery_sm.="                    
 </div>
 </div>
-
+</div>
 </div>
 </div>";
 
@@ -205,7 +228,7 @@ $gallery_lg.="
 </div>
 ";
 
-$page.=$gallery_lg."</div>";
+$page.=$gallery_sm.$gallery_lg."</div>";
 echo $page;
 
 
@@ -222,17 +245,16 @@ echo $bottom_tags;
 
 
 
-<!-- <div class='stripe'>
-    <div class='spectrum'></div>
-</div> -->
+</div>
+</div>
     
 
     
 
-                        
+                      
 
 
 
             
 
-            <!-- <div class='col-md-8 col-lg-6 full-display-column'> -->
+

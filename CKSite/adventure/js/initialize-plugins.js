@@ -21,8 +21,13 @@ var $grid = $('.grid').masonry({
 
   const swiper = new Swiper('.swiper-container', {
     // Optional parameters
-    direction: 'vertical',
+    init:true,
+    slidesPerView:1,
+    enabled:true,
+    centeredSlides:true,
+    direction: 'horizontal',
     loop: true,
+    effect:'fade',
   
     // If we need pagination
     pagination: {
@@ -36,7 +41,5 @@ var $grid = $('.grid').masonry({
     },
   
     // And if we need scrollbar
-    scrollbar: {
-      el: '.swiper-scrollbar',
-    },
+
   });

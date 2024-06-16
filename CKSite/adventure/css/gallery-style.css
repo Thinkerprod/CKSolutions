@@ -103,10 +103,11 @@ background-blend-mode: multiply;
         display: block;
         position: relative;
     }
+    .gallery-sm{display: none;}
     .display-large{
-        display: flex;
-        justify-content: center;
+        
         width:100%;
+        height: auto;
         position: absolute;
         top:1rem;
         z-index: 10;
@@ -114,6 +115,24 @@ background-blend-mode: multiply;
     }
     .display-large img{
         max-width: 800px;
+    }
+    .card-text ul{
+        text-decoration: none;
+        list-style: none;
+    }
+    .card-body{
+        font-family: "Cinzel",'Times New Roman', Times, serif;
+    }
+    .card-body a{
+        text-decoration: none;
+    }
+    .blacklight-card{
+        display: flex;
+        align-items: center;
+    }
+    .info-card{
+      height:100%;
+      width:50%;
     }
   }
   /* .grid-item--height2 { height: 40%; } */
