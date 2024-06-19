@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <script src="https://kit.fontawesome.com/2eeafdf812.js" crossorigin="anonymous"></script>
+
     <title>Gallery</title>
 <link rel="stylesheet" href="css/master-nav.css">
 <link rel="stylesheet" href="css/gallery-style.css">
@@ -15,7 +17,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Babylonica&family=Bitter&family=Mukta&family=Crimson+Text&family=Montserrat:wght@300&family=Work+Sans:wght@300&family=Cinzel:wght@400&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-    
+<script src="https://kit.fontawesome.com/2eeafdf812.js" crossorigin="anonymous"></script>
 
 </head>
 <body>

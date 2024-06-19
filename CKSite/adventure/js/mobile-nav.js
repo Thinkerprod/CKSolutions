@@ -6,3 +6,10 @@ $('#mobile').click(function(){
     $('#nav-menu').toggleClass('nav-visible')
     $('#menu-links').toggleClass('visible')
 })
+
+const myCarouselElement = document.querySelector('#myCarousel')
+
+const carousel = new bootstrap.Carousel(myCarouselElement, {
+  interval: 2000
+ 
+})
