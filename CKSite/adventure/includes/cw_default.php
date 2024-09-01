@@ -17,7 +17,7 @@ $view_all_cw_query="SELECT * FROM cw WHERE cw_published=1";
         $cw_trunc=$row['cw_trunc'];
         // $cw_filename=$row['cw_filename'];
         $cw_view_count=$row['cw_view_count'];
-        $cw_likes=$row['cw_likes'];
+        // $cw_likes=$row['cw_likes'];
 
         
         
@@ -52,10 +52,11 @@ $view_all_cw_query="SELECT * FROM cw WHERE cw_published=1";
         $datetime_date=date_create($cw_date);
         $formatted_date=date_format($datetime_date,"D d F Y");
 
-        $cw_card="<div class='card-container d-flex justify-content-center align-items-center'>
-        <a href='creative-writing.php?src=read&cw_id={$cw_id}'><div class='card d-flex align-items-center'>
-        <div class='row g-0'>
-        <div class='col-4 d-flex justify-content-center align-items-center'>";
+        $cw_card="
+            <div class='card-container d-flex justify-content-center align-items-center'><a href='creative-writing.php?src=read&cw_id={$cw_id}'>
+                <div class='card d-flex align-items-center'>
+                    <div class='row g-0'>
+                        <div class='col-4 d-flex justify-content-center align-items-center'>";
         
         
         
@@ -70,24 +71,30 @@ $view_all_cw_query="SELECT * FROM cw WHERE cw_published=1";
             $img_src="images/quill.png";
             $alt="icon of a quill";
         }
-        $cw_card.="<img src='{$img_src}' class='img-fluid' alt='{$alt}'></div>";
-        $cw_card.="<div class='col-8 d-flex justify-content-center align-items-center'><div class='card-body px-2'><h3 class='card-title'>{$cw_title}</h3>";
+        $cw_card.="
+                            <img src='{$img_src}' class='img-fluid' alt='{$alt}'></div>";
+        $cw_card.="
+                        <div class='col-8 d-flex justify-content-center align-items-center'>
+                            <div class='card-body px-2'>
+                                <h3 class='card-title'>{$cw_title}</h3>";
         
 
         $trunc_content=$cw_trunc."...";
         $cw_card.="
-        <div class='card-text'>{$trunc_content}</div>
-        <div class='card-text'><small class='text-body-secondary fst-italic'>Submitted by Cory Kutschker {$formatted_date}</small></div>
-        </div></div>
-        <div class='card-footer d-flex justify-content-between align-items-center'>
+                                <div class='card-text'>{$trunc_content}</div>
+                                <div class='card-text'><small class='text-body-secondary fst-italic'>Submitted by Cory Kutschker {$formatted_date}</small></div>
+                            </div>
+                        </div>
+
+                    </div>
+                <div class='card-footer d-flex justify-content-between align-items-center'>
 
         
-        <div class='d-flex justify-content-center align-items-center' id='genres'>{$genres_string}</div>
-        <div id='tags'>{$tag_string}</div>
+                    <div class='d-flex justify-content-center align-items-center' id='genres'>{$genres_string}</div>
+                    <div id='tags'>{$tag_string}</div>
 
-        </div>
-        </div></a>
-        </div>
+                </div>
+            </div></a>
         </div>";
         
         echo $cw_card;
@@ -95,4 +102,29 @@ $view_all_cw_query="SELECT * FROM cw WHERE cw_published=1";
     }
 
 ?>
+    <!-- <div class='card-container d-flex justify-content-center align-items-center'><a href='creative-writing.php?src=read&cw_id={$cw_id}'>
+                <div class='card d-flex align-items-center'>
+                    <div class='row g-0'>
+                        <div class='col-4 d-flex justify-content-center align-items-center'>";
+                            <img src='{$img_src}' class='img-fluid' alt='{$alt}'>
+                        </div>";
+                        <div class='col-8 d-flex justify-content-center align-items-center'>
+                            <div class='card-body px-2'>
+                                <h3 class='card-title'>{$cw_title}</h3>";
+                                <div class='card-text'>{$trunc_content}</div>
+                                <div class='card-text'><small class='text-body-secondary fst-italic'>Submitted by Cory Kutschker {$formatted_date}</small></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class='card-footer d-flex justify-content-between align-items-center'>
+
+        
+                        <div class='d-flex justify-content-center align-items-center' id='genres'>{$genres_string}</div>
+                        <div id='tags'>{$tag_string}</div>
+
+                    </div>
+                </div></a>
+            </div>
+    </div>"; -->
 

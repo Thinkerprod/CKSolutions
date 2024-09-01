@@ -38,7 +38,7 @@
             </div> -->
 
             <div class="col-sm-12 col-md-12 col-lg-8 d-flex flex-column justify-content-center">
-            <?php include_once "includes/view-controller.php"; ?>
+            <?php include_once "includes/cw-view-controller.php"; ?>
             </div>
 
 

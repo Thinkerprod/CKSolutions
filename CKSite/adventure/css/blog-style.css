@@ -13,6 +13,9 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #fff;
+    background-image: url("../images/old-paper-texture.png");
+    background-size: cover;
+    background-repeat: no-repeat;
     background-attachment: scroll;
     font-family: "Work Sans", sans-serif;
     font-weight: 800;
@@ -20,7 +23,11 @@ body {
     margin:0;
     padding:0;
     
-    }
+}
+.side-well{
+    background-color: #fff;
+    list-style: none;
+}
 
 .banner{
     height:auto;
@@ -31,8 +38,39 @@ body {
     height: auto;
     width:100%;
 }
+.card-container{
+    text-decoration: none;
+    color:#000;
+}
+.card{
+    background-image: url("../images/old-paper-texture.jpeg");
+    box-shadow: none;
+    transition: box-shadow ease-in 350ms;
+    
+}
 #searchBtn{
 font-family: Font Awesome\ 5 Free;
 font-weight: 900;
+
+}
+
+.post-content{
+    background-color: #000;
+    background-image: url("../images/old-paper-texture.jpeg");
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: "Quicksand",sans-serif;
+}
+.author img{
+    max-width:150px;
+    height: auto;
+    border-radius: 50%;
+}
+@media(min-width:768px){
+
+    .card:hover{
+        box-shadow: 6px 6px 10px 3px #000 ;
+    }
 
 }

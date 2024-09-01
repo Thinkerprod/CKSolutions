@@ -192,8 +192,9 @@ function check_tags_update($connection, $stmnt,$post_id){
 //post CRUD
 $post_create_stmt=$connection->prepare("INSERT INTO posts (post_title, post_date, post_image, post_content, post_category_id) VALUES (?,?,?,?,?)");
 $post_read_stmt=$connection->prepare("SELECT * FROM posts WHERE post_id=?");
-$update_post_stmt=$connection->prepare("UPDATE posts SET post_title=?, post_date=?, post_image=?, post_content=?, post_comment_count=?, post_published=? WHERE post_id=?");
+$update_post_stmt=$connection->prepare("UPDATE posts SET post_title=?, post_date=?, post_image=?, post_content=?, post_published=? WHERE post_id=?");
 $delete_post_stmt=$connection->prepare("DELETE FROM posts WHERE post_id=?");
+$publish_post_stmt=$connection->prepare("UPDATE posts SET post_published=? WHERE post_id=?");
 
 //category CRUD
 $cat_create_stmt=$connection->prepare("INSERT INTO categories (cat_title) VALUES (?)");

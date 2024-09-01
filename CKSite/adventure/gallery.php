@@ -5,17 +5,17 @@ include_once "includes/gallery-header.php";
 include_once "php_util/db.php";
 include_once "includes/dbFunctions.php";
 
-$container="<div class='container-fluid'>";
+$container="<div class='container-fluid mx-0 px-0'>";
 
 echo $container;
 
 $page="
-<div class='gallery_title d-flex flex-column justify-content-center align-items-center text-center gy-3'>
+<div class='gallery_title w-100 mx-0 d-flex flex-column justify-content-center align-items-center text-center gy-3'>
     <div class='title-top'>Prism  Expressions</div>
     <div class='spectrum'></div>
 
-    <div class='title-bottom'>Gallery</div>
-    <small>All Artwork Seen Here Is Created By Cory Kutschker</small>
+    <div class='title-bottom text-center w-100'>Gallery</div>
+    <small class='text-center w-100 fs-5 mx-1'>All Artwork Seen Here Is Created By Cory Kutschker</small>
 </div>
 ";
 

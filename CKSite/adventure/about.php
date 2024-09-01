@@ -6,9 +6,13 @@ include_once "includes/aboutHeader.php";
     
     <div class="about-text">
         <h2>About</h2>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste repudiandae et atque perspiciatis maxime, 
-            perferendis, qui, praesentium laborum expedita sequi quod ad iure minus natus vero velit molestias itaque omnis.</p>
-    </div>
+        <p>Cory Kutschker lives with his wife Amber in Saskatchewan, Canada. He has many interests and hobbies which includes: music, reading, painting, writing, and gaming.
+</p>
+<br>
+<p>
+He enjoys painting landscapes but takes special pleasure in creating more expressionistic and abstract conversational subjects.</p>
+   
+</div>
 </div>
 <?php 
 include_once "includes/footer.php";

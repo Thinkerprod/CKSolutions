@@ -136,9 +136,9 @@ body {
             background-color: transparent;
         }
 
-        .genre-block{
+        /* .genre-block{
             position: sticky;
-        }
+        } */
 
         .card{
             background-image: url("../images/old-paper-texture.jpeg");

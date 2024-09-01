@@ -19,7 +19,7 @@ $table="<table class='table'>
         <th scope='col'>post_image</th>
         <th scope='col'>post_content</th>
         <th scope='col'>post_category_id</th>
-        <th scope='col'>post_comment_count</th>
+
         <th scope='col'>post_published</th>
     </tr>
 </thead>
@@ -36,17 +36,17 @@ $post_date=$row['post_date'];
 $post_content=$row['post_content'];
 $post_image=$row['post_image'];
 $post_category_id=$row['post_category_id'];
-$post_comment_count=$row['post_comment_count'];
+// $post_comment_count=$row['post_comment_count']
 $post_published=$row['post_published'];
 $truncated_content=substr($post_content,0,50)."...";
-$table.="<tr>
+$table.="<tr>   
 <td>{$post_id}</td>
 <td>{$post_title}</td>
 <td>{$post_date}</td>
 <td>{$post_image}</td>
 <td>{$truncated_content}</td>
 <td>{$post_category_id}</td>
-<td>{$post_comment_count}</td>
+
 <td>{$post_published}</td>
 <td><a class='text-uppercase' href='admin-index.php?src=edit&p_id=".$post_id."'>Edit</a></td>
 <td><a class='text-uppercase' href='admin-index.php?src=read&p_id=".$post_id."'>Read</a></td>

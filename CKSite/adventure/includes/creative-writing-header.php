@@ -35,7 +35,7 @@
     <li><a href="index.html">Home</a></li>
     <li><a href="gallery.php">Gallery</a></li>
     <li><a href="blog-adventure.php">Blog</a></li>
-    <li><a href="creaative-writing.php">Creative Writing</a></li>
+    <li><a href="creative-writing.php">Creative Writing</a></li>
     <li><a href="about.php">About</a></li>
     <li><a href="admin/admin-index.php"><i class="fa-solid fa-user"></i></a></li>
     </ul>

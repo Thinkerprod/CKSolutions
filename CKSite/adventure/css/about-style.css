@@ -1,5 +1,6 @@
 html {
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
     scroll-behavior: smooth;
     min-width: 100vw;
     min-height:100vh;
@@ -35,6 +36,7 @@ body{
 
 img{
     margin-top: 2rem;
+    margin-bottom: 2rem;
     width:300px;
     height: auto;
     /* opacity: 1; */

@@ -1,12 +1,94 @@
 :root{
+    --H-BL-height:2rem;
+    --H-BL-width:2rem;
     --V-BL-width:3rem;
     --v-BL-cap-height:3rem;
+}
+.horizontal{
+    display: flex;
+    align-items: center;
+    width:auto;
+    height:5rem;
+}
+.logo{
+    color:#000;
+}
+.obscure{
+    filter:blur(6px);
+}
+.highlight{
+    border:2px solid #5D0CED;
 }
 .bulb:hover{
     cursor: pointer;
     
 }
 
+.cap{
+    display: block;
+    background-color: #000;
+    width:var(--H-BL-width);
+    height:var(--H-BL-height);
+
+}
+.blacklight-on{
+    background-color: #5D0CED;
+    color:#fff;
+    
+}
+
+.blacklight-page{
+    background-color: #000;
+    color:#fff;
+}
+
+.tube{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:14rem ;
+    height:var(--H-BL-height) ;
+    border: 3px solid #5D0CED;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: "Cinzel",'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+.prong-H{
+    display: block;
+    width:1.5rem;
+    height:3px;
+    background-color: #000;
+    padding: 0;
+    /* margin: 1em 0 1em 0; */
+}
+.prongs-left{
+    display: flex;
+    flex-direction: column;
+    width:1.5rem;
+    height:var(--H-BL-height);
+    justify-content: space-evenly;
+    align-items: center;
+}
+.prongs-right{
+    display: flex;
+    flex-direction: column;
+    width:1.5rem;
+    height:var(--H-BL-height);
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.prong-L{
+    justify-content: end;
+}
+.prong-R{
+    justify-content: start;
+}
+
+
+@media(min-width:768px){
 .vertical{
     display: flex;
     flex-direction: column;
@@ -48,13 +130,7 @@
     border-top: 1px solid red;
 } */
 
-.cap{
-    display: block;
-    background-color: #000;
-    width:var(--V-BL-width);
-    height:var(--v-BL-cap-height);
 
-}
 .tube{
     display: flex;
     align-items: center;
@@ -68,11 +144,7 @@
     text-transform: uppercase;
     font-family: "Cinzel",'Times New Roman', Times, serif;
 }
-.blacklight-on{
-    background-color: #5D0CED;
-    color:#fff;
-    
-}
+
  .leftTube{
     filter:drop-shadow(30px 0 20px #5D0CED);
 
@@ -81,20 +153,10 @@
     filter:drop-shadow(-30px 0 20px #5D0CED);
 
 }
-.blacklight-page{
-    background-color: #000;
-    color:#fff;
-}
+
 .blacklight-on-caps-prongs{
     background-color: #fff;
     
 }
-.logo{
-    color:#000;
-}
-.obscure{
-    filter:blur(6px);
-}
-.highlight{
-    border:2px solid #5D0CED;
+
 }

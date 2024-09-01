@@ -17,7 +17,7 @@ if(isset($_GET['p_id'])){
         $post_image = $post_row['post_image'];
         $post_content = $post_row['post_content'];
         $post_category_id = $post_row['post_category_id'];
-        $post_comment_count = $post_row['post_comment_count'];
+        // $post_comment_count = $post_row['post_comment_count'];
         $post_published = $post_row['post_published'];
 
         echo "<div class='row d-flex justify-content-start px-5'>
@@ -41,9 +41,7 @@ if(isset($_GET['p_id'])){
     $foot="<div class='row px-5 mx-5'>";
     $foot.="<div class='col-3'><i class='fa-solid fa-share-nodes'></i></div>";
 
-    $foot.="<div class='col-3'>
-    <p>{$post_comment_count} Comments</p>
-</div>";
+
 
     $post_result->free();
 
@@ -77,12 +75,31 @@ if(isset($_GET['p_id'])){
     <p>{$tag_string}</p>
 </div>";
 
-echo $foot;
+
 
 if($post_published==0){
-
+    $post_published=1;
+$foot.="<div class='col-3'>
+    <form action='blog_actions/publish_post.php' method='post'>
+    <input type='hidden' name='post_id' value='{$post_id}'>
+    <input type='hidden' name='post_published' value='{$post_published}'>
+    <button type='submit' class='btn btn-primary'>Publish Post</button>
+    </form>
+</div>";
 
 }
+else{
+    $post_published=0;
+    $foot.="<div class='col-3'>
+    <form action='blog_actions/publish_post.php' method='post'>
+    <input type='hidden' name='post_id' value='{$post_id}'>
+    <input type='hidden' name='post_published' value='{$post_published}'>
+    <button type='submit' class='btn btn-primary'>Return to Draft</button>
+    </form>
+</div>";
+}
+
+echo $foot;
 
 
     $result->free();

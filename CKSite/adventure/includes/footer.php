@@ -1,4 +1,4 @@
-<footer>
+<footer class="fst-normal">
     
     <h2>Follow Me</h2>
     <div class="icons">

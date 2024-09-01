@@ -5,18 +5,25 @@ include_once "cw/cw_read_write.php";
 function create_mobile_gallery($connection){
     $gallery_sm="    
     <div class='gallery-sm'>
-        <div class='row'>
-            <div class='col-12 bulb d-flex justify-content-center align-items-center'>
+        <div class='row g-0'>
+            <div class='col-12 my-4 px-2 d-flex justify-content-center align-items-center g-0'>
     
-                <div class='prongs-left'></div>
-                <div class='cap-left'></div>
-                <div class='tube'>off</div>
-                <div class='cap-right'></div>
-                <div class='prongs-right'></div>
-    
+                <div class='bulb horizontal'>
+                <div class='prongs-left prongs'>
+                    <div class='prong-H prong prong-L'></div>
+                    <div class='prong-H prong prong-L'></div>
+                </div>
+                <div class='cap'></div>
+                <div class='tube' id='m-tube'>off</div>
+                <div class='cap'></div>
+                <div class='prongs-right prongs'>
+                    <div class='prong-H prong prong-R'></div>
+                    <div class='prong-H prong prong-R'></div>
+                </div>
+                </div>
             </div>
-            <div class='col-12'>
-                <div class='carousel slide'>
+            <div class='col-12 my-3 d-flex justify-content-center'>
+                <div class='carousel slide w-90' id='artCarousel'>
                     <div class='carousel-inner'>";
 
                     $gallery_query="SELECT g.gallery_id, g.gallery_title, m.media_type, gs.size_amount, g.gallery_orientation, mt.mat_type, g.is_blacklight, g.gallery_year, g.gallery_image, g.gallery_BL_image
@@ -79,8 +86,10 @@ while($row=mysqli_fetch_assoc($gallery_result)){
 
     $gallery_sm.="
     <div class='carousel-item position-relative {$active}'>
+    <div class='carousel-shell'>
         <div class='collapse multi-collapse position-absolute top' id='{$card_img_info_id_sm}'>
-            <div class='card w-100'>
+
+            <div class='card w-auto'>
                 <div class='card-body'>
                     <div class='card-title'>{$g_title}</div>
                     <div class='card-text'>
@@ -101,7 +110,7 @@ while($row=mysqli_fetch_assoc($gallery_result)){
             $count_down_blacklight--;
     
 
-            $img_sm="<a href='{$a_img_info_id_sm}' data-bs-toggle='collapse'><img src='{$image_path}' alt='{$alt}' class='img-fluid blacklight' id='{$img_id}'></a>";
+            $img_sm="<a href='{$a_img_info_id_sm}' data-bs-toggle='collapse '><img src='{$image_path}' alt='{$alt}' class='img-fluid carousel-img blacklight' id='{$img_id}'></a>";
             $gallery_sm.=$img_sm."</div>";
     
     
@@ -110,7 +119,7 @@ while($row=mysqli_fetch_assoc($gallery_result)){
         }
         else{
 
-            $img_sm="<a href='{$a_img_info_id_sm}'><img src='{$image_path}' alt='{$alt}' class='img-fluid plain' id='{$img_id}'></a>";
+            $img_sm="<a href='{$a_img_info_id_sm}'><img src='{$image_path}' alt='{$alt}' class='img-fluid carousel-img plain' id='{$img_id}'></a>";
             $gallery_sm.=$img_sm."</div>";
         
         }
@@ -120,6 +129,13 @@ while($row=mysqli_fetch_assoc($gallery_result)){
 
 $gallery_sm.="                    
 </div>
+</div>
+  <button class='carousel-control-prev' type='button' data-bs-target='#artCarousel' data-bs-slide='prev'>
+    <span class='carousel-control-prev-icon'></span>
+  </button>
+  <button class='carousel-control-next' type='button' data-bs-target='#artCarousel' data-bs-slide='next'>
+    <span class='carousel-control-next-icon'></span>
+  </button>
 </div>
 </div>
 </div>
