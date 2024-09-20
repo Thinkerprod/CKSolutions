@@ -33,7 +33,7 @@ function confirmQuery($result){
 // die();
 
 $post_tag_stmnt=$connection->prepare("INSERT INTO post_tags_ids (tag_post_id,tag_id) VALUES (?,?)");
-$post_tag_read_stmt=$connection->prepare("SELECT * FROM posts WHERE post_id=?");
+$post_tag_read_stmt=$connection->prepare("SELECT p.post_id, p.post_title, p.post_date, p.post_image, p.post_content, p.post_category_id, c.cat_title FROM posts p INNER JOIN post_tags_ids pti ON pti.tag_post_id=p.post_id INNER JOIN categories c ON c.cat_id=p.post_category_id WHERE pti.tag_id=? AND p.post_published=1");
 $update_tag_stmt=$connection->prepare("UPDATE post_tags_ids SET tag_post_id=?, tag_id=?");
 $delete_post_tag_stmt=$connection->prepare("DELETE FROM post_tags_ids WHERE tag_post_id=?");
 
@@ -201,6 +201,8 @@ $cat_create_stmt=$connection->prepare("INSERT INTO categories (cat_title) VALUES
 $cat_read_stmt=$connection->prepare("SELECT * FROM categories WHERE cat_id=?");
 $cat_update_stmt=$connection->prepare("UPDATE categories SET cat_title=?");
 $cat_delete_stmt=$connection->prepare("DELETE FROM categories WHERE cat_id=?");
+
+$read_posts_BY_Cat=$connection->prepare("SELECT p.post_id, p.post_title, p.post_date, p.post_image, p.post_content, c.cat_title FROM posts p INNER JOIN categories c ON c.cat_id=p.post_category_id WHERE p.post_category_id=? AND p.post_published=1");
 
 //CW CRUD
 $cw_create_stmt=$connection->prepare("INSERT INTO cw (cw_type, cw_title, cw_date, cw_trunc, cw_filename) VALUES (?,?,?,?,?)");

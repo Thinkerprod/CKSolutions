@@ -41,20 +41,23 @@ while($tag_row=$tag_results->fetch_assoc()){
 
 }
 
+$datetime_date=date_create($post_date);
+$formatted_date=date_format($datetime_date,"D d F Y");
+
 $post_string=
-"<div class='container-fluid d-flex flex-column align-items-center'>
+"<div class='container-fluid d-flex flex-column '>
     <div class='post-info d-flex flex-column align-items-center'>
         <h1 class='display-3'>{$post_title}</h1>
         <div class='author d-flex justify-content-center align-items-center my-3'>
             <img src='images/Cory-profile.jpg' alt='image of the author'>
-            <small class='fst-italic mx-2'>Written by Cory Kutschker <br> on {$post_date}</p>
+            <small class='fst-italic mx-2'>Written by Cory Kutschker <br> on {$formatted_date}</small>
         </div>
     </div>
     <div class='container-fluid post-content p-3 fs-5 fst-normal'>
         {$post_content}
     </div>
     <div class='post-footer d-flex justify-content-between fs-5 fst-normal'>
-        <div class='post-share'><i class='fa-solid fa-share-nodes'></i>Share</div>
+        <div class='post-share'><i class='fa-solid fa-share-nodes'></i> Share</div>
         <div class='category'>{$category}</div>
         <div class='tags'>{$tag_string}</div>
     </div>

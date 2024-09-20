@@ -11,18 +11,21 @@ switch($src){
     case "read":
         include_once "includes/blog_view.php";
     break;
-    case "add-post":
-        // include_once "admin_includes/add_posts_form.php";
+    case "cats":
+        include_once "includes/blog_cats_results.php";
     break;
 
 
-    case "read-cw":
-        // include_once "admin_includes/cw_view.php";
+    case "tags":
+        // include_once "includes/blog_tags_results.php";
     break;
-    case "add-gallery":
-        // include_once "admin_includes/add_gallery_form.php";
+    case "search":
+        // include_once "admin_includes/blog_search_results.php";
     break;
-    case "edit":
+    case "month":
+        // include_once "admin_includes/edit_posts_form.php";
+    break;
+    case "year":
         // include_once "admin_includes/edit_posts_form.php";
     break;
     

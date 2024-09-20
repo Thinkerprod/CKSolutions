@@ -32,13 +32,13 @@
             
                 <div class="mb-3">
                     <label for="cw_title_input" class="form-label">Title</label>
-                    <input type="text" name="cw_title" class="form-control" id="cw_title_input" >
+                    <input type="text" name="cw_title" class="form-control" id="cw_title_input" required>
                 </div>
                 <div class="mb-3">
-                    <textarea class="form-control" name="cw_content" id="summernote" cols="100" rows="30"></textarea>
+                    <textarea class="form-control" name="cw_content" id="summernote" cols="100" rows="30" required></textarea>
                 </div>
                 <div class="mb-3">
-                    <textarea class="form-control" name="cw_content_trunc" id="content_truncate" cols="100" rows="10"></textarea>
+                    <textarea class="form-control" name="cw_content_trunc" id="content_truncate" cols="100" rows="10" required></textarea>
                 </div>
                 <div class="mb-3">
                     <input class="btn btn-primary" type="submit" value="Submit" name="submitBtn">

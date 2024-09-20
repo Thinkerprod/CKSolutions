@@ -29,6 +29,10 @@ body {
     list-style: none;
 }
 
+.side-well ul{
+    list-style: none;
+}
+
 .banner{
     height:auto;
     width:100%;

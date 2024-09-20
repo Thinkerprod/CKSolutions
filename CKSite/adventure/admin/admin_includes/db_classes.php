@@ -394,12 +394,14 @@ function read_All_CW($connection){
 
     if(!is_null($cw_trunc)){
         $trunc_bool="True";
+            $cw_trunc_display=substr($cw_trunc,0,20);
+            echo $trunc_bool;
     }
     else{
         $trunc_bool="False";
     }
 
-    // $cw_trunc_display=substr($cw_trunc,0,20);
+
 
 
     
@@ -408,7 +410,7 @@ function read_All_CW($connection){
     <td>{$cw_type}</td>
     <td>{$cw_title}</td>
     <td>{$cw_date}</td>
-    <td>{$trunc_bool}</td>
+    <td>{$cw_trunc_display}</td>
     <td>{$cw_filename}</td>
     <td>{$cw_view_count}</td>
     <td>{$cw_shares}</td>
