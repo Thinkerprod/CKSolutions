@@ -45,6 +45,7 @@ $tag_delete_stmt=$connection->prepare("DELETE FROM post_tags WHERE tag_id=?");
 
 
 function check_tags($connection, $stmnt){
+  //gets the id created for posts table
 $last_id_query="SELECT LAST_INSERT_ID()";
 $result=mysqli_query($connection,$last_id_query);
 if(confirmQuery($result)){
@@ -53,12 +54,53 @@ if(confirmQuery($result)){
 
  
 }
+
+//gets all tags and creates the names of the checkboxes
   $tag_query="SELECT * FROM post_tags";
     $result=mysqli_query($connection,$tag_query);
     if(confirmQuery($result)){
         while($row=mysqli_fetch_assoc($result)){
             $tag_id=$row['tag_id'];
             // $tag_name=$row['tag_name'];
+
+            $check_name=$tag_id."-check";
+
+          if(isset($_POST[$check_name])){
+            $stmnt->bind_param("ii",$last_inserted_id,$tag_id);
+            $stmnt->execute();
+          }
+
+        }
+
+    }
+}
+
+function check_tags_added_input($connection, $stmnt, $added_input){
+  //gets the id created for posts table
+$last_id_query="SELECT LAST_INSERT_ID()";
+$result=mysqli_query($connection,$last_id_query);
+if(confirmQuery($result)){
+  $row = mysqli_fetch_array($result);
+  $last_inserted_id = $row[0];
+
+ 
+}
+
+
+
+
+//gets all tags and creates the names of the checkboxes
+  $tag_query="SELECT * FROM post_tags";
+    $result=mysqli_query($connection,$tag_query);
+    if(confirmQuery($result)){
+        while($row=mysqli_fetch_assoc($result)){
+            $tag_id=$row['tag_id'];
+            $tag_name=$row['tag_name'];
+
+            if($tag_name==$added_input){
+              $stmnt->bind_param("ii",$last_inserted_id,$tag_id);
+              $stmnt->execute();
+            }
 
             $check_name=$tag_id."-check";
 
@@ -190,9 +232,9 @@ function check_tags_update($connection, $stmnt,$post_id){
     }
 
 //post CRUD
-$post_create_stmt=$connection->prepare("INSERT INTO posts (post_title, post_date, post_image, post_content, post_category_id) VALUES (?,?,?,?,?)");
+$post_create_stmt=$connection->prepare("INSERT INTO posts (post_title, post_date, post_image, post_content, post_trunc, post_category_id) VALUES (?,?,?,?,?,?)");
 $post_read_stmt=$connection->prepare("SELECT * FROM posts WHERE post_id=?");
-$update_post_stmt=$connection->prepare("UPDATE posts SET post_title=?, post_date=?, post_image=?, post_content=?, post_published=? WHERE post_id=?");
+$update_post_stmt=$connection->prepare("UPDATE posts SET post_title=?, post_date=?, post_image=?, post_content=?, post_trunc=? WHERE post_id=?");
 $delete_post_stmt=$connection->prepare("DELETE FROM posts WHERE post_id=?");
 $publish_post_stmt=$connection->prepare("UPDATE posts SET post_published=? WHERE post_id=?");
 

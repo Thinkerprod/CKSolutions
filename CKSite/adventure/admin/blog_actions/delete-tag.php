@@ -10,6 +10,7 @@ if(isset($_GET['t_id'])){
     $tag_delete_stmt->execute();
     $connection->close();
     echo "deleted";
+    header("Location: ../admin-index.php");
 
 }
 

@@ -21,7 +21,16 @@
                     <h6>Tags</h6>
                 </div>
                 <div class="col-8">
-                <?php tags_CW_Checkbox($connection);?>
+                    <?php tags_CW_Checkbox($connection);?>
+        </form>
+        
+
+                    <form class="form-control border border-0 p-0" action="cw_actions/quickAddTag.php" method="post">
+                        <div class="input-group">
+                            <input type="text" name="quick_tag" id="">
+                            <input class="btn btn-primary" type="submit" value="Add Tag" name="QuickSubmit">
+                        </div>
+                    </form>
                 </div>
                     
                 

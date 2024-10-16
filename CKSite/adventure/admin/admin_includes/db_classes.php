@@ -17,7 +17,8 @@ $table="<table class='table'>
         <th scope='col'>post_title</th>
         <th scope='col'>post_date</th>
         <th scope='col'>post_image</th>
-        <th scope='col'>post_content</th>
+        <th scope='col'>post_trunc</th>
+        
         <th scope='col'>post_category_id</th>
 
         <th scope='col'>post_published</th>
@@ -33,18 +34,19 @@ $post_id=$row['post_id'];
 $post_title=$row['post_title'];
 
 $post_date=$row['post_date'];
-$post_content=$row['post_content'];
+// $post_content=$row['post_content'];
+$post_trunc=$row['post_trunc'];
 $post_image=$row['post_image'];
 $post_category_id=$row['post_category_id'];
 // $post_comment_count=$row['post_comment_count']
 $post_published=$row['post_published'];
-$truncated_content=substr($post_content,0,50)."...";
+// $truncated_content=substr($post_content,0,50)."...";
 $table.="<tr>   
 <td>{$post_id}</td>
 <td>{$post_title}</td>
 <td>{$post_date}</td>
 <td>{$post_image}</td>
-<td>{$truncated_content}</td>
+<td>{$post_trunc}</td>
 <td>{$post_category_id}</td>
 
 <td>{$post_published}</td>
@@ -135,7 +137,7 @@ function read_All_Comments($connection){
 
 function category_Select($connection){
 
-    $select_menu="<select class='form-select' name='catSelect' aria-label='Select Menu'>";
+    $select_menu="<select class='form-select' name='catSelect' aria-label='Select Menu'  required><option value='' aria-label='Select Option'>--Please Select An Option--</option>";
 
     $cat_query="SELECT * FROM categories";
     $result=mysqli_query($connection,$cat_query);
@@ -451,7 +453,7 @@ function read_All_CW($connection){
             $table.="<tr>
             <td>{$tag_id}</td>
             <td>{$tag_name}</td>
-            <td><a href='blog_actions/delete-cw-tag.php?t_id={$tag_id}' class='text-uppercase'>Delete</a></td>
+            <td><a href='cw_actions/delete-cw-tags.php?t_id={$tag_id}' class='text-uppercase'>Delete</a></td>
             </tr>";
 
 

@@ -7,20 +7,20 @@ if(isset($_GET['tag'])){
 
 
 }
+$tag_string="";
 
+
+
+
+//getting all info for post result except for tags which are multiple
 $post_tag_read_stmt->bind_param('i',$tag_id);
 $post_tag_read_stmt->execute();
 $tag_results=$post_tag_read_stmt->get_result();
 while($post_row=$tag_results->fetch_assoc()){
+   
 
-$post_tag_read_id_stmt->bind_param('i',$post_id);
-$post_tag_read_id_stmt->execute();
-$tag_string="";
-$tag_result=$post_tag_read_id_stmt->get_result();
-while($tag_row=$tag_result->fetch_assoc()){
-    $tag_name=$tag_row['tag_name'];
-    $tag_string.="#".$tag_name;
-}
+
+
 
 
     $post_id=$post_row['post_id'];
@@ -30,6 +30,17 @@ while($tag_row=$tag_result->fetch_assoc()){
     $post_content=$post_row['post_content'];
     $cat_title=$post_row['cat_title'];
 
+//getting all tags for specific post
+$post_tag_read_id_stmt->bind_param('i',$post_id);
+$post_tag_read_id_stmt->execute();
+$tag_result=$post_tag_read_id_stmt->get_result();
+while($tag_row=$tag_result->fetch_assoc()){
+    $tag_name=$tag_row['tag_name'];
+    $tag_string.="#".$tag_name;
+}
+
+
+
     $post_trunc=substr($post_content,0,350)."...";
 
 $datetime_date=date_create($post_date);
@@ -38,7 +49,7 @@ $formatted_date=date_format($datetime_date,"D d F Y");
 $img_src="images/blog_post_cover/".$post_image;
 
 
-$posts_string.=" <div class='card-container d-flex justify-content-center align-items-center '>
+$posts_string=" <div class='card-container d-flex justify-content-center align-items-center '>
 <a class='text-decoration-none' href='blog-adventure.php?src=read&p_id={$post_id}' >
 
 
@@ -66,8 +77,7 @@ $posts_string.=" <div class='card-container d-flex justify-content-center align-
         </div>
     </div>
 </div></a>
-</div>
-";
+</div>";
 echo $posts_string;
 }
 

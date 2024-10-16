@@ -15,7 +15,7 @@ $post_content=$row['post_content'];
 $post_image=$row['post_image'];
 $src="../images/blog_post_cover/".$post_image;
 $post_category_id=$row['post_category_id'];
-$post_comment_count=$row['post_comment_count'];
+// $post_comment_count=$row['post_comment_count'];
 // $post_published=$row['post_published'];
 // echo $post_image;
 $post_content=htmlspecialchars_decode($post_content);
@@ -62,6 +62,9 @@ echo "
                 </div>
                 <div class='mb-3'>
                     <textarea class='form-control' name='post_content' id='summernote' cols='70' rows='30'>".$post_content."</textarea>
+                </div>
+                <div class='mb-3'>
+                    <textarea class='form-control' name='post_trunc' id='' cols='70' rows='10'>".$post_content."</textarea>
                 </div>
                 <div class='mb-3'>
                     <input class='btn btn-primary' type='submit' value='Submit' name='submitBtn'>

@@ -24,6 +24,13 @@
                 </div>
                 <div class="col-8">
                 <?php tags_Checkbox($connection)?>
+                
+
+                    <div class="input-group">
+                    <input type="text" name="quick_tag" id="">
+                    
+                    </div>
+
                 </div>
                 <div class="col-12 mb-3">
                     <label for="img_input" class="form-label">Choose Cover Image</label>
@@ -41,7 +48,10 @@
                     <input class="form-control" type="text" name="post_title" id="">
                 </div>
                 <div class="mb-3">
-                    <textarea class="form-control" name="post_content" id="summernote" cols="70" rows="30"></textarea>
+                    <textarea class="form-control" name="post_content" id="summernote" cols="70" rows="30" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <textarea class="form-control" name="post_trunc" id="" cols="70" rows="10" placeholder="Add content to be truncated here" required></textarea>
                 </div>
                 <div class="mb-3">
                     <input class="btn btn-primary" type="submit" value="Submit" name="submitBtn">

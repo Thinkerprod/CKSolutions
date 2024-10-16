@@ -17,7 +17,7 @@ switch($src){
 
 
     case "tags":
-        // include_once "includes/blog_tags_results.php";
+        include_once "includes/blog_tags_results.php";
     break;
     case "search":
         // include_once "admin_includes/blog_search_results.php";
